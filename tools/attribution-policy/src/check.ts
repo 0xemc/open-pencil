@@ -116,6 +116,16 @@ function apiURL(path: string) {
   return `https://api.github.com${path}`
 }
 
+async function githubArrayPages<T>(path: string): Promise<T[]> {
+  const items: T[] = []
+
+  for (let page = 1; ; page += 1) {
+    const pageItems = await githubJSON<T[]>(apiURL(`${path}?per_page=100&page=${page}`))
+    items.push(...pageItems)
+    if (pageItems.length < 100) return items
+  }
+}
+
 async function inputFromGitHubEvent(eventPath: string): Promise<PullRequestPolicyInput> {
   const event = JSON.parse(await readFile(eventPath, 'utf8')) as GitHubPullRequestEvent
   const pullRequest = event.pull_request
@@ -125,9 +135,7 @@ async function inputFromGitHubEvent(eventPath: string): Promise<PullRequestPolic
     throw new Error('This check only supports pull request events')
 
   const commits = await githubJSON<GitHubCommit[]>(apiURL(`/repos/${repo}/pulls/${number}/commits`))
-  const files = await githubJSON<GitHubFile[]>(
-    apiURL(`/repos/${repo}/pulls/${number}/files?per_page=100`)
-  )
+  const files = await githubArrayPages<GitHubFile>(`/repos/${repo}/pulls/${number}/files`)
 
   return {
     title: pullRequest.title ?? '',
