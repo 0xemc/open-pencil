@@ -1,5 +1,10 @@
 import { iconToSVG } from '@iconify/utils'
-import { DOMImplementation, type Element, type Node } from '@xmldom/xmldom'
+import {
+  DOMImplementation,
+  type Document as XMLDocument,
+  type Element,
+  type Node
+} from '@xmldom/xmldom'
 import svgpath from 'svgpath'
 
 import { parseSVGPath } from '@open-pencil/scene-graph/parse-path'
@@ -251,7 +256,7 @@ function collectPaths(
   }
 }
 
-function appendSVGElement(svgDocument: Document, parent: Element, input: SVGElementInput): void {
+function appendSVGElement(svgDocument: XMLDocument, parent: Element, input: SVGElementInput): void {
   if (!/^[A-Za-z][\w:.-]*$/.test(input.type)) return
   const element = svgDocument.createElementNS(SVG_NAMESPACE, input.type)
   for (const [propName, value] of Object.entries(input.props)) {
@@ -282,6 +287,7 @@ function collectDocumentPaths(root: Element): IconPathInfo[] {
 export function extractPathsFromElements(elements: readonly SVGElementInput[]): IconPathInfo[] {
   const svgDocument = new DOMImplementation().createDocument(SVG_NAMESPACE, 'svg')
   const root = svgDocument.documentElement
+  if (!root) return []
   for (const element of elements) appendSVGElement(svgDocument, root, element)
   return collectDocumentPaths(root)
 }
