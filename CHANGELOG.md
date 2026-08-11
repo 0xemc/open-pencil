@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Preserve circles, ellipses, rectangles, lines, polylines, and polygons supplied as JSX children of inline SVG elements. (#452)
+
 ## 0.14.0 - 2026-08-10
 
 ### Breaking changes

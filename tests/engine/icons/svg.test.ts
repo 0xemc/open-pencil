@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test'
 
-import { extractPaths } from '#core/icons/svg'
+import { extractPaths, extractPathsFromElements } from '#core/icons/svg'
 import { parseSVGSize, parseSVGViewBox } from '#core/io/formats/svg/metadata'
 
 describe('SVG XML parsing', () => {
@@ -30,6 +30,32 @@ describe('SVG XML parsing', () => {
       strokeWidth: 2,
       transform: 'translate(4 5) scale(2)'
     })
+  })
+
+  test('converts parsed element primitives through the shared SVG pipeline', () => {
+    const paths = extractPathsFromElements([
+      {
+        type: 'g',
+        props: { fill: '#ff0000', transform: 'translate(4 5)' },
+        children: [
+          { type: 'circle', props: { cx: 10, cy: 10, r: 5 }, children: [] },
+          {
+            type: 'rect',
+            props: { x: 20, y: 20, width: 10, height: 8, rx: 2, strokeWidth: 3 },
+            children: []
+          }
+        ]
+      }
+    ])
+
+    expect(paths).toHaveLength(2)
+    expect(paths[0]).toMatchObject({ fill: '#ff0000', transform: 'translate(4 5)' })
+    expect(paths[1]).toMatchObject({
+      fill: '#ff0000',
+      strokeWidth: 3,
+      transform: 'translate(4 5)'
+    })
+    expect(paths.every((path) => path.d.length > 0)).toBe(true)
   })
 
   test('does not interpret attribute-like path text as markup', () => {

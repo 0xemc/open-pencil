@@ -1,5 +1,5 @@
 import { iconToSVG } from '@iconify/utils'
-import type { Element, Node } from '@xmldom/xmldom'
+import { DOMImplementation, type Element, type Node } from '@xmldom/xmldom'
 import svgpath from 'svgpath'
 
 import { parseSVGPath } from '@open-pencil/scene-graph/parse-path'
@@ -7,6 +7,22 @@ import { parseSVGPath } from '@open-pencil/scene-graph/parse-path'
 import { parseSVGFragment } from '#core/io/formats/svg/document'
 
 import type { IconData, IconifyIconEntry, IconPathInfo } from './types'
+
+interface SVGElementInput {
+  type: string
+  props: Readonly<Record<string, unknown>>
+  children: readonly (SVGElementInput | string)[]
+}
+
+const SVG_NAMESPACE = 'http://www.w3.org/2000/svg'
+const JSX_ATTRIBUTE_NAMES: Readonly<Record<string, string>> = {
+  className: 'class',
+  fillRule: 'fill-rule',
+  strokeLinecap: 'stroke-linecap',
+  strokeLinejoin: 'stroke-linejoin',
+  strokeWidth: 'stroke-width',
+  xlinkHref: 'xlink:href'
+}
 
 interface PresentationAttributes {
   fill: string
@@ -235,9 +251,24 @@ function collectPaths(
   }
 }
 
-export function extractPaths(svgBody: string): IconPathInfo[] {
-  const root = parseSVGFragment(svgBody)?.documentElement
-  if (!root) return []
+function appendSVGElement(document: Document, parent: Element, input: SVGElementInput): void {
+  if (!/^[A-Za-z][\w:.-]*$/.test(input.type)) return
+  const element = document.createElementNS(SVG_NAMESPACE, input.type)
+  for (const [propName, value] of Object.entries(input.props)) {
+    if (typeof value !== 'string' && typeof value !== 'number') continue
+    const attributeName = JSX_ATTRIBUTE_NAMES[propName] ?? propName
+    element.setAttribute(attributeName, String(value))
+  }
+  if (input.type === 'path' && !element.hasAttribute('d') && typeof input.props.body === 'string') {
+    element.setAttribute('d', input.props.body)
+  }
+  for (const child of input.children) {
+    if (typeof child !== 'string') appendSVGElement(document, element, child)
+  }
+  parent.appendChild(element)
+}
+
+function collectDocumentPaths(root: Element): IconPathInfo[] {
   const elementsById = new Map<string, Element>()
   for (const element of Array.from(root.getElementsByTagName('*'))) {
     const id = element.getAttribute('id')
@@ -246,6 +277,18 @@ export function extractPaths(svgBody: string): IconPathInfo[] {
   const result: IconPathInfo[] = []
   collectPaths(root, DEFAULT_PRESENTATION, null, result, elementsById)
   return result
+}
+
+export function extractPathsFromElements(elements: readonly SVGElementInput[]): IconPathInfo[] {
+  const document = new DOMImplementation().createDocument(SVG_NAMESPACE, 'svg')
+  const root = document.documentElement
+  for (const element of elements) appendSVGElement(document, root, element)
+  return collectDocumentPaths(root)
+}
+
+export function extractPaths(svgBody: string): IconPathInfo[] {
+  const root = parseSVGFragment(svgBody)?.documentElement
+  return root ? collectDocumentPaths(root) : []
 }
 
 export function buildIconData(
