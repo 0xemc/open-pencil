@@ -49,6 +49,25 @@ describe('jsx gaps', () => {
     expect(vectors.every((node) => (node.vectorNetwork?.vertices.length ?? 0) > 0)).toBe(true)
   })
 
+  it('preserves root presentation and applies nested transforms', async () => {
+    const g = makeSceneGraph()
+    await renderJSX(
+      g,
+      `<svg viewBox="0 0 100 100" size={100} fill="#FF0000">
+        <g transform="translate(30 20) scale(2)"><rect x="1" y="2" width="4" height="5" /></g>
+      </svg>`
+    )
+
+    const vector = [...g.nodes.values()].find((node) => node.type === 'VECTOR')
+    expect(vector?.fills[0]?.color).toMatchObject({ r: 1, g: 0, b: 0 })
+    expect(vector?.vectorNetwork?.vertices.map(({ x, y }) => ({ x, y }))).toEqual([
+      { x: 32, y: 24 },
+      { x: 40, y: 24 },
+      { x: 40, y: 34 },
+      { x: 32, y: 34 }
+    ])
+  })
+
   it('renders an SVG containing only a circle', async () => {
     const g = makeSceneGraph()
     await renderJSX(

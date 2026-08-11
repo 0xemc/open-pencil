@@ -269,7 +269,7 @@ async function renderSVGNode(
   // shape conversion so path and primitive children have identical behavior.
   let pathInfos = body.trim() ? extractPaths(body) : []
   if (pathInfos.length === 0) {
-    pathInfos = extractPathsFromElements(tree.children.filter(isTreeNode))
+    pathInfos = extractPathsFromElements(tree.children.filter(isTreeNode), props)
   }
   if (pathInfos.length === 0) {
     throw new Error('<svg> requires SVG markup, a body prop, or supported SVG shape children')

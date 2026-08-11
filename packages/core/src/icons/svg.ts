@@ -284,11 +284,14 @@ function collectDocumentPaths(root: Element): IconPathInfo[] {
   return result
 }
 
-export function extractPathsFromElements(elements: readonly SVGElementInput[]): IconPathInfo[] {
+export function extractPathsFromElements(
+  elements: readonly SVGElementInput[],
+  rootProps: Readonly<Record<string, unknown>> = {}
+): IconPathInfo[] {
   const svgDocument = new DOMImplementation().createDocument(SVG_NAMESPACE, 'svg')
   const root = svgDocument.documentElement
   if (!root) return []
-  for (const element of elements) appendSVGElement(svgDocument, root, element)
+  appendSVGElement(svgDocument, root, { type: 'svg', props: rootProps, children: elements })
   return collectDocumentPaths(root)
 }
 
@@ -332,10 +335,12 @@ export function scalePathInfos(
   scaleY: number
 ): IconData['paths'] {
   return pathInfos.map((path) => {
-    const scaledD =
-      scaleX === 1 && scaleY === 1
-        ? path.d
-        : svgpath(path.d).scale(scaleX, scaleY).round(2).toString()
+    let transformedPath = svgpath(path.d)
+    if (path.transform && path.transform !== 'none') {
+      transformedPath = transformedPath.transform(path.transform)
+    }
+    if (scaleX !== 1 || scaleY !== 1) transformedPath = transformedPath.scale(scaleX, scaleY)
+    const scaledD = transformedPath.round(2).toString()
     return {
       vectorNetwork: parseSVGPath(scaledD, path.fillRule),
       fill: normalizeSVGPaint(path.fill),

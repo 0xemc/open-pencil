@@ -33,20 +33,23 @@ describe('SVG XML parsing', () => {
   })
 
   test('converts parsed element primitives through the shared SVG pipeline', () => {
-    const paths = extractPathsFromElements([
-      {
-        type: 'g',
-        props: { fill: '#ff0000', transform: 'translate(4 5)' },
-        children: [
-          { type: 'circle', props: { cx: 10, cy: 10, r: 5 }, children: [] },
-          {
-            type: 'rect',
-            props: { x: 20, y: 20, width: 10, height: 8, rx: 2, strokeWidth: 3 },
-            children: []
-          }
-        ]
-      }
-    ])
+    const paths = extractPathsFromElements(
+      [
+        {
+          type: 'g',
+          props: { transform: 'translate(4 5)' },
+          children: [
+            { type: 'circle', props: { cx: 10, cy: 10, r: 5 }, children: [] },
+            {
+              type: 'rect',
+              props: { x: 20, y: 20, width: 10, height: 8, rx: 2, strokeWidth: 3 },
+              children: []
+            }
+          ]
+        }
+      ],
+      { fill: '#ff0000' }
+    )
 
     expect(paths).toHaveLength(2)
     expect(paths[0]).toMatchObject({ fill: '#ff0000', transform: 'translate(4 5)' })
