@@ -251,9 +251,9 @@ function collectPaths(
   }
 }
 
-function appendSVGElement(document: Document, parent: Element, input: SVGElementInput): void {
+function appendSVGElement(svgDocument: Document, parent: Element, input: SVGElementInput): void {
   if (!/^[A-Za-z][\w:.-]*$/.test(input.type)) return
-  const element = document.createElementNS(SVG_NAMESPACE, input.type)
+  const element = svgDocument.createElementNS(SVG_NAMESPACE, input.type)
   for (const [propName, value] of Object.entries(input.props)) {
     if (typeof value !== 'string' && typeof value !== 'number') continue
     const attributeName = JSX_ATTRIBUTE_NAMES[propName] ?? propName
@@ -263,7 +263,7 @@ function appendSVGElement(document: Document, parent: Element, input: SVGElement
     element.setAttribute('d', input.props.body)
   }
   for (const child of input.children) {
-    if (typeof child !== 'string') appendSVGElement(document, element, child)
+    if (typeof child !== 'string') appendSVGElement(svgDocument, element, child)
   }
   parent.appendChild(element)
 }
@@ -280,9 +280,9 @@ function collectDocumentPaths(root: Element): IconPathInfo[] {
 }
 
 export function extractPathsFromElements(elements: readonly SVGElementInput[]): IconPathInfo[] {
-  const document = new DOMImplementation().createDocument(SVG_NAMESPACE, 'svg')
-  const root = document.documentElement
-  for (const element of elements) appendSVGElement(document, root, element)
+  const svgDocument = new DOMImplementation().createDocument(SVG_NAMESPACE, 'svg')
+  const root = svgDocument.documentElement
+  for (const element of elements) appendSVGElement(svgDocument, root, element)
   return collectDocumentPaths(root)
 }
 
