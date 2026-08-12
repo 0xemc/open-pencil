@@ -8,6 +8,7 @@ import {
 import svgpath from 'svgpath'
 
 import { parseSVGPath } from '@open-pencil/scene-graph/parse-path'
+import type { Vector } from '@open-pencil/scene-graph/primitives'
 
 import { parseSVGFragment } from '#core/io/formats/svg/document'
 
@@ -328,6 +329,25 @@ export function buildIconData(
   }
 }
 
+function transformStrokeScale(transform: string | null | undefined): number {
+  if (!transform || transform === 'none') return 1
+
+  const points: Vector[] = []
+  svgpath('M0 0 L1 0 M0 0 L0 1')
+    .transform(transform)
+    .abs()
+    .iterate((segment) => {
+      if (segment[0] === 'M' || segment[0] === 'L') {
+        points.push({ x: segment[1], y: segment[2] })
+      }
+    })
+  if (points.length < 4) return 1
+
+  const xScale = Math.hypot(points[1].x - points[0].x, points[1].y - points[0].y)
+  const yScale = Math.hypot(points[3].x - points[2].x, points[3].y - points[2].y)
+  return Math.min(xScale, yScale)
+}
+
 /** Scale extracted SVG path info into IconData paths (shared by buildIconData and design-jsx <svg>). */
 export function scalePathInfos(
   pathInfos: IconPathInfo[],
@@ -345,7 +365,8 @@ export function scalePathInfos(
       vectorNetwork: parseSVGPath(scaledD, path.fillRule),
       fill: normalizeSVGPaint(path.fill),
       stroke: normalizeSVGPaint(path.stroke),
-      strokeWidth: path.strokeWidth * Math.min(scaleX, scaleY),
+      strokeWidth:
+        path.strokeWidth * transformStrokeScale(path.transform) * Math.min(scaleX, scaleY),
       strokeCap: path.strokeCap,
       strokeJoin: path.strokeJoin
     }

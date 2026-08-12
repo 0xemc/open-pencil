@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test'
 
-import { extractPaths, extractPathsFromElements } from '#core/icons/svg'
+import { extractPaths, extractPathsFromElements, scalePathInfos } from '#core/icons/svg'
 import { parseSVGSize, parseSVGViewBox } from '#core/io/formats/svg/metadata'
 
 describe('SVG XML parsing', () => {
@@ -59,6 +59,26 @@ describe('SVG XML parsing', () => {
       transform: 'translate(4 5)'
     })
     expect(paths.every((path) => path.d.length > 0)).toBe(true)
+  })
+
+  test('scales transformed strokes with the conservative non-uniform axis', () => {
+    const [uniform] = scalePathInfos(
+      extractPaths(
+        '<line x1="0" y1="0" x2="4" y2="0" stroke="black" stroke-width="3" transform="scale(2)" />'
+      ),
+      1,
+      1
+    )
+    const [nonUniform] = scalePathInfos(
+      extractPaths(
+        '<line x1="0" y1="0" x2="4" y2="0" stroke="black" stroke-width="3" transform="scale(4 2)" />'
+      ),
+      1,
+      1
+    )
+
+    expect(uniform?.strokeWidth).toBe(6)
+    expect(nonUniform?.strokeWidth).toBe(6)
   })
 
   test('does not interpret attribute-like path text as markup', () => {
