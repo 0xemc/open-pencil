@@ -5,7 +5,7 @@
 ### Added
 
 - Add a reproducible Dev Container for web, package, CLI, and non-browser test development.
-- Add a reference OpenPencil Cloud Compose deployment with PostgreSQL and SeaweedFS, plus a lightweight Garage compatibility profile, including automatic migrations, readiness checks, persistent storage, full revision-flow integration coverage, retention-aware garbage collection, resilient concurrent multipart uploads, a deployment-independent typed API router, and durable per-server connection state.
+- Add a reference OpenPencil Cloud Compose deployment with PostgreSQL and SeaweedFS, plus Garage, Vercel Node, and Cloudflare Workers deployment profiles, including automatic migrations, readiness checks, persistent storage, full revision-flow integration coverage, retention-aware garbage collection, resilient concurrent multipart uploads, a deployment-independent typed API router, and durable per-server connection state.
 - Add local crash recovery for unsaved and pathless documents, including MCP-created documents. (#487)
 - Add isolated visual inspection that sends bounded selection renders to the configured Vision model and returns text findings without retaining image data in Design chat history. (#232, #471)
 - Allow supported AI model profiles to set a provider-specific reasoning effort. (#454)
