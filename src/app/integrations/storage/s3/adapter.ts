@@ -212,6 +212,7 @@ export function createS3StorageAdapter(runtime: StorageProviderRuntime): S3Stora
         }),
         'application/json'
       )
+      return undefined
     },
 
     async getDocumentMetadata(id) {

@@ -164,7 +164,8 @@ export async function openStorageDocumentInNewTab(document: StorageDocument): Pr
         canvasId: document.id,
         name: document.name,
         updatedAt: document.updatedAt,
-        figBytes: bytes
+        figBytes: bytes,
+        remoteRevisionId: document.remoteRevisionId
       })
     }
 
