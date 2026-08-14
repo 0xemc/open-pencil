@@ -1,19 +1,30 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { AlertDialogDescription, AlertDialogTitle } from 'reka-ui'
 import { useDocumentWorkspace, useI18n } from '@open-pencil/vue'
 
 import { activeStorageProviderID, type StorageDocument } from '@/app/integrations/storage'
 import { openSettingsDialog, settingsDialogOpen } from '@/app/settings/dialog'
 import { createCanvasId } from '@/app/storage/id'
 import { createStorageWorkspaceSource } from '@/app/storage/workspace/source'
+import { getLocalCanvasStore } from '@/app/storage/local-store'
+import {
+  keepLocalConflictAsCopy,
+  replaceRemoteConflictVersion,
+  useRemoteConflictVersion
+} from '@/app/storage/sync'
+import { toast } from '@/app/shell/ui'
 import AppPlaceholder from '@/components/ui/AppPlaceholder.vue'
+import { AppAlertDialogRoot, AppDialogBody, AppDialogFooter } from '@/components/ui/dialog'
 import Tip from '@/components/ui/Tip.vue'
 import { activeTab, createTab, openStorageDocumentInNewTab } from '@/app/tabs'
 
 const { dialogs } = useI18n()
 const router = useRouter()
 const configured = ref(false)
+const conflictDocument = ref<StorageDocument | null>(null)
+const resolvingConflict = ref(false)
 const workspace = useDocumentWorkspace({
   source: createStorageWorkspaceSource((snapshot) => {
     configured.value = snapshot.configured
@@ -38,6 +49,39 @@ async function openDocument(document: StorageDocument): Promise<void> {
   await router.push('/')
   await nextTick()
   await openStorageDocumentInNewTab(document)
+}
+
+async function selectDocument(document: StorageDocument): Promise<void> {
+  const metadata = await getLocalCanvasStore().getMeta(document.id)
+  if (metadata?.syncStatus === 'conflict') {
+    conflictDocument.value = document
+    return
+  }
+  await openDocument(document)
+}
+
+async function resolveConflict(action: 'local-copy' | 'remote' | 'replace-remote'): Promise<void> {
+  const document = conflictDocument.value
+  if (!document) return
+  resolvingConflict.value = true
+  try {
+    if (action === 'remote') {
+      await useRemoteConflictVersion(activeStorageProviderID.value, document)
+      toast.info('Local document replaced with the Cloud version.')
+    } else if (action === 'local-copy') {
+      await keepLocalConflictAsCopy(activeStorageProviderID.value, document)
+      toast.info('Local changes were preserved as a new document.')
+    } else {
+      await replaceRemoteConflictVersion(document)
+      toast.info('Local changes will replace the current Cloud version.')
+    }
+    conflictDocument.value = null
+    await invalidate()
+  } catch (error) {
+    toast.error(error instanceof Error ? error.message : String(error))
+  } finally {
+    resolvingConflict.value = false
+  }
 }
 
 async function createDocument(): Promise<void> {
@@ -120,7 +164,7 @@ watch(settingsDialogOpen, (open, wasOpen) => {
           type="button"
           class="group overflow-hidden rounded-lg border border-border bg-panel text-left hover:border-panel-focus hover:bg-hover"
           :data-document-id="document.id"
-          @click="openDocument(document)"
+          @click="selectDocument(document)"
         >
           <div
             v-workspace-preview="document.id"
@@ -170,5 +214,48 @@ watch(settingsDialogOpen, (open, wasOpen) => {
         </template>
       </AppPlaceholder>
     </section>
+
+    <AppAlertDialogRoot
+      :open="conflictDocument !== null"
+      size="md"
+      @update:open="(open) => !open && (conflictDocument = null)"
+    >
+      <div class="border-b border-border px-4 py-3">
+        <AlertDialogTitle class="text-sm font-semibold text-surface">
+          Resolve Cloud conflict
+        </AlertDialogTitle>
+      </div>
+      <AppDialogBody class="space-y-3">
+        <AlertDialogDescription class="text-xs text-muted">
+          This document changed locally and in Cloud. Choose which content to preserve.
+        </AlertDialogDescription>
+      </AppDialogBody>
+      <AppDialogFooter>
+        <button
+          type="button"
+          class="rounded px-3 py-1.5 text-xs text-muted hover:bg-hover disabled:opacity-50"
+          :disabled="resolvingConflict"
+          @click="resolveConflict('remote')"
+        >
+          Use Cloud version
+        </button>
+        <button
+          type="button"
+          class="rounded px-3 py-1.5 text-xs text-surface hover:bg-hover disabled:opacity-50"
+          :disabled="resolvingConflict"
+          @click="resolveConflict('local-copy')"
+        >
+          Keep both
+        </button>
+        <button
+          type="button"
+          class="rounded bg-danger px-3 py-1.5 text-xs text-white disabled:opacity-50"
+          :disabled="resolvingConflict"
+          @click="resolveConflict('replace-remote')"
+        >
+          Replace Cloud
+        </button>
+      </AppDialogFooter>
+    </AppAlertDialogRoot>
   </main>
 </template>
