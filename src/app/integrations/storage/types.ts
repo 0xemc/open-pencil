@@ -48,7 +48,7 @@ export interface StorageAdapter {
     bytes: Uint8Array,
     metadata: StorageDocumentMetadata,
     onProgress?: (progress: StorageTransferProgress) => void,
-    options?: { remoteRevisionId?: string | null }
+    options?: { remoteRevisionId?: string | null; signal?: AbortSignal }
   ): Promise<{ remoteRevisionId?: string | null } | undefined>
   deleteDocument(id: string): Promise<void>
   getDocumentMetadata?(id: string): Promise<StorageDocumentMetadata | null>

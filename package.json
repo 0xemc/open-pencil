@@ -107,6 +107,8 @@
     "lib0": "^0.2.117",
     "motion-v": "^2.0.0",
     "opentype.js": "^2.0.0",
+    "p-limit": "^7.3.0",
+    "p-retry": "^7.1.1",
     "refractor": "^5.0.0",
     "reka-ui": "^2.9.0",
     "svg2pdf.js": "^2.7.0",
