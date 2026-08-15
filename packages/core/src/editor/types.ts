@@ -29,7 +29,10 @@ export type Tool =
   | 'PEN'
   | 'HAND'
 
+export type EditorAccessMode = 'owner' | 'edit' | 'view'
+
 export interface EditorState {
+  accessMode: EditorAccessMode
   activeTool: Tool
   currentPageId: string
   selectedIds: Set<string>
@@ -144,6 +147,8 @@ export interface EditorContext {
   ) => void
   setSelectedIds: (ids: Set<string>) => void
   setActiveTool: (tool: Tool) => void
+  canMutate: () => boolean
+  setAccessMode: (mode: EditorAccessMode) => void
   runLayoutForNode: (id: string) => void
   subscribeToGraph: () => void
 }

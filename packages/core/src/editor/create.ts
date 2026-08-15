@@ -111,9 +111,23 @@ export function createEditor(options?: EditorOptions) {
   }
 
   function setActiveTool(tool: EditorState['activeTool']) {
+    if (state.accessMode === 'view' && tool !== 'SELECT' && tool !== 'HAND') return
     const previous = state.activeTool
     state.activeTool = tool
     if (previous !== tool) emitEditorEvent('tool:changed', tool, previous)
+  }
+
+  function canMutate() {
+    return state.accessMode !== 'view'
+  }
+
+  function setAccessMode(mode: EditorState['accessMode']) {
+    state.accessMode = mode
+    if (mode === 'view') {
+      setActiveTool('SELECT')
+      state.editingTextId = null
+      state.penState = null
+    }
   }
 
   const graphReads = createGraphReadActions(() => _graph)
@@ -153,6 +167,8 @@ export function createEditor(options?: EditorOptions) {
     emitEditorEvent,
     setSelectedIds,
     setActiveTool,
+    canMutate,
+    setAccessMode,
     runLayoutForNode,
     subscribeToGraph
   }
@@ -234,6 +250,8 @@ export function createEditor(options?: EditorOptions) {
     requestRender,
     requestRepaint,
     onEditorEvent,
+    canMutate,
+    setAccessMode,
     setCanvasKit,
     removeCanvasRenderer,
     replaceGraph,

@@ -7,6 +7,7 @@ export type { RenameSelectionOptions, RenameSelectionPreview } from './structure
 export type { EditorToolDef } from './tool-registry'
 export type {
   ClipboardImageResolution,
+  EditorAccessMode,
   EditorContext,
   EditorEventName,
   EditorEvents,

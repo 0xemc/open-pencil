@@ -7,6 +7,7 @@ import { TRYSTERO_APP_ID } from '@/constants'
 
 type CollabRoomOptions = {
   roomId: string
+  canSendUpdates: () => boolean
   ydoc: Y.Doc
   awareness: awarenessProtocol.Awareness
   setConnected: () => void
@@ -22,6 +23,7 @@ export type CollabRoomConnection = {
 
 export function connectCollabRoom({
   roomId,
+  canSendUpdates,
   ydoc,
   awareness,
   setConnected,
@@ -55,8 +57,10 @@ export function connectCollabRoom({
   const [sendSync, getSync] = room.makeAction<Uint8Array>('sync-step1')
   const [sendSyncReply, getSyncReply] = room.makeAction<Uint8Array>('sync-reply')
 
-  const sendYjsUpdate = (data: Uint8Array, peerId?: string) =>
+  const sendYjsUpdate = (data: Uint8Array, peerId?: string) => {
+    if (!canSendUpdates()) return
     void (peerId ? sendUpdate(data, peerId) : sendUpdate(data))
+  }
   const sendAwareness = (data: Uint8Array, peerId?: string) =>
     void (peerId ? sendAw(data, peerId) : sendAw(data))
   const sendSyncStep1 = (data: Uint8Array, peerId?: string) =>

@@ -3,6 +3,7 @@ import type { EditorState } from '#core/editor/types'
 
 export function createDefaultEditorState(pageId: string): EditorState {
   return {
+    accessMode: 'owner',
     activeTool: 'SELECT',
     currentPageId: pageId,
     selectedIds: new Set<string>(),
