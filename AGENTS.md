@@ -73,10 +73,9 @@ App dialogs compose the Reka-backed components under `src/components/ui/dialog/`
 - `bun run check` — complete quality gate, composed from `check:repo`, `check:workspaces`, `check:publishing`, and `check:app`
 - `bun run check:repo` — repository lint, architecture, dependency, security, tool, and duplicate checks
 - `bun run check:workspaces` — package-owned typecheck, test, build, and smoke checks in dependency order
-- `bun run check:publishing` — publication metadata, publint, and package type-resolution checks (the legacy `check:packages` alias is retained)
+- `bun run check:publishing` — publication metadata, publint, and package type-resolution checks
 - `bun run check:app` — root application TypeScript and Vue typechecks
 - `bun run check:arch` — Steiger architecture lint for project-specific import boundaries
-- `bun run check:vue` — vue-tsc type-check for app and Vue SDK .vue files
 - `bun run test:dupes` — jscpd copy-paste detection across product TS sources
 - `bun run test:tools` — tests for private repo tooling under `tools/*`
 - `bun run format` — oxfmt with import sorting
