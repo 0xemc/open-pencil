@@ -5,11 +5,14 @@ import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
 import { SplitterGroup, SplitterPanel, SplitterResizeHandle } from 'reka-ui'
 
+import { readFigFile } from '@open-pencil/core/io/formats/fig'
+import { computeAllLayouts } from '@open-pencil/core/layout'
 import { useViewportKind, formatShortcut, useI18n } from '@open-pencil/vue'
 import { useKeyboard } from '@/app/shell/keyboard/use'
 import { loadEditorLayout, saveEditorLayout } from '@/app/shell/layout-storage'
 import { openFileFromPath, useEditorMenu } from '@/app/shell/menu/use'
 import { useCollab, COLLAB_KEY } from '@/app/collab/use'
+import { loadCloudSharedDocument } from '@/app/collab/cloud-sharing'
 import { connectAutomation } from '@/app/automation/bridge/server'
 import { spawnMCPIfNeeded } from '@/app/automation/mcp/spawn'
 import { isTauri } from '@/app/tauri/env'
@@ -52,6 +55,32 @@ useEditorMenu()
 const collab = useCollab(getActiveStore)
 provide(COLLAB_KEY, collab)
 
+async function openCloudShare() {
+  if (route.name !== 'cloud-share') return
+  const shareId = typeof route.params.shareId === 'string' ? route.params.shareId : null
+  const server = typeof route.query.server === 'string' ? route.query.server : null
+  const secret = window.location.hash.slice(1)
+  if (!shareId || !server || !secret) throw new Error('Cloud share link is incomplete')
+  history.replaceState(history.state, '', `${window.location.pathname}${window.location.search}`)
+  const shared = await loadCloudSharedDocument(server, shareId, secret)
+  const response = await fetch(shared.document.download.url, {
+    method: shared.document.download.method,
+    headers: shared.document.download.headers
+  })
+  if (!response.ok) throw new Error(`Shared document download failed with HTTP ${response.status}`)
+  const bytes = new Uint8Array(await response.arrayBuffer())
+  const file = new File([bytes], `${shared.document.document.name}.fig`, {
+    type: 'application/octet-stream'
+  })
+  const graph = await readFigFile(file, { populate: 'first-page' })
+  const firstPageId = graph.getPages()[0]?.id
+  if (firstPageId) computeAllLayouts(graph, firstPageId)
+  store.replaceGraph(graph)
+  store.state.documentName = shared.document.document.name
+  store.setAccessMode(shared.resolution.permission)
+  await store.fitCurrentPageToViewport()
+}
+
 useEventListener(
   document,
   'wheel',
@@ -88,6 +117,11 @@ async function bindAssociatedFileOpen() {
 }
 
 onMounted(async () => {
+  try {
+    await openCloudShare()
+  } catch (error) {
+    console.error('[Cloud share]', error)
+  }
   const mcp = await spawnMCPIfNeeded()
   mcpCleanup.value = mcp?.disconnect ?? null
   const tauri = isTauri()

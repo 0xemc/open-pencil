@@ -9,7 +9,8 @@ const router = createRouter({
     { path: '/', component: EditorView },
     { path: '/storage', component: StorageView },
     { path: '/demo', component: EditorView, meta: { demo: true } },
-    { path: '/share/:roomId', component: EditorView }
+    { path: '/share/:roomId', component: EditorView },
+    { path: '/cloud/share/:shareId', name: 'cloud-share', component: EditorView }
   ]
 })
 
