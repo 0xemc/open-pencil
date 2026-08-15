@@ -1,20 +1,15 @@
 ---
 title: Navigations-Panels
-description: Seiten- und Ebenen-Seitenleisten mit PageListRoot, LayerTreeRoot und Auswahlzustand erstellen.
+description: Side panels für Pages und Layers mit PageListRoot, LayerTreeRoot und Selection state.
 ---
 
 # Navigations-Panels
 
-OpenPencil-Seitenleisten kombinieren gewöhnlich zwei Belange:
+Ein OpenPencil-Side-panel enthält häufig eine Liste der Pages und den Tree der Layers. Das Vue SDK stellt für beide Bereiche headless components bereit.
 
-- Seitennavigation
-- Ebenennavigation
+## Pages
 
-Das Vue SDK stellt headless Primitive für beide bereit.
-
-## Seitennavigation
-
-Verwenden Sie `PageListRoot` oder `usePageList()`.
+`PageListRoot` oder `usePageList()` verwenden:
 
 ```vue
 <PageListRoot v-slot="{ pages, currentPageId, switchPage, addPage }">
@@ -27,9 +22,9 @@ Verwenden Sie `PageListRoot` oder `usePageList()`.
 </PageListRoot>
 ```
 
-## Ebenennavigation
+## Layers
 
-Verwenden Sie `LayerTreeRoot`, wenn Sie SDK-verwaltete Baumstruktur, aber app-eigene Darstellung möchten.
+`LayerTreeRoot` verwenden, wenn das SDK die Tree structure und Interactions verwalten soll, während die Anwendung das Markup und Styling bestimmt:
 
 ```vue
 <LayerTreeRoot v-slot="{ items, selectedIds, select, toggleExpand, getKey, getChildren }">
@@ -44,15 +39,13 @@ Verwenden Sie `LayerTreeRoot`, wenn Sie SDK-verwaltete Baumstruktur, aber app-ei
 </LayerTreeRoot>
 ```
 
-## Praktisches Muster
+## Typisches Layout
 
-Ein gebräuchliches Layout ist:
+- Pages oben im Side panel;
+- Layers darunter;
+- Details und Inline rename direkt in den Row components.
 
-- Seiten am oberen Rand der Seitenleiste
-- Ebenen darunter
-- Details oder Inline-Umbenennen-Steuerelemente in Ihren Zeilenkomponenten eingebettet
-
-## Verwandte APIs
+## Siehe auch
 
 - [usePageList](../api/composables/use-page-list)
 - [PageListRoot](../api/components/page-list-root)

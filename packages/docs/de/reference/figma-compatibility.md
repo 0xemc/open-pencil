@@ -1,226 +1,229 @@
-# Figma-Funktionsmatrix
+# Figma-Kompatibilität
 
-Feature-für-Feature-Vergleich der Figma-Design-Funktionen mit dem aktuellen Implementierungsstand von Open Pencil.
+Vergleich der Funktionen von Figma Design mit dem aktuellen Stand von OpenPencil.
 
-::: tip Statuslegende
-✅ Unterstützt — Funktion funktioniert vollständig · 🟡 Teilweise — Grundverhalten vorhanden, einige Unterfunktionen fehlen · 🔲 Noch nicht implementiert
+::: tip Status
+✅ Unterstützt — funktioniert vollständig · 🟡 Teilweise — grundlegende Funktion vorhanden, einzelne Teile fehlen · 🔲 Nicht implementiert
 :::
 
-**Abdeckung:** 94 von 158 Figma-Feature-Punkten adressiert — 76 ✅ vollständig unterstützt, 18 🟡 teilweise, 64 🔲 noch nicht. Zuletzt aktualisiert: 2026-03-07.
+**Abdeckung:** 94 von 158 Figma-Funktionen berücksichtigt — 76 ✅ vollständig, 18 🟡 teilweise und 64 🔲 noch nicht. Stand: 2026-03-07.
 
-## Benutzeroberfläche & Navigation
+## Oberfläche und Navigation
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Werkzeugleiste mit Design-Tools | ✅ | Untere Leiste (UI3-Stil): Auswählen, Frame, Sektion, Rechteck, Ellipse, Linie, Text, Hand, Stift |
-| Ebenen-Panel (linke Seitenleiste) | ✅ | Baumansicht mit Auf-/Zuklappen, Drag-Neuordnung, Sichtbarkeits-Toggle; skalierbare Breite |
-| Seiten-Panel | ✅ | Seiten hinzufügen, löschen, umbenennen; Viewport-Zustand pro Seite |
-| Eigenschafts-Panel (rechte Seitenleiste) | ✅ | Abschnitte: Darstellung, Füllung, Kontur, Effekte, Typografie, Layout, Position; skalierbare Breite |
-| Zoom & Schwenken | ✅ | Strg+Scroll, Pinch, <kbd>⌘</kbd><kbd>+</kbd> / <kbd>⌘</kbd><kbd>−</kbd> / <kbd>⌘</kbd><kbd>0</kbd>, Leertaste+Ziehen, mittlere Maustaste, Hand-Werkzeug (H) |
-| Canvas-Lineale | ✅ | Oben/links Lineale mit Auswahl-Bändern und Koordinaten-Badges |
-| Canvas-Hintergrundfarbe | ✅ | Pro-Seite-Hintergrund über Eigenschafts-Panel |
-| Canvas-Hilfslinien | 🔲 | Figma unterstützt ziehbare Hilfslinien von Linealen |
-| Aktionsmenü / Befehlspalette | 🔲 | Figmas Schnellaktionssuche |
-| Kontextmenü | ✅ | Rechtsklick mit Zwischenablage, Z-Ordnung, Gruppierung, Komponente, Sichtbarkeit, Sperre, Verschieben |
-| Tastaturkürzel | 🟡 | Kern-Kürzel + Komponenten + Z-Ordnung + Sichtbarkeit/Sperre implementiert; Skalieren, Pfeil, Bleistift, Spiegeln, Textformatierung noch nicht verbunden |
-| Suchen und Ersetzen | 🔲 | Textsuche/-ersetzung im gesamten Dokument |
-| Ebenenumriss-Ansicht | 🔲 | Drahtgitteransicht aller Ebenen |
-| Benutzerdefinierte Dateiminiatur | 🔲 | Miniatur beim Export generiert, aber kein benutzerdefinierter Auswähler |
-| Nudge-Wert-Einstellungen | 🔲 | Standard 1px/10px; Figma erlaubt benutzerdefinierte Werte |
-| App-Menü (Browser-Modus) | ✅ | Datei, Bearbeiten, Ansicht, Objekt, Text, Anordnen; Tauri verwendet native Menüs |
-| KI-Werkzeuge | 🟡 | 90+ Werkzeuge via Anthropic, OpenAI, Google AI, OpenRouter + MCP-Server; noch keine KI-generierten Bilder oder KI-Suche |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Toolbar | ✅ | Untere Toolbar im UI3-Stil: Select, Frame, Section, Rectangle, Ellipse, Line, Text, Hand und Pen |
+| Layers-Panel | ✅ | Tree mit Expand/Collapse, Drag reorder und Visibility; verstellbare Breite |
+| Pages-Panel | ✅ | Pages erstellen, löschen und umbenennen; eigener Viewport state pro Page |
+| Properties-Panel | ✅ | Appearance, Fill, Stroke, Effects, Typography, Layout und Position; verstellbare Breite |
+| Zoom und Pan | ✅ | <kbd>Ctrl</kbd> + Scroll, Pinch, <kbd>⌘</kbd><kbd>+</kbd>/<kbd>−</kbd>, <kbd>⌘</kbd><kbd>0</kbd> (100 %), <kbd>⌘</kbd><kbd>1</kbd> (Fit), <kbd>⌘</kbd><kbd>2</kbd> (Selection), <kbd>Space</kbd> + Drag, mittlere Maustaste und Hand tool (<kbd>H</kbd>) |
+| Rulers | ✅ | Rulers oben und links mit Selection-Bereich und Coordinate badges |
+| Canvas background | ✅ | Eigener Background pro Page im Properties-Panel |
+| Guides | 🔲 | Keine aus Rulers ziehbaren Guides |
+| Actions menu / Command palette | 🔲 | Keine Quick-actions-Suche |
+| Kontextmenü | ✅ | Clipboard, Reihenfolge, Groups, Components, Visibility, Lock und Move to page |
+| Shortcuts | 🟡 | Zentrale Shortcuts, Components, Reihenfolge, Visibility und Lock; Scale, Arrow, Pencil, Flip und Teile des Text formatting fehlen |
+| Find and replace | 🔲 | Keine dokumentweite Textsuche und Ersetzung |
+| Layer outlines | 🔲 | Keine Wireframe view aller Layers |
+| Eigene Thumbnail | 🔲 | Thumbnail wird beim Export erzeugt, kann aber nicht frei gewählt werden |
+| Nudge settings | 🔲 | 1 px und 10 px; keine eigenen Small/Big-nudge-Werte |
+| Application menu | ✅ | File, Edit, View, Object, Text und Arrange im Browser; native Menüs in Tauri |
+| AI tools | 🟡 | 90 Tools über OpenRouter und MCP server; keine AI-generierten Images oder AI Search |
 
-## Ebenen & Formen
+## Layers und Shapes
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Formwerkzeuge (Rechteck, Ellipse, Linie, Polygon, Stern) | ✅ | Alle Grundformtypen; Polygonseitenzahl und Stern-Innenradius konfigurierbar |
-| Frames | ✅ | Inhalt beschneiden, unabhängiges Koordinatensystem |
-| Gruppen | ✅ | <kbd>⌘</kbd><kbd>G</kbd> zum Gruppieren, <kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd> zum Entgruppieren |
-| Sektionen | ✅ | Titel-Pills, automatische Übernahme überlappender Knoten, luminanzadaptiver Text |
-| Bogen-Werkzeug (Bögen, Halbkreise, Ringe) | ✅ | arcData mit Start-/Endwinkel und Innenradius |
-| Bleistift (Freihand-Werkzeug) | 🔲 | Figmas Freihand-Zeichenwerkzeug |
-| Masken | 🔲 | Formmasken zum Beschneiden von Ebenen |
-| Ebenentypen & Hierarchie | ✅ | 17 Knotentypen, flache Map + Eltern-Kind-Baum |
-| Ebenen auswählen | ✅ | Klick, Umschalt-Klick, Markierungsauswahl |
-| Ausrichtung & Position | ✅ | Position, Drehung, Abmessungen im Panel |
-| Objekte kopieren & einfügen | ✅ | Standard-Zwischenablage + Figma-Kiwi-Binärformat |
-| Ebenen proportional skalieren | 🟡 | Umschalt-Resize hält Proportionen; kein dediziertes Scale-Werkzeug (K) |
-| Ebenen sperren/entsperren | ✅ | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd> schaltet Sperre um |
-| Ebenensichtbarkeit umschalten | ✅ | Augen-Icon im Panel + <kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd>-Kürzel |
-| Ebenen umbenennen | ✅ | Doppelklick-Inline-Umbenennen; <kbd>Enter</kbd>/<kbd>Escape</kbd>/Blur zum Bestätigen |
-| Nach vorne / Nach hinten | ✅ | ] und [ Tastaturkürzel; auch im Kontextmenü |
-| Auf Seite verschieben | ✅ | Knoten zwischen Seiten verschieben via Kontextmenü |
-| Einschränkungen (responsives Resize) | 🔲 | Kanten/Mitte fixieren für Eltern-Resize-Verhalten |
-| Intelligente Auswahl (verteilen/ausrichten) | 🔲 | Gleichmäßig verteilen und ausrichten |
-| Layout-Hilfslinien (Spalten, Zeilen, Raster) | 🔲 | Spalten-/Zeilen-/Raster-Hilfslinien auf Frames |
-| Abstände zwischen Ebenen messen | 🔲 | Alt-Hover zeigt Abstände |
-| Objekte in Masse bearbeiten | ✅ | Multi-Selektion-Panel: gemeinsame Werte normal, unterschiedliche zeigen „Mixed" |
-| Übereinstimmende Objekte identifizieren | 🔲 | Ähnliche Ebenen finden |
-| Eigenschaften kopieren/einfügen | 🔲 | Füllung/Kontur/Effekte zwischen Ebenen kopieren |
-| Eltern-Kind-Beziehungen | ✅ | Vollständige Hierarchie mit parentIndex, Drag-Reparenting |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Rectangle, Ellipse, Line, Polygon und Star | ✅ | Grundlegende Shapes; Side count des Polygon und Inner radius des Star konfigurierbar |
+| Frames | ✅ | Clip content, eigener Coordinate system sowie Figma-ähnliche Presets für Erstellung und Resize |
+| Groups | ✅ | <kbd>⌘</kbd><kbd>G</kbd> und <kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd> |
+| Sections | ✅ | Title pills, automatische Übernahme überlappender Objekte und luminanzabhängiger Text |
+| Arc | ✅ | `arcData` mit Start angle, End angle und Inner radius |
+| Pencil | 🔲 | Kein Freehand drawing tool |
+| Masks | 🔲 | Keine Shape masks zum Clipping von Layers |
+| Layer types und Hierarchie | ✅ | 17 Node types, flache Map und Parent-child tree |
+| Selection | ✅ | Click, Shift-click und Marquee selection |
+| Alignment und Position | ✅ | Position, Rotation und Dimensions im Properties-Panel |
+| Copy und Paste | ✅ | Standard Clipboard, Figma Kiwi binary sowie Copy as text/SVG/PNG/JSX |
+| Proportionaler Resize | 🟡 | Shift hält Proportionen; kein eigenes Scale tool (<kbd>K</kbd>) |
+| Lock | ✅ | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd>; gesperrte Objekte sind auf dem Canvas nicht auswählbar oder beweglich |
+| Visibility | ✅ | Eye icon und <kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd> |
+| Rename | ✅ | Double-click im Layers-Panel; Enter, Escape oder Blur beendet die Bearbeitung |
+| Bring to front / Send to back | ✅ | ] und [ sowie Kontextmenü |
+| Move to page | ✅ | Selection über Kontextmenü zwischen Pages verschieben |
+| Constraints | 🔲 | Kein Pinning von Edges oder Center bei Parent resize |
+| Smart selection | 🔲 | Kein gleichmäßiges Verteilen und Ausrichten von Multi-selection |
+| Layout guides | 🔲 | Keine Columns, Rows oder Grid overlays auf Frames |
+| Abstände messen | 🔲 | Kein Alt-hover zur Abstandsanzeige |
+| Mehrere Objekte bearbeiten | ✅ | Position, Size, Appearance, Fill, Stroke und Effects; abweichende Values erscheinen als Mixed |
+| Ähnliche Objekte finden | 🔲 | Kein Identify matching objects |
+| Copy/Paste properties | 🔲 | Kein Kopieren von Fill, Stroke oder Effects zwischen Layers |
+| Parent-child relationships | ✅ | Vollständige Hierarchie über `parentIndex`, Reparenting per Drag |
 
-## Vektor-Werkzeuge
+## Vector tools
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Vektornetzwerke | ✅ | Figma-kompatibles Modell, keine einfachen Pfade |
-| Stift-Werkzeug | ✅ | Eckpunkte, Bézier-Kurven, offene/geschlossene Pfade |
-| Vektorebenen bearbeiten | 🟡 | Erstellung funktioniert; fortgeschrittene Vertex-Bearbeitung begrenzt |
-| Boolesche Operationen (Vereinigen, Subtrahieren, Schneiden, Ausschließen) | 🔲 | Formen mit Bool-Operationen kombinieren |
-| Ebenen abflachen | 🔲 | Vektorpfade zusammenführen |
-| Konturen in Pfade umwandeln | 🔲 | Outline-Stroke-Befehl |
-| Text in Pfade umwandeln | 🔲 | Text zu Vektorkonturen abflachen |
-| Shape-Builder-Werkzeug | 🔲 | Interaktives Bool-Werkzeug |
-| Pfad-Offset | 🔲 | Inset/Outset eines Vektorpfads |
-| Pfad vereinfachen | 🔲 | Vektorpunktanzahl reduzieren |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Vector networks | ✅ | Figma-kompatibles Modell statt einfacher Paths |
+| Pen tool | ✅ | Corner points, Bezier curves sowie offene und geschlossene Paths |
+| Vector edit | 🟡 | Erstellung funktioniert; fortgeschrittene Vertex-Bearbeitung, Bend, Delete und Join eingeschränkt |
+| Boolean operations | 🔲 | Kein Union, Subtract, Intersect oder Exclude |
+| Flatten | 🔲 | Kein Zusammenführen von Vector paths |
+| Outline Stroke | 🔲 | Keine Umwandlung von Strokes in Paths |
+| Text to paths | 🔲 | Keine Vector outlines aus Text |
+| Shape builder | 🔲 | Kein interaktives Boolean tool |
+| Offset path | 🔲 | Kein Inset/Outset |
+| Simplify path | 🔲 | Keine Reduktion der Vector points |
 
-## Text & Typografie
+## Text und Typography
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Textwerkzeug & Inline-Bearbeitung | ✅ | Canvas-native Bearbeitung, Phantom-Textarea, Style-Runs (<kbd>⌘</kbd><kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd>, S-Button) |
-| Textrendering (Paragraph API) | ✅ | CanvasKit Paragraph für Formgebung, Zeilenumbrüche, Metriken |
-| Schriftladung (Systemschriften) | ✅ | Inter Standard, font-kit in Tauri mit OnceLock-Cache, queryLocalFonts im Browser |
-| Schriftfamilie & -stärke | ✅ | FontPicker mit virtuellem Scrollen, Suche, CSS-Vorschau |
-| Schriftgröße & Zeilenhöhe | ✅ | Bearbeitbar im Typografie-Abschnitt |
-| Textausrichtung | 🟡 | Grundausrichtung; Figma hat vertikale Ausrichtung und Auto-Breite/-Höhe-Modi |
-| Textstile | 🟡 | Fett/Kursiv/Unterstrichen/Durchgestrichen pro Auswahl; noch keine wiederverwendbaren benannten Stil-Presets |
-| Text-Resize-Modi | 🔲 | Figmas Auto-Breite, Auto-Höhe, Fixgröße-Modi |
-| Aufzählungs- & nummerierte Listen | 🔲 | Listenformatierung im Text |
-| Links im Text | 🔲 | Hyperlinks innerhalb von Textinhalten |
-| Emojis & intelligente Symbole | 🔲 | Emoji-Rendering und Sonderzeichen |
-| OpenType-Funktionen | 🔲 | Ligaturen, stilistische Alternativen, Tabellenziffern |
-| Variable Schriften | 🔲 | Einstellbare Schriftachsen (Stärke, Breite, Neigung) |
-| CJK-Textunterstützung | 🔲 | Chinesisches, japanisches, koreanisches Textrendering |
-| RTL-Textunterstützung | 🔲 | Rechts-nach-links-Textlayout |
-| Icon-Schriften | 🔲 | Spezielle Behandlung für Icon-Schrift-Glyphen |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Text tool und Inline editing | ✅ | Phantom `textarea`, Caret, Selection, Word select, Drag select, Double/Triple-click und Rich-text style runs; <kbd>⌘</kbd><kbd>B</kbd>/<kbd>I</kbd>/<kbd>U</kbd> und **S** |
+| Text rendering | ✅ | CanvasKit Paragraph für Shaping, Line breaking und Metrics |
+| System fonts | ✅ | Inter als Default, font-kit in Tauri mit Cache und Preloading, `queryLocalFonts` im Browser |
+| Font family und Style | ✅ | FontPicker mit Virtual scroll, Search und CSS preview; Style im Properties-Panel |
+| Font size und Line height | ✅ | Im Bereich Typography editierbar |
+| Text alignment | 🟡 | Grundlegendes Alignment; Vertical alignment und Auto width/height fehlen |
+| Text styles | 🟡 | Bold, Italic, Underline und Strikethrough pro Selection; keine wiederverwendbaren Named styles |
+| Text resizing modes | 🔲 | Kein Auto width, Auto height oder Fixed size |
+| Lists | 🔲 | Keine Bulleted oder Numbered lists |
+| Links | 🔲 | Keine Hyperlinks im Text |
+| Emoji und Smart symbols | 🔲 | Keine vollständige Unterstützung |
+| OpenType | 🔲 | Keine Ligatures, Stylistic alternates oder Tabular figures |
+| Variable fonts | 🔲 | Keine einstellbaren Axes wie Weight, Width oder Slant |
+| CJK | 🔲 | Keine vollständige Unterstützung für Chinesisch, Japanisch und Koreanisch |
+| RTL | 🔲 | Kein Right-to-left layout |
+| Icon fonts | 🔲 | Keine besondere Behandlung von Icon glyphs |
 
-## Farbe, Verläufe & Bilder
+## Colors, Gradients und Images
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Farbauswahl (HSV) | ✅ | HSV-Quadrat, Farbton-Regler, Alpha-Regler, Hex-Eingabe |
-| Einfarbige Füllungen | ✅ | Hex-Farbe mit Deckkraft |
-| Linearer Verlauf | ✅ | Verlaufsstopps, Transformationsgriffe |
-| Radialer Verlauf | ✅ | Gerendert über CanvasKit-Shader |
-| Winkel-Verlauf | ✅ | Sweep-/konischer Verlauf |
-| Diamant-Verlauf | ✅ | Vierpunkt-Diamant-Verlauf |
-| Bildfüllungen | ✅ | Aus Blob-Daten dekodiert mit Skalierungsmodi (Füllen, Anpassen, Beschneiden, Kacheln) |
-| Musterfüllungen | 🔲 | Sich wiederholende Bild-/Musterfüllungen |
-| Mischmodi | 🔲 | Ebenen- und Füllungs-Mischmodi (Multiplizieren, Negativ Multiplizieren, Überlagern usw.) |
-| Bilder & Videos hinzufügen | 🟡 | Bildfüllungen gerendert; kein Drag-and-Drop-Import oder Video-Unterstützung |
-| Bild-Eigenschaftsanpassung | 🔲 | Belichtung, Kontrast, Sättigung usw. |
-| Bild zuschneiden | 🔲 | Interaktives Bildzuschneiden |
-| Pipetten-Werkzeug | 🔲 | Farben vom Canvas aufnehmen |
-| Farbbearbeitung bei gemischter Auswahl | 🔲 | Farben in heterogener Auswahl anpassen |
-| Farbmodelle (RGB, HSL, HSB, Hex) | 🟡 | HSV + Hex im Picker; kein HSL- oder RGB-Modus-Umschalter |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Color picker | ✅ | HSV field, Hue, Alpha und Hex input |
+| Solid fills | ✅ | Hex color mit Opacity |
+| Linear gradient | ✅ | Stops und Transform handles |
+| Radial gradient | ✅ | CanvasKit shaders |
+| Angular gradient | ✅ | Sweep/Conic gradient |
+| Diamond gradient | ✅ | Vierpunkt-Diamond-gradient |
+| Image fills | ✅ | Blob data und Scale modes Fill, Fit, Crop und Tile |
+| Pattern fills | 🔲 | Keine wiederholten Patterns |
+| Blend modes | 🔲 | Keine Layer- oder Fill-blend-modes |
+| Images und Video | 🟡 | Image fills werden gerendert; kein Drag-and-drop-Import und kein Video |
+| Image adjustments | 🔲 | Keine Exposure-, Contrast- oder Saturation-Einstellungen |
+| Crop | 🔲 | Kein interaktives Cropping |
+| Eyedropper | 🔲 | Keine Color-Auswahl vom Canvas |
+| Mixed-selection colors | 🔲 | Keine gemeinsame Color-Änderung in heterogener Selection |
+| Color models | 🟡 | HSV und Hex; kein HSL- oder RGB-mode |
 
-## Effekte & Eigenschaften
+## Effects und Properties
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Schlagschatten | ✅ | Versatz, Unschärferadius, Farbe über CanvasKit-Filter |
-| Innerer Schatten | ✅ | Eingefügter Schatteneffekt |
-| Ebenen-Unschärfe | ✅ | Gaußsche Unschärfe auf der Ebene |
-| Hintergrund-Unschärfe | ✅ | Inhalt hinter der Ebene unscharf |
-| Vordergrund-Unschärfe | ✅ | Unschärfe im Vordergrund |
-| Konturstärke | ✅ | Konfigurierbar im Eigenschafts-Panel |
-| Kontur-Endung (Rund, Quadrat, Pfeil) | ✅ | `NONE`, `ROUND`, `SQUARE`, `ARROW_LINES`, `ARROW_EQUILATERAL` |
-| Kontur-Verbindung (Gehrung, Abschrägung, Rund) | ✅ | Alle drei Verbindungstypen |
-| Strichmuster | ✅ | Strich-An/Strich-Aus-Muster |
-| Eckenradius | ✅ | Einheitlicher und pro-Ecke-Radius mit unabhängigem Toggle |
-| Eckenglättung (iOS-Stil) | 🔲 | Figmas kontinuierliche Eckenabrundung |
-| Mehrere Füllungen/Konturen pro Ebene | 🔲 | Figma erlaubt gestapelte Füllungen und Konturen |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Drop shadow | ✅ | Offset, Blur radius und Color über CanvasKit filters |
+| Inner shadow | ✅ | Inset shadow |
+| Layer blur | ✅ | Gaussian blur |
+| Background blur | ✅ | Blur des Inhalts hinter der Layer |
+| Foreground blur | ✅ | Blur vor der Layer |
+| Stroke weight | ✅ | Im Properties-Panel konfigurierbar |
+| Stroke cap | ✅ | `NONE`, `ROUND`, `SQUARE`, `ARROW_LINES`, `ARROW_EQUILATERAL` |
+| Stroke join | ✅ | Miter, Bevel und Round |
+| Dash patterns | ✅ | Dash-on/Dash-off pattern |
+| Stroke alignment | ✅ | Inside, Center und Outside mit Figma-kompatiblem Clipping |
+| Separate Stroke weights | ✅ | Top, Right, Bottom und Left mit Side selector |
+| Corner radius | ✅ | Einheitlich oder pro Corner |
+| Corner smoothing | 🔲 | Kein Continuous corner rounding |
+| Mehrere Fills/Strokes | 🔲 | Kein Stack mehrerer Fills oder Strokes pro Layer |
 
 ## Auto Layout
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Horizontaler & vertikaler Fluss | ✅ | Yoga-WASM-Flexbox-Engine |
-| Auto Layout umschalten (<kbd>⇧</kbd><kbd>A</kbd>) | ✅ | Auf Frame umschalten oder Auswahl umhüllen |
-| Gap (Abstand zwischen Kindern) | ✅ | Konfigurierbar im Panel |
-| Padding (einheitlich & pro Seite) | ✅ | Alle vier Seiten unabhängig |
-| Justify Content | ✅ | Start, Center, <kbd>End</kbd>, Space-Between |
-| Align Items | ✅ | Start, Center, <kbd>End</kbd>, Stretch |
-| Kindgröße (fix, füllen, anpassen) | ✅ | Größenmodi pro Kind |
-| Wrap | ✅ | Flex-Wrap für mehrzeiliges Layout |
-| Grid-Auto-Layout-Fluss | ✅ | CSS Grid über Yoga-Fork — Spalten-/Zeilen-Tracks, Gaps, Spans |
-| Kombinierte Flüsse (verschachtelt) | ✅ | Verschachtelte Auto-Layout-Frames mit verschiedenen Richtungen |
-| Drag-Neuordnung in Auto Layout | ✅ | Visueller Einfügeindikator |
-| Min/Max Breite und Höhe | 🔲 | Figma unterstützt Min/Max-Einschränkungen |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Horizontal und Vertical flow | ✅ | Yoga WASM Flexbox |
+| Auto Layout umschalten | ✅ | <kbd>⇧</kbd><kbd>A</kbd> auf Frame oder Selection |
+| Gap | ✅ | Im Properties-Panel |
+| Padding | ✅ | Einheitlich oder pro Seite |
+| Justify content | ✅ | Start, Center, End und Space between |
+| Align items | ✅ | Start, Center, End und Stretch |
+| Child sizing | ✅ | Fixed, Fill und Hug |
+| Wrap | ✅ | Flex wrap |
+| Grid | ✅ | CSS Grid über Yoga fork mit Tracks, Gaps und Spans |
+| Nested flows | ✅ | Verschachtelte Auto-Layout-Frames mit unterschiedlichen Directions |
+| Drag reorder | ✅ | Visueller Insertion indicator |
+| Min/max dimensions | 🔲 | Keine Min/max constraints für Children |
 
-## Komponenten & Design-Systeme
+## Components und Design systems
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Komponenten erstellen | ✅ | Erstellung aus Frame/Gruppe; UI für Text, Sichtbarkeit, Instanztausch und Varianten |
-| Komponenten-Sets | ✅ | Mehrdimensionale, lückenhafte Varianten mit Duplikatprüfung und Standard oben links |
-| Komponenteninstanzen | ✅ | Assets-Browser, Einfügen, bearbeitbare Eigenschaften und Overrides, Live-Sync und Update-Prüfung |
-| Varianten | ✅ | Authoring, Instanzwechsel und Fallback auf die Variante oben links |
-| Komponenteneigenschaften | ✅ | Text-, boolesche Sichtbarkeits- und Instanztausch-Eigenschaften |
-| Override-Propagation | ✅ | Änderungen an Hauptkomponente werden propagiert; Overrides erhalten |
-| Variablen (Farbe, Zahl, String, Boolean) | 🟡 | `COLOR` mit vollem UI; `FLOAT`/STRING/BOOLEAN definiert ohne Bearbeitungs-UI |
-| Variablensammlungen & Modi | 🟡 | Sammlungen, Modi, activeMode-Wechsel funktionieren; kein Variablen-Theming-UI |
-| Stile (Farbe, Text, Effekt, Layout) | 🔲 | Wiederverwendbare benannte Stil-Presets |
-| Bibliotheken (veröffentlichen, teilen, aktualisieren) | ✅ | Unveränderliche lokale/Speicher-Revisionen, Aktivierung, selektive Veröffentlichung, Update-Prüfung, Offline-Nutzung und `.fig`-Persistenz |
-| Instanz ablösen | ✅ | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> wandelt Instanz in Frame um |
-| Zur Hauptkomponente navigieren | ✅ | Zur Quellkomponente navigieren, seitenübergreifend |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Components erstellen | ✅ | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd>; Properties für Text, Visibility, Instance swap und Variants |
+| Component sets | ✅ | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd>; multidimensionale Sparse variants, Duplicate validation und Default oben links |
+| Instances | ✅ | Assets, Insert, editierbare Properties und Overrides, Variant switching, Live sync und Update review |
+| Variants | ✅ | Sparse combinations, Authoring, Switching, Duplicate validation und Top-left fallback |
+| Component properties | ✅ | Boolean visibility, Text und Instance swap |
+| Override propagation | ✅ | Änderungen am Main component erreichen Instances; Overrides bleiben erhalten |
+| Variables | 🟡 | Vollständige UI für `COLOR`; `FLOAT`, `STRING` und `BOOLEAN` ohne Editing UI |
+| Collections und Modes | 🟡 | Collections, Modes und Active mode funktionieren; keine Variable-driven theming UI |
+| Styles | 🔲 | Keine wiederverwendbaren Named presets |
+| Libraries | ✅ | Unveränderliche Local/Storage revisions, Selective publish, Enablement, Scoped update review, Offline materialization und `.fig` persistence |
+| Detach instance | ✅ | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> wandelt Instance in Frame um |
+| Go to main component | ✅ | Navigation zum Source component auch zwischen Pages |
 
 ## Prototyping
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Prototyp-Verbindungen | 🔲 | Noch nicht unterstützt |
-| Auslöser (Klick, Hover, Ziehen usw.) | 🔲 | Noch nicht unterstützt |
-| Aktionen (Navigieren, Overlay, Scroll usw.) | 🔲 | Noch nicht unterstützt |
-| Animationen & Übergänge | 🔲 | Noch nicht unterstützt |
-| Smart Animate | 🔲 | Übereinstimmende Ebenen automatisch animieren |
-| Overlays | 🔲 | Modale/Popover-Prototypen |
-| Scroll- & Overflow-Verhalten | 🔲 | Scrollbare Frames in Prototypen |
-| Prototyp-Flüsse | 🔲 | Benannte Startpunkte |
-| Variablen in Prototypen | 🔲 | Bedingte Logik mit Variablen |
-| Easing & Feder-Animationen | 🔲 | Benutzerdefinierte Animationskurven |
-| Prototypen präsentieren & abspielen | 🔲 | Vollbild-Prototyp-Viewer |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Prototype connections | 🔲 | Noch nicht unterstützt |
+| Triggers | 🔲 | Kein Click, Hover, Drag usw. |
+| Actions | 🔲 | Kein Navigate, Overlay oder Scroll |
+| Animations und Transitions | 🔲 | Noch nicht unterstützt |
+| Smart animate | 🔲 | Keine Animation passender Layers |
+| Overlays | 🔲 | Keine Modal-/Popover-Prototypes |
+| Scroll und Overflow | 🔲 | Keine scrollbaren Prototype frames |
+| Prototype flows | 🔲 | Keine Named starting points |
+| Variables | 🔲 | Keine Conditional logic |
+| Easing und Springs | 🔲 | Keine Custom curves |
+| Present | 🔲 | Kein Fullscreen prototype viewer |
 
-## Import & Export
+## Import und Export
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| .fig-Datei-Import | ✅ | Vollständiger Kiwi-Codec: 194 Definitionen, ~390 Felder pro `NodeChange` |
-| .fig-Datei-Export | ✅ | Kiwi-Encoding + Zstd-Kompression + Miniatur-Generierung |
-| Speichern / Speichern unter | ✅ | <kbd>⌘</kbd><kbd>S</kbd> / <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>; native Dialoge (Tauri), File System Access API (Chrome/Edge), Download-Fallback (Safari) |
-| Figma-Zwischenablage (Einfügen) | ✅ | Kiwi-Binär aus Figma-Zwischenablage dekodieren |
-| Figma-Zwischenablage (Kopieren) | ✅ | Kiwi-Binär kodieren, das Figma lesen kann |
-| Sketch-Datei-Import | 🔲 | .sketch-Datei-Parsing |
-| Bild/SVG/PDF-Export | 🟡 | PNG/JPG/WEBP/SVG-Export ✅; PDF-Export 🔲 |
-| Versionsverlauf | 🔲 | Vorherige Versionen durchsuchen und wiederherstellen |
-| Assets zwischen Tools kopieren | 🟡 | Figma-Zwischenablage funktioniert; kein SVG/PDF-Clipboard |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| `.fig` importieren | ✅ | Kiwi codec mit 194 Definitions und rund 390 Fields pro `NodeChange` |
+| `.fig` exportieren | ✅ | Kiwi, Zstd und Thumbnail; `COMPONENT`/`COMPONENT_SET` werden für Roundtrip als `SYMBOL` gespeichert |
+| Save / Save As | ✅ | Native Dialogs in Tauri, File System Access API in Chrome/Edge und Download fallback in Safari |
+| Figma Clipboard: Paste | ✅ | Kiwi binary aus Figmas Clipboard decodieren |
+| Figma Clipboard: Copy | ✅ | Von Figma lesbares Kiwi binary erzeugen |
+| Sketch importieren | 🔲 | Kein `.sketch` parser |
+| Image/SVG/PDF export | 🟡 | PNG, JPG, WEBP und SVG ✅; PDF 🔲 |
+| Version history | 🔲 | Keine früheren Versionen durchsuchen oder wiederherstellen |
+| Assets zwischen Tools | ✅ | Figma Clipboard sowie Copy as text/SVG/PNG/JSX |
 
-## Plugin-API & Scripting
+## Plugin API und Scripts
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Eval-Befehl mit Figma Plugin API | ✅ | Headless-JavaScript-Ausführung mit kompatiblem figma-Globalobjekt |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| `eval` mit Figma Plugin API | ✅ | Headless JavaScript mit Figma-kompatiblem globalem `figma` object |
 
-## Kollaboration & Entwicklermodus
+## Collaboration und Dev Mode
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Kommentare (Anheften, Threads, Auflösen) | 🔲 | Noch nicht unterstützt |
-| Echtzeit-Multiplayer | ✅ | P2P via Trystero + Yjs CRDT, Cursor, Folgemodus; kein Server |
-| Cursor-Chat | 🔲 | Inline-Chat-Blasen am Cursor |
-| Branching & Merging | 🔲 | Versions-Branches für Design-Dateien |
-| Entwicklermodus (Inspizieren) | 🟡 | Code-<kbd>Tab</kbd> zeigt JSX; keine CSS-Eigenschaften oder Handoff-Specs |
-| Code Connect | 🔲 | Design-Komponenten mit Code verknüpfen |
-| Code-Snippets | 🟡 | JSX-Export mit Hervorhebung und Kopieren; keine CSS/Swift/Kotlin-Snippets |
-| Figma für VS Code | 🔲 | Editor-Plugin-Integration |
-| MCP-Server | ✅ | @open-pencil/mcp mit stdio- und HTTP-Transporten sowie mehr als 90 Werkzeugen einschließlich Dateioperationen |
-| CLI-Werkzeuge | ✅ | Headless-CLI: info, tree, find, export, analyze, node, pages, variables, eval; MCP-Server |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Comments | 🔲 | Keine Pins, Threads oder Resolve |
+| Multiplayer | ✅ | P2P über Trystero und Yjs CRDT, Cursors und Follow mode; kein Server erforderlich |
+| Cursor chat | 🔲 | Keine Inline-chat-bubbles |
+| Branching und Merging | 🔲 | Keine Version branches |
+| Dev Mode | 🟡 | Code tab zeigt JSX; keine CSS properties oder Handoff specs |
+| Code Connect | 🔲 | Keine Verbindung von Design components zu Code |
+| Code snippets | 🟡 | JSX mit Syntax highlighting und Copy; kein Swift/Kotlin |
+| Tailwind CSS v4 | ✅ | HTML mit Tailwind utility classes aus Code panel, CLI oder API |
+| Figma for VS Code | 🔲 | Keine Editor-plugin-Integration |
+| MCP server | ✅ | `@open-pencil/mcp` mit stdio und HTTP; 87 Core tools plus 3 File tools, insgesamt 90 |
+| CLI | ✅ | `info`, `tree`, `find`, `export`, `analyze`, `node`, `pages`, `variables`, `eval` und MCP server |
 
 ## Figma Draw
 
-| Funktion | Status | Anmerkungen |
-|----------|--------|-------------|
-| Illustrations-Werkzeuge | 🔲 | Spezialisierte Zeichenwerkzeuge von Figma Draw |
-| Muster-Transformationen | 🔲 | Sich wiederholende Muster mit Transformationen erstellen |
+| Funktion | Status | Hinweise |
+|----------|--------|----------|
+| Illustration tools | 🔲 | Keine spezialisierten Tools aus Figma Draw |
+| Pattern transforms | 🔲 | Keine wiederholten Patterns mit Transforms |

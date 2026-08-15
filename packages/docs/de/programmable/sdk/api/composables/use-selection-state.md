@@ -1,18 +1,16 @@
 ---
 title: useSelectionState
-description: Reaktiver auswahlabgeleiteter Editor-Zustand für aktuellen Knoten, Anzahl und Auswahltyp.
+description: Reaktiver State der aktuellen Selection, des primären Objekts und seines Type.
 ---
 
 # useSelectionState
 
-`useSelectionState()` gibt reaktiven auswahlabgeleiteten Zustand aus dem aktuellen Editor zurück.
+`useSelectionState()` liefert reaktive Informationen über die aktuelle Selection:
 
-Verwenden Sie es, wenn Sie UI basierend auf folgendem rendern müssen:
-
-- ob etwas ausgewählt ist
-- wie viele Knoten ausgewählt sind
-- dem primär ausgewählten Knoten
-- ob die aktuelle Auswahl eine Instanz, Komponente oder Gruppe ist
+- ob ein Objekt ausgewählt ist;
+- Anzahl der ausgewählten Objekte;
+- primäres ausgewähltes Objekt;
+- ob das primäre Objekt eine Instance, ein Component oder eine Group ist.
 
 ## Verwendung
 
@@ -22,7 +20,7 @@ import { useSelectionState } from '@open-pencil/vue'
 const selection = useSelectionState()
 ```
 
-## Einfaches Beispiel
+## Beispiel
 
 ```vue
 <script setup lang="ts">
@@ -33,18 +31,16 @@ const { hasSelection, selectedCount, isInstance } = useSelectionState()
 
 <template>
   <div class="text-xs text-muted">
-    <span v-if="!hasSelection">Keine Auswahl</span>
+    <span v-if="!hasSelection">Nichts ausgewählt</span>
     <span v-else>
       {{ selectedCount }} ausgewählt
-      <span v-if="isInstance">· Instanz</span>
+      <span v-if="isInstance">· Instance</span>
     </span>
   </div>
 </template>
 ```
 
-## Rückgabewerte
-
-Nützliche Werte umfassen:
+## Values
 
 - `selectedIds`
 - `hasSelection`
@@ -56,21 +52,19 @@ Nützliche Werte umfassen:
 - `isGroup`
 - `canCreateComponentSet`
 
-## Praktische Beispiele
-
-### Nur für Instanzen verfügbare Aktionen anzeigen
+### Actions nur für Instances
 
 ```ts
 const { isInstance } = useSelectionState()
 ```
 
-### UI zur Komponentenset-Erstellung aktivieren
+### Component set erstellen
 
 ```ts
 const { canCreateComponentSet } = useSelectionState()
 ```
 
-## Verwandte APIs
+## Siehe auch
 
 - [useSelectionCapabilities](./use-selection-capabilities)
 - [useEditorCommands](./use-editor-commands)

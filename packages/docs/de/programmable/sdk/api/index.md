@@ -1,20 +1,20 @@
 ---
 title: API-Referenz
-description: Referenzdokumentation für @open-pencil/vue Komponenten, Composables und erweiterte APIs.
+description: Components, composables und Advanced APIs aus @open-pencil/vue.
 ---
 
 # API-Referenz
 
-Die Vue SDK-Referenz ist in drei Bereiche unterteilt.
+Die Referenz des Vue SDK ist in drei Bereiche gegliedert.
 
 <SdkCardGroup>
-  <SdkCard title="Komponenten" to="/programmable/sdk/api/components/" description="Headless strukturelle Primitive wie CanvasRoot, ToolbarRoot, FontPickerRoot und NumberFieldRoot." />
-  <SdkCard title="Composables" to="/programmable/sdk/api/composables/" description="Editor-seitige Composables für Kontext, Canvas-Verdrahtung, Auswahl, Befehle und Eigenschafts-Panels." />
-  <SdkCard title="Erweitert" to="/programmable/sdk/api/advanced/" description="Hilfsmittel auf niedrigerem Level, Primitive-Kontexte und spezialisierte APIs für fortgeschrittene Integrationen." />
+  <SdkCard title="Components" to="/programmable/sdk/api/components/" description="Headless components wie CanvasRoot, ToolbarRoot, FontPickerRoot und NumberField." />
+  <SdkCard title="Composables" to="/programmable/sdk/api/composables/" description="State und Actions für Editor context, Canvas, Selection, Commands und Properties-Panels." />
+  <SdkCard title="Advanced API" to="/programmable/sdk/api/advanced/" description="Low-level Context APIs und spezialisierte Funktionen für eigene Integrations." />
 </SdkCardGroup>
 
-## Empfohlener Einstieg
+## Einstieg
 
-- Beginnen Sie mit **Komponenten**, wenn Sie wiederverwendbare Editor-UI-Primitive erstellen.
-- Beginnen Sie mit **Composables**, wenn Sie Editor-Zustand und Aktionen verdrahten.
-- Verwenden Sie **Erweitert** nur, wenn Sie Hilfsmittel auf niedrigerem Level oder Primitive-Kontexte benötigen.
+- **Components** für wiederverwendbare Strukturen und Controls der Editor UI.
+- **Composables** für Editor state und Actions.
+- **Advanced API** für spezialisierte Integrations, die direkten Zugriff auf Low-level State oder Context benötigen.

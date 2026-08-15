@@ -1,13 +1,13 @@
 ---
 title: Composables
-description: Kern-Composable-APIs in @open-pencil/vue.
+description: Zentrale composable APIs aus @open-pencil/vue.
 ---
 
 # Composables
 
-Dies sind die wichtigsten Composables, die die meisten `@open-pencil/vue`-Nutzer verwenden werden.
+Diese composables stellen den State und die Actions bereit, die eigene OpenPencil-Oberflächen typischerweise benötigen.
 
-## Kontext und Canvas
+## Context und Canvas
 
 - [provideEditor](./provide-editor)
 - [useEditor](./use-editor)
@@ -15,14 +15,14 @@ Dies sind die wichtigsten Composables, die die meisten `@open-pencil/vue`-Nutzer
 - [useCanvasInput](./use-canvas-input)
 - [useTextEdit](./use-text-edit)
 
-## Auswahl und Befehle
+## Selection und Commands
 
 - [useSelectionState](./use-selection-state)
 - [useSelectionCapabilities](./use-selection-capabilities)
 - [useEditorCommands](./use-editor-commands)
 - [useMenuModel](./use-menu-model)
 
-## Eigenschafts-Panels
+## Properties-Panels
 
 - [usePosition](./use-position)
 - [useLayout](./use-layout)
@@ -33,7 +33,7 @@ Dies sind die wichtigsten Composables, die die meisten `@open-pencil/vue`-Nutzer
 - [useStrokeControls](./use-stroke-controls)
 - [useEffectsControls](./use-effects-controls)
 
-## Variablen, Navigation und Lokalisierung
+## Variables, Navigation und Locale
 
 - [useVariablesEditor](./use-variables-editor)
 - [usePageList](./use-page-list)

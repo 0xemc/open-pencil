@@ -1,36 +1,45 @@
 ---
 title: PropertyListRoot
-description: Headless strukturelles Primitiv für Füllungs-, Kontur- und Effekte-Listen-UIs.
+description: Controlled list für Fills, Strokes, Effects und andere Array properties.
 ---
 
 # PropertyListRoot
 
-`PropertyListRoot` ist ein headless strukturelles Primitiv für array-basierte Eigenschafts-Editoren.
+`PropertyListRoot` koordiniert eine UI für Properties, die als Array gespeichert werden, beispielsweise Fills, Strokes und Effects.
 
-Es ist gedacht für Eigenschafts-UIs wie:
+Values und Mixed state werden über Props übergeben. Änderungen werden als Events ausgegeben. Der Slot erhält:
 
-- Füllungen
-- Konturen
-- Effekte
+- aktuelle Items;
+- Mixed state;
+- Actions zum Hinzufügen, Entfernen, Ersetzen und partiellen Aktualisieren;
+- Action zum Ändern der Visibility eines Item.
 
-Es bietet Slot-Props für:
-
-- aktuelle Elemente
-- Mischzustands-Erkennung
-- Hinzufügen/Entfernen/Aktualisieren/Patchen-Operationen
-- Sichtbarkeitsumschalten pro Element
-
-## Verwendung
+## Beispiel
 
 ```vue
-<PropertyListRoot prop-key="fills" v-slot="{ items, add, remove }">
-  <div v-for="(fill, index) in items" :key="index">
-    <button @click="remove(index)">Entfernen</button>
-  </div>
-  <button @click="add(defaultFill)">Füllung hinzufügen</button>
-</PropertyListRoot>
+<script setup lang="ts">
+import { PropertyListRoot, useEditorPropertyList } from '@open-pencil/vue'
+
+const fills = useEditorPropertyList('fills')
+</script>
+
+<template>
+  <PropertyListRoot
+    prop-key="fills"
+    :items="fills.items.value"
+    :mixed="fills.isMixed.value"
+    @add="fills.actions.add"
+    @remove="fills.actions.remove"
+    v-slot="{ items, actions }"
+  >
+    <div v-for="(fill, index) in items" :key="index">
+      <button @click="actions.remove(index)">Entfernen</button>
+    </div>
+    <button @click="actions.add(defaultFill)">Fill hinzufügen</button>
+  </PropertyListRoot>
+</template>
 ```
 
-## Verwandte APIs
+## Siehe auch
 
-- [SDK API-Übersicht](../)
+- [API-Übersicht](../)

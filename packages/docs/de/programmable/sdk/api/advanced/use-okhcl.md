@@ -1,13 +1,13 @@
 ---
 title: useOkHCL
-description: Mit RGBA- und OkHCL-Farbmodellen für Füllungen und Konturen arbeiten.
+description: RGBA- und OkHCL-Color models für Fills und Strokes verwalten.
 ---
 
 # useOkHCL
 
-`useOkHCL()` gibt Hilfsmittel zum Lesen, Aktivieren, Deaktivieren und Aktualisieren von OkHCL-Farbwerten auf Knoten-Füllungen und -Konturen zurück.
+`useOkHCL()` liest und ändert das Color model von Fills und Strokes. Das API kann OkHCL aktivieren oder deaktivieren und seine Values aktualisieren.
 
-Verwenden Sie es, wenn Sie fortgeschrittene Farbwerkzeuge erstellen, die zwischen Standard-RGBA-Bearbeitung und wahrnehmungsbasierter OkHCL-Bearbeitung wechseln müssen.
+Das composable eignet sich für einen erweiterten Color picker, der RGBA und das wahrnehmungsbezogene OkHCL model unterstützt.
 
 ## Verwendung
 
@@ -31,7 +31,7 @@ const okhcl = useOkHCL()
 - `updateStrokeOkHCL()`
 - `modelOptions`
 
-## Verwandte APIs
+## Siehe auch
 
 - [useFillControls](../composables/use-fill-controls)
 - [useStrokeControls](../composables/use-stroke-controls)

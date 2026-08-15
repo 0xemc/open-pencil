@@ -1,47 +1,51 @@
 ---
-title: Variablen
-description: Design-Variablen, Sammlungen, Modi und Füllbindungen in OpenPencil.
+title: Variables
+description: Design variables, Collections, Modes und Color bindings in OpenPencil.
 ---
 
-# Variablen
+# Variables
 
-Variablen speichern wiederverwendbare Design-Token — Farben, Abstandswerte und andere Eigenschaften — die an Knoten gebunden werden können. Ändern Sie den Wert einer Variable und jeder Knoten, der sie verwendet, aktualisiert sich.
+Variables speichern wiederverwendbare Design tokens wie Colors und Spacing values. Properties von Objekten können an Variables gebunden werden. Ändert sich der Wert einer Variable, werden alle verbundenen Objekte aktualisiert.
 
-## Variablen-Dialog öffnen
+## Variables öffnen
 
-Ohne ausgewählte Knoten zeigt der Design-Tab Seiteneigenschaften einschließlich eines Variablen-Bereichs. Klicken Sie auf das Einstellungen-Symbol, um den Variablen-Dialog zu öffnen.
+Wenn kein Objekt ausgewählt ist, zeigt der Tab Design die Page properties. Über das Settings icon im Bereich Variables wird der Variables dialog geöffnet.
 
-## Sammlungen
+## Collections
 
-Variablen sind in Sammlungen organisiert. Jede Sammlung erscheint als Tab im Dialog.
+Variables sind in Collections organisiert. Jede Collection erscheint als eigener Tab.
 
-- **Sammlung wechseln** — auf einen Tab klicken
-- **Sammlung umbenennen** — Doppelklick auf den Tab-Namen
+- Click auf einen Tab wechselt die Collection.
+- Double-click auf den Namen startet die Umbenennung.
 
-## Modi
+## Modes
 
-Jede Sammlung kann mehrere Modi haben (z.B. Hell und Dunkel). Modi erscheinen als Spalten in der Variablentabelle.
+Eine Collection kann mehrere Modes enthalten, zum Beispiel Light und Dark. Die Modes werden als Columns in der Variables table dargestellt.
 
-## Variablen verwalten
+## Variables bearbeiten
 
-- **Variable erstellen** — klicken Sie auf „+ Variable erstellen"
-- **Name bearbeiten** — klicken Sie auf die Namens-Zelle
-- **Wert bearbeiten** — klicken Sie auf eine Wert-Zelle
-- **Suchen** — tippen Sie in die Suchleiste zum Filtern
+- **Erstellen:** **Create variable** wählen.
+- **Name:** Name cell anklicken.
+- **Value:** entsprechende Cell eines Mode anklicken.
+- **Search:** Liste über die Search bar filtern.
 
-### Farbvariablen
+### Color variables
 
-Farbvariablen zeigen eine Inline-Farbeingabe mit Picker.
+Color values werden direkt in der Tabelle mit einem Color input und Picker bearbeitet.
 
-## Variablen an Füllungen binden
+Die Types `FLOAT`, `STRING` und `BOOLEAN` sind im Datenmodell vorhanden, besitzen derzeit aber noch keine vollständige Editing UI.
 
-Im Füllungsbereich verwenden Sie den Variablen-Picker, um eine Farbvariable an eine Knotenfüllung zu binden.
+## Bindings für Fills und Strokes
 
-- **Binden** — Farbvariable auswählen. Die Füllung zeigt ein lila Badge mit dem Variablennamen.
-- **Lösen** — auf den Lösen-Button im Badge klicken.
+Der Variable picker in den Bereichen Fill und Stroke verbindet eine Color variable mit der jeweiligen Color property.
 
-## Tipps
+- Variable auswählen, um das Binding herzustellen. Das Feld zeigt anschließend ein violettes Badge mit dem Namen der Variable.
+- Binding über die entsprechende Action im Picker entfernen.
 
-- Verwenden Sie Sammlungen, um verwandte Token zu gruppieren (z.B. „Primitives" für Rohfarben, „Semantic" für rollenbasierte Aliase).
-- Modi sind nützlich für Themenwechsel — definieren Sie Hell- und Dunkel-Werte in derselben Sammlung.
-- Variablen unterstützen Aliase — eine „Semantic"-Sammlung kann Werte aus einer „Primitives"-Sammlung referenzieren.
+Das Öffnen eines Feldes oder Pickers verändert das Binding nicht. Erst eine tatsächliche Value change kann — abhängig vom verwendeten Control — das Binding lösen oder die Variable selbst ändern.
+
+## Hinweise
+
+- Collections gruppieren zusammengehörige Tokens, etwa `Primitives` für Ausgangsfarben und `Semantic` für rollenbezogene Tokens.
+- Modes eignen sich für Themes wie Light und Dark innerhalb derselben Collection.
+- Aliases erlauben einer Variable, auf den Wert einer anderen Variable zu verweisen, auch über Collections hinweg.

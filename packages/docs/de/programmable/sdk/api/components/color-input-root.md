@@ -1,28 +1,28 @@
 ---
 title: ColorInputRoot
-description: Headless Farb-Eingabe-Hilfsmittel mit Hex-Parsing und Aktualisierungs-Hilfsmitteln.
+description: Hex value und Color updates für ein eigenes Color input.
 ---
 
 # ColorInputRoot
 
-`ColorInputRoot` ist ein headless Hilfsmittel für Farb-Eingabe-UIs.
+`ColorInputRoot` wandelt den aktuellen Color value in Hex um und stellt Functions bereit, um ihn über einen Hex string oder ein vollständiges `Color` object zu aktualisieren.
 
-Es leitet einen Hex-Wert aus einer Farbe ab und gibt Aktualisierungs-Hilfsmittel für Hex- und vollständige Farbänderungen zurück.
+Die Anwendung rendert das Input über den Default slot.
 
 ## Props
 
 <SdkPropsTable
   :rows="[
-    { name: 'color', type: 'Color', description: 'Aktueller Farbwert.', required: true },
-    { name: 'editable', type: 'boolean | undefined', description: 'Ob der Verbraucher den Wert als bearbeitbar darstellen soll.' }
+    { name: 'color', type: 'Color', description: 'Aktueller Color value.', required: true },
+    { name: 'editable', type: 'boolean | undefined', description: 'Gibt an, ob die Anwendung den Wert editierbar darstellen soll.' }
   ]"
 />
 
-## Ereignisse
+## Events
 
 <SdkEventsTable
   :rows="[
-    { name: 'update', payload: 'color: Color', description: 'Ausgelöst, wenn sich die Farbe ändert.' }
+    { name: 'update', payload: 'color: Color', description: 'Wird ausgegeben, wenn sich der Color value ändert.' }
   ]"
 />
 
@@ -30,7 +30,7 @@ Es leitet einen Hex-Wert aus einer Farbe ab und gibt Aktualisierungs-Hilfsmittel
 
 <SdkSlotsTable
   :rows="[
-    { name: 'default', props: '{ color: Color, editable: boolean, hex: string, updateFromHex: (value: string) => void, updateColor: (color: Color) => void }', description: 'Haupt-Farb-Eingabe-Render-Vertrag.' }
+    { name: 'default', props: '{ color: Color, editable: boolean, hex: string, updateFromHex: (value: string) => void, updateColor: (color: Color) => void }', description: 'State und Actions zum Rendern des Color input.' }
   ]"
 />
 
@@ -42,6 +42,6 @@ Es leitet einen Hex-Wert aus einer Farbe ab und gibt Aktualisierungs-Hilfsmittel
 </ColorInputRoot>
 ```
 
-## Verwandte APIs
+## Siehe auch
 
 - [ColorPickerRoot](./color-picker-root)

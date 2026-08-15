@@ -1,13 +1,13 @@
 ---
 title: useVariables
-description: Variablensammlungen, Variablen und Variablenwerte lesen und verändern.
+description: Variable collections, Variables, Modes und Values lesen und ändern.
 ---
 
 # useVariables
 
-`useVariables()` ist das Niedrigstufen-Variablen-Composable hinter den übergeordneten Variablen-Editor-Hilfsmitteln.
+`useVariables()` stellt den low-level State und die Actions eines Variables editor bereit.
 
-Verwenden Sie es, wenn Sie direkte Kontrolle über Sammlungen, aktive Modi, Filterung und CRUD-Operationen ohne die vollständige Tabellen-/Dialog-Abstraktion möchten.
+Das composable verwenden, wenn direkte Kontrolle über Collections, Active modes, Filter und CRUD operations ohne fertige Tabelle oder Dialog benötigt wird.
 
 ## Verwendung
 
@@ -37,7 +37,7 @@ const variables = useVariables()
 - `parseVariableValue()`
 - `shortName()`
 
-## Verwandte APIs
+## Siehe auch
 
 - [useVariablesEditor](../composables/use-variables-editor)
 - [useVariablesDialogState](./use-variables-dialog-state)

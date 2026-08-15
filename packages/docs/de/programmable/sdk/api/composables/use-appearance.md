@@ -1,18 +1,16 @@
 ---
 title: useAppearance
-description: Sichtbarkeit, Deckkraft und Eckradius-Zustand der aktuellen Auswahl steuern.
+description: Visibility, Opacity und Corner radius der aktuellen Selection verwalten.
 ---
 
 # useAppearance
 
-`useAppearance()` ist das erscheinungsbild-fokussierte Steuerelemente-Composable für Eigenschafts-Panels.
+`useAppearance()` stellt Properties-Panels State und Actions für die Appearance der ausgewählten Objekte bereit:
 
-Es gibt auswahlabgeleiteten UI-Zustand zurück für:
-
-- Sichtbarkeit
-- Deckkraft
-- Eckradius
-- unabhängige Eckradien
+- Visibility;
+- Opacity;
+- Corner radius;
+- separate Corner radii.
 
 ## Verwendung
 
@@ -22,7 +20,7 @@ import { useAppearance } from '@open-pencil/vue'
 const appearance = useAppearance()
 ```
 
-## Einfaches Beispiel
+## Beispiel
 
 ```ts
 const {
@@ -34,23 +32,21 @@ const {
 } = useAppearance()
 ```
 
-## Praktische Beispiele
-
-### Sichtbarkeit der Auswahl umschalten
+### Visibility umschalten
 
 ```ts
 appearance.toggleVisibility()
 ```
 
-### Einzelne Eckradien bearbeiten
+### Einzelne Corner radii ändern
 
 ```ts
 appearance.updateCornerProp('topLeftRadius', 12)
 appearance.commitCornerProp('topLeftRadius', 12, 8)
 ```
 
-## Verwandte APIs
+## Siehe auch
 
-- [SDK API-Übersicht](../)
+- [API-Übersicht](../)
 - [useLayout](./use-layout)
 - [useTypography](./use-typography)

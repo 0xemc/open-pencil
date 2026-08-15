@@ -1,65 +1,35 @@
 ---
 title: GradientEditorRoot
-description: Headless Wurzel-Primitiv für Verlaufsstopp-Bearbeitung.
+description: State und Actions zum Bearbeiten von Gradient stops.
 ---
 
 # GradientEditorRoot
 
-`GradientEditorRoot` ist ein headless Wurzel-Primitiv für Verlaufsbearbeitung.
+`GradientEditorRoot` verwaltet:
 
-Es verwaltet:
+- Active gradient stop;
+- Gradient subtype;
+- Hinzufügen, Entfernen und Aktualisieren von Stops;
+- Color des Active stop;
+- Background des Gradient bar.
 
-- aktiven Stopp-Zustand
-- Subtyp-Wechsel
-- Stopp hinzufügen/entfernen/aktualisieren Logik
-- aktive Farbbearbeitung
-- abgeleiteten Balken-Hintergrund
+Der Default slot erhält das vollständige API zum Aufbau eines eigenen Gradient editor.
 
 ## Props
 
 <SdkPropsTable
   :rows="[
-    { name: 'fill', type: 'Fill', description: 'Aktueller Verlaufsfüllungswert.', required: true }
+    { name: 'fill', type: 'Fill', description: 'Aktueller Gradient fill.', required: true }
   ]"
 />
 
-## Ereignisse
+## Events
 
 <SdkEventsTable
   :rows="[
-    { name: 'update', payload: 'fill: Fill', description: 'Ausgelöst, wenn sich die Verlaufsfüllung ändert.' }
+    { name: 'update', payload: 'fill: Fill', description: 'Wird ausgegeben, wenn sich der Gradient fill ändert.' }
   ]"
 />
-
-## Slots
-
-<SdkSlotsTable
-  :rows="[
-    { name: 'default', props: 'Editor-Zustand + Handler', description: 'Vollständiger Verlaufs-Editor-Render-Vertrag.' }
-  ]"
-/>
-
-### Standard-Slot-Props
-
-```ts
-{
-  stops: GradientStop[]
-  subtype: GradientSubtype
-  subtypes: Array<{ value: GradientSubtype; label: string }>
-  activeStopIndex: number
-  activeColor: Color
-  barBackground: string
-  setSubtype: (type: GradientSubtype) => void
-  selectStop: (index: number) => void
-  addStop: () => void
-  removeStop: (index: number) => void
-  updateStopPosition: (index: number, position: number) => void
-  updateStopColor: (index: number, hex: string) => void
-  updateStopOpacity: (index: number, opacity: number) => void
-  updateActiveColor: (color: Color) => void
-  dragStop: (index: number, position: number) => void
-}
-```
 
 ## Beispiel
 
@@ -69,7 +39,7 @@ Es verwaltet:
 </GradientEditorRoot>
 ```
 
-## Verwandte APIs
+## Siehe auch
 
 - [GradientEditorBar](./gradient-editor-bar)
 - [GradientEditorStop](./gradient-editor-stop)

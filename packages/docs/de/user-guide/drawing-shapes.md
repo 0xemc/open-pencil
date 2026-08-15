@@ -1,79 +1,77 @@
 ---
-title: Formen zeichnen
-description: Rechtecke, Ellipsen, Linien, Frames, Sektionen, Polygone und Sterne in OpenPencil erstellen.
+title: Shapes zeichnen
+description: Rectangles, Ellipses, Lines, Frames, Sections, Polygons und Stars in OpenPencil erstellen.
 ---
 
-# Formen zeichnen
+# Shapes zeichnen
 
-Die untere Werkzeugleiste bietet Werkzeuge zum Erstellen von Formen, Frames und Sektionen. Wählen Sie ein Werkzeug, dann klicken und ziehen Sie auf dem Canvas.
+Die Toolbar am unteren Rand enthält Tools für Shapes, Frames und Sections. Tool auswählen und anschließend auf dem Canvas ziehen.
 
-## Werkzeugleiste
+## Tools
 
-| Werkzeug | Kürzel | Beschreibung |
-|----------|--------|--------------|
-| Rechteck | <kbd>R</kbd> | Zeichnet ein Rechteck |
-| Ellipse | <kbd>O</kbd> | Zeichnet eine Ellipse |
-| Linie | <kbd>L</kbd> | Zeichnet eine Linie |
-| Frame | <kbd>F</kbd> | Zeichnet einen Frame (Container) |
-| Sektion | <kbd>S</kbd> | Zeichnet eine Sektion (übernimmt überlappende Geschwister) |
+| Tool | Shortcut | Funktion |
+|------|----------|----------|
+| Rectangle | <kbd>R</kbd> | Erstellt ein Rectangle |
+| Ellipse | <kbd>O</kbd> | Erstellt eine Ellipse |
+| Line | <kbd>L</kbd> | Erstellt eine Line |
+| Frame | <kbd>F</kbd> | Erstellt einen Frame als Container |
+| Section | <kbd>S</kbd> | Erstellt eine Section und übernimmt überlappende Objekte |
 
-## Formen-Flyout
+## Shape-Menü
 
-Das Formen-Flyout enthält zusätzliche Formen:
+Das Shape-Menü enthält außerdem:
 
-- **Polygon** — erstellt ein Polygon mit standardmäßig 3 Seiten (Dreieck)
-- **Stern** — erstellt einen 5-zackigen Stern
+- **Polygon:** standardmäßig ein Dreieck mit drei Seiten;
+- **Star:** standardmäßig ein Stern mit fünf Spitzen.
 
-## Proportionales Zeichnen
+## Proportionen beibehalten
 
-Halten Sie <kbd>Shift</kbd> beim Ziehen:
+Während des Ziehens <kbd>Shift</kbd> gedrückt halten:
 
-- Rechteck → Quadrat
-- Ellipse → Kreis
-- Linie → rastet auf 0°/45°/90° ein
+- Rectangle wird zum Quadrat;
+- Ellipse wird zum Kreis;
+- Line rastet bei 0°, 45° und 90° ein.
 
-## Form-Eigenschaften
+## Properties
 
-### Füllung
+### Fill
 
-Jede Form kann eine Füllung haben: **Vollfarbe**, **Verlauf** (Linear, Radial, Winkel, Diamant) oder **Bild**.
+Ein Shape kann einen Solid fill, Linear/Radial/Angular/Diamond gradient oder Image fill besitzen.
 
-### Kontur
+### Stroke
 
-Fügen Sie einer Form eine Kontur hinzu. Eigenschaften:
+- **Weight:** einheitlich oder separat für Top, Right, Bottom und Left
+- **Color:** Solid color mit Opacity
+- **Alignment:** Inside, Center oder Outside mit Figma-kompatiblem Clipping
+- **Cap:** None, Round, Square oder Arrow
+- **Join:** Miter, Bevel oder Round
+- **Dash:** wechselnde Dash- und Gap-Längen
 
-- **Breite** — einheitlich oder pro Seite (Oben/Rechts/Unten/Links) über das Seitenauswahl-Dropdown
-- **Farbe** — Vollton mit Deckkraft
-- **Ausrichtung** — Innen, Mitte oder Außen (beschneidungsbasiertes Rendering wie in Figma)
-- **Kappenstil** — Keine, Rund, Quadrat, Pfeil
-- **Verbindungsstil** — Gehrung, Abgeschrägt, Rund
-- **Strichmuster** — Strich-Ein/Strich-Aus
+### Corner radius
 
-### Eckenradius
+Rectangles, Frames, Components und Instances unterstützen einen gemeinsamen oder separaten Radius für jede Ecke.
 
-Verfügbar für Rechtecke, Frames, Komponenten und Instanzen. Jede Ecke einzeln einstellbar.
+### Effects
 
-### Effekte
+- **Drop shadow:** Offset, Blur radius, Spread und Color
+- **Inner shadow:** dieselben Einstellungen innerhalb des Shape
+- **Layer blur:** verwischt das gesamte Objekt
+- **Background blur:** verwischt den Inhalt hinter dem Objekt
+- **Foreground blur:** verwischt den Inhalt vor dem Objekt
 
-- **Schlagschatten** — Versatz, Unschärferadius, Ausbreitung, Farbe
-- **Innerer Schatten** — gleiche Steuerung, im Inneren der Form
-- **Ebenenunschärfe** — verwischt den gesamten Knoten
-- **Hintergrundunschärfe** — verwischt Inhalte hinter dem Knoten
-- **Vordergrundunschärfe** — verwischt Inhalte vor dem Knoten
+## Frames und Sections
 
-## Frames und Sektionen
+**Frames** sind Container. Werden Shapes in einen Frame gezogen, werden sie dessen Children. Frames unterstützen [Auto Layout](./auto-layout).
 
-**Frames** sind Container. Ziehen Sie Formen in einen Frame, um sie zu Kindern zu machen. Frames unterstützen [Auto-Layout](./auto-layout).
+**Sections** organisieren Objekte auf oberster Ebene und übernehmen überlappende Siblings automatisch.
 
-**Sektionen** sind Container auf oberster Ebene, die überlappende Geschwisterknoten automatisch übernehmen.
+## Shortcuts
 
-## Tastenkürzel
-
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Rechteck | <kbd>R</kbd> | <kbd>R</kbd> |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Rectangle | <kbd>R</kbd> | <kbd>R</kbd> |
 | Ellipse | <kbd>O</kbd> | <kbd>O</kbd> |
-| Linie | <kbd>L</kbd> | <kbd>L</kbd> |
+| Line | <kbd>L</kbd> | <kbd>L</kbd> |
 | Frame | <kbd>F</kbd> | <kbd>F</kbd> |
-| Sektion | <kbd>S</kbd> | <kbd>S</kbd> |
-| Quadrat/Kreis erzwingen | <kbd>Shift</kbd> + <kbd>Ziehen</kbd> | <kbd>Shift</kbd> + <kbd>Ziehen</kbd> |
+| Section | <kbd>S</kbd> | <kbd>S</kbd> |
+| Quadrat oder Kreis | <kbd>Shift</kbd> + Drag | <kbd>Shift</kbd> + Drag |

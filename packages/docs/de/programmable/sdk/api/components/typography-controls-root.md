@@ -1,16 +1,16 @@
 ---
 title: TypographyControlsRoot
-description: Headless Wurzel-Primitiv für Schrift-, Ausrichtungs- und Formatierungssteuerelemente.
+description: Headless component für Font, Alignment und Text formatting.
 ---
 
 # TypographyControlsRoot
 
-`TypographyControlsRoot` gibt Typografie-Zustand und Handler aus `useTypography()` als strukturelles Primitiv zurück.
+`TypographyControlsRoot` gibt State und Actions aus `useTypography()` über seinen Slot weiter.
 
-Verwenden Sie es, wenn Sie benutzerdefinierte Typografie-Steuerelemente mit SDK-verwalteten Schrift- und Formatierungsverhalten möchten.
+Eigene Controls für Font, Alignment und Formatting können dadurch die Editor integration des SDK verwenden.
 
-## Verwandte APIs
+## Siehe auch
 
 - [useTypography](../composables/use-typography)
 - [FontPickerRoot](./font-picker-root)
-- [Eigenschafts-Panels-Anleitung](../../guides/property-panels)
+- [Properties-Panels](../../guides/property-panels)

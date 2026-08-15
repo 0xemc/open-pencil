@@ -1,18 +1,16 @@
 ---
 title: useVariablesEditor
-description: Variablen-Dialog-Zustand, Tabellenspalten und TanStack-Tabellen-Verdrahtung zusammensetzen.
+description: State eines Variables dialog und TanStack Table vorbereiten.
 ---
 
 # useVariablesEditor
 
-`useVariablesEditor()` ist ein übergeordnetes Variablen-Domänen-Composable zum Erstellen eines Variablen-Dialogs oder Variablen-Editor-Bildschirms.
+`useVariablesEditor()` verbindet die Teile, die für einen Variables dialog oder einen eigenen Variables editor benötigt werden:
 
-Es kombiniert:
-
-- Variablen-Dialog-Zustand
-- Variablen-Tabellenspalten
-- TanStack Vue Table-Verdrahtung
-- Sammlungs-/Modus-Hilfsmittel
+- Dialog state;
+- Table columns;
+- Integration mit TanStack Vue Table;
+- Functions für Collections und Modes.
 
 ## Verwendung
 
@@ -27,18 +25,14 @@ const variables = useVariablesEditor({
 
 ## Rückgabewerte
 
-Es enthält den untergeordneten Dialog/Tabellen-Zustand sowie:
+Das Ergebnis enthält den low-level State für Dialog und Tabelle sowie:
 
 - `columns`
 - `table`
 - `hasCollections`
 
-## Praktische Beispiele
+`useVariablesEditor()` eignet sich, wenn ein einzelnes composable die Table integration und Action handlers bereitstellen soll.
 
-### Einen Variablen-Dialog erstellen
+## Siehe auch
 
-Verwenden Sie `useVariablesEditor()`, wenn Sie ein einzelnes Composable möchten, das Tabelle und Aktionshandler bereits zusammenverdrahtet.
-
-## Verwandte APIs
-
-- [SDK API-Übersicht](../)
+- [API-Übersicht](../)

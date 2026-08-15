@@ -1,15 +1,13 @@
 ---
 title: CanvasRoot
-description: Headless Canvas-Primitiv für OpenPencil-Rendering-Oberflächen.
+description: Headless component für den Context des OpenPencil canvas.
 ---
 
 # CanvasRoot
 
-`CanvasRoot` ist das strukturelle Canvas-Primitiv in `@open-pencil/vue`.
+`CanvasRoot` stellt seinen Children den Canvas context bereit. Das SDK verwaltet die Integration mit dem Editor; Layout und Styling gehören der Anwendung.
 
-Verwenden Sie es, wenn Sie SDK-bereitgestellte Canvas-Struktur und Kontext mit app-eigenem Layout und Styling möchten.
-
-## Verwandte APIs
+## Siehe auch
 
 - [useCanvas](../composables/use-canvas)
 - [useCanvasInput](../composables/use-canvas-input)

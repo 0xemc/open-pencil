@@ -1,42 +1,42 @@
 ---
 title: FontPickerRoot
-description: Headless durchsuchbarer Schrift-Picker basierend auf Reka Combobox.
+description: Font picker mit Search auf Grundlage von Reka UI Combobox.
 ---
 
 # FontPickerRoot
 
-`FontPickerRoot` ist ein headless durchsuchbares Schrift-Auswahl-Primitiv, das auf Reka UI Combobox-Primitiven aufbaut.
+`FontPickerRoot` stellt einen Font picker mit asynchron geladener Liste von Font families und Search bereit. Der Component verwendet Reka UI Combobox. Trigger, Search input, Items, Selection indicator und Empty state können über Slots ersetzt werden.
 
 ## Props
 
 <SdkPropsTable
   :rows="[
-    { name: 'listFamilies', type: '() => Promise<string[]>', description: 'Asynchrone Quelle für verfügbare Schriftfamilien.', required: true },
-    { name: 'triggerClass', type: 'string | undefined', description: 'Optionale Klasse für den Standard-Trigger.' },
-    { name: 'contentClass', type: 'string | undefined', description: 'Optionale Klasse für Dropdown-Inhalte.' },
-    { name: 'itemClass', type: 'string | undefined', description: 'Optionale Klasse für Standard-Elemente.' },
-    { name: 'searchClass', type: 'string | undefined', description: 'Optionale Klasse für das Sucheingabefeld.' },
-    { name: 'viewportClass', type: 'string | undefined', description: 'Optionale Klasse für den Scroll-Viewport.' },
-    { name: 'emptyClass', type: 'string | undefined', description: 'Optionale Klasse für leere Zustände.' },
-    { name: 'emptySearchText', type: 'string | undefined', description: 'Text, der angezeigt wird, wenn die Suche keine Schriften zurückgibt.' },
-    { name: 'emptyFontsText', type: 'string | undefined', description: 'Text, der angezeigt wird, wenn keine Schriften verfügbar sind.' },
-    { name: 'emptyFontsHint', type: 'string | undefined', description: 'Optionaler Hilfstext für den leeren-Schriften-Zustand.' }
+    { name: 'listFamilies', type: '() => Promise<string[]>', description: 'Asynchrone Quelle verfügbarer Font families.', required: true },
+    { name: 'triggerClass', type: 'string | undefined', description: 'Optionale Class des Default trigger.' },
+    { name: 'contentClass', type: 'string | undefined', description: 'Optionale Class des Dropdown content.' },
+    { name: 'itemClass', type: 'string | undefined', description: 'Optionale Class der Default items.' },
+    { name: 'searchClass', type: 'string | undefined', description: 'Optionale Class des Search input.' },
+    { name: 'viewportClass', type: 'string | undefined', description: 'Optionale Class des scrollbaren Viewport.' },
+    { name: 'emptyClass', type: 'string | undefined', description: 'Optionale Class des Empty state.' },
+    { name: 'emptySearchText', type: 'string | undefined', description: 'Text, wenn Search keine Font family findet.' },
+    { name: 'emptyFontsText', type: 'string | undefined', description: 'Text, wenn keine Fonts verfügbar sind.' },
+    { name: 'emptyFontsHint', type: 'string | undefined', description: 'Optionaler Hinweis bei fehlenden Fonts.' }
   ]"
 />
 
-## Modell
+## Model
 
 <SdkPropsTable
   :rows="[
-    { name: 'v-model', type: 'string', description: 'Ausgewählte Schriftfamilie.', required: true }
+    { name: 'v-model', type: 'string', description: 'Ausgewählte Font family.', required: true }
   ]"
 />
 
-## Ereignisse
+## Events
 
 <SdkEventsTable
   :rows="[
-    { name: 'select', payload: 'family: string', description: 'Ausgelöst, nachdem eine Schriftfamilie ausgewählt wurde.' }
+    { name: 'select', payload: 'family: string', description: 'Wird nach Auswahl einer Font family ausgegeben.' }
   ]"
 />
 
@@ -44,11 +44,11 @@ description: Headless durchsuchbarer Schrift-Picker basierend auf Reka Combobox.
 
 <SdkSlotsTable
   :rows="[
-    { name: 'trigger', props: '{ value: string, open: boolean }', description: 'Benutzerdefinierter Trigger-Inhalt.' },
-    { name: 'search', props: '{ searchTerm: string, setInputRef: (el: HTMLInputElement | null) => void }', description: 'Benutzerdefinierter Sucheingabe-Slot.' },
-    { name: 'item', props: '{ family: string, selected: boolean }', description: 'Benutzerdefinierter Element-Renderer.' },
-    { name: 'indicator', props: '{ selected: boolean }', description: 'Benutzerdefinierter Auswahl-Indikator.' },
-    { name: 'empty', description: 'Wird angezeigt, wenn keine Schriften verfügbar sind.' }
+    { name: 'trigger', props: '{ value: string, open: boolean }', description: 'Eigener Trigger content.' },
+    { name: 'search', props: '{ searchTerm: string, setInputRef: (el: HTMLInputElement | null) => void }', description: 'Eigenes Search input.' },
+    { name: 'item', props: '{ family: string, selected: boolean }', description: 'Eigene Darstellung eines Item.' },
+    { name: 'indicator', props: '{ selected: boolean }', description: 'Eigener Selection indicator.' },
+    { name: 'empty', description: 'Wird ohne verfügbare Fonts angezeigt.' }
   ]"
 />
 
@@ -62,6 +62,6 @@ description: Headless durchsuchbarer Schrift-Picker basierend auf Reka Combobox.
 </FontPickerRoot>
 ```
 
-## Verwandte APIs
+## Siehe auch
 
 - [useTypography](../composables/use-typography)

@@ -1,79 +1,69 @@
 ---
-title: Exportieren
-description: Bilder exportieren (PNG, JPG, WEBP) und .fig-Dateien speichern/öffnen in OpenPencil.
+title: Export
+description: Selection als PNG, JPG, WEBP oder SVG exportieren und `.fig`-Dateien öffnen und speichern.
 ---
 
-# Exportieren
+# Export
 
-Einzelne Knoten als Bilder exportieren oder ganze Dokumente als .fig-Dateien speichern und öffnen.
+Einzelne Objekte können als Bild oder SVG exportiert werden. Vollständige Dokumente lassen sich im `.fig`-Format öffnen und speichern.
 
-## Bildexport
+## Bilder und SVG
 
-Wählen Sie einen Knoten und nutzen Sie den Export-Bereich im Eigenschaftspanel.
+Objekt auswählen und im Properties-Panel den Bereich Export öffnen.
 
-### Export-Einstellungen
+### Einstellungen
 
-- **Skalierung** — 0,5×, 0,75×, 1×, 1,5×, 2×, 3× oder 4×
-- **Skalierung** — 0,5×–4× (für SVG ausgeblendet — Vektoren sind auflösungsunabhängig)
-- **Format** — PNG (transparenter Hintergrund), JPG (weißer Hintergrund), WEBP (transparenter Hintergrund), SVG (Vektor)
+- **Scale:** 0,5× bis 4×; bei SVG ausgeblendet, da das Format resolution-independent ist;
+- **Format:** PNG mit transparentem Background, JPG mit weißem Background, WEBP mit transparentem Background oder SVG;
+- mehrere Export settings pro Objekt;
+- Live preview auf einem Checkerboard background.
 
-Sie können mehrere Export-Einstellungen hinzufügen. Eine Live-Vorschau mit Schachbretthintergrund zeigt, was exportiert wird.
+### Export starten
 
-### Export-Methoden
+| Methode | macOS | Windows / Linux |
+|---------|-------|-----------------|
+| Shortcut | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>E</kbd> | <kbd>Shift</kbd><kbd>Strg</kbd><kbd>E</kbd> |
+| Kontextmenü | Right-click → Export… | Right-click → Export… |
+| Properties-Panel | Export button | Export button |
 
-| Methode | Mac | Windows / Linux |
-|---------|-----|-----------------|
-| Tastenkürzel | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>E</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + E |
-| Kontextmenü | Rechtsklick <kbd>→</kbd> Exportieren… | Rechtsklick <kbd>→</kbd> Exportieren… |
-| Eigenschaftspanel | Klick auf „Exportieren" | Klick auf „Exportieren" |
+## Copy as
 
-## Als kopieren
+Das Kontextmenü kann die Selection in verschiedenen Formaten in das Clipboard schreiben:
 
-Das Kontextmenü bietet **Als kopieren** mit mehreren Zwischenablage-Formaten:
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Copy as text | — | — |
+| Copy as SVG | — | — |
+| Copy as PNG | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd><kbd>Strg</kbd><kbd>C</kbd> |
+| Copy as JSX | — | — |
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Als Text kopieren | — | — |
-| Als SVG kopieren | — | — |
-| Als PNG kopieren | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + C |
-| Als JSX kopieren | — | — |
+## `.fig`-Dateien
 
-## .fig-Dateioperationen
+OpenPencil verwendet das Dateiformat von Figma. Gespeicherte Dateien sind komprimiert und enthalten eine Thumbnail.
 
-OpenPencil verwendet das .fig-Format — kompatibel mit Figma. Gespeicherte Dateien werden komprimiert und enthalten ein Vorschaubild.
+### Öffnen
 
-### Dateien öffnen
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Open file | <kbd>⌘</kbd><kbd>O</kbd> | <kbd>Strg</kbd><kbd>O</kbd> |
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Datei öffnen | <kbd>⌘</kbd><kbd>O</kbd> | Strg + O |
+### Speichern
 
-### Dateien speichern
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Save | <kbd>⌘</kbd><kbd>S</kbd> | <kbd>Strg</kbd><kbd>S</kbd> |
+| Save As | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd> | <kbd>Shift</kbd><kbd>Strg</kbd><kbd>S</kbd> |
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Speichern | <kbd>⌘</kbd><kbd>S</kbd> | Strg + S |
-| Speichern unter | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + S |
+**Save** überschreibt die aktuelle Datei, sofern OpenPencil weiterhin Schreibzugriff besitzt. **Save As** öffnet einen Dialog zur Wahl eines neuen Pfads.
 
-- **Speichern** überschreibt die aktuelle Datei ohne Dialog
-- **Speichern unter** öffnet einen Speicherdialog
+Im Browser verwendet OpenPencil nach Möglichkeit die File System Access API von Chrome und Edge. Andere Browser, darunter Safari, laden die Datei stattdessen herunter.
 
-### Round-Trip-Kompatibilität
+### Kompatibilität
 
-Aus OpenPencil exportierte Dateien können in Figma geöffnet werden und umgekehrt.
+Von OpenPencil exportierte `.fig`-Dateien können wieder in OpenPencil und in Figma geöffnet werden. Umgekehrt importiert OpenPencil Dateien aus Figma.
 
-## Tastenkürzel
+## Hinweise
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Auswahl exportieren | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>E</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + E |
-| Als PNG kopieren | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + C |
-| Datei öffnen | <kbd>⌘</kbd><kbd>O</kbd> | Strg + O |
-| Speichern | <kbd>⌘</kbd><kbd>S</kbd> | Strg + S |
-| Speichern unter | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + S |
-
-## Tipps
-
-- Verwenden Sie 2× oder 3× Skalierung für hochauflösende Bildschirme.
-- JPG verwendet immer weißen Hintergrund — nutzen Sie PNG oder WEBP für Transparenz.
-- Verwenden Sie SVG-Export für vektorielle Weiterbearbeitung in Code-Editoren oder Illustrator.
+- Scale 2× oder 3× eignet sich für hochauflösende Displays.
+- JPG verwendet immer einen weißen Background. Für Transparency PNG oder WEBP wählen.
+- SVG eignet sich für weitere Bearbeitung in Code-Editoren und Vector tools.

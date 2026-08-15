@@ -1,20 +1,20 @@
 ---
 title: useTextEdit
-description: DOM-Textbearbeitung, Komposition, Formatierung und Synchronisierung für Canvas-Textknoten verwalten.
+description: DOM text input, IME, Formatting und Synchronisierung von Text objects verwalten.
 ---
 
 # useTextEdit
 
-`useTextEdit()` verbindet DOM-Texteingabe mit dem Textbearbeitungsmodell des Editor-Canvas.
+`useTextEdit()` verbindet DOM input mit der Textbearbeitung auf dem Editor canvas.
 
-Es koordiniert:
+Das composable koordiniert:
 
-- textarea-gestützte Texteingabe
-- IME-Komposition
-- Caret-Blinken
-- Löschen/Rücktaste-Verhalten
-- Formatierungsbefehle wie Fett/Kursiv/Unterstrichen
-- Synchronisierung von Textänderungen zurück in den Graphen
+- Texteingabe über eine `textarea`;
+- IME;
+- blinkenden Caret;
+- Delete und Backspace;
+- Bold, Italic und Underline commands;
+- Schreiben der Änderungen in den SceneGraph.
 
 ## Verwendung
 
@@ -22,25 +22,21 @@ Es koordiniert:
 useTextEdit(canvasRef, editor)
 ```
 
-## Einfaches Beispiel
+Das composable im Component verwenden, der den Canvas enthält, gewöhnlich zusammen mit `useCanvas()` und `useCanvasInput()`.
 
-Verwenden Sie dies in der Canvas-Owner-Komponente zusammen mit `useCanvas()` und `useCanvasInput()`.
+## Formatting shortcuts
 
-## Praktische Beispiele
+Während Text bearbeitet wird, verarbeitet `useTextEdit()` Shortcuts für Bold, Italic und Underline.
 
-### Formatierungsverknüpfungen unterstützen
+## Synchronisierung
 
-`useTextEdit()` behandelt bereits Tastaturformatierungsaktionen wie Fett, Kursiv und Unterstrichen, während die Textbearbeitung aktiv ist.
-
-### Canvas und Text-Editor synchron halten
-
-Es aktualisiert Graphtext und Style-Runs, während der Benutzer formatierte Bereiche tippt oder bearbeitet.
+Bei der Eingabe aktualisiert die Function Text und Style runs im SceneGraph.
 
 ## Hinweise
 
-Dies ist ein Canvas/Editor-Integrations-Composable, kein generisches Textfeld-Composable.
+Dieses composable integriert die Textbearbeitung mit dem Canvas. Es ist nicht für gewöhnliche Textfelder gedacht.
 
-## Verwandte APIs
+## Siehe auch
 
 - [useCanvas](./use-canvas)
 - [useCanvasInput](./use-canvas-input)

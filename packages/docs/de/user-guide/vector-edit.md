@@ -1,92 +1,75 @@
 ---
-title: Vektorobjekt bearbeiten
-description: "Vektorpfad-Geometrie bearbeiten: Ankerpunkte, Bézier-Griffe, Modifikatoren und Stiftwerkzeug-Aktionen im Bearbeitungsmodus."
+title: Vektoren bearbeiten
+description: Anchors, Bezier handles und Segments bearbeiten und das Pen tool im Edit mode verwenden.
 ---
 
-# Vektorobjekt bearbeiten
+# Vektoren bearbeiten
 
-Der Bearbeitungsmodus für Vektorobjekte ermöglicht es, die **Geometrie** einer Kurve zu verändern: Ankerpositionen, Segmentform und Bézier-Griffe.  
-In diesem Modus bearbeiten Sie den Pfad selbst, keine standardmäßigen Objekttransformationen.
+Im Vector edit mode wird die Geometrie eines Path verändert: Position der Anchors, Form der Segments und Bezier handles. Transformationen des gesamten Objekts stehen in diesem Modus nicht im Vordergrund.
 
-## Modus aktivieren
+## Edit mode starten
 
-- Wählen Sie ein Vektorobjekt mit dem Auswahlwerkzeug aus.
-- **Doppelklicken Sie auf die Kurve**.
+1. Vector object mit dem Select tool auswählen.
+2. Die Curve per Double-click öffnen.
 
-Damit wird die Geometriebearbeitung für das ausgewählte Vektorobjekt aktiviert.
+<kbd>Escape</kbd> beendet den Edit mode. Auch der Wechsel in einen anderen Bearbeitungskontext beendet ihn.
 
-## Modus beenden
+## Verhalten im Edit mode
 
-- Drücken Sie <kbd>Escape</kbd>.
-- Oder wechseln Sie in einen anderen Bearbeitungskontext.
+- Die gewöhnliche Transform bounding box wird ausgeblendet.
+- Anchors, Segments und Handles können ausgewählt und verändert werden.
+- An den Ecken der Bounding box erscheint kein Resize- oder Rotation cursor.
 
-## Was sich in diesem Modus ändert
+## Grundlagen
 
-- Der normale Transform-Begrenzungsrahmen des Objekts ist deaktiviert.
-- Die Bearbeitung von Ankern, Segmenten und Griffen wird verfügbar.
-- Der Cursor wechselt an den Ecken des Begrenzungsrahmens nicht zum Skalierungs-/Rotationssymbol.
+### Anchor verschieben
 
-## Grundlegende Aktionen
+Anchor per Drag verschieben. Die verbundenen Segments und die Form des Path werden während des Drag aktualisiert.
 
-### Anker verschieben
+### Bezier handle ändern
 
-- Ziehen Sie einen Ankerpunkt.
-- Verbundene Segmente und die Pfadform werden live in der Vorschau aktualisiert.
+Handle an einem Anchor ziehen. Das Verhalten hängt vom aktuellen Handle composition des Anchor ab.
 
-### Bézier-Griff bearbeiten
+## Modifier für Handles
 
-- Ziehen Sie einen Griff am Anker.
-- Standardmäßig richtet sich das Verhalten nach der aktuellen Griffzusammensetzung des Ankers.
+| Verhalten | macOS | Windows / Linux |
+|-----------|-------|-----------------|
+| Continuous | <kbd>Cmd</kbd> + Drag | <kbd>Strg</kbd> + Drag |
+| Corner, unabhängige Handles | <kbd>Option</kbd> + Drag | <kbd>Alt</kbd> + Drag |
+| Richtung beibehalten, nur Länge ändern | <kbd>Shift</kbd> + Drag | <kbd>Shift</kbd> + Drag |
 
-## Modifikatoren beim Ziehen von Griffen
+### Continuous
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Kontinuierlich (Glatt / Kontinuierlich) | <kbd>Cmd</kbd> + Ziehen | <kbd>Strg</kbd> + Ziehen |
-| Ecke (unabhängige Griffe) | <kbd>Option</kbd> + Ziehen | <kbd>Alt</kbd> + Ziehen |
-| Richtungssperre (nur Länge) | <kbd>Shift</kbd> + Ziehen | <kbd>Shift</kbd> + Ziehen |
+Mit <kbd>Cmd</kbd> beziehungsweise <kbd>Strg</kbd> bleibt der aktive Handle auf derselben Linie wie der gegenüberliegende. Nur seine Länge ändert sich. Dadurch bleibt der Übergang ohne scharfen Corner glatt.
 
-### Kontinuierlich: <kbd>Cmd</kbd>/<kbd>Strg</kbd> + Ziehen
+### Corner
 
-- Der aktive Griff wird auf dieselbe Linie wie der gegenüberliegende Griff eingeschränkt.
-- Nur die Länge des aktiven Griffs ändert sich.
-- Verwenden Sie dies für weiche Übergänge ohne Eckknick.
+Mit <kbd>Option</kbd> beziehungsweise <kbd>Alt</kbd> wird der aktive Handle unabhängig verändert. Der gegenüberliegende Handle bleibt an seiner Position. So entsteht ein scharfer Übergang.
 
-### Ecke: <kbd>Option</kbd>/<kbd>Alt</kbd> + Ziehen
+### Richtung beibehalten
 
-- Der aktive Griff wird unabhängig bearbeitet.
-- Der gegenüberliegende Griff bleibt an seiner Position.
-- Verwenden Sie dies, um einen scharfen Eckübergang zu erzeugen.
+Bei Anchors mit **Continuous** oder **Symmetric** composition sperrt <kbd>Shift</kbd> die Richtung, die vor Beginn des aktuellen Drag bestand. Abhängig von der Composition ändert sich nur die Länge eines oder beider Handles.
 
-### Richtungssperre: <kbd>Shift</kbd> + Ziehen
+## Bend durch Drag am Anchor
 
-Für Anker mit **kontinuierlicher** oder **symmetrischer** Zusammensetzung:
+Wird ein Anchor mit gedrücktem <kbd>Cmd</kbd> beziehungsweise <kbd>Strg</kbd> gezogen, bestimmt OpenPencil den Target handle anhand der Richtung des angeschlossenen Segment, nicht anhand der Entfernung zum nächsten Punkt.
 
-- Die Griffrichtung wird auf den Wert **vor Beginn des aktuellen Ziehvorgangs** gesperrt;
-- das Ziehen ändert nur die Grifflänge (oder -längen, abhängig von der Zusammensetzung).
+Dies funktioniert auch an verzweigten Anchors eines Vector network. Nach der Auswahl bleibt derselbe Target handle bis zum Ende des Drag aktiv.
 
-## Biegung überschreiben durch Ziehen eines Ankers
+## Pen tool im Edit mode
 
-Wenn Sie einen Anker ziehen und dabei <kbd>Cmd</kbd>/<kbd>Strg</kbd> gedrückt halten, wählt der Editor den Zielgriff nach der **Segmentanschlussrichtung** an diesem Anker aus (nicht nach dem nächstgelegenen Nachbarpunkt).  
-Dies funktioniert auch bei Ankern mit mehreren Pfadverzweigungen: Nach der Auflösung bleibt der Zielgriff für den aktuellen Ziehvorgang gesperrt.
+Bei aktivem Pen tool:
 
-## Stiftwerkzeug im Bearbeitungsmodus
+- Click auf ein Segment fügt einen Anchor ein und teilt das Segment;
+- Click auf den Endpoint eines offenen Path setzt das Zeichnen dort fort;
+- <kbd>Option</kbd>/<kbd>Alt</kbd> + Click auf einen Anchor entfernt ihn, sofern die Topology dies erlaubt.
 
-Bei aktivem Stiftwerkzeug:
+Das Erstellen und Schließen von Paths wird unter [Pen tool](./pen-tool.md) beschrieben.
 
-- **Klicken Sie auf ein Segment**, um einen neuen Anker einzufügen (Segment teilen).
-- **Klicken Sie auf den Endpunkt eines offenen Pfads**, um das Zeichnen von diesem Punkt aus fortzusetzen.
-- **Option/Alt + Klick auf einen Anker**, um ihn zu löschen (sofern die Topologie dies erlaubt).
+## Beispiel
 
-Informationen zum Erstellen und Schließen von Pfaden finden Sie unter [Stiftwerkzeug](./pen-tool.md).
-
-## Praktischer Arbeitsablauf
-
-1. Zeichnen Sie eine Form mit dem Stiftwerkzeug.
-2. Doppelklicken Sie auf die Kurve, um den Bearbeitungsmodus für Vektorobjekte zu aktivieren.
-3. Verschieben Sie Anker, um die Silhouette zu verfeinern.
-4. Ziehen Sie Griffe:
-   - mit <kbd>Cmd</kbd>/<kbd>Strg</kbd> für weiche, kontinuierliche Übergänge,
-   - mit <kbd>Option</kbd>/<kbd>Alt</kbd> für unabhängige Bearbeitungen,
-   - mit <kbd>Shift</kbd> für reine Längenänderungen.
-5. Drücken Sie <kbd>Escape</kbd>, um den Modus zu beenden.
+1. Shape mit dem Pen tool zeichnen.
+2. Curve per Double-click öffnen.
+3. Anchors verschieben, um die Kontur anzupassen.
+4. Handles mit <kbd>Cmd</kbd>/<kbd>Strg</kbd>, <kbd>Option</kbd>/<kbd>Alt</kbd> oder <kbd>Shift</kbd> verändern.
+5. Edit mode mit <kbd>Escape</kbd> beenden.

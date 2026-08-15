@@ -1,18 +1,16 @@
 ---
 title: useStrokeControls
-description: Kontur-Panel-Hilfsmittel für Ausrichtung, Seitenauswahl und seitenspezifische Konturstärken.
+description: Stroke alignment, Sides und Weights im Properties-Panel verwalten.
 ---
 
 # useStrokeControls
 
-`useStrokeControls()` ist das Kontur-Eigenschafts-Composable, das von Kontur-Bearbeitungs-Panels verwendet wird.
+`useStrokeControls()` stellt einem Stroke-Panel bereit:
 
-Es bietet:
-
-- Kontur-Ausrichtungsoptionen
-- Seitenvoreinstellungen wie alle, oben, unten, links, rechts, benutzerdefiniert
-- Standard-Konturdaten
-- Hilfsmittel für seitenspezifische Rahmenbreiten
+- Optionen für Stroke alignment;
+- Auswahl von All, Top, Bottom, Left, Right oder einer freien Kombination;
+- Default value für einen neuen Stroke;
+- Functions für separate Stroke weights pro Seite.
 
 ## Verwendung
 
@@ -22,26 +20,24 @@ import { useStrokeControls } from '@open-pencil/vue'
 const strokes = useStrokeControls()
 ```
 
-## Einfaches Beispiel
+## Beispiel
 
 ```ts
 const { alignOptions, sideOptions, currentAlign, currentSides, selectSide } = useStrokeControls()
 ```
 
-## Praktische Beispiele
-
-### Konturausrichtung setzen
+### Stroke innerhalb der Grenze
 
 ```ts
 strokes.updateAlign('INSIDE', activeNode)
 ```
 
-### Kontur auf eine Seite beschränken
+### Stroke nur oben
 
 ```ts
 strokes.selectSide('TOP', activeNode)
 ```
 
-## Verwandte APIs
+## Siehe auch
 
 - [PropertyListRoot](../components/property-list-root)

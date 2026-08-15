@@ -1,44 +1,50 @@
 ---
-title: Stiftwerkzeug
-description: Vektorpfade mit Bézier-Kurven zeichnen mit dem Stiftwerkzeug in OpenPencil.
+title: Pen tool
+description: Vector paths und Bezier curves mit dem Pen tool zeichnen.
 ---
 
-# Stiftwerkzeug
+# Pen tool
 
-Das Stiftwerkzeug erstellt Vektorpfade mit einem Vektornetzwerk-Datenmodell, kompatibel mit Figmas .fig-Format.
+Das Pen tool erstellt Vector paths auf Grundlage des mit Figma kompatiblen Vector-network-Modells.
 
 ## Aktivieren
 
-Drücken Sie <kbd>P</kbd>, um das Stiftwerkzeug zu aktivieren.
+<kbd>P</kbd> drücken, um das Pen tool auszuwählen.
 
-## Punkte setzen
+## Anchors setzen
 
-- **Klicken** setzt einen Eckpunkt (gerades Segment)
-- **Klicken + Ziehen** setzt einen Kurvenpunkt mit Bézier-Tangentengriffen
-  - **<kbd>Space</kbd> gedrückt halten** beim Ziehen (ohne die Maustaste loszulassen), um den Punkt selbst zu verschieben
+- Click setzt einen Corner anchor und erzeugt ein gerades Segment.
+- Click und Drag setzt einen Anchor mit Bezier handles.
+- Während des Drag <kbd>Space</kbd> gedrückt halten, um den Anchor selbst zu verschieben, ohne die Maustaste loszulassen.
 
-Klicken Sie mehrere Punkte, um einen Pfad Segment für Segment aufzubauen. Eine Vorschaulinie erstreckt sich vom letzten Punkt zu Ihrem Cursor.
+Weitere Anchors bauen den Path Segment für Segment auf. Eine Preview line führt vom letzten Anchor zum Pointer.
 
-## Pfad schließen
+## Path schließen
 
-Klicken Sie auf den **ersten Punkt** des Pfades, um ihn zu einer Schleife zu schließen. Geschlossene Pfade können gefüllt werden.
+Auf den ersten Anchor klicken, um den Path zu schließen. Ein geschlossener Path kann einen Fill besitzen.
 
-## Offene Pfade
+## Offener Path
 
-Drücken Sie <kbd>Escape</kbd>, um den aktuellen Pfad als offenen Pfad zu bestätigen. Offene Pfade werden nur als Konturen gerendert.
+<kbd>Escape</kbd> beendet den aktuellen Path, ohne ihn zu schließen. Offene Paths werden nur über ihre Strokes dargestellt.
 
-## Vektornetzwerke
+## Vector networks
 
-Pfade verwenden das Vektornetzwerk-Datenmodell statt einfacher Punktlisten. Vektornetzwerke ermöglichen flexiblere Topologien und sind vollständig mit dem .fig-Format kompatibel.
+OpenPencil speichert Vectors nicht als einfache Liste von Punkten, sondern als Vector network. Dadurch sind verzweigte Topologies möglich und die Geometrie kann ohne Umwandlung im `.fig`-Format gespeichert werden.
 
-## Tastenkürzel
+## Im Edit mode fortsetzen
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Stiftwerkzeug | <kbd>P</kbd> | <kbd>P</kbd> |
-| Offenen Pfad bestätigen | <kbd>Escape</kbd> | Escape |
+Ein Endpoint eines offenen Path kann mit aktivem Pen tool angeklickt werden, um dort weiterzuzeichnen. Click auf ein Segment fügt einen Anchor ein. <kbd>Option</kbd> beziehungsweise <kbd>Alt</kbd> + Click entfernt einen Anchor, sofern die Topology dies erlaubt.
 
-## Tipps
+Weitere Informationen: [Vektoren bearbeiten](./vector-edit).
 
-- Ziehen Sie länger beim Setzen eines Kurvenpunktes, um die Kurve breiter zu machen.
-- Nach dem Erstellen eines Pfades nutzen Sie das Eigenschaftspanel für Füllung, Kontur und Effekte.
+## Shortcuts
+
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Pen tool | <kbd>P</kbd> | <kbd>P</kbd> |
+| Offenen Path beenden | <kbd>Escape</kbd> | <kbd>Escape</kbd> |
+
+## Hinweise
+
+- Je weiter beim Setzen eines Anchor gezogen wird, desto länger werden die Bezier handles.
+- Fill, Stroke und Effects lassen sich anschließend im Properties-Panel ändern.

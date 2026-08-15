@@ -1,48 +1,50 @@
 ---
-title: Navigation auf der Arbeitsfläche
-description: Arbeitsfläche verschieben, Ansicht vergrößern und Hand-Werkzeug in OpenPencil verwenden.
+title: Canvas-Navigation
+description: Viewport verschieben, zoomen und das Hand tool in OpenPencil verwenden.
 ---
 
-# Navigation auf der Arbeitsfläche
+# Canvas-Navigation
 
-Die Arbeitsfläche ist nicht begrenzt. Verschieben und vergrößern Sie die Ansicht, um an verschiedenen Bereichen Ihres Entwurfs zu arbeiten.
+Der Canvas ist unbegrenzt. Durch Pan und Zoom kann zu jedem Bereich des Dokuments navigiert werden.
 
-## Ansicht verschieben
+## Pan
 
-So verschieben Sie den sichtbaren Bereich, ohne Objekte zu bewegen:
+Der sichtbare Bereich lässt sich verschieben, ohne Objekte zu verändern:
 
-- Halten Sie <kbd>Leertaste</kbd> gedrückt und ziehen Sie die Arbeitsfläche.
-- Ziehen Sie mit gedrückter mittlerer Maustaste.
-- Wischen Sie mit zwei Fingern über das Trackpad.
+- <kbd>Space</kbd> gedrückt halten und auf dem Canvas ziehen;
+- mit gedrückter mittlerer Maustaste ziehen;
+- mit zwei Fingern auf dem Trackpad scrollen.
 
-## Hand-Werkzeug
+## Hand tool
 
-Drücken Sie <kbd>H</kbd>, um das Hand-Werkzeug zu aktivieren. Solange es ausgewählt ist, verschiebt jedes Ziehen auf der Arbeitsfläche die Ansicht; die <kbd>Leertaste</kbd> muss dabei nicht gedrückt werden.
+<kbd>H</kbd> aktiviert das Hand tool. Solange es aktiv ist, verschiebt jeder Drag auf dem Canvas den Viewport; <kbd>Space</kbd> muss nicht gedrückt werden.
 
-Wählen Sie ein anderes Werkzeug, beispielsweise mit <kbd>V</kbd> das Auswahlwerkzeug, um diesen Modus zu verlassen.
+Ein anderes Tool auswählen, zum Beispiel Select mit <kbd>V</kbd>, um den Modus zu verlassen.
 
-## Vergrößerung
+## Zoom
 
-Die Ansicht wird relativ zur Position des Mauszeigers vergrößert oder verkleinert:
+Zoom wird auf die Position des Pointer ausgerichtet:
 
-- <kbd>Strg</kbd> + Scrollen beziehungsweise <kbd>⌘</kbd> + Scrollen unter macOS;
-- Pinch-Geste auf dem Trackpad;
-- Tastenkürzel aus der folgenden Tabelle.
+- <kbd>Ctrl</kbd> + Scroll beziehungsweise <kbd>⌘</kbd> + Scroll auf macOS;
+- Pinch gesture auf dem Trackpad;
+- Shortcuts aus der Tabelle.
 
-Auf den Ebenen- und Eigenschaftenpanels ist die Pinch-Geste deaktiviert, damit sie nicht versehentlich den Zoom der gesamten Browserseite verändert.
+Auf dem Layers- und Properties-Panel wird Pinch nicht an den Canvas weitergeleitet. So verändert die Geste dort weder den Editor-Zoom noch unbeabsichtigt den Zoom der Browserseite.
 
-## Tastenkürzel
+## Shortcuts
 
 | Aktion | macOS | Windows / Linux |
 |--------|-------|-----------------|
-| Ansicht verschieben | <kbd>Leertaste</kbd> + Ziehen | <kbd>Leertaste</kbd> + Ziehen |
-| Hand-Werkzeug | <kbd>H</kbd> | <kbd>H</kbd> |
-| Vergrößern | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Strg</kbd> + <kbd>+</kbd> |
-| Verkleinern | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Strg</kbd> + <kbd>−</kbd> |
-| 100 % | <kbd>⌘</kbd><kbd>0</kbd> | <kbd>Strg</kbd> + <kbd>0</kbd> |
+| Pan | <kbd>Space</kbd> + Drag | <kbd>Space</kbd> + Drag |
+| Hand tool | <kbd>H</kbd> | <kbd>H</kbd> |
+| Zoom in | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Strg</kbd><kbd>+</kbd> |
+| Zoom out | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Strg</kbd><kbd>−</kbd> |
+| 100 % | <kbd>⌘</kbd><kbd>0</kbd> | <kbd>Strg</kbd><kbd>0</kbd> |
+| Fit | <kbd>⌘</kbd><kbd>1</kbd> | <kbd>Strg</kbd><kbd>1</kbd> |
+| Zoom to selection | <kbd>⌘</kbd><kbd>2</kbd> | <kbd>Strg</kbd><kbd>2</kbd> |
 
-## Tipps
+## Hinweise
 
-- Bewegen Sie den Mauszeiger vor dem Zoomen auf den Bereich, den Sie genauer betrachten möchten.
-- Das Hand-Werkzeug bleibt aktiv, bis Sie ein anderes Werkzeug auswählen. Es eignet sich daher besonders für häufiges Navigieren.
-- Wie Sie Objekte bearbeiten, erfahren Sie unter [Auswahl und Bearbeitung](./selection-and-manipulation).
+- Pointer vor dem Zoom auf den Bereich setzen, der im Mittelpunkt bleiben soll.
+- Das Hand tool bleibt aktiv, bis ein anderes Tool gewählt wird.
+- Das Bearbeiten von Objekten wird unter [Auswählen und Bearbeiten](./selection-and-manipulation) erklärt.

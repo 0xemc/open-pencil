@@ -1,17 +1,17 @@
 ---
 title: useEditor
-description: Auf die aktuell injizierte OpenPencil-Editor-Instanz zugreifen.
+description: Auf die mit provideEditor bereitgestellte OpenPencil-Editor-Instanz zugreifen.
 ---
 
 # useEditor
 
-`useEditor()` gibt den aktuell injizierten OpenPencil-Editor zurück.
+`useEditor()` gibt die Editor-Instanz aus dem nächsten `provideEditor()`-Context zurück.
 
-Es ist der Haupt-Einstiegspunkt für SDK-Composables und headless Primitive, die Editor-Zugriff benötigen.
+Composables und headless components verwenden diese Function als zentralen Zugang zum Editor.
 
 ## Verwendung
 
-`useEditor()` muss innerhalb eines Teilbaums aufgerufen werden, in dem `provideEditor(editor)` bereits aufgerufen wurde.
+`useEditor()` innerhalb eines Component tree aufrufen, in dem zuvor `provideEditor(editor)` ausgeführt wurde:
 
 ```ts
 import { useEditor } from '@open-pencil/vue'
@@ -19,7 +19,7 @@ import { useEditor } from '@open-pencil/vue'
 const editor = useEditor()
 ```
 
-## Einfaches Beispiel
+## Beispiel
 
 ```vue
 <script setup lang="ts">
@@ -36,16 +36,14 @@ const pageId = computed(() => editor.state.currentPageId)
 </template>
 ```
 
-## Praktische Beispiele
-
-### Ausgewählte Knoten lesen
+### Selection lesen
 
 ```ts
 const editor = useEditor()
 const selected = editor.getSelectedNodes()
 ```
 
-### Befehle auslösen
+### Actions ausführen
 
 ```ts
 const editor = useEditor()
@@ -53,13 +51,11 @@ editor.zoomToFit()
 editor.undoAction()
 ```
 
-## Fehlerverhalten
+## Fehlender Context
 
-Wenn außerhalb eines Editor-Provider-Baums aufgerufen, wirft `useEditor()` eine hilfreiche Fehlermeldung.
+Wird `useEditor()` außerhalb eines passenden Provider tree aufgerufen, wirft die Function einen verständlichen Fehler. So wird eine fehlende Editor integration früh erkannt.
 
-Das ist beabsichtigt — diese API sollte laut fehlschlagen, wenn der Editor-Kontext fehlt.
-
-## Verwandte APIs
+## Siehe auch
 
 - [provideEditor](./provide-editor)
 - [useCanvas](./use-canvas)

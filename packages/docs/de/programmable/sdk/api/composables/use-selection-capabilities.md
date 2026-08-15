@@ -1,19 +1,19 @@
 ---
 title: useSelectionCapabilities
-description: Befehlsfreundliche Booleans für auswahlgesteuerte UI und Aktionen ableiten.
+description: Reaktive Boolean values für die mit der aktuellen Selection verfügbaren Actions.
 ---
 
 # useSelectionCapabilities
 
-`useSelectionCapabilities()` gibt reaktive Booleans zurück, ob gängige Editor-Aktionen aktuell erlaubt sind.
+`useSelectionCapabilities()` gibt reaktive Boolean values zurück, die angeben, ob häufige Editor actions für die aktuelle Selection verfügbar sind.
 
-Verwenden Sie es beim Erstellen von:
+Das composable eignet sich für:
 
-- Menüs
-- Toolbars
-- Tastaturkürzeln
-- Aktionsschaltflächen
-- kontextuellen Panels
+- Menüs;
+- Toolbars;
+- Shortcuts;
+- Action buttons;
+- Context-dependent panels.
 
 ## Verwendung
 
@@ -23,7 +23,7 @@ import { useSelectionCapabilities } from '@open-pencil/vue'
 const caps = useSelectionCapabilities()
 ```
 
-## Einfaches Beispiel
+## Beispiel
 
 ```vue
 <script setup lang="ts">
@@ -34,28 +34,26 @@ const { canDelete, canDuplicate, canCreateComponent } = useSelectionCapabilities
 
 <template>
   <div class="flex gap-2">
-    <button :disabled="!canDuplicate">Duplizieren</button>
-    <button :disabled="!canDelete">Löschen</button>
-    <button :disabled="!canCreateComponent">Als Komponente</button>
+    <button :disabled="!canDuplicate">Duplicate</button>
+    <button :disabled="!canDelete">Delete</button>
+    <button :disabled="!canCreateComponent">Create component</button>
   </div>
 </template>
 ```
 
-## Praktische Beispiele
-
-### Menüeinträge sperren
+### Verfügbarkeit von Menüeinträgen
 
 ```ts
 const { canMoveToPage, canGoToMainComponent } = useSelectionCapabilities()
 ```
 
-### Zoom-Befehle nur aktivieren, wenn sinnvoll
+### Zoom to selection
 
 ```ts
 const { canZoomToSelection } = useSelectionCapabilities()
 ```
 
-## Verwandte APIs
+## Siehe auch
 
 - [useSelectionState](./use-selection-state)
 - [useEditorCommands](./use-editor-commands)

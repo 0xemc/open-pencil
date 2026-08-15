@@ -1,13 +1,13 @@
 ---
 title: useVariablesTable
-description: TanStack Table-Spaltendefinitionen für OpenPencil-Variablen-UIs erstellen.
+description: Column definitions für eine Variables table mit TanStack Table.
 ---
 
 # useVariablesTable
 
-`useVariablesTable(options)` gibt reaktive TanStack Table-Spaltendefinitionen für Variablen-Editoren zurück.
+`useVariablesTable(options)` gibt reaktive Column definitions für die Variables table zurück.
 
-Verwenden Sie es, wenn Sie das SDK-Variablen-Tabellen-Verhalten möchten, aber Ihre eigene Tabelleninstanz, benutzerdefinierte Symbole oder app-spezifische Shell-Komponenten bereitstellen müssen.
+Das composable verwenden, wenn das Verhalten des SDK benötigt wird, Table instance, Icons oder Components jedoch selbst bereitgestellt werden.
 
 ## Verwendung
 
@@ -19,10 +19,9 @@ const { columns } = useVariablesTable(options)
 
 ## Hinweise
 
-- dies ist ein spezialisiertes Integrations-Hilfsmittel für tabellengesteuerte Variablen-UIs
-- die meisten Nutzer sollten mit `useVariablesEditor()` beginnen, außer sie benötigen feinere Kontrolle
+Für die meisten Anwendungen ist `useVariablesEditor()` der bequemere Einstieg. `useVariablesTable()` bietet direkte Kontrolle über die Konfiguration der Tabelle.
 
-## Verwandte APIs
+## Siehe auch
 
 - [useVariablesEditor](../composables/use-variables-editor)
 - [useVariables](./use-variables)

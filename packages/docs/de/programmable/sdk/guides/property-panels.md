@@ -1,18 +1,17 @@
 ---
-title: Eigenschafts-Panels
-description: Eigenschafts-Panels mit Steuerelemente-Composables und headless Listen-Primitiven erstellen.
+title: Properties-Panels
+description: Properties-Panels mit composables und headless list components entwickeln.
 ---
 
-# Eigenschafts-Panels
+# Properties-Panels
 
-Eigenschafts-Panels in `@open-pencil/vue` sind bewusst composable-first gestaltet.
+`@open-pencil/vue` stellt für Properties-Panels vor allem composables bereit.
 
-Wenn ein Panel hauptsächlich auswahlabgeleitete Werte und Aktualisierungsaktionen benötigt, bevorzugen Sie Composables.
-Wenn ein Panel wiederverwendbare Array/Listen-Struktur benötigt, verwenden Sie ein headless Primitiv wie `PropertyListRoot`.
+Benötigt ein Panel aus der Selection berechnete Values und Actions zur Aktualisierung, ist ein composable die passende Grundlage. Für wiederverwendbare Array- oder List structures eignet sich ein headless component wie `PropertyListRoot`.
 
-## Häufige Steuerelemente-Composables
+## Composables
 
-Für Standard-Eigenschaftsbereiche beginnen Sie mit:
+Für gewöhnliche Properties sections:
 
 - `usePosition()`
 - `useLayout()`
@@ -20,13 +19,25 @@ Für Standard-Eigenschaftsbereiche beginnen Sie mit:
 - `useTypography()`
 - `useExport()`
 
-Für listenbasierte Panels verwenden Sie:
+Für Array properties:
 
 - `useFillControls()`
 - `useStrokeControls()`
 - `useEffectsControls()`
 
-## Beispiel: Positions-Panel
+## Variable bindings
+
+Kann ein Feld an eine Variable oder ein externes Design token gebunden werden, sollte es in `BindableValueRoot` liegen.
+
+- Im nicht editierten Zustand den Namen der Variable anzeigen; der berechnete Wert kann beispielsweise in einem Tooltip stehen.
+- Focus oder das Öffnen des Variable picker darf ein bestehendes Binding nicht entfernen.
+- `detach-on-edit`, `readonly-when-bound` oder `edit-variable` erst bei einer tatsächlichen Änderung anwenden.
+- Eine ausdrückliche Action zum Entfernen des Binding gehört besser in den Picker als in einen leicht versehentlich auslösbaren Button neben dem Feld.
+- Binding change, Detach während der Bearbeitung und Multi-selection updates in einer Provider batch operation zusammenfassen.
+
+Die OpenPencil-App zeigt den Variablennamen im Ruhezustand violett an. Sobald die Bearbeitung beginnt, zeigt `NumberField` den berechneten numerischen Wert. Eine eigene Oberfläche kann denselben headless state anders darstellen.
+
+## Beispiel: Position und Size
 
 ```vue
 <script setup lang="ts">
@@ -45,33 +56,45 @@ const { x, y, width, height, updateProp, commitProp } = usePosition()
 </template>
 ```
 
-## Beispiel: Füllungen-Panel
+## Beispiel: Fills
 
 ```vue
 <script setup lang="ts">
-import { PropertyListRoot, useFillControls } from '@open-pencil/vue'
+import {
+  PropertyListRoot,
+  useEditorPropertyList,
+  useFillControls
+} from '@open-pencil/vue'
 
 const fillControls = useFillControls()
+const fills = useEditorPropertyList('fills')
 </script>
 
 <template>
-  <PropertyListRoot prop-key="fills" v-slot="{ items, add, remove }">
+  <PropertyListRoot
+    prop-key="fills"
+    :items="fills.items.value"
+    :mixed="fills.isMixed.value"
+    @add="fills.actions.add"
+    @remove="fills.actions.remove"
+    v-slot="{ items, actions }"
+  >
     <div v-for="(fill, index) in items" :key="index">
       {{ fill.type }}
-      <button @click="remove(index)">Entfernen</button>
+      <button @click="actions.remove(index)">Entfernen</button>
     </div>
 
-    <button @click="add(fillControls.defaultFill)">Füllung hinzufügen</button>
+    <button @click="actions.add(fillControls.defaultFill)">Fill hinzufügen</button>
   </PropertyListRoot>
 </template>
 ```
 
-## Faustregel
+## Auswahl des API
 
-- Composables für direkte Kontrolllogik verwenden
-- strukturelle Primitive verwenden, wenn wiederholte Listen/Baum/Slot-Koordination der schwierige Teil ist
+- Composables für State und Actions verwenden.
+- Headless structural components einsetzen, wenn die Koordination wiederkehrender Lists, Trees oder Slots im Mittelpunkt steht.
 
-## Verwandte APIs
+## Siehe auch
 
 - [usePosition](../api/composables/use-position)
 - [useLayout](../api/composables/use-layout)

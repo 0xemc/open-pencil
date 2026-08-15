@@ -1,73 +1,73 @@
 ---
 title: Kontextmenü
-description: Rechtsklick-Kontextmenü-Aktionen in OpenPencil — Zwischenablage, Z-Reihenfolge, Gruppierung, Komponenten und mehr.
+description: Aktionen für Clipboard, Reihenfolge, Groups, Components, Visibility und Pages.
 ---
 
 # Kontextmenü
 
-Rechtsklicken Sie auf dem Canvas, um das Kontextmenü zu öffnen. Bei Rechtsklick auf einen Knoten wird dieser zuerst ausgewählt. Rechtsklick auf leeren Canvas hebt die Auswahl auf.
+Right-click auf dem Canvas öffnet das Kontextmenü. Wird ein Objekt angeklickt, wählt OpenPencil es vorher aus. Right-click auf eine freie Stelle hebt die Selection auf.
 
-## Als kopieren
+## Copy as
 
-Das Untermenü **Als kopieren** bietet folgende Zwischenablage-Formate:
+Das Submenu **Copy as** schreibt die Selection in verschiedenen Formaten in das Clipboard:
 
-| Aktion | Kürzel (Mac) | Kürzel (Win/Linux) |
-|--------|--------------|---------------------|
-| Als Text kopieren | — | — |
-| Als SVG kopieren | — | — |
-| Als PNG kopieren | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + C |
-| Als JSX kopieren | — | — |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Copy as text | — | — |
+| Copy as SVG | — | — |
+| Copy as PNG | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd><kbd>Strg</kbd><kbd>C</kbd> |
+| Copy as JSX | — | — |
 
-## Zwischenablage
+## Clipboard
 
-| Aktion | Kürzel (Mac) | Kürzel (Win/Linux) |
-|--------|--------------|---------------------|
-| Kopieren | <kbd>⌘</kbd><kbd>C</kbd> | Strg + C |
-| Ausschneiden | <kbd>⌘</kbd><kbd>X</kbd> | Strg + X |
-| Hier einfügen | <kbd>⌘</kbd><kbd>V</kbd> | Strg + V |
-| Duplizieren | <kbd>⌘</kbd><kbd>D</kbd> | Strg + D |
-| Löschen | <kbd>⌫</kbd> | <kbd>Rücktaste</kbd> / <kbd>Entf</kbd> |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Copy | <kbd>⌘</kbd><kbd>C</kbd> | <kbd>Strg</kbd><kbd>C</kbd> |
+| Cut | <kbd>⌘</kbd><kbd>X</kbd> | <kbd>Strg</kbd><kbd>X</kbd> |
+| Paste here | <kbd>⌘</kbd><kbd>V</kbd> | <kbd>Strg</kbd><kbd>V</kbd> |
+| Duplicate | <kbd>⌘</kbd><kbd>D</kbd> | <kbd>Strg</kbd><kbd>D</kbd> |
+| Delete | <kbd>⌫</kbd> | Backspace/<kbd>Entf</kbd> |
 
-## Z-Reihenfolge
+## Reihenfolge
 
-| Aktion | Kürzel |
-|--------|--------|
-| Nach vorne bringen | ] |
-| Nach hinten senden | [ |
+| Aktion | Shortcut |
+|--------|----------|
+| Bring to front | ] |
+| Send to back | [ |
 
-## Gruppierung
+## Groups und Auto Layout
 
-| Aktion | Kürzel (Mac) | Kürzel (Win/Linux) |
-|--------|--------------|---------------------|
-| Gruppieren | <kbd>⌘</kbd><kbd>G</kbd> | Strg + G |
-| Entgruppieren | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + G |
-| Auto-Layout hinzufügen | <kbd>⇧</kbd><kbd>A</kbd> | <kbd>Shift</kbd> + <kbd>A</kbd> |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Group | <kbd>⌘</kbd><kbd>G</kbd> | <kbd>Strg</kbd><kbd>G</kbd> |
+| Ungroup | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd> | <kbd>Shift</kbd><kbd>Strg</kbd><kbd>G</kbd> |
+| Add Auto Layout | <kbd>⇧</kbd><kbd>A</kbd> | <kbd>Shift</kbd><kbd>A</kbd> |
 
-## Komponenten-Aktionen
+## Components
 
-Komponenten-Aktionen werden in Lila dargestellt.
+Component actions werden violett dargestellt.
 
-| Aktion | Kürzel (Mac) | Kürzel (Win/Linux) | Verfügbar bei |
-|--------|--------------|---------------------|---------------|
-| Komponente erstellen | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd> | Strg + <kbd>Alt</kbd> + <kbd>K</kbd> | Frames, Gruppen |
-| Komponenten-Set erstellen | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + K | 2+ Komponenten |
-| Instanz erstellen | — | — | Komponenten |
-| Zur Hauptkomponente | — | — | Instanzen |
-| Instanz lösen | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> | Strg + <kbd>Alt</kbd> + <kbd>B</kbd> | Instanzen |
+| Aktion | macOS | Windows / Linux | Verfügbar für |
+|--------|-------|-----------------|---------------|
+| Create component | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Strg</kbd><kbd>Alt</kbd><kbd>K</kbd> | Frames und Groups |
+| Create component set | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Shift</kbd><kbd>Strg</kbd><kbd>K</kbd> | Mindestens zwei Components |
+| Create instance | — | — | Components |
+| Go to main component | — | — | Instances |
+| Detach instance | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> | <kbd>Strg</kbd><kbd>Alt</kbd><kbd>B</kbd> | Instances |
 
-## Sichtbarkeit & Sperre
+## Visibility und Lock
 
-| Aktion | Kürzel (Mac) | Kürzel (Win/Linux) |
-|--------|--------------|---------------------|
-| Ausblenden / Einblenden | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + H |
-| Sperren / Entsperren | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd> | <kbd>Shift</kbd> + <kbd>Strg</kbd> + L |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Hide / Show | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd> | <kbd>Shift</kbd><kbd>Strg</kbd><kbd>H</kbd> |
+| Lock / Unlock | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd> | <kbd>Shift</kbd><kbd>Strg</kbd><kbd>L</kbd> |
 
-## Auf Seite verschieben
+## Move to page
 
-Das Untermenü **Auf Seite verschieben** listet alle Seiten außer der aktuellen auf.
+Das Submenu **Move to page** enthält alle Pages außer der aktuellen.
 
-## Tipps
+## Hinweise
 
-- Rechtsklick auf leeren Canvas gibt Zugriff auf Einfügen.
-- Komponenten-Aktionen erscheinen nur bei relevanter Auswahl.
-- Das Kontextmenü spiegelt die Tastenkürzel wider — gut zum Entdecken neuer Kürzel.
+- Right-click auf eine freie Canvas-Fläche bietet Paste an.
+- Component actions erscheinen nur, wenn sie für die Selection verfügbar sind.
+- Das Menü zeigt die zugehörigen Shortcuts und eignet sich deshalb auch zum Kennenlernen der Tastaturbefehle.

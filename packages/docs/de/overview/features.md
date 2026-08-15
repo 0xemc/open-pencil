@@ -1,79 +1,79 @@
 # Funktionen
 
-## Figma .fig-Dateien
+## Figma-Dateien
 
-Öffnen und speichern Sie native Figma-Dateien direkt. Die Import/Export-Pipeline verwendet denselben Kiwi-Binär-Codec wie Figma — 194 Schema-Definitionen, ~390 Felder pro Knoten. Speichern mit <kbd>⌘</kbd><kbd>S</kbd>, Speichern unter mit <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
+OpenPencil öffnet und speichert `.fig`-Dateien direkt. Import und Export verwenden wie Figma den Kiwi-Binärcodec mit 194 Schemadefinitionen und rund 390 Feldern pro Node. Speichern: <kbd>⌘</kbd><kbd>S</kbd>, Save As: <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>.
 
-**Kopieren & Einfügen mit Figma** — Knoten in Figma auswählen, <kbd>⌘</kbd><kbd>C</kbd>, zu OpenPencil wechseln, <kbd>⌘</kbd><kbd>V</kbd>. Füllungen, Konturen, Auto-Layout, Text, Effekte, Eckenradien und Vektornetzwerke bleiben erhalten. Funktioniert in beide Richtungen.
+**Copy und Paste mit Figma:** Nodes in Figma auswählen, <kbd>⌘</kbd><kbd>C</kbd> drücken, zu OpenPencil wechseln und mit <kbd>⌘</kbd><kbd>V</kbd> einfügen. Fills, Strokes, Auto Layout, Text, Effects, Corner radii und Vector networks bleiben in beiden Richtungen erhalten.
 
-## Zeichnen & Bearbeiten
+## Zeichnen und Bearbeiten
 
-- **Formen** — Rechteck (<kbd>R</kbd>), Ellipse (<kbd>O</kbd>), Linie (<kbd>L</kbd>), Polygon, Stern
-- **Stiftwerkzeug** — Vektornetzwerke (keine einfachen Pfade), Bézier-Kurven mit Tangentengriffen
-- **Text** — Canvas-native Bearbeitung mit IME-Unterstützung, Doppelklick zum Betreten des Bearbeitungsmodus
-- **Rich Text** — Zeichenweise Fett (<kbd>⌘</kbd><kbd>B</kbd>), Kursiv (<kbd>⌘</kbd><kbd>I</kbd>), Unterstrichen (<kbd>⌘</kbd><kbd>U</kbd>), Durchgestrichen
-- **Auto-Layout** — Flexbox via Yoga WASM: Richtung, Abstand, Polsterung, Ausrichtung, Kindgröße. <kbd>⇧</kbd><kbd>A</kbd> zum Umschalten
-- **Komponenten** — Erstellen (<kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd>), Component Sets (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd>), Instanzen mit Override-Unterstützung, Live-Synchronisation
-- **Variablen** — Design-Tokens mit Sammlungen, Modi (Hell/Dunkel), Farb-/Float-/String-/Boolean-Typen, Variablenbindung
-- **Sektionen** — Organisatorische Container mit automatischer Kindübernahme und Titel-Pills
+- **Shapes:** Rectangle (<kbd>R</kbd>), Ellipse (<kbd>O</kbd>), Line (<kbd>L</kbd>), Polygon und Star
+- **Pen tool:** Vector networks statt einfacher Paths, Bezier curves mit Tangent handles
+- **Text:** Bearbeitung direkt auf dem Canvas, IME-Unterstützung und Double-click zum Wechsel in den Edit mode
+- **Rich text:** Bold (<kbd>⌘</kbd><kbd>B</kbd>), Italic (<kbd>⌘</kbd><kbd>I</kbd>), Underline (<kbd>⌘</kbd><kbd>U</kbd>) und Strikethrough für einzelne Zeichenbereiche
+- **Auto Layout:** Flexbox und CSS Grid über Yoga WASM mit Direction, Gap, Padding, Justify, Align, Child sizing und Grid tracks; <kbd>⇧</kbd><kbd>A</kbd> schaltet Auto Layout um
+- **Components:** Erstellen mit <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd>, Component sets mit <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd>, Instances mit Overrides und Live-Synchronisierung
+- **Variables:** Design tokens mit Collections, Modes wie Light und Dark, den Types Color, Float, String und Boolean sowie Variable bindings
+- **Sections:** Container zur Organisation mit automatischer Übernahme überlappender Children und Title pills
 
-## Eigenschafts-Panel
+## Properties-Panel
 
-Kontextsensitive Design | Code | KI-Tabs:
+Die Tabs Design, Code und AI passen sich der aktuellen Auswahl an:
 
-- **Darstellung** — Deckkraft, Eckenradius (einheitlich oder pro Ecke), Sichtbarkeit
-- **Füllung** — Vollfarbe, Verlauf (Linear/Radial/Angular/Diamant), Bild
-- **Kontur** — Farbe, Breite, Ausrichtung (Innen/Mitte/Außen), Pro-Seite-Breiten, Cap, Join, Dash
-- **Effekte** — Schlagschatten, Innerer Schatten, Ebenen-Unschärfe, Hintergrund-Unschärfe, Vordergrund-Unschärfe
-- **Typografie** — Schriftart-Auswahl mit virtuellem Scrollen und Suche, Gewicht, Größe, Ausrichtung, Stil-Buttons
-- **Layout** — Auto-Layout-Steuerungen (wenn aktiviert)
-- **Export** — Skalierung, Format (PNG/JPG/WEBP/SVG), Live-Vorschau
+- **Appearance:** Opacity, einheitlicher oder separater Corner radius und Visibility
+- **Fill:** Solid color, Linear/Radial/Angular/Diamond gradient und Image
+- **Stroke:** Color, Weight, Alignment, separate Weights pro Seite, Cap, Join und Dash
+- **Effects:** Drop shadow, Inner shadow, Layer blur, Background blur und Foreground blur
+- **Typography:** Font picker mit Virtual scrolling und Suche, Style, Size, Alignment und Formatting
+- **Layout:** Auto-Layout-Einstellungen, sobald Auto Layout aktiv ist
+- **Export:** Scale, PNG/JPG/WEBP/SVG und Live preview
 
 ## Rendering
 
-Skia (CanvasKit WASM) — dieselbe Rendering-Engine wie Figma:
+Skia über CanvasKit WASM ist dieselbe Rendering Engine, die auch Figma verwendet. OpenPencil unterstützt unter anderem:
 
-- Verlaufsfüllungen (Linear, Radial, Angular, Diamant)
-- Bildfüllungen mit Skalierungsmodi
-- Effekte mit Pro-Knoten-Caching
-- Bogendaten (partielle Ellipsen, Donuts)
-- Viewport-Culling und Paint-Wiederverwendung
-- Fanglinien mit rotationsbewusster Ausrichtung
-- Canvas-Lineale mit Auswahl-Badges
-- Hover-Hervorhebung entlang der tatsächlichen Geometrie
+- Linear, Radial, Angular und Diamond gradients;
+- Image fills mit verschiedenen Scale modes;
+- Effects mit Cache pro Node;
+- Arcs, partielle Ellipsen und Rings;
+- Viewport culling und Wiederverwendung von Paint objects;
+- Snap guides, die Rotation berücksichtigen;
+- Rulers mit Markierung des Selection-Bereichs;
+- Hover highlights entlang der tatsächlichen Geometrie.
 
-## Rückgängig/Wiederherstellen
+## Undo und Redo
 
-Jede Operation ist rückgängig machbar — Erstellen, Löschen, Verschieben, Größenänderungen, Eigenschaftsänderungen, Umordnung, Layout-Änderungen, Variablen-Operationen. Verwendet ein Inverse-Command-Muster. <kbd>⌘</kbd><kbd>Z</kbd> / <kbd>⇧</kbd><kbd>⌘</kbd><kbd>Z</kbd>.
+Erstellen, Löschen, Verschieben, Resize, Property changes, Reparenting, Layout und Variable operations lassen sich rückgängig machen. OpenPencil speichert dafür inverse Commands. Shortcuts: <kbd>⌘</kbd><kbd>Z</kbd> und <kbd>⇧</kbd><kbd>⌘</kbd><kbd>Z</kbd>.
 
-## Mehrseitige Dokumente
+## Dokumente mit mehreren Seiten
 
-Seiten hinzufügen, löschen, umbenennen. Jede Seite hat einen unabhängigen Viewport-Zustand. Doppelklick zum Inline-Umbenennen.
+Seiten lassen sich hinzufügen, löschen und umbenennen. Jede Seite besitzt einen eigenen Viewport state. Ein Double-click startet die direkte Umbenennung.
 
-## Multi-Datei-Tabs
+## Mehrere Dateien
 
-Mehrere Dokumente in Tabs öffnen. <kbd>⌘</kbd><kbd>T</kbd> neuer Tab, <kbd>⌘</kbd><kbd>W</kbd> schließen, <kbd>⌘</kbd><kbd>O</kbd> Datei öffnen.
+Mehrere Dokumente können gleichzeitig in Tabs geöffnet werden. <kbd>⌘</kbd><kbd>T</kbd> erstellt einen Tab, <kbd>⌘</kbd><kbd>W</kbd> schließt ihn und <kbd>⌘</kbd><kbd>O</kbd> öffnet eine Datei.
 
 ## Export
 
-- **Bild** — PNG, JPG, WEBP in konfigurierbarer Skalierung (0,5×–4×). Über Panel, Kontextmenü oder <kbd>⇧</kbd><kbd>⌘</kbd><kbd>E</kbd>
-- **SVG** — Formen, Text mit Stil-Runs, Verläufe, Effekte, Mischmodi
-- **Tailwind JSX** — HTML mit Tailwind v4 Utility-Klassen, bereit für React oder Vue
-- **Als kopieren** — Text, SVG, PNG (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd>) oder JSX über das Kontextmenü
+- **Bilder:** PNG, JPG und WEBP mit einer Scale von 0,5× bis 4× über Panel, Kontextmenü oder <kbd>⇧</kbd><kbd>⌘</kbd><kbd>E</kbd>
+- **SVG:** Shapes, Text mit Style runs, Gradients, Effects und Blend modes
+- **Tailwind JSX:** HTML mit Tailwind-v4-Utility-Classes für React oder Vue
+- **Copy as:** Text, SVG, PNG mit <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> oder JSX über das Kontextmenü
 
 CLI: `openpencil export design.fig -f jsx --style tailwind`
 
-## KI-Chat
+## AI Chat
 
-<kbd>⌘</kbd><kbd>J</kbd> öffnet den KI-Assistenten. 90+ Werkzeuge zum Erstellen von Formen, Setzen von Stilen, Verwalten von Layout, Arbeiten mit Komponenten und Variablen, Ausführen boolescher Operationen, Analysieren von Design-Tokens und Exportieren von Assets. Verbinden Sie Anthropic, OpenAI, Google AI, OpenRouter oder einen kompatiblen Endpunkt.
+<kbd>⌘</kbd><kbd>J</kbd> öffnet den AI Assistant. Mehr als 90 Tools erstellen Shapes, ändern Styles, verwalten Layouts, bearbeiten Components und Variables, führen Boolean operations aus, analysieren Design tokens und exportieren Assets. Unterstützt werden Anthropic, OpenAI, Google AI, OpenRouter und kompatible Endpoints.
 
-Tool-Aufrufe werden als einklappbare Timeline-Einträge angezeigt. Visuelle Überprüfung — der Assistent rendert seine Arbeit und vergleicht sie mit Ihrer Anfrage. Vollständige Undo-Unterstützung für alle KI-Mutationen.
+Tool calls erscheinen als einklappbare Einträge in einer Timeline. Zur visuellen Prüfung rendert der Assistant seine Änderungen und vergleicht das Ergebnis mit der Anfrage. Sämtliche Änderungen durch AI unterstützen Undo.
 
-Siehe [KI-Chat](/programmable/ai-chat) für Einrichtung und Anbieter-Details.
+Einrichtung und Provider: [AI Chat](/programmable/ai-chat).
 
 ## MCP-Server
 
-Claude Code, Cursor, Windsurf oder jeden MCP-Client verbinden, um `.fig`-Dateien headless zu lesen und zu schreiben. 90+ Werkzeuge. Zwei Transporte: stdio und HTTP.
+Claude Code, Cursor, Windsurf und andere MCP-Clients können `.fig`-Dateien mit mehr als 90 Tools headless lesen und verändern. Als Transport stehen stdio und HTTP zur Verfügung.
 
 ```sh
 npm install -g @open-pencil/mcp
@@ -89,45 +89,45 @@ npm install -g @open-pencil/mcp
 }
 ```
 
-Siehe [MCP-Tools-Referenz](/programmable/mcp-server) für die vollständige Werkzeugliste.
+Die vollständige Liste enthält die [MCP-Tools-Referenz](/programmable/mcp-server).
 
 ## CLI
 
-`.fig`-Dateien vom Terminal aus inspizieren, exportieren und analysieren:
+`.fig`-Dateien lassen sich im Terminal untersuchen, exportieren und analysieren:
 
 ```sh
-openpencil tree design.fig          # Knotenbaum
-openpencil find design.fig --type TEXT  # Suche
-openpencil export design.fig -f png     # Rendern
-openpencil analyze colors design.fig    # Farbanalyse
-openpencil analyze clusters design.fig  # Wiederholte Muster
+openpencil tree design.fig              # Node tree
+openpencil find design.fig --type TEXT  # Search
+openpencil export design.fig -f png     # Render
+openpencil analyze colors design.fig    # Color audit
+openpencil analyze clusters design.fig  # Repeated patterns
 openpencil eval design.fig -c "..."     # Figma Plugin API
 ```
 
-Wenn die Desktop-App läuft, kann die Datei weggelassen werden, um den Live-Editor via RPC zu steuern:
+Wenn die Desktop-App läuft, kann der Dateiname entfallen. Der Befehl steuert dann den geöffneten Editor über RPC:
 
 ```sh
-openpencil tree                     # Live-Dokument
-openpencil export -f png            # Canvas-Screenshot
+openpencil tree                     # Live document
+openpencil export -f png            # Screenshot canvas
 ```
 
-Alle Befehle unterstützen `--json`. Installation: `npm install -g @open-pencil/cli`
+Alle Befehle unterstützen `--json`. Installation: `npm install -g @open-pencil/cli` oder `bun add -g @open-pencil/cli`.
 
-## Echtzeit-Kollaboration
+## Zusammenarbeit in Echtzeit
 
-P2P via WebRTC — kein Server erforderlich. Link teilen und gemeinsam bearbeiten.
+Die Zusammenarbeit erfolgt P2P über WebRTC und benötigt keinen Server. Ein Link genügt, um gemeinsam zu bearbeiten.
 
-- Live-Cursor mit farbigen Pfeilen und Namens-Pills
-- Präsenz-Avatare
-- Folgemodus — auf einen Peer klicken, um seinem Viewport zu folgen
-- Lokale Persistenz via IndexedDB
-- Sichere Raum-IDs via `crypto.getRandomValues()`
+- Live cursors mit farbigen Pfeilen und Namen
+- Presence avatars
+- Follow mode zum Verfolgen des Viewport eines anderen Teilnehmers
+- Lokale Speicherung in IndexedDB
+- Kryptografisch sichere Room IDs über `crypto.getRandomValues()`
 
-## Desktop & Web
+## Desktop und Web
 
-**Desktop** — Tauri v2, ~7 MB. macOS (signiert & notarisiert), Windows, Linux. Native Menüs, Offline-Betrieb, automatisches Speichern.
+**Desktop:** Tauri v2, rund 7 MB, verfügbar für macOS, Windows und Linux. Die macOS-App ist signiert und notarisiert. Native Menüs, Offlinebetrieb und Autosave sind integriert.
 
-**Web** — läuft unter [app.openpencil.dev](https://app.openpencil.dev), als PWA auf Mobilgeräten installierbar mit touch-optimierter Oberfläche.
+**Web:** [app.openpencil.dev](https://app.openpencil.dev) läuft im Browser und kann auf Mobilgeräten als PWA mit touchoptimierter Oberfläche installiert werden.
 
 **Homebrew:**
 
@@ -135,6 +135,6 @@ P2P via WebRTC — kein Server erforderlich. Link teilen und gemeinsam bearbeite
 brew install open-pencil/tap/open-pencil
 ```
 
-## Google Fonts Fallback
+## Google-Fonts-Fallback
 
-Wenn eine Schriftart lokal nicht verfügbar ist, lädt OpenPencil sie automatisch von Google Fonts. Keine manuelle Installation nötig beim Öffnen von .fig-Dateien mit unbekannten Schriften.
+Ist ein Font nicht lokal verfügbar, lädt OpenPencil ihn automatisch von Google Fonts. Beim Öffnen einer `.fig`-Datei mit unbekannten Fonts ist keine manuelle Installation erforderlich.

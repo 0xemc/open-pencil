@@ -1,73 +1,73 @@
 ---
-title: Ebenen & Seiten
-description: Ebenen, Seiten und das Eigenschaftspanel in OpenPencil verwalten.
+title: Layers und Pages
+description: Layers, Pages und das Properties-Panel in OpenPencil verwenden.
 ---
 
-# Ebenen & Seiten
+# Layers und Pages
 
-Die Editor-Oberfläche hat drei Hauptpanels: Ebenen (links), Canvas (Mitte) und Eigenschaften (rechts). Alle Panels sind durch Ziehen der Trennlinien skalierbar.
+Die Editoroberfläche besteht aus dem Layers-Panel links, dem Canvas in der Mitte und dem Properties-Panel rechts. Die Breite der Seitenpanels lässt sich an den Trennlinien ändern.
 
-## Ebenenpanel
+## Layers-Panel
 
-Das Ebenenpanel links zeigt die Dokumenthierarchie als Baum.
+Das Layers-Panel zeigt die Hierarchie des Dokuments als Tree.
 
-### Baumansicht
+### Hierarchie
 
-Knoten werden in einem zusammenklappbaren Baum angezeigt. Klicken Sie auf den Pfeil neben einem Frame, einer Gruppe oder Komponente, um Kinder ein- oder auszuklappen.
+Frames, Groups und Components können über den Pfeil neben ihrem Namen auf- und zugeklappt werden. Darunter erscheinen ihre Children.
 
-### Ziehen zum Umordnen
+### Reihenfolge und Parent ändern
 
-Ziehen Sie Ebenen, um sie umzuordnen. Ebenen weiter oben in der Liste werden über den anderen gerendert.
+Eine Layer kann per Drag an eine andere Position verschoben oder in einen anderen Container gelegt werden. Weiter oben aufgeführte Layers werden vor den darunterliegenden gerendert.
 
-### Sichtbarkeit umschalten
+### Visibility
 
-Klicken Sie auf das Auge-Symbol neben einer Ebene, um sie auf dem Canvas ein- oder auszublenden.
+Das Eye icon neben einer Layer schaltet ihre Sichtbarkeit auf dem Canvas um.
 
-### Umbenennen
+### Name ändern
 
-Doppelklicken Sie auf einen Ebenennamen, um ihn inline umzubenennen. <kbd>Enter</kbd> oder Klick außerhalb bestätigt, <kbd>Escape</kbd> bricht ab.
+Double-click auf einen Layer name aktiviert ein Textfeld. <kbd>Enter</kbd> oder Click außerhalb übernimmt den Namen, <kbd>Escape</kbd> verwirft die Änderung.
 
-### Auswahl-Synchronisation
+### Selection
 
-Klicken auf eine Ebene wählt den entsprechenden Knoten auf dem Canvas aus, und umgekehrt.
+Click auf eine Layer wählt das entsprechende Objekt auf dem Canvas. Eine Selection auf dem Canvas wird umgekehrt auch im Tree markiert.
 
-## Seitenpanel
+## Pages
 
-Das Seitenpanel zeigt alle Seiten im Dokument.
+Das Pages-Panel listet alle Seiten des Dokuments auf.
 
-- **Seite wechseln** — klicken Sie auf einen Seitenreiter
-- **Seite hinzufügen** — klicken Sie auf die Hinzufügen-Schaltfläche
-- **Seite löschen** — aktuelle Seite entfernen
-- **Seite umbenennen** — Doppelklick auf den Seitennamen
+- Click auf eine Seite wechselt dorthin.
+- Der Add button erstellt eine Seite.
+- Delete entfernt die aktuelle Seite.
+- Double-click auf den Seitennamen startet die Umbenennung.
 
-Jede Seite hat ihren eigenen Canvas und Viewport-Zustand.
+Jede Seite besitzt einen eigenen Canvas background und Viewport state.
 
-## Eigenschaftspanel
+## Properties-Panel
 
-Das Eigenschaftspanel rechts hat drei Tabs:
+Das rechte Panel enthält drei Tabs.
 
-### Design-Tab
+### Design
 
-Zeigt die Eigenschaften des/der ausgewählten Knoten, organisiert in Abschnitte:
+Properties der aktuellen Selection, gegliedert in:
 
-- **Darstellung** — Deckkraft, Eckenradius, Sichtbarkeit
-- **Füllung** — Vollfarbe, Verläufe, Bildfüllungen, Variablenbindungen
-- **Kontur** — Farbe, Breite, Kappe, Verbindung, Strichmuster
-- **Effekte** — Schlagschatten, innerer Schatten, Unschärfen
-- **Typografie** — Schriftfamilie, Größe, Gewicht, B/I/U/S-Buttons
-- **Layout** — [Auto-Layout](./auto-layout)-Steuerungen
-- **Export** — Skalierung, Format und Export-Button
+- **Appearance:** Opacity, Corner radius und Visibility;
+- **Fill:** Solid colors, Gradients, Images und Variable bindings;
+- **Stroke:** Color, Weight, Alignment, Cap, Join und Dash;
+- **Effects:** Drop shadow, Inner shadow und Blur;
+- **Typography:** Font family, Style, Size und B/I/U/S buttons;
+- **Layout:** Einstellungen für [Auto Layout](./auto-layout);
+- **Export:** Scale, Format und Export action.
 
-### Code-Tab
+### Code
 
-Zeigt den ausgewählten Knoten als JSX-Code mit Syntaxhervorhebung.
+Zeigt die aktuelle Selection als JSX mit Syntax highlighting und bietet außerdem den Export als HTML mit Tailwind CSS v4.
 
-### KI-Tab
+### AI
 
-KI-Chat-Interface (auch mit <kbd>⌘</kbd><kbd>J</kbd> umschaltbar).
+Öffnet den AI Chat. Der Tab kann auch mit <kbd>⌘</kbd><kbd>J</kbd> beziehungsweise <kbd>Strg</kbd><kbd>J</kbd> umgeschaltet werden.
 
-## Tastenkürzel
+## Shortcut
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| KI-Chat umschalten | <kbd>⌘</kbd><kbd>J</kbd> | Strg + J |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| AI Chat umschalten | <kbd>⌘</kbd><kbd>J</kbd> | <kbd>Strg</kbd><kbd>J</kbd> |

@@ -1,13 +1,13 @@
 ---
 title: useViewportKind
-description: Grobe Mobile- und Desktop-Viewport-Flags für responsive Editor-Shells lesen.
+description: Reaktive Mobile- und Desktop-Flags für eine eigene Editor-Oberfläche.
 ---
 
 # useViewportKind
 
-`useViewportKind()` gibt einfache Responsive-Flags zurück, die von der OpenPencil-Editor-UI verwendet werden.
+`useViewportKind()` gibt eine vereinfachte Einordnung der aktuellen Viewport size zurück, wie sie von der responsive UI in OpenPencil verwendet wird.
 
-Verwenden Sie es, wenn Ihre Shell eine leichte Abstraktion über Breakpoints anstatt einer direkten `useBreakpoints()`-Verdrahtung benötigt.
+Das composable eignet sich, wenn nur zwischen Mobile und Desktop unterschieden werden muss und keine direkte Konfiguration von `useBreakpoints()` erforderlich ist.
 
 ## Verwendung
 
@@ -22,6 +22,6 @@ const { isMobile, isDesktop } = useViewportKind()
 - `isMobile`
 - `isDesktop`
 
-## Verwandte APIs
+## Siehe auch
 
 - [useCanvas](../composables/use-canvas)

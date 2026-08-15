@@ -1,15 +1,20 @@
 ---
 title: useNodeProps
-description: Niedrigstufen-Auswahl- und Mischwert-Hilfsmittel für Eigenschafts-Panels.
+description: Low-level API für Mixed values und Property changes an ausgewählten Objekten.
 ---
 
 # useNodeProps
 
-`useNodeProps()` ist das Niedrigstufen-Eigenschafts-Panel-Hilfsmittel hinter übergeordneten Composables wie `useAppearance`, `useLayout` und `useTypography`.
+`useNodeProps()` bildet die Grundlage für composables wie `useAppearance`, `useLayout` und `useTypography`.
 
-Verwenden Sie es, wenn Sie Mischwert-Erkennung, Mehrfachauswahl-Aktualisierungen, Array-Element-Bearbeitung oder undo-bewusste Eigenschafts-Commits benötigen.
+Das API direkt verwenden, wenn ein eigenes Panel benötigt:
 
-## Verwandte APIs
+- Erkennung von Mixed values;
+- Änderung einer Property an mehreren ausgewählten Objekten;
+- Bearbeitung von Array items;
+- Preview und Commit mit Undo support.
+
+## Siehe auch
 
 - [useAppearance](../composables/use-appearance)
 - [useLayout](../composables/use-layout)

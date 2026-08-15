@@ -1,15 +1,15 @@
 ---
 title: usePropertyList
-description: Primitiv-Kontext-Hilfsmittel für PropertyListRoot-Nachkommen.
+description: Auf den von PropertyListRoot bereitgestellten Context zugreifen.
 ---
 
 # usePropertyList
 
-`usePropertyList()` liest den lokalen Eigenschaftslisten-Kontext, der von `PropertyListRoot` bereitgestellt wird.
+`usePropertyList()` gibt den Context des nächsten `PropertyListRoot` zurück.
 
-Verwenden Sie es innerhalb von Nachkommen, die aktuelle Elemente, Mischzustands-Informationen oder Zeilen-Level-Handler für Füllungen, Konturen oder Effekte benötigen.
+Das composable wird in eigenen Child components verwendet, die Items, Mixed state oder Actions für Fills, Strokes und Effects benötigen.
 
-## Verwandte APIs
+## Siehe auch
 
 - [PropertyListRoot](../components/property-list-root)
 - [PropertyListItem](../components/property-list-item)

@@ -1,76 +1,78 @@
 ---
-title: Textbearbeitung
-description: Text erstellen und bearbeiten mit Rich-Formatierung, Schriften und Inline-Bearbeitung in OpenPencil.
+title: Text bearbeiten
+description: Text auf dem Canvas erstellen, auswählen und formatieren sowie Fonts verwalten.
 ---
 
-# Textbearbeitung
+# Text bearbeiten
 
-Erstellen Sie Textknoten und bearbeiten Sie sie direkt auf dem Canvas mit voller Rich-Text-Unterstützung.
+Text wird direkt auf dem Canvas erstellt und bearbeitet. Unterschiedliche Zeichenbereiche können eigene Styles besitzen.
 
 ## Text erstellen
 
-Drücken Sie <kbd>T</kbd>, um das Textwerkzeug zu aktivieren, dann klicken Sie auf den Canvas. Ein leerer Textknoten erscheint mit blinkendem Cursor — tippen Sie sofort los.
+<kbd>T</kbd> drücken und auf den Canvas klicken. OpenPencil erstellt ein leeres Text object und aktiviert sofort den Caret.
 
-## Inline-Bearbeitung
+## Edit mode
 
-Doppelklicken Sie auf einen vorhandenen Textknoten, um den Inline-Bearbeitungsmodus zu betreten. Ein blauer Umriss zeigt den Bearbeitungsmodus an. Klicken Sie außerhalb, um zu bestätigen.
+Ein vorhandenes Text object per Double-click öffnen. Ein blauer Outline kennzeichnet den Edit mode. Ein Click außerhalb beendet die Bearbeitung.
 
-## Cursor-Navigation
+## Caret bewegen
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Links/rechts | <kbd>←</kbd> / <kbd>→</kbd> | <kbd>←</kbd> / <kbd>→</kbd> |
-| Hoch/runter | <kbd>↑</kbd> / <kbd>↓</kbd> | <kbd>↑</kbd> / <kbd>↓</kbd> |
-| Wortweise | <kbd>⌥</kbd><kbd>←</kbd> / <kbd>⌥</kbd><kbd>→</kbd> | Strg + <kbd>←</kbd> / Strg + <kbd>→</kbd> |
-| Zeilenanfang/-ende | <kbd>⌘</kbd><kbd>←</kbd> / <kbd>⌘</kbd><kbd>→</kbd> | Pos1 / Ende |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Zeichenweise | <kbd>←</kbd>/<kbd>→</kbd> | <kbd>←</kbd>/<kbd>→</kbd> |
+| Zeilenweise | <kbd>↑</kbd>/<kbd>↓</kbd> | <kbd>↑</kbd>/<kbd>↓</kbd> |
+| Wortweise | <kbd>⌥</kbd><kbd>←</kbd>/<kbd>⌥</kbd><kbd>→</kbd> | <kbd>Strg</kbd><kbd>←</kbd>/<kbd>Strg</kbd><kbd>→</kbd> |
+| Zeilenanfang oder -ende | <kbd>⌘</kbd><kbd>←</kbd>/<kbd>⌘</kbd><kbd>→</kbd> | <kbd>Pos1</kbd>/<kbd>Ende</kbd> |
 
-Halten Sie <kbd>Shift</kbd> mit jeder Bewegungstaste, um die Auswahl zu erweitern.
+Mit <kbd>Shift</kbd> wird die Selection bei jeder Bewegung erweitert.
 
-## Textauswahl
+## Text auswählen
 
-- **Klicken** in einen Textknoten positioniert den Cursor
-- **Klicken + Ziehen** wählt einen Textbereich aus
-- **Doppelklick** auf ein Wort wählt es aus
-- **Dreifachklick** wählt den gesamten Text aus
+- Click positioniert den Caret;
+- Drag markiert einen Textbereich;
+- Double-click wählt ein Wort;
+- Triple-click wählt den gesamten Text.
 
-## Rich-Text-Formatierung
+## Formatting
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Fett | <kbd>⌘</kbd><kbd>B</kbd> | Strg + B |
-| Kursiv | <kbd>⌘</kbd><kbd>I</kbd> | Strg + I |
-| Unterstrichen | <kbd>⌘</kbd><kbd>U</kbd> | Strg + U |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Bold | <kbd>⌘</kbd><kbd>B</kbd> | <kbd>Strg</kbd><kbd>B</kbd> |
+| Italic | <kbd>⌘</kbd><kbd>I</kbd> | <kbd>Strg</kbd><kbd>I</kbd> |
+| Underline | <kbd>⌘</kbd><kbd>U</kbd> | <kbd>Strg</kbd><kbd>U</kbd> |
 
-Durchgestrichen ist über den **S**-Schalter im Typografie-Bereich verfügbar.
+Strikethrough ist über den Button **S** im Bereich Typography verfügbar.
 
-## Bearbeitungsoperationen
+## Bearbeitungsbefehle
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Wort vor Cursor löschen | <kbd>⌥</kbd><kbd>⌫</kbd> | Strg + Rücktaste |
-| Bis Zeilenanfang löschen | <kbd>⌘</kbd><kbd>⌫</kbd> | — |
-| Ausschneiden | <kbd>⌘</kbd><kbd>X</kbd> | Strg + X |
-| Kopieren | <kbd>⌘</kbd><kbd>C</kbd> | Strg + C |
-| Einfügen | <kbd>⌘</kbd><kbd>V</kbd> | Strg + V |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Vorheriges Wort löschen | <kbd>⌥</kbd><kbd>⌫</kbd> | <kbd>Strg</kbd> + Backspace |
+| Bis zum Zeilenanfang löschen | <kbd>⌘</kbd><kbd>⌫</kbd> | — |
+| Cut | <kbd>⌘</kbd><kbd>X</kbd> | <kbd>Strg</kbd><kbd>X</kbd> |
+| Copy | <kbd>⌘</kbd><kbd>C</kbd> | <kbd>Strg</kbd><kbd>C</kbd> |
+| Paste | <kbd>⌘</kbd><kbd>V</kbd> | <kbd>Strg</kbd><kbd>V</kbd> |
 
-## Schriftauswahl
+## Font picker
 
-Die Schriftauswahl im Typografie-Bereich bietet Suchfilter, Schriftvorschau und virtuelles Scrollen.
+Der Font picker im Bereich Typography unterstützt Suche, Preview und Virtual scrolling.
 
-## Schriftquellen
+## Font-Quellen
 
-- **Standardschrift** — Inter wird automatisch geladen
-- **Desktop** — Systemschriften sowie aktivierte Kataloge von Google Fonts, Fontsource, Bunny Fonts und Fontshare
-- **Browser** — Systemschriften werden in Chrome und Edge unterstützt; Online-Schriftkataloge benötigen die Desktop-App
-- **Heruntergeladene Schriften** — die Desktop-App speichert heruntergeladene Schriftschnitte zur erneuten Verwendung auf demselben Gerät
+- **Standard:** Inter wird automatisch geladen.
+- **Desktop:** System fonts sowie aktivierte Kataloge von Google Fonts, Fontsource, Bunny Fonts und Fontshare.
+- **Browser:** Chrome und Edge können System fonts verwenden; Online-Kataloge setzen die Desktop-App voraus.
+- **Heruntergeladene Fonts:** Die Desktop-App speichert geladene Font styles zur weiteren Verwendung auf demselben Gerät.
 
-## Fehlende Schriften und Ersetzungen
+## Fehlende Fonts
 
-Wenn eine angeforderte Familie oder ein Schriftschnitt nicht geladen werden kann, zeigt OpenPencil oberhalb des Editors eine Warnung an, statt die Ersatzdarstellung stillschweigend als originalgetreu zu behandeln.
+Kann eine angeforderte Font family oder ein Font style nicht geladen werden, zeigt OpenPencil oberhalb des Editors eine Warnung. Die Ersatzdarstellung wird nicht als originalgetreu ausgegeben.
 
-Klappe die Warnung auf, um alle betroffenen Schriftschnitte und ihre aktiven Ersetzungen zu sehen. Mit **Ebenen auswählen** findest du die betroffenen Textknoten; mit **Schriften erneut laden** kannst du nach Änderungen an Netzwerkzugriff, lokaler Schriftberechtigung oder Anbietereinstellungen einen neuen Versuch starten. Ein Schriftschnitt kann aus einem anderen geladenen Schnitt derselben Familie synthetisiert werden; eine fehlende Familie verwendet Inter als Ersatz, wenn verfügbar.
+Die aufgeklappte Warnung nennt alle betroffenen Font styles und deren aktuelle Fallbacks. **Layers auswählen** markiert die betreffenden Text objects. **Fonts neu laden** startet nach Änderungen an Netzwerk, lokalen Berechtigungen oder Provider settings einen weiteren Versuch.
 
-## Tipps
+Fehlt nur ein Style, kann OpenPencil ihn aus einem anderen geladenen Style derselben Family ableiten. Fehlt die gesamte Family, dient nach Möglichkeit Inter als Fallback.
 
-- IME-Eingabe (Chinesisch, Japanisch, Koreanisch) wird vollständig unterstützt.
-- Rich-Text-Formatierung bleibt bei .fig-Import/Export erhalten.
+## Hinweise
+
+- IME für Chinesisch, Japanisch und Koreanisch wird unterstützt.
+- Rich-text formatting bleibt beim Import und Export von `.fig`-Dateien erhalten.
