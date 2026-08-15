@@ -26,7 +26,13 @@ jobs:
         run: bun run format:check
 
       - name: Lint, typecheck, architecture, package, and tooling checks
-        run: bun run check
+        run: bun run check:repo && bun run check:app
+
+      - name: Check workspace packages
+        run: bun run check:workspaces
+
+      - name: Check package publication metadata and artifacts
+        run: bun run check:publishing
 
       - name: Build Storybook
         run: bun run build-storybook
@@ -40,7 +46,7 @@ jobs:
       - uses: ./.github/actions/setup-bun
 
       - name: Run Cloud PostgreSQL and SeaweedFS E2E
-        run: bun --filter @open-pencil/cloud test:e2e
+        run: bun run --filter @open-pencil/cloud test:e2e
 
   unit-tests:
     runs-on: ubuntu-latest
@@ -55,9 +61,6 @@ jobs:
       - uses: ./.github/actions/setup-bun
         with:
           lfs: 'true'
-
-      - name: Build packages
-        run: bun run build:packages
 
       - name: Run quick unit test shard
         shell: bash

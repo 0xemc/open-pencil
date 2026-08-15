@@ -70,7 +70,11 @@ App dialogs compose the Reka-backed components under `src/components/ui/dialog/`
 
 ## Commands
 
-- `bun run check` — type-aware lint + typecheck via oxlint + tsgo + architecture checks (run before committing)
+- `bun run check` — complete quality gate, composed from `check:repo`, `check:workspaces`, `check:publishing`, and `check:app`
+- `bun run check:repo` — repository lint, architecture, dependency, security, tool, and duplicate checks
+- `bun run check:workspaces` — package-owned typecheck, test, build, and smoke checks in dependency order
+- `bun run check:publishing` — publication metadata, publint, and package type-resolution checks (the legacy `check:packages` alias is retained)
+- `bun run check:app` — root application TypeScript and Vue typechecks
 - `bun run check:arch` — Steiger architecture lint for project-specific import boundaries
 - `bun run check:vue` — vue-tsc type-check for app and Vue SDK .vue files
 - `bun run test:dupes` — jscpd copy-paste detection across product TS sources
@@ -182,7 +186,7 @@ OpenPencil uses domain namespaces rather than full Feature-Sliced Design ceremon
 
 ### Repo tools and scripts
 
-Private repository tooling lives under `tools/<domain>/`, not as ad-hoc root scripts. Use kebab-case domain folders and split by capability inside `src/`:
+Private repository tooling lives under `tools/<domain>/`, not as ad-hoc root scripts. All `tools/*` packages are Bun workspaces and own their executable tasks through package scripts; root orchestration invokes those scripts with `bun run --filter`, never private `tools/<domain>/src/**` paths. Use kebab-case domain folders and split by capability inside `src/`:
 
 ```text
 tools/<domain>/
@@ -192,7 +196,7 @@ tools/<domain>/
   tests/<capability>.test.ts
 ```
 
-Use `scripts/` only for tiny compatibility entrypoint shims that import `../tools/<domain>/src/...`; do not put implementation logic there. Workflow helpers, release packaging helpers, architecture rules, package checks, visual-oracle utilities, and other maintainable programs belong in `tools/` with focused tests when they contain logic. Steiger enforces tool layout and script shims. `bun run check` includes `bun run test:tools` and package-specific Cloud tests, and lint/format cover `tools/`.
+Use `scripts/` only for tiny compatibility entrypoint shims that import `../tools/<domain>/src/...`; do not put implementation logic there. Workflow helpers, release packaging helpers, architecture rules, package checks, visual-oracle utilities, and other maintainable programs belong in `tools/` with focused tests when they contain logic. Steiger enforces tool layout and script shims. `bun run check` includes package-owned workspace checks and `bun run test:tools`; lint/format cover `tools/`.
 
 - `@/` import alias for app cross-directory imports; app feature code lives under `src/app/*`
 - Use package-local aliases inside workspace packages: `#vue/*` in `packages/vue`, `#cli/*` in `packages/cli`, `#cloud/*` in `packages/cloud`, `#dom-css/*` in `packages/dom-css`, `#mcp/*` in `packages/mcp`, and `#core/*` when core code needs an alias. Prefer relative imports within nearby core modules when that is clearer than an alias.
@@ -217,7 +221,7 @@ Use `scripts/` only for tiny compatibility entrypoint shims that import `../tool
 Before submitting a PR, run the full quality gate and do a self-review:
 
 ```sh
-bun run check          # oxlint + tsgo type-aware lint & typecheck — zero errors required
+bun run check          # Complete repo, workspace, publishing, and app quality gate — zero errors required
 bun run format         # oxfmt with import sorting
 bun run test:dupes     # jscpd — zero clones required
 bun run test:tools     # private repo tooling tests
