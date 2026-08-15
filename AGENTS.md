@@ -72,7 +72,7 @@ App dialogs compose the Reka-backed components under `src/components/ui/dialog/`
 
 - `bun run check` — complete quality gate, composed from `check:repo`, `check:workspaces`, `check:publishing`, and `check:app`
 - `bun run check:repo` — repository lint, architecture, dependency, security, tool, and duplicate checks
-- `bun run check:workspaces` — package-owned typecheck, test, build, and smoke checks in dependency order
+- `bun run check:workspaces` — package-owned typecheck, test, build, and smoke checks scheduled by Turborepo from workspace dependencies
 - `bun run check:publishing` — publication metadata, publint, and package type-resolution checks
 - `bun run check:app` — root application TypeScript and Vue typechecks
 - `bun run check:arch` — Steiger architecture lint for project-specific import boundaries
@@ -184,6 +184,8 @@ OpenPencil uses domain namespaces rather than full Feature-Sliced Design ceremon
 - Use subfolders for multi-file domains instead of sibling files with repeated prefixes. Prefer `selection/container.ts`, `selection/hit-test.ts` over `selection-container.ts`, `selection-hit-test.ts`. When adding a second file for a domain (e.g. `eval-wrap.ts` next to `eval.ts`), create the folder immediately (`eval/index.ts` + `eval/wrap.ts`) instead of prefixing. Oxlint catches sibling prefix files when a sibling folder exists; Steiger catches 3+ sibling files with the same prefix. The convention applies even before either rule triggers.
 
 ### Repo tools and scripts
+
+All product-package `build` and `check` tasks are scheduled through Turborepo using the dependency graph declared in workspace package manifests. Keep `turbo.json` limited to task relationships and execution policy; do not duplicate package names or dependency order in root scripts. Release publication lists remain explicit because they define the public release contract.
 
 Private repository tooling lives under `tools/<domain>/`, not as ad-hoc root scripts. All `tools/*` packages are Bun workspaces and own their executable tasks through package scripts; root orchestration invokes those scripts with `bun run --filter`, never private `tools/<domain>/src/**` paths. Use kebab-case domain folders and split by capability inside `src/`:
 
