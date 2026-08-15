@@ -36,6 +36,7 @@
     "check:audit": "bun audit --audit-level=critical",
     "check:audit:high": "bun audit --audit-level=high",
     "check:secrets": "bun tools/secret-scan/src/index.ts",
+    "check:cloud-policy": "docker run --rm -v \"$PWD:/src\" -w /src semgrep/semgrep:1.153.0 semgrep --no-git-ignore --config tools/security/semgrep/cloud.yml --error --metrics=off packages/cloud/src src/app/collab src/app/integrations/storage/cloud",
     "check:monorepo": "sherif --ignore-rule root-package-dependencies",
     "check:i18n": "bun tools/i18n/src/check-locales.ts",
     "check:packages": "bun tools/package-quality/src/check/metadata.ts && bun tools/package-quality/src/check/publint.ts && bun tools/package-quality/src/check/attw.ts",
