@@ -48,6 +48,12 @@ jobs:
       - name: Run Cloud PostgreSQL and SeaweedFS E2E
         run: bun run --filter @open-pencil/cloud test:e2e
 
+      - name: Install Playwright Chromium
+        run: bunx playwright install --with-deps chromium
+
+      - name: Run Cloud browser sharing E2E
+        run: bun run --filter @open-pencil/cloud test:e2e:browser
+
   unit-tests:
     runs-on: ubuntu-latest
     strategy:
