@@ -6,6 +6,7 @@ import { computeAllLayouts } from '@open-pencil/core/layout'
 import type { SceneGraph } from '@open-pencil/scene-graph'
 
 import { setOpenPencilStore } from '@/app/browser-bridge'
+import { getCloudDocumentAccess } from '@/app/collab/cloud-sharing'
 import type { DocumentSourceIdentity } from '@/app/document/io/types'
 import { getRecoveryStore, type RecoverySnapshotMeta } from '@/app/document/recovery'
 import { setActiveEditorStore } from '@/app/editor/active-store'
@@ -180,6 +181,12 @@ export async function openStorageDocumentInNewTab(document: StorageDocument): Pr
     store.replaceGraph(imported)
     store.undo.clear()
     store.setStorageDocumentSource({ providerId, documentId: document.id }, document.name)
+    if (providerId === 'openpencil-cloud') {
+      const access = await getCloudDocumentAccess(store)
+      store.setAccessMode(access.sources.includes('owner') ? 'owner' : access.permission)
+    } else {
+      store.setAccessMode('owner')
+    }
     store.clearSelection()
     const pageId = store.graph.getPages()[0]?.id ?? store.graph.rootId
     await store.switchPage(pageId)
