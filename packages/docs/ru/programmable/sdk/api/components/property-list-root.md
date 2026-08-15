@@ -1,36 +1,64 @@
 ---
-title: PropertyListRoot
-description: Headless-структурный примитив для UI списков заливок, обводок и эффектов.
+title: PropertyList
+description: Строго типизированная headless-структура списков fills, strokes и effects.
 ---
 
-# PropertyListRoot
+<script setup lang="ts">
+import { data } from '#docs-api/components/property-list.data'
+</script>
 
-`PropertyListRoot` — headless-структурный примитив для редакторов свойств на основе массивов.
+# PropertyList
 
-Предназначен для UI свойств:
+PropertyList — controlled headless component для списков fills, strokes и effects. Discriminator `propKey` задаёт для slots и actions точный тип `Fill`, `Stroke` или `Effect`. Изменение editor state и Undo остаются в `useEditorPropertyList()` или adapter приложения.
 
-- заливок
-- обводок
-- эффектов
+## Состав
 
-Предоставляет пропы слота для:
+- `PropertyListRoot` — controlled items, identity, mixed state и semantic events;
+- `PropertyListItem` — точный тип item, а также `data-hidden` и `data-dragging`;
+- `PropertyListAdd` — добавление типизированного item;
+- `PropertyListRemove` — удаление item по index;
+- `PropertyListVisibility` — изменение visibility по index и значение `aria-pressed`.
 
-- текущих элементов
-- определения смешанного состояния
-- операций добавления/удаления/обновления/патча
-- переключения видимости каждого элемента
+```vue twoslash
+<script setup lang="ts">
+import { ref } from 'vue'
+import type { Fill } from '@open-pencil/scene-graph'
+import {
+  PropertyListItem,
+  PropertyListRemove,
+  PropertyListRoot
+} from '@open-pencil/vue'
 
-## Использование
+const fills = ref<Fill[]>([])
+</script>
 
-```vue
-<PropertyListRoot prop-key="fills" v-slot="{ items, add, remove }">
-  <div v-for="(fill, index) in items" :key="index">
-    <button @click="remove(index)">Удалить</button>
-  </div>
-  <button @click="add(defaultFill)">Добавить заливку</button>
-</PropertyListRoot>
+<template>
+  <PropertyListRoot
+    prop-key="fills"
+    :items="fills"
+    @remove="fills.splice($event, 1)"
+    v-slot="{ items }"
+  >
+    <PropertyListItem
+      v-for="(_, index) in items"
+      :key="index"
+      prop-key="fills"
+      :index="index"
+      v-slot="{ item }"
+    >
+      <span>{{ item?.type }}</span>
+      <PropertyListRemove prop-key="fills" :index="index">Удалить</PropertyListRemove>
+    </PropertyListItem>
+  </PropertyListRoot>
+</template>
 ```
 
-## Связанные API
+Общая интерактивная matrix состояний показана в [demo PropertySection](/programmable/sdk/api/components/property-section).
 
-- [Обзор SDK API](../)
+## Adapter редактора
+
+Панели OpenPencil используют `useEditorPropertyList(propKey)`, чтобы связать controlled events с selection, изменением нескольких объектов, batch для Undo и изменением порядка. Пользователи SDK могут предоставить собственный state adapter без context редактора OpenPencil.
+
+## Сгенерированный справочник API
+
+<SdkComponentAPI :components="data.components" />

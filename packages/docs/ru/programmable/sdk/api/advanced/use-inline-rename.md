@@ -1,15 +1,15 @@
 ---
 title: useInlineRename
-description: Состояние встроенного переименования и хелпер управления фокусом.
+description: State, focus и keyboard behavior при rename на месте.
 ---
 
 # useInlineRename
 
-`useInlineRename(onCommit)` управляет состоянием редактирования, фокусом, обработкой кликов снаружи и поведением клавиатуры для потоков переименования на месте.
+`useInlineRename(onCommit)` управляет editing state, focus, нажатием за пределами поля и keyboard behavior при rename непосредственно в списке.
 
-Используйте в кастомных списках страниц, деревьях слоёв или похожих UI с переименованием на месте.
+Используйте composable в собственном списке страниц, дереве слоёв или другом интерфейсе с inline rename.
 
-## Связанные API
+## См. также
 
 - [PageListRoot](../components/page-list-root)
 - [LayerTreeItem](../components/layer-tree-item)

@@ -1,20 +1,18 @@
 ---
 title: useTypography
-description: Odczytuj i aktualizuj rodzinę czcionek, grubość, rozmiar, wyrównanie i formatowanie węzłów tekstowych.
+description: Odczytywanie i zmiana font family, style, size, alignment i formatting obiektów tekstowych.
 ---
 
 # useTypography
 
-`useTypography()` to kompozyt kontrolek właściwości tekstu dla paneli edycji tekstu.
+`useTypography()` udostępnia panelom tekstu:
 
-Udostępnia:
-
-- rodzinę czcionek
-- grubość czcionki
-- rozmiar czcionki
-- stan formatowania
-- status brakującej czcionki
-- pomocniki do zmiany rodziny, grubości, wyrównania i dekoracji
+- font family;
+- font style;
+- font size;
+- aktywne formatting;
+- informacje o brakującym font;
+- functions zmiany family, style, alignment i decoration.
 
 ## Użycie
 
@@ -24,7 +22,7 @@ import { useTypography } from '@open-pencil/vue'
 const typography = useTypography()
 ```
 
-## Podstawowy przykład
+## Przykład
 
 ```ts
 const {
@@ -38,9 +36,7 @@ const {
 } = useTypography()
 ```
 
-## Przykłady praktyczne
-
-### Załaduj i przełącz rodzinę czcionek
+### Załadowanie i wybranie font family
 
 ```ts
 const typography = useTypography({
@@ -50,7 +46,7 @@ const typography = useTypography({
 })
 ```
 
-### Przełącz formatowanie
+### Formatting
 
 ```ts
 typography.toggleBold()
@@ -58,7 +54,7 @@ typography.toggleItalic()
 typography.toggleDecoration('UNDERLINE')
 ```
 
-## Powiązane API
+## Zobacz też
 
 - [useTextEdit](./use-text-edit)
 - [useSelectionState](./use-selection-state)

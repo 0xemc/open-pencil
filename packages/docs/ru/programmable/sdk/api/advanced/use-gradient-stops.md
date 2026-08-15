@@ -1,15 +1,15 @@
 ---
 title: useGradientStops
-description: Состояние точек градиента и хелпер мутации для редакторов заливок.
+description: State и mutations gradient stops для fill editor.
 ---
 
 # useGradientStops
 
-`useGradientStops(fill, onUpdate)` управляет состоянием активной точки, переключением подтипа, перетаскиванием точек и обновлениями цвета или прозрачности для градиентных заливок.
+`useGradientStops(fill, onUpdate)` управляет active stop, переключением subtype, dragging stops и изменением color или opacity gradient fill.
 
-Используйте его при создании кастомных редакторов градиента за пределами стандартных примитивов.
+Используйте composable для собственного gradient editor вместо готовых components.
 
-## Связанные API
+## См. также
 
 - [GradientEditorRoot](../components/gradient-editor-root)
 - [GradientEditorBar](../components/gradient-editor-bar)

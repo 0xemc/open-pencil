@@ -1,229 +1,229 @@
-# Матрица совместимости с Figma
+# Совместимость с Figma
 
-Пофункциональное сравнение возможностей Figma Design с текущим статусом реализации в OpenPencil.
+Ниже перечислены возможности Figma Design и их текущий статус в OpenPencil.
 
-::: tip Обозначения статуса
-✅ Поддерживается — функция работает полностью · 🟡 Частично — основное поведение есть, некоторые подфункции отсутствуют · 🔲 Пока не реализовано
+::: tip Обозначения
+✅ Поддерживается полностью · 🟡 Поддерживается частично · 🔲 Пока не реализовано
 :::
 
-**Покрытие:** 94 из 158 функций Figma затронуты — 76 ✅ полностью, 18 🟡 частично, 64 🔲 пока нет. Обновлено: 2026-03-07.
+**Покрытие:** реализованы или частично реализованы 94 из 158 пунктов: 76 ✅ полностью и 18 🟡 частично; 64 🔲 пока отсутствуют. Данные обновлены 7 марта 2026 года.
 
 ## Интерфейс и навигация
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Панель инструментов | ✅ | Нижняя панель (стиль UI3): Выделение, Фрейм, Секция, Прямоугольник, Эллипс, Линия, Текст, Рука, Перо |
-| Панель слоёв (левая боковая) | ✅ | Древовидное представление со сворачиванием, перетаскиванием, переключением видимости; изменяемая ширина |
-| Панель страниц | ✅ | Добавление, удаление, переименование страниц; состояние области видимости для каждой страницы |
-| Панель свойств (правая боковая) | ✅ | Секции: Внешний вид, Заливка, Обводка, Эффекты, Типографика, Макет, Позиция; изменяемая ширина |
-| Масштабирование и панорамирование | ✅ | <kbd>Ctrl</kbd> + scroll, pinch, <kbd>⌘</kbd><kbd>+</kbd> / <kbd>⌘</kbd><kbd>−</kbd> / <kbd>⌘</kbd><kbd>0</kbd>, space+drag, средняя кнопка мыши, инструмент «Рука» (H) |
-| Линейки канваса | ✅ | Верхняя/левая линейки с полосами выделения и координатными метками |
-| Цвет фона канваса | ✅ | Настройка фона для каждой страницы через панель свойств |
-| Направляющие канваса | 🔲 | Figma поддерживает перетаскиваемые направляющие с линеек |
-| Меню действий / палитра команд | 🔲 | Быстрый поиск действий Figma |
-| Контекстное меню | ✅ | Правый клик: буфер обмена, z-порядок, группировка, компоненты, видимость, блокировка, перемещение на страницу |
-| Горячие клавиши | 🟡 | Основные + компоненты + z-порядок + видимость/блокировка реализованы; Scale, Arrow, Pencil, отражение, форматирование текста пока нет |
-| Поиск и замена | 🔲 | Поиск/замена текста по всему документу |
-| Вид контуров слоёв | 🔲 | Каркасный вид всех слоёв |
-| Пользовательские миниатюры файлов | 🔲 | Миниатюра генерируется при экспорте, но без выбора пользовательской |
-| Настройки шага сдвига | 🔲 | По умолчанию 1px/10px; Figma позволяет настроить малый/большой шаг |
-| Меню приложения (режим браузера) | ✅ | Меню Файл, Редактирование, Вид, Объект, Текст, Упорядочить; Tauri использует нативные меню |
-| ИИ-инструменты | 🟡 | 90+ инструментов через Anthropic, OpenAI, Google AI, OpenRouter + MCP-сервер; нет генерации изображений ИИ и ИИ-поиска |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Toolbar с design tools | ✅ | Нижняя toolbar в стиле UI3: Select, Frame, Section, Rectangle, Ellipse, Line, Text, Hand и Pen |
+| Панель слоёв | ✅ | Tree view, expand/collapse, drag reorder, visibility и изменяемая ширина |
+| Страницы | ✅ | Добавление, удаление и rename; отдельный viewport для каждой страницы |
+| Панель свойств | ✅ | Appearance, Fill, Stroke, Effects, Typography, Layout и Position; изменяемая ширина |
+| Zoom и перемещение | ✅ | <kbd>Ctrl</kbd> + scroll, pinch, сочетания <kbd>⌘</kbd><kbd>+</kbd>, <kbd>⌘</kbd><kbd>−</kbd>, <kbd>⌘</kbd><kbd>0</kbd>, <kbd>⌘</kbd><kbd>1</kbd>, <kbd>⌘</kbd><kbd>2</kbd>, <kbd>Space</kbd> + drag, средняя кнопка и Hand tool |
+| Rulers | ✅ | Верхняя и левая rulers с selection bands и coordinate badges |
+| Цвет фона холста | ✅ | Отдельный background для каждой страницы |
+| Guides | 🔲 | Перетаскиваемые guides из rulers |
+| Actions menu / command palette | 🔲 | Быстрый поиск действий |
+| Контекстное меню | ✅ | Clipboard, порядок наложения, groups, components, visibility, lock и Move to page |
+| Сочетания клавиш | 🟡 | Основные commands, components, порядок наложения и visibility/lock; Scale, Arrow, Pencil, flip и часть text formatting пока не подключены |
+| Find and replace | 🔲 | Поиск и замена текста во всём документе |
+| Layer outlines | 🔲 | Wireframe view всех слоёв |
+| Собственный thumbnail | 🔲 | Thumbnail создаётся при export, но выбрать его вручную нельзя |
+| Nudge settings | 🔲 | Используются 1 px и 10 px; собственные small/big values не настраиваются |
+| Application menu в browser | ✅ | File, Edit, View, Object, Text и Arrange; в Tauri используются native menus |
+| AI tools | 🟡 | 90 tools через providers и MCP server; генерация изображений и AI search пока отсутствуют |
 
-## Слои и фигуры
+## Слои и shapes
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Инструменты фигур (Прямоугольник, Эллипс, Линия, Многоугольник, Звезда) | ✅ | Все базовые типы; настраиваемое количество сторон многоугольника и внутренний радиус звезды |
-| Фреймы | ✅ | Обрезка содержимого, независимая система координат |
-| Группы | ✅ | <kbd>⌘</kbd><kbd>G</kbd> для группировки, <kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd> для разгруппировки |
-| Секции | ✅ | Заголовки, автоматическое включение перекрывающих узлов, адаптивный текст по яркости |
-| Инструмент дуги (дуги, полукруги, кольца) | ✅ | arcData с начальным/конечным углом и внутренним радиусом |
-| Инструмент «Карандаш» (рисование от руки) | 🔲 | Инструмент свободного рисования Figma |
-| Маски | 🔲 | Маски фигур для обрезки слоёв |
-| Типы слоёв и иерархия | ✅ | 17 типов узлов, плоская Map + дерево родитель-потомок |
-| Выделение слоёв | ✅ | Клик, shift-клик, выделение рамкой |
-| Выравнивание и позиция | ✅ | Позиция, поворот, размеры в панели свойств |
-| Копирование и вставка объектов | ✅ | Стандартный буфер обмена + бинарный формат Figma Kiwi; Копировать как текст/SVG/PNG/JSX |
-| Пропорциональное масштабирование | 🟡 | Shift-resize сохраняет пропорции; нет отдельного инструмента Scale (K) |
-| Блокировка/разблокировка слоёв | ✅ | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd> переключает блокировку; заблокированные узлы нельзя выделить/переместить с канваса |
-| Переключение видимости слоя | ✅ | Иконка глаза в панели слоёв + горячая клавиша <kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd> |
-| Переименование слоёв | ✅ | Двойной клик для переименования в панели слоёв; <kbd>Enter</kbd>/<kbd>Escape</kbd>/blur для подтверждения |
-| На передний/задний план | ✅ | Горячие клавиши ] и [; также в контекстном меню |
-| Переместить на страницу | ✅ | Перемещение выделенных узлов между страницами через контекстное меню |
-| Ограничения (адаптивное изменение размера) | 🔲 | Привязка краёв/центра при изменении размера родителя |
-| Умное выделение (распределение/выравнивание) | 🔲 | Равномерное распределение и выравнивание множественного выделения |
-| Направляющие макета (столбцы, строки, сетка) | 🔲 | Наложение столбцов/строк/сетки на фреймы |
-| Измерение расстояний между слоями | 🔲 | Alt-наведение для показа расстояний |
-| Массовое редактирование объектов | ✅ | Панель свойств для множественного выделения: позиция, размер, внешний вид, заливка, обводка, эффекты; общие значения отображаются, различающиеся показывают «Mixed» |
-| Поиск совпадающих объектов | 🔲 | Поиск похожих слоёв |
-| Копирование/вставка свойств | 🔲 | Копирование заливки/обводки/эффектов между слоями |
-| Отношения родитель-потомок | ✅ | Полная иерархия с parentIndex, перенос через перетаскивание |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Rectangle, Ellipse, Line, Polygon и Star | ✅ | Все основные shapes; настраиваются число сторон Polygon и inner radius Star |
+| Frames | ✅ | Clips content, собственная coordinate system и presets создания и resize |
+| Groups | ✅ | <kbd>⌘</kbd><kbd>G</kbd> и <kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd> |
+| Sections | ✅ | Title pills, автоматическое принятие пересекающихся objects и цвет текста по luminance |
+| Arc tool | ✅ | `arcData` со start angle, end angle и inner radius |
+| Pencil tool | 🔲 | Freehand drawing |
+| Masks | 🔲 | Shape masks для clipping слоёв |
+| Типы и hierarchy | ✅ | 17 типов объектов, flat Map и parent-child tree |
+| Selection | ✅ | Нажатие, Shift + нажатие и marquee selection |
+| Alignment и position | ✅ | Position, rotation и dimensions на панели свойств |
+| Copy и Paste объектов | ✅ | Обычный clipboard и binary Kiwi Figma; Copy as text, SVG, PNG и JSX |
+| Пропорциональный resize | 🟡 | Shift сохраняет пропорции; отдельного Scale tool (<kbd>K</kbd>) нет |
+| Lock | ✅ | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd>; locked object нельзя выбрать или переместить на холсте |
+| Visibility | ✅ | Значок глаза и <kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd> |
+| Rename | ✅ | Inline rename на панели слоёв; <kbd>Enter</kbd>, <kbd>Escape</kbd> и blur завершают ввод |
+| Bring to front / Send to back | ✅ | <kbd>]</kbd> и <kbd>[</kbd>, а также контекстное меню |
+| Move to page | ✅ | Перемещение selection между страницами |
+| Constraints | 🔲 | Привязка edges и center при resize parent |
+| Smart selection | 🔲 | Равномерное распределение и alignment multi-selection |
+| Layout guides | 🔲 | Columns, rows и grid overlays для frames |
+| Измерение расстояний | 🔲 | Alt-hover с distances |
+| Массовое изменение | ✅ | Position, size, appearance, fill, stroke и effects для multi-selection; разные values отображаются как `Mixed` |
+| Поиск похожих objects | 🔲 | Identify matching objects |
+| Copy/Paste properties | 🔲 | Перенос fill, stroke и effects между objects |
+| Parent-child | ✅ | Полная hierarchy через `parentIndex` и reparenting перетаскиванием |
 
-## Векторные инструменты
+## Vector tools
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Векторные сети | ✅ | Figma-совместимая модель, не простые контуры |
-| Инструмент «Перо» | ✅ | Угловые точки, кривые Безье, открытые/замкнутые контуры |
-| Редактирование векторных слоёв | 🟡 | Создание работает; расширенное редактирование вершин (изгиб, удаление точек, соединение) ограничено |
-| Булевые операции (Объединение, Вычитание, Пересечение, Исключение) | 🔲 | Комбинирование фигур булевыми операциями |
-| Сведение слоёв | 🔲 | Объединение векторных путей в один |
-| Преобразование обводок в контуры | 🔲 | Команда Outline Stroke |
-| Преобразование текста в контуры | 🔲 | Преобразование текста в векторные контуры |
-| Инструмент построения фигур | 🔲 | Интерактивный булевый инструмент |
-| Смещение контура | 🔲 | Вдвигание/выдвигание векторного контура |
-| Упрощение контура | 🔲 | Уменьшение количества точек вектора |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Vector networks | ✅ | Совместимая с Figma модель, а не простой список points |
+| Pen tool | ✅ | Corner points, curves Безье, открытые и замкнутые paths |
+| Редактирование vectors | 🟡 | Создание и базовое изменение geometry; часть advanced vertex operations ограничена |
+| Boolean operations | 🔲 | Union, Subtract, Intersect и Exclude |
+| Flatten | 🔲 | Объединение vector paths |
+| Outline Stroke | 🔲 | Преобразование stroke в path |
+| Text to paths | 🔲 | Преобразование текста в outlines |
+| Shape builder | 🔲 | Interactive boolean tool |
+| Offset path | 🔲 | Inset и outset path |
+| Simplify path | 🔲 | Уменьшение числа points |
 
-## Текст и типографика
+## Текст и typography
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Текстовый инструмент и редактирование | ✅ | Нативное редактирование на канвасе, phantom textarea, курсор/выделение/выделение слова, перетаскивание для выделения, двойной/тройной клик, стили (<kbd>⌘</kbd><kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd>, кнопка S) |
-| Рендеринг текста (Paragraph API) | ✅ | CanvasKit Paragraph для формирования, переноса строк, метрик |
-| Загрузка шрифтов (системные) | ✅ | Inter по умолчанию, font-kit в Tauri с кешем OnceLock + предзагрузка, queryLocalFonts в браузере |
-| Семейство и начертание шрифта | ✅ | FontPicker с виртуальной прокруткой, поиском, CSS-превью; выбор начертания в панели свойств |
-| Размер шрифта и межстрочный интервал | ✅ | Редактируемые в секции типографики |
-| Выравнивание текста | 🟡 | Базовое выравнивание; Figma имеет вертикальное выравнивание и режимы auto-width/height |
-| Стили текста | 🟡 | Посимвольное жирный/курсив/подчёркивание/зачёркивание (<kbd>⌘</kbd><kbd>B</kbd> / <kbd>I</kbd> / <kbd>U</kbd>, кнопка S); нет переиспользуемых именованных пресетов |
-| Режимы размера текста (auto, fixed, hug) | 🔲 | Режимы auto-width, auto-height, fixed-size Figma |
-| Маркированные и нумерованные списки | 🔲 | Форматирование списков в тексте |
-| Ссылки в тексте | 🔲 | Гиперссылки в текстовом содержимом |
-| Эмодзи и спецсимволы | 🔲 | Рендеринг эмодзи и специальных символов |
-| Возможности OpenType | 🔲 | Лигатуры, стилистические альтернативы, табличные цифры |
-| Вариативные шрифты | 🔲 | Настраиваемые оси шрифта (вес, ширина, наклон) |
-| Поддержка CJK | 🔲 | Рендеринг китайского, японского, корейского текста |
-| Поддержка RTL | 🔲 | Макет текста справа налево |
-| Иконочные шрифты | 🔲 | Обработка глифов иконочных шрифтов |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Text tool и редактирование | ✅ | Редактирование на холсте, скрытая textarea, cursor и selection, выбор слова, drag selection, двойное и тройное нажатие, rich text style runs |
+| Text rendering | ✅ | CanvasKit Paragraph для shaping, line breaking и metrics |
+| System fonts | ✅ | Inter, font-kit в Tauri с cache и preload, `queryLocalFonts` в browser |
+| Font family и weight | ✅ | FontPicker с search, virtual scroll и CSS preview; weight на панели свойств |
+| Font size и line height | ✅ | Редактируются в Typography |
+| Text alignment | 🟡 | Basic alignment; vertical alignment и auto-width/height modes пока отсутствуют |
+| Text styles | 🟡 | Bold, italic, underline и strikethrough для selection; named reusable presets отсутствуют |
+| Text resize modes | 🔲 | Auto width, auto height и fixed size |
+| Lists | 🔲 | Bulleted и numbered lists |
+| Links | 🔲 | Hyperlinks внутри текста |
+| Emoji и symbols | 🔲 | Полноценная отрисовка emoji и специальных symbols |
+| OpenType | 🔲 | Ligatures, stylistic alternates и tabular figures |
+| Variable fonts | 🔲 | Настраиваемые axes |
+| CJK | 🔲 | Полная отрисовка китайского, японского и корейского текста |
+| RTL | 🔲 | Layout справа налево |
+| Icon fonts | 🔲 | Специальная обработка icon glyphs |
 
-## Цвет, градиенты и изображения
+## Color, gradients и images
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Палитра цветов (HSV) | ✅ | Квадрат HSV, слайдер оттенка, слайдер прозрачности, ввод hex |
-| Сплошные заливки | ✅ | Hex-цвет с непрозрачностью |
-| Линейный градиент | ✅ | Точки градиента, ручки трансформации |
-| Радиальный градиент | ✅ | Через шейдеры CanvasKit |
-| Угловой градиент | ✅ | Поддержка sweep/conic-градиента |
-| Ромбовидный градиент | ✅ | Четырёхточечный ромбовидный градиент |
-| Заливки изображениями | ✅ | Декодирование из blob-данных с режимами масштабирования (fill, fit, crop, tile) |
-| Заливки паттернами | 🔲 | Повторяющиеся изображения/паттерны |
-| Режимы наложения | 🔲 | Режимы наложения слоёв и заливок (multiply, screen, overlay и т.д.) |
-| Добавление изображений и видео | 🟡 | Заливки изображениями отрисовываются; нет drag-and-drop импорта и поддержки видео |
-| Коррекция свойств изображения | 🔲 | Экспозиция, контраст, насыщенность и т.д. |
-| Обрезка изображения | 🔲 | Интерактивная обрезка изображения |
-| Пипетка | 🔲 | Выбор цвета с канваса |
-| Редактирование цвета смешанного выделения | 🔲 | Изменение цветов разнородного выделения |
-| Цветовые модели (RGB, HSL, HSB, Hex) | 🟡 | HSV + Hex в палитре; нет переключения HSL или RGB |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| HSV Color picker | ✅ | HSV square, hue и alpha sliders, hex input |
+| Solid fills | ✅ | Hex color и opacity |
+| Linear gradient | ✅ | Stops и transform handles |
+| Radial gradient | ✅ | CanvasKit shaders |
+| Angular gradient | ✅ | Sweep/conic gradient |
+| Diamond gradient | ✅ | Four-point diamond gradient |
+| Image fills | ✅ | Blob decoding и modes fill, fit, crop и tile |
+| Pattern fills | 🔲 | Повторяющиеся images и patterns |
+| Blend modes | 🔲 | Blend modes layers и fills |
+| Images и videos | 🟡 | Image fills отображаются; drag and drop import и video отсутствуют |
+| Image adjustments | 🔲 | Exposure, contrast, saturation и другие настройки |
+| Crop image | 🔲 | Interactive crop |
+| Eyedropper | 🔲 | Получение color с холста |
+| Mixed-selection colors | 🔲 | Общее изменение colors неоднородного selection |
+| Color models | 🟡 | HSV и Hex; переключателей HSL и RGB нет |
 
-## Эффекты и свойства
+## Effects и properties
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Тень | ✅ | Смещение, радиус размытия, цвет через фильтры CanvasKit |
-| Внутренняя тень | ✅ | Вставная тень |
-| Размытие слоя | ✅ | Гауссово размытие слоя |
-| Размытие фона | ✅ | Размытие содержимого за слоем |
-| Размытие переднего плана | ✅ | Размытие на переднем плане |
-| Толщина обводки | ✅ | Настраиваемая в панели свойств |
-| Наконечник обводки (круглый, квадратный, стрелка) | ✅ | `NONE`, `ROUND`, `SQUARE`, `ARROW_LINES`, `ARROW_EQUILATERAL` |
-| Соединение обводки (miter, bevel, round) | ✅ | Все три типа соединений |
-| Штриховые паттерны | ✅ | Паттерн dash-on/dash-off |
-| Выравнивание обводки | ✅ | Inside/Center/Outside с clip-рендерингом, соответствующим поведению Figma |
-| Индивидуальная толщина обводки по сторонам | ✅ | Top/Right/Bottom/Left с выпадающим селектором сторон |
-| Радиус скругления | ✅ | Единый и поугловой с независимым переключателем в панели свойств |
-| Сглаживание углов (стиль iOS) | 🔲 | Плавное скругление углов Figma |
-| Множественные заливки/обводки на слое | 🔲 | Figma позволяет наслаивать заливки и обводки |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Drop shadow | ✅ | Offset, blur radius и color через CanvasKit filters |
+| Inner shadow | ✅ | Inset shadow |
+| Layer blur | ✅ | Gaussian blur объекта |
+| Background blur | ✅ | Blur содержимого позади объекта |
+| Foreground blur | ✅ | Blur переднего плана |
+| Stroke weight | ✅ | Настраивается на панели свойств |
+| Stroke cap | ✅ | `NONE`, `ROUND`, `SQUARE`, `ARROW_LINES`, `ARROW_EQUILATERAL` |
+| Stroke join | ✅ | Miter, bevel и round |
+| Dash pattern | ✅ | Dash-on/dash-off |
+| Stroke alignment | ✅ | Inside, Center и Outside с clipping как в Figma |
+| Толщина отдельных сторон | ✅ | Top, Right, Bottom и Left |
+| Corner radius | ✅ | Общий и отдельный для каждого угла |
+| Corner smoothing | 🔲 | Continuous corners в стиле iOS |
+| Несколько fills и strokes | 🔲 | Stack нескольких fills и strokes на одном объекте |
 
-## Авто-макет
+## Auto layout
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Горизонтальный и вертикальный поток | ✅ | Движок Yoga WASM flexbox |
-| Переключение авто-макета (<kbd>⇧</kbd><kbd>A</kbd>) | ✅ | Включение на фрейме или оборачивание выделения |
-| Отступ (расстояние между дочерними) | ✅ | Настраиваемый в панели свойств |
-| Паддинг (единый и по сторонам) | ✅ | Все четыре стороны независимо |
-| Выравнивание содержимого (justify) | ✅ | Start, center, end, space-between |
-| Выравнивание элементов (align) | ✅ | Start, center, end, stretch |
-| Размеры дочерних (fixed, fill, hug) | ✅ | Режимы размера для каждого элемента |
-| Перенос (wrap) | ✅ | Flex wrap для многострочного макета |
-| Grid-поток авто-макета | ✅ | CSS Grid через форк Yoga — настройка колонок/строк, зазоры, объединение ячеек |
-| Комбинированные потоки (вложенные) | ✅ | Вложенные авто-макеты с разными направлениями |
-| Перетаскивание для переупорядочивания в авто-макете | ✅ | Визуальный индикатор вставки |
-| Min/max ширина и высота | 🔲 | Figma поддерживает min/max ограничения для дочерних авто-макета |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Horizontal и vertical flow | ✅ | Yoga WASM flexbox |
+| <kbd>⇧</kbd><kbd>A</kbd> | ✅ | Включение для frame или оборачивание selection |
+| Gap | ✅ | Настраивается на панели свойств |
+| Padding | ✅ | Общее или отдельное для четырёх сторон |
+| Justify | ✅ | Start, center, end и space-between |
+| Align | ✅ | Start, center, end и stretch |
+| Fixed, Fill и Hug | ✅ | Отдельный sizing mode для каждого child |
+| Wrap | ✅ | Flex wrap |
+| Grid | ✅ | CSS Grid через fork Yoga: row/column tracks, gaps и spans |
+| Nested flows | ✅ | Вложенные frames с разными directions |
+| Drag reorder | ✅ | Visual insertion indicator |
+| Min/max size | 🔲 | Min/max constraints для children |
 
-## Компоненты и дизайн-системы
+## Components и design systems
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Создание компонентов | ✅ | Создание из фрейма/группы; UI для текста, видимости, замены экземпляра и вариантов |
-| Наборы компонентов | ✅ | Многомерные разреженные варианты, проверка дубликатов и значение по умолчанию сверху слева |
-| Экземпляры компонентов | ✅ | Просмотр Assets, вставка, редактируемые свойства и переопределения, синхронизация и просмотр обновлений |
-| Варианты | ✅ | Создание, переключение экземпляров и запасной вариант сверху слева |
-| Свойства компонентов | ✅ | Текст, логическая видимость и замена экземпляра |
-| Распространение переопределений | ✅ | Изменения главного компонента распространяются на все экземпляры; переопределения сохраняются |
-| Переменные (color, number, string, boolean) | 🟡 | `COLOR` полный UI (диалог, TanStack Table, инлайн-редактирование, отмена/повтор, демо-коллекции); `FLOAT`/STRING/BOOLEAN определены, но без UI редактирования |
-| Коллекции и режимы переменных | 🟡 | Коллекции, режимы, переключение activeMode работают; нет UI тем на переменных |
-| Стили (цвет, текст, эффект, макет) | 🔲 | Переиспользуемые именованные пресеты стилей |
-| Библиотеки (публикация, обмен, обновление) | ✅ | Неизменяемые локальные ревизии/ревизии в хранилище, подключение, выборочная публикация, просмотр обновлений, офлайн-режим и сохранение в `.fig` |
-| Отсоединение экземпляра | ✅ | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> преобразует экземпляр обратно во фрейм |
-| Переход к главному компоненту | ✅ | Навигация к исходному компоненту, в том числе на другую страницу |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Create components | ✅ | Создание из frame или group и оборачивание selection; text, visibility, instance swap и variants |
+| Component sets | ✅ | Multidimensional sparse variants, duplicate validation и top-left default |
+| Instances | ✅ | Assets, insertion, component properties, overrides, variant switching, live sync и update review |
+| Variants | ✅ | Authoring, switching, sparse combinations и top-left fallback |
+| Component properties | ✅ | Boolean visibility, text и instance swap |
+| Override propagation | ✅ | Main component обновляет instances, сохраняя overrides |
+| Variables | 🟡 | Полный UI для `COLOR`; `FLOAT`, `STRING` и `BOOLEAN` определены, но не имеют editing UI |
+| Collections и modes | 🟡 | Collections, modes и `activeMode`; variable-driven theming UI отсутствует |
+| Styles | 🔲 | Named reusable color, text, effect и layout styles |
+| Libraries | ✅ | Immutable local/storage revisions, selective publish, enablement, scoped update review, offline materialization и сохранение в `.fig` |
+| Detach instance | ✅ | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> превращает instance во frame |
+| Go to main component | ✅ | Переход к source component, в том числе на другую страницу |
 
-## Прототипирование
+## Prototyping
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Прототипные связи | 🔲 | Планируется на Фазу 6 |
-| Триггеры (клик, наведение, перетаскивание и т.д.) | 🔲 | Планируется на Фазу 6 |
-| Действия (переход, оверлей, прокрутка и т.д.) | 🔲 | Планируется на Фазу 6 |
-| Анимации и переходы | 🔲 | Планируется на Фазу 6 |
-| Smart Animate | 🔲 | Авто-анимация совпадающих слоёв |
-| Оверлеи | 🔲 | Модальные окна/поповеры в прототипе |
-| Прокрутка и переполнение | 🔲 | Прокручиваемые фреймы в прототипах |
-| Потоки прототипа | 🔲 | Именованные начальные точки |
-| Переменные в прототипах | 🔲 | Условная логика на переменных |
-| Easing и пружинные анимации | 🔲 | Пользовательские кривые анимации |
-| Просмотр и запуск прототипов | 🔲 | Полноэкранный просмотрщик прототипов |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Connections | 🔲 | Пока не поддерживается |
+| Triggers | 🔲 | Click, hover, drag и другие triggers |
+| Actions | 🔲 | Navigate, overlay, scroll и другие actions |
+| Animations | 🔲 | Transitions и animations |
+| Smart animate | 🔲 | Автоматическая animation совпадающих слоёв |
+| Overlays | 🔲 | Modal и popover prototypes |
+| Scroll behavior | 🔲 | Scrollable frames в prototypes |
+| Flows | 🔲 | Named starting points |
+| Variables | 🔲 | Conditional logic |
+| Easing и springs | 🔲 | Собственные animation curves |
+| Present mode | 🔲 | Fullscreen prototype viewer |
 
-## Импорт и экспорт
+## Import и Export
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Импорт файлов .fig | ✅ | Полный Kiwi-кодек: 194 определения, ~390 полей на `NodeChange` |
-| Экспорт файлов .fig | ✅ | Кодирование Kiwi + сжатие Zstd + генерация миниатюры; `COMPONENT`/COMPONENT_SET маппятся в `SYMBOL` для round-trip |
-| Сохранить / Сохранить как | ✅ | <kbd>⌘</kbd><kbd>S</kbd> / <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd>; нативные диалоги (Tauri), File System Access API (Chrome/Edge), скачивание (Safari) |
-| Буфер обмена Figma (вставка) | ✅ | Декодирование бинарного Kiwi из буфера обмена Figma |
-| Буфер обмена Figma (копирование) | ✅ | Кодирование бинарного Kiwi, читаемого Figma |
-| Импорт файлов Sketch | 🔲 | Парсинг файлов .sketch |
-| Экспорт Image/SVG/PDF | 🟡 | Экспорт PNG/JPG/WEBP/SVG ✅; экспорт PDF 🔲 |
-| История версий | 🔲 | Просмотр и восстановление предыдущих версий |
-| Копирование ассетов между инструментами | ✅ | Буфер обмена Figma (бинарный Kiwi), копирование как текст/SVG/PNG/JSX |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Import .fig | ✅ | Kiwi codec: 194 definitions и около 390 fields в `NodeChange` |
+| Export .fig | ✅ | Kiwi encoding, Zstd compression и thumbnail; `COMPONENT` и `COMPONENT_SET` преобразуются в `SYMBOL` для round trip |
+| Save / Save As | ✅ | Native dialogs в Tauri, File System Access API в Chrome и Edge, download fallback в Safari |
+| Paste из Figma | ✅ | Decode binary Kiwi из clipboard Figma |
+| Copy в Figma | ✅ | Encode binary Kiwi, читаемый Figma |
+| Import Sketch | 🔲 | Parsing `.sketch` |
+| Image/SVG/PDF export | 🟡 | PNG, JPG, WEBP и SVG поддерживаются; PDF отсутствует |
+| Version history | 🔲 | Просмотр и восстановление versions |
+| Обмен assets | ✅ | Clipboard Figma и Copy as text, SVG, PNG и JSX |
 
-## Plugin API и скриптинг
+## Plugin API и scripts
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Команда eval с Figma Plugin API | ✅ | Headless-выполнение JavaScript с глобальным объектом figma, соответствующим поверхности плагинов Figma |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| `eval` с Figma Plugin API | ✅ | Headless JavaScript с глобальным `figma`, близким к plugin surface Figma |
 
-## Совместная работа и Dev Mode
+## Collaboration и Dev Mode
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Комментарии (прикрепление, обсуждение, разрешение) | 🔲 | Планируется на Фазу 6 |
-| Мультиплеер в реальном времени | ✅ | P2P через Trystero + Yjs CRDT, курсоры, режим следования; сервер не нужен |
-| Чат у курсора | 🔲 | Инлайн-чат у курсора |
-| Ветвление и слияние | 🔲 | Ветки версий для файлов дизайна |
-| Dev Mode (инспекция) | 🟡 | Вкладка Code показывает JSX-представление выделения; нет CSS-свойств и спецификаций для передачи |
-| Code Connect | 🔲 | Связь дизайн-компонентов с кодом |
-| Сниппеты кода | 🟡 | Экспорт JSX с подсветкой синтаксиса и копированием; нет сниппетов CSS/Swift/Kotlin |
-| Экспорт Tailwind CSS v4 | ✅ | Экспорт как HTML с утилитарными классами Tailwind из панели Code, CLI или программно |
-| Figma for VS Code | 🔲 | Интеграция с редактором кода |
-| MCP-сервер | ✅ | @open-pencil/mcp с транспортами stdio + HTTP; более 90 инструментов, включая файловые операции |
-| CLI-инструменты | ✅ | Headless CLI: info, tree, find, export, analyze, node, pages, variables, eval; MCP-сервер со stdio + HTTP |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Comments | 🔲 | Pins, threads и resolve пока отсутствуют |
+| Real-time multiplayer | ✅ | P2P через Trystero и Yjs CRDT, cursors и Follow mode без server |
+| Cursor chat | 🔲 | Chat bubbles возле cursor |
+| Branching и merging | 🔲 | Version branches для design files |
+| Dev Mode | 🟡 | Вкладка Code показывает JSX selection; CSS properties и handoff specs отсутствуют |
+| Code Connect | 🔲 | Связь design components с code |
+| Code snippets | 🟡 | JSX с syntax highlighting и Copy; CSS, Swift и Kotlin snippets отсутствуют |
+| Tailwind CSS v4 | ✅ | HTML с utility classes из Code, CLI или программного API |
+| Figma for VS Code | 🔲 | Интеграция с code editor |
+| MCP server | ✅ | `@open-pencil/mcp`, stdio и HTTP; 87 core tools и 3 file tools |
+| CLI | ✅ | `info`, `tree`, `find`, `export`, `analyze`, `node`, `pages`, `variables`, `eval` и JSON output |
 
 ## Figma Draw
 
-| Функция | Статус | Примечания |
-|---------|--------|-------|
-| Инструменты иллюстрации | 🔲 | Специализированные инструменты рисования Figma Draw |
-| Паттерны трансформаций | 🔲 | Создание повторяющихся паттернов с трансформациями |
+| Возможность | Статус | OpenPencil |
+|-------------|--------|------------|
+| Illustration tools | 🔲 | Специализированные drawing tools Figma Draw |
+| Pattern transforms | 🔲 | Повторяющиеся patterns с transforms |

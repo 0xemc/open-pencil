@@ -1,20 +1,20 @@
 ---
 title: useTextEdit
-description: Zarządzaj edycją tekstu DOM, kompozycją, formatowaniem i synchronizacją dla węzłów tekstowych kanvasu.
+description: Obsługa DOM text input, IME, formatting i synchronizacji obiektów tekstowych.
 ---
 
 # useTextEdit
 
-`useTextEdit()` łączy wejście tekstowe DOM z modelem edycji tekstu kanvasu edytora.
+`useTextEdit()` łączy DOM input z modelem edycji tekstu na obszarze roboczym.
 
 Koordynuje:
 
-- wejście tekstowe oparte na textarea
-- kompozycję IME
-- miganie kursora
-- zachowanie Delete/Backspace
-- polecenia formatowania jak pogrubienie/kursywa/podkreślenie
-- synchronizację zmian tekstu z powrotem do grafu
+- wprowadzanie tekstu przez `textarea`;
+- IME;
+- miganie caret;
+- obsługę Delete i Backspace;
+- polecenia bold, italic i underline;
+- zapisywanie zmian do SceneGraph.
 
 ## Użycie
 
@@ -22,25 +22,21 @@ Koordynuje:
 useTextEdit(canvasRef, editor)
 ```
 
-## Podstawowy przykład
+Wywołaj composable w component zawierającym obszar roboczy, razem z `useCanvas()` i `useCanvasInput()`.
 
-Użyj go w komponencie właściciela kanvasu razem z `useCanvas()` i `useCanvasInput()`.
+## Skróty formatting
 
-## Przykłady praktyczne
+Podczas edycji tekstu `useTextEdit()` obsługuje skróty bold, italic i underline.
 
-### Obsługa skrótów formatowania
+## Synchronizacja tekstu
 
-`useTextEdit()` obsługuje już klawiaturowe akcje formatowania jak pogrubienie, kursywa i podkreślenie podczas aktywnej edycji tekstu.
-
-### Synchronizacja kanvasu i edytora tekstu
-
-Aktualizuje tekst grafu i przebiegi stylów gdy użytkownik pisze lub edytuje sformatowane zakresy.
+Podczas pisania function aktualizuje tekst i style runs w SceneGraph.
 
 ## Uwagi
 
-Jest to kompozyt integracji kanvasu/edytora, a nie ogólny kompozyt pola tekstowego.
+To composable integruje edycję tekstu z obszarem roboczym. Nie jest przeznaczone dla zwykłych pól tekstowych.
 
-## Powiązane API
+## Zobacz też
 
 - [useCanvas](./use-canvas)
 - [useCanvasInput](./use-canvas-input)

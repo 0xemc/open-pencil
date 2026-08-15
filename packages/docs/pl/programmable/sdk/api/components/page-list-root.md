@@ -1,24 +1,20 @@
 ---
 title: PageListRoot
-description: Bezstanowy prymityw strukturalny dla UI listy stron.
+description: Component headless udostępniający strony i actions listy stron.
 ---
 
 # PageListRoot
 
-`PageListRoot` to bezstanowy prymityw strukturalny dla interfejsów listy stron.
+`PageListRoot` przekazuje przez slot:
 
-Udostępnia przez slot właściwości dla:
+- strony;
+- ID bieżącej strony;
+- informacje o separators;
+- actions dodawania, przełączania, przemianowywania i usuwania stron.
 
-- stron
-- id bieżącej strony
-- wykrywania separatorów
-- akcji stron jak dodawanie, przełączanie, zmiana nazwy i usuwanie
+Aplikacja samodzielnie renderuje listę i określa jej wygląd.
 
-## Użycie
-
-Użyj go, gdy chcesz strukturę listy stron dostarczaną przez SDK z renderowaniem i stylowaniem specyficznym dla aplikacji.
-
-## Podstawowy przykład
+## Przykład
 
 ```vue
 <PageListRoot v-slot="{ pages, currentPageId, switchPage }">
@@ -35,6 +31,7 @@ Użyj go, gdy chcesz strukturę listy stron dostarczaną przez SDK z renderowani
 </PageListRoot>
 ```
 
-## Powiązane API
+
+## Zobacz też
 
 - [usePageList](../composables/use-page-list)

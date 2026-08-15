@@ -1,38 +1,13 @@
 ---
 title: ColorInputRoot
-description: Bezstanowy pomocnik pola wejściowego koloru z parsowaniem hex i pomocnikami aktualizacji.
+description: Parsowanie wartości hex i aktualizacja color w polu koloru.
 ---
 
 # ColorInputRoot
 
-`ColorInputRoot` to bezstanowy pomocnik dla UI pól wejściowych kolorów.
+`ColorInputRoot` przekształca bieżący color na wartość hex i udostępnia functions aktualizacji z hex albo pełnej wartości `Color`.
 
-Wyprowadza wartość hex z koloru i udostępnia pomocniki aktualizacji dla hex i pełnych zmian koloru.
-
-## Props
-
-<SdkPropsTable
-  :rows="[
-    { name: 'color', type: 'Color', description: 'Bieżąca wartość koloru.', required: true },
-    { name: 'editable', type: 'boolean | undefined', description: 'Czy konsument powinien prezentować wartość jako edytowalną.' }
-  ]"
-/>
-
-## Zdarzenia
-
-<SdkEventsTable
-  :rows="[
-    { name: 'update', payload: 'color: Color', description: 'Emitowane gdy kolor się zmienia.' }
-  ]"
-/>
-
-## Sloty
-
-<SdkSlotsTable
-  :rows="[
-    { name: 'default', props: '{ color: Color, editable: boolean, hex: string, updateFromHex: (value: string) => void, updateColor: (color: Color) => void }', description: 'Główny kontrakt renderowania pola wejściowego koloru.' }
-  ]"
-/>
+Aplikacja renderuje własne pole przez domyślny slot.
 
 ## Przykład
 
@@ -42,6 +17,7 @@ Wyprowadza wartość hex z koloru i udostępnia pomocniki aktualizacji dla hex i
 </ColorInputRoot>
 ```
 
-## Powiązane API
+
+## Zobacz też
 
 - [ColorPickerRoot](./color-picker-root)

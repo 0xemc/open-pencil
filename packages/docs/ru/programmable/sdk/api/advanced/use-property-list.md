@@ -1,15 +1,17 @@
 ---
 title: usePropertyList
-description: Хелпер контекста примитива для потомков PropertyListRoot.
+description: Доступ к context PropertyListRoot из дочернего component.
 ---
 
 # usePropertyList
 
-`usePropertyList()` читает локальный контекст списка свойств, предоставляемый `PropertyListRoot`.
+`usePropertyList()` возвращает локальный context, предоставленный `PropertyListRoot`.
 
-Используйте внутри потомков, которым нужны текущие элементы, информация о смешанном состоянии или обработчики уровня строки для заливок, обводок или эффектов.
+Используйте composable в дочерних components, которым нужны controlled items, mixed state или row handlers для fills, strokes и effects. Сам composable не обращается к editor.
 
-## Связанные API
+В панелях OpenPencil adapter component может вызвать `useEditorPropertyList(propKey)`, чтобы связать controlled component с selection, Undo batch и изменением нескольких объектов.
+
+## См. также
 
 - [PropertyListRoot](../components/property-list-root)
 - [PropertyListItem](../components/property-list-item)

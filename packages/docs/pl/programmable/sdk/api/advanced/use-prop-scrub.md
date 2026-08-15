@@ -1,15 +1,15 @@
 ---
 title: usePropScrub
-description: Niskopoziomowy pomocnik do aktualizacji właściwości przez przeciąganie z obsługą zatwierdzania.
+description: Preview i commit numeric property zmienianej przez scrubbing.
 ---
 
 # usePropScrub
 
-`usePropScrub(editor)` koordynuje aktywne aktualizacje właściwości podczas przeciągania i zatwierdza zmiany z obsługą cofania gdy interakcja się kończy.
+`usePropScrub(editor)` aktualizuje property podczas przeciągania, a po zakończeniu interaction zapisuje końcową zmianę w Undo history.
 
-Użyj go przy budowaniu kontrolek liczbowych, które bezpośrednio przeciągają właściwości zaznaczonych węzłów.
+Użyj go w numeric controls, które zmieniają properties zaznaczonych obiektów przez scrubbing.
 
-## Powiązane API
+## Zobacz też
 
 - [NumberField](/programmable/sdk/api/components/number-field)
 - [useNodeProps](./use-node-props)

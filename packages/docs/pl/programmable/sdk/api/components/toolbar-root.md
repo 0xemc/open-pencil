@@ -1,15 +1,14 @@
 ---
 title: ToolbarRoot
-description: Bezstanowy prymityw strukturalny dla UI paska narzędzi edytora.
+description: Component headless udostępniający tools i active tool.
 ---
 
 # ToolbarRoot
 
-`ToolbarRoot` to bezstanowy prymityw paska narzędzi z `@open-pencil/vue`.
+`ToolbarRoot` udostępnia listę tools, active tool i action zmiany narzędzia. Aplikacja renderuje własne buttons oraz określa układ i wygląd toolbar.
 
-Użyj go, gdy chcesz wielokrotnie używalną strukturę paska narzędzi i kontekst z własnymi przyciskami, stylowaniem i layoutem.
 
-## Powiązane API
+## Zobacz też
 
 - [useEditorCommands](../composables/use-editor-commands)
 - [useSelectionCapabilities](../composables/use-selection-capabilities)

@@ -1,15 +1,15 @@
 ---
 title: useCanvasContext
-description: Хелпер контекста примитива для потомков CanvasRoot.
+description: Доступ к context CanvasRoot из дочернего component.
 ---
 
 # useCanvasContext
 
-`useCanvasContext()` читает локальный контекст холста, предоставляемый `CanvasRoot`.
+`useCanvasContext()` возвращает локальный canvas context, предоставленный ближайшим `CanvasRoot`.
 
-Используйте внутри потомков, таких как `CanvasSurface` или ваши кастомные дочерние элементы холста.
+Используйте composable внутри `CanvasSurface` или собственного дочернего component холста.
 
-## Связанные API
+## См. также
 
 - [CanvasRoot](../components/canvas-root)
 - [CanvasSurface](../components/canvas-surface)

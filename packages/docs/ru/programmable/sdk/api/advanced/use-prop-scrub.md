@@ -1,15 +1,15 @@
 ---
 title: usePropScrub
-description: Низкоуровневый хелпер для обновления свойств через перетаскивание с поддержкой подтверждения.
+description: Drag-to-scrub properties с commit и Undo.
 ---
 
 # usePropScrub
 
-`usePropScrub(editor)` координирует живые обновления свойств во время скрабинга и фиксирует undo-aware изменения по завершении взаимодействия.
+`usePropScrub(editor)` выполняет live update property во время scrubbing и сохраняет изменение с поддержкой Undo после завершения interaction.
 
-Используйте его при создании числовых элементов управления, которые скрабят свойства выбранных узлов напрямую.
+Используйте composable в numeric controls, которые напрямую изменяют properties выбранных объектов перетаскиванием.
 
-## Связанные API
+## См. также
 
 - [NumberField](/programmable/sdk/api/components/number-field)
 - [useNodeProps](./use-node-props)

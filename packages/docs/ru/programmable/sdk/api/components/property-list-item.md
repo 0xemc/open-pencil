@@ -1,15 +1,15 @@
 ---
 title: PropertyListItem
-description: Headless-примитив элемента для одной строки заливок, обводок или эффектов.
+description: Headless component строки fill, stroke или effect.
 ---
 
 # PropertyListItem
 
-`PropertyListItem` предоставляет обработчики обновления, патча, удаления и переключения видимости для одного элемента массива внутри `PropertyListRoot`.
+`PropertyListItem` передаёт handlers `update`, `patch`, `remove` и изменения visibility для одного item массива внутри `PropertyListRoot`.
 
-Используйте его при создании кастомных UI строк списка для заливок, обводок или эффектов.
+Используйте его для собственного интерфейса строки fill, stroke или effect.
 
-## Связанные API
+## См. также
 
 - [PropertyListRoot](./property-list-root)
 - [usePropertyList](../advanced/use-property-list)

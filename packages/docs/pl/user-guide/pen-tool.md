@@ -1,29 +1,45 @@
 ---
-title: Narzędzie pióro
-description: Ścieżki wektorowe z krzywymi Béziera w OpenPencil.
+title: Pen tool
+description: Tworzenie vector paths i krzywych Béziera za pomocą Pen tool.
 ---
-# Narzędzie pióro
 
-## Aktywacja
-**P**
+# Pen tool
 
-## Stawianie punktów
-- **Kliknięcie** — umieszcza punkt narożny
-- **Kliknięcie + przeciągnięcie** — umieszcza punkt krzywej z uchwytami stycznych Béziera
-  - **Przytrzymaj <kbd>Space</kbd>** podczas przeciągania, aby przesunąć sam punkt
+Pen tool tworzy vector paths w formacie vector network zgodnym z `.fig`.
 
-## Zamykanie ścieżki
-Kliknij pierwszy punkt, aby zamknąć ścieżkę w pętlę.
+## Włączanie
 
-## Otwarte ścieżki
-Naciśnij <kbd>Escape</kbd>, aby zatwierdzić otwartą ścieżkę.
+Naciśnij <kbd>P</kbd>.
 
-## Sieci wektorowe
-Ścieżki w OpenPencil korzystają z sieci wektorowych — elastycznego modelu obsługującego rozgałęzione ścieżki i złożoną topologię. Jest to ten sam model, co w Figmie, więc ścieżki zachowują pełną kompatybilność z plikami .fig.
+## Tworzenie punktów
 
-## Skróty klawiszowe
+- Naciśnij raz, aby umieścić corner point i utworzyć prosty segment.
+- Naciśnij i przeciągnij, aby umieścić curve point z tangent handles Béziera. Kierunek i odległość przeciągania określają kształt krzywej.
+- Nie zwalniając przycisku myszy, przytrzymaj <kbd>Space</kbd>, aby przesunąć właśnie tworzony punkt.
 
-| Akcja | Mac | Windows / Linux |
-|-------|-----|-----------------|
-| Narzędzie pióro | <kbd>P</kbd> | <kbd>P</kbd> |
-| Zatwierdź | <kbd>Escape</kbd> | Escape |
+Dodawaj kolejne punkty, aby budować path segment po segmencie. Preview line łączy ostatni punkt z bieżącym położeniem wskaźnika.
+
+## Zamknięty path
+
+Naciśnij pierwszy punkt path, aby go zamknąć. Zamknięty path może mieć fill.
+
+## Otwarty path
+
+Naciśnij <kbd>Escape</kbd>, aby zakończyć path bez zamykania. Otwarty path jest wyświetlany tylko ze stroke i nie otrzymuje fill.
+
+## Vector networks
+
+Zamiast prostej sekwencji punktów OpenPencil używa vector network. Ten model obsługuje rozgałęzienia i złożoną topology. Figma stosuje ten sam model, dlatego paths są zachowywane podczas importu i eksportu `.fig`.
+
+## Skróty klawiaturowe
+
+| Działanie | macOS | Windows / Linux |
+|-----------|-------|-----------------|
+| Pen tool | <kbd>P</kbd> | <kbd>P</kbd> |
+| Zakończyć otwarty path | <kbd>Escape</kbd> | <kbd>Escape</kbd> |
+
+## Wskazówki
+
+- Preview line zawsze zaczyna się w ostatnim dodanym punkcie i nie przeskakuje do współrzędnych `(0, 0)`.
+- Im dalej przeciągniesz wskaźnik podczas tworzenia curve point, tym dłuższe będą tangent handles i szersze wygięcie.
+- Po utworzeniu path skonfiguruj fill, stroke i effects na panelu właściwości.

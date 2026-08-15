@@ -1,15 +1,15 @@
 ---
 title: useSceneComputed
-description: Удобная обёртка для производного состояния на основе сцены.
+description: Computed state, полученный из SceneGraph.
 ---
 
 # useSceneComputed
 
-`useSceneComputed(fn)` — тонкая обёртка computed, используемая для явного обозначения производного состояния на основе сцены редактора в высокоуровневых компосаблах.
+`useSceneComputed(fn)` — небольшой wrapper над `computed`, который явно обозначает зависимость derived state от SceneGraph редактора.
 
-Используйте его, когда нужно наглядное computed-состояние, явно зависящее от данных сцены редактора.
+Используйте его в composables, когда источник computed state важно показать в коде.
 
-## Связанные API
+## См. также
 
 - [useSelectionState](../composables/use-selection-state)
 - [useSelectionCapabilities](../composables/use-selection-capabilities)

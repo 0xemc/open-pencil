@@ -1,19 +1,19 @@
 ---
 title: useSelectionCapabilities
-description: Wyprowadzaj wartości logiczne przyjazne poleceniom dla UI i akcji napędzanych selekcją.
+description: Reaktywne boolean values określające dostępne operacje na selection.
 ---
 
 # useSelectionCapabilities
 
-`useSelectionCapabilities()` udostępnia reaktywne wartości logiczne wskazujące, czy typowe akcje edytora są aktualnie dozwolone.
+`useSelectionCapabilities()` zwraca reaktywne boolean values informujące, czy najważniejsze operacje na bieżącym selection są dostępne.
 
-Użyj go przy budowaniu:
+Composable przydaje się w:
 
-- menu
-- pasków narzędzi
-- skrótów klawiaturowych
-- przycisków akcji
-- kontekstowych paneli
+- menu;
+- toolbars;
+- obsłudze skrótów;
+- przyciskach działań;
+- panelach zależnych od context.
 
 ## Użycie
 
@@ -23,7 +23,7 @@ import { useSelectionCapabilities } from '@open-pencil/vue'
 const caps = useSelectionCapabilities()
 ```
 
-## Podstawowy przykład
+## Przykład
 
 ```vue
 <script setup lang="ts">
@@ -34,28 +34,26 @@ const { canDelete, canDuplicate, canCreateComponent } = useSelectionCapabilities
 
 <template>
   <div class="flex gap-2">
-    <button :disabled="!canDuplicate">Duplikuj</button>
+    <button :disabled="!canDuplicate">Utwórz kopię</button>
     <button :disabled="!canDelete">Usuń</button>
-    <button :disabled="!canCreateComponent">Utwórz komponent</button>
+    <button :disabled="!canCreateComponent">Utwórz component</button>
   </div>
 </template>
 ```
 
-## Przykłady praktyczne
-
-### Bramkuj wpisy menu
+### Dostępność pozycji menu
 
 ```ts
 const { canMoveToPage, canGoToMainComponent } = useSelectionCapabilities()
 ```
 
-### Włącz polecenia powiększenia tylko gdy przydatne
+### Zoom do selection
 
 ```ts
 const { canZoomToSelection } = useSelectionCapabilities()
 ```
 
-## Powiązane API
+## Zobacz też
 
 - [useSelectionState](./use-selection-state)
 - [useEditorCommands](./use-editor-commands)

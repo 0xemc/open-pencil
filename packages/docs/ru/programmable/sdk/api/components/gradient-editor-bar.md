@@ -1,40 +1,40 @@
 ---
 title: GradientEditorBar
-description: Headless-примитив перетаскиваемой полосы для точек градиента.
+description: Headless draggable bar для gradient stops.
 ---
 
 # GradientEditorBar
 
-`GradientEditorBar` — примитив перетаскиваемой полосы, используемый внутри редакторов градиента.
+`GradientEditorBar` предоставляет state и pointer handlers перетаскиваемой bar внутри gradient editor.
 
-## Свойства
+## Props
 
 <SdkPropsTable
   :rows="[
-    { name: 'stops', type: 'GradientStop[]', description: 'Текущие точки градиента.', required: true },
-    { name: 'activeStopIndex', type: 'number', description: 'Индекс активной точки.', required: true },
-    { name: 'barBackground', type: 'string', description: 'CSS-строка фона полосы.', required: true }
+    { name: 'stops', type: 'GradientStop[]', description: 'Текущие gradient stops.', required: true },
+    { name: 'activeStopIndex', type: 'number', description: 'Index active stop.', required: true },
+    { name: 'barBackground', type: 'string', description: 'CSS background для bar.', required: true }
   ]"
 />
 
-## События
+## Events
 
 <SdkEventsTable
   :rows="[
-    { name: 'selectStop', payload: 'index: number', description: 'Генерируется при выборе точки.' },
-    { name: 'dragStop', payload: 'index: number, position: number', description: 'Генерируется при перетаскивании точки.' }
+    { name: 'selectStop', payload: 'index: number', description: 'Вызывается после выбора stop.' },
+    { name: 'dragStop', payload: 'index: number, position: number', description: 'Вызывается во время перетаскивания stop.' }
   ]"
 />
 
-## Слоты
+## Slots
 
 <SdkSlotsTable
   :rows="[
-    { name: 'default', props: 'bar state + drag handlers', description: 'Полный контракт рендеринга полосы градиента.' }
+    { name: 'default', props: 'bar state + drag handlers', description: 'Полный contract gradient bar.' }
   ]"
 />
 
-### Пропы слота default
+### Props slot по умолчанию
 
 ```ts
 {
@@ -64,7 +64,7 @@ description: Headless-примитив перетаскиваемой полос
 </GradientEditorBar>
 ```
 
-## Связанные API
+## См. также
 
 - [GradientEditorRoot](./gradient-editor-root)
 - [GradientEditorStop](./gradient-editor-stop)

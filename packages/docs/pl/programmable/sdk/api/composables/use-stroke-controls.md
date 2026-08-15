@@ -1,18 +1,16 @@
 ---
 title: useStrokeControls
-description: Pomocniki panelu obrysu dla wyrównania, wyboru strony i grubości obrysów per strona.
+description: Konfiguracja położenia i grubości stroke w panelu właściwości.
 ---
 
 # useStrokeControls
 
-`useStrokeControls()` to kompozyt właściwości obrysu używany przez panele edycji obrysów.
+`useStrokeControls()` udostępnia panelowi strokes:
 
-Udostępnia:
-
-- opcje wyrównania obrysu
-- predefiniowane strony: wszystkie, góra, dół, lewa, prawa, niestandardowe
-- domyślne dane obrysu
-- pomocniki dla grubości ramki per strona
+- warianty stroke alignment;
+- wybór boków: wszystkie, Top, Bottom, Left, Right albo dowolna kombinacja;
+- domyślną wartość nowego stroke;
+- functions zmiany stroke weight na poszczególnych bokach.
 
 ## Użycie
 
@@ -22,26 +20,24 @@ import { useStrokeControls } from '@open-pencil/vue'
 const strokes = useStrokeControls()
 ```
 
-## Podstawowy przykład
+## Przykład
 
 ```ts
 const { alignOptions, sideOptions, currentAlign, currentSides, selectSide } = useStrokeControls()
 ```
 
-## Przykłady praktyczne
-
-### Ustaw wyrównanie obrysu
+### Stroke wewnątrz granicy
 
 ```ts
 strokes.updateAlign('INSIDE', activeNode)
 ```
 
-### Ogranicz obrys do jednej strony
+### Stroke tylko na górnym boku
 
 ```ts
 strokes.selectSide('TOP', activeNode)
 ```
 
-## Powiązane API
+## Zobacz też
 
 - [PropertyListRoot](../components/property-list-root)

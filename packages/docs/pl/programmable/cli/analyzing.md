@@ -1,52 +1,52 @@
 ---
-title: Analiza projektów
-description: Audytuj kolory, typografię, odstępy i powtarzające się wzorce w plikach .fig.
+title: Analiza projektu
+description: Sprawdzanie colors, typography, spacing i powtarzających się patterns w plikach .fig.
 ---
 
-# Analiza projektów
+# Analiza projektu
 
-Polecenia `analyze` audytują cały system projektowy z terminala — znajdują niespójności, wyodrębniają rzeczywistą paletę i wykrywają komponenty czekające na wydzielenie.
+Polecenia `analyze` sprawdzają design system z terminala: znajdują niespójne wartości, wyodrębniają rzeczywistą palette i wykrywają powtarzające się struktury, które można przekształcić w components.
 
-## Kolory
+## Colors
 
 ```sh
 openpencil analyze colors design.fig
 ```
 
-Znajduje każdy kolor w pliku, zlicza użycie i wyświetla wizualny histogram:
+Polecenie znajduje wszystkie colors, liczy ich użycia i tworzy histogram:
 
-```
+```text
 #1d1b20  ██████████████████████████████ 17155×
 #49454f  ██████████████████████████████ 9814×
 #ffffff  ██████████████████████████████ 8620×
 #6750a4  ██████████████████████████████ 3967×
 ```
 
-## Typografia
+## Typography
 
 ```sh
 openpencil analyze typography design.fig
 ```
 
-Listuje każdą kombinację rodziny czcionek, rozmiaru i grubości wraz z liczbą użyć. Przydatne do wykrywania jednorazowych stylów tekstowych, które powinny zostać ujednolicone.
+Wynik zawiera kombinacje font family, size i weight oraz liczbę użyć każdej z nich. Pozwala to znaleźć przypadkowe text styles, które warto ujednolicić.
 
-## Odstępy
+## Spacing
 
 ```sh
 openpencil analyze spacing design.fig
 ```
 
-Audytuje wartości gap i padding w ramkach z auto-layoutem. Pomaga zidentyfikować niespójności w skali odstępów — np. przypadkowy `13px` gap wśród wartości `8/16/24`.
+Polecenie sprawdza gap i padding we frames z Auto layout. Pomaga na przykład zauważyć przypadkowy gap `13px` pośród wartości skali `8/16/24`.
 
-## Klastry
+## Clusters
 
 ```sh
 openpencil analyze clusters design.fig
 ```
 
-Znajduje powtarzające się wzorce węzłów, które mogłyby zostać wydzielone jako komponenty:
+Polecenie znajduje powtarzające się struktury obiektów, które mogą stać się components:
 
-```
+```text
 3771× frame "container" (100% match)
      size: 40×40, structure: Frame > [Frame]
 
@@ -54,12 +54,12 @@ Znajduje powtarzające się wzorce węzłów, które mogłyby zostać wydzielone
      size: 48×48, structure: Instance > [Frame]
 ```
 
-## Wyjście JSON
+## JSON output
 
-Wszystkie polecenia analyze obsługują `--json` dla wyjścia w formacie do odczytu maszynowego:
+Wszystkie podpolecenia `analyze` obsługują `--json`:
 
 ```sh
 openpencil analyze colors design.fig --json
 ```
 
-Przekieruj do `jq`, zasilaj kontrole CI lub używaj w skryptach egzekwujących budżety tokenów projektowych.
+Wynik można przekazać do `jq`, wykorzystać w CI checks albo scripts kontrolujących dopuszczalną liczbę design tokens.

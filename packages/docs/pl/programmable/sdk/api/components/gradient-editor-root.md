@@ -1,65 +1,19 @@
 ---
 title: GradientEditorRoot
-description: Bezstanowy prymityw korzenia do edycji punktów zatrzymania gradientu.
+description: State i actions edytora gradient stops.
 ---
 
 # GradientEditorRoot
 
-`GradientEditorRoot` to bezstanowy prymityw korzenia do edycji gradientów.
+`GradientEditorRoot` zarządza:
 
-Zarządza:
+- active gradient stop;
+- wyborem gradient subtype;
+- dodawaniem, usuwaniem i aktualizacją stops;
+- color aktywnego stop;
+- tłem gradient bar.
 
-- stanem aktywnego punktu zatrzymania
-- przełączaniem podtypów
-- logiką dodawania/usuwania/aktualizacji punktów
-- edycją aktywnego koloru
-- pochodnym tłem paska
-
-## Props
-
-<SdkPropsTable
-  :rows="[
-    { name: 'fill', type: 'Fill', description: 'Bieżąca wartość wypełnienia gradientowego.', required: true }
-  ]"
-/>
-
-## Zdarzenia
-
-<SdkEventsTable
-  :rows="[
-    { name: 'update', payload: 'fill: Fill', description: 'Emitowane gdy wypełnienie gradientowe się zmienia.' }
-  ]"
-/>
-
-## Sloty
-
-<SdkSlotsTable
-  :rows="[
-    { name: 'default', props: 'stan edytora + obsługa', description: 'Pełny kontrakt renderowania edytora gradientu.' }
-  ]"
-/>
-
-### Właściwości slotu default
-
-```ts
-{
-  stops: GradientStop[]
-  subtype: GradientSubtype
-  subtypes: Array<{ value: GradientSubtype; label: string }>
-  activeStopIndex: number
-  activeColor: Color
-  barBackground: string
-  setSubtype: (type: GradientSubtype) => void
-  selectStop: (index: number) => void
-  addStop: () => void
-  removeStop: (index: number) => void
-  updateStopPosition: (index: number, position: number) => void
-  updateStopColor: (index: number, hex: string) => void
-  updateStopOpacity: (index: number, opacity: number) => void
-  updateActiveColor: (color: Color) => void
-  dragStop: (index: number, position: number) => void
-}
-```
+Domyślny slot otrzymuje pełne API potrzebne do zbudowania własnego interfejsu edytora gradientu.
 
 ## Przykład
 
@@ -69,7 +23,8 @@ Zarządza:
 </GradientEditorRoot>
 ```
 
-## Powiązane API
+
+## Zobacz też
 
 - [GradientEditorBar](./gradient-editor-bar)
 - [GradientEditorStop](./gradient-editor-stop)

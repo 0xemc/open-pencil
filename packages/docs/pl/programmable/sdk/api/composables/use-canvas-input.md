@@ -1,26 +1,26 @@
 ---
 title: useCanvasInput
-description: Podłącz wejście wskaźnika kanvasu, przeciąganie, selekcję, zmianę rozmiaru, obrót i zachowanie narzędzi.
+description: Podłączenie pointer input, drag, selection, resize, rotation i tools do obszaru roboczego.
 ---
 
 # useCanvasInput
 
-`useCanvasInput()` łączy interakcję wskaźnika i myszy z kanwasem edytora.
+`useCanvasInput()` łączy pointer i mouse interactions z obszarem roboczym edytora.
 
-Obsługuje zagadnienia interakcji takie jak:
+Obsługuje:
 
-- selekcja
-- przeciąganie
-- zmiana rozmiaru
-- obrót
-- przesuwanie
-- przepływy pióra/rysowania
-- interakcja edycji tekstu
-- testy trafień uwzględniające zakres
+- selection;
+- drag;
+- resize;
+- rotation;
+- przesuwanie widoku;
+- rysowanie przez Pen tool;
+- interakcje w trybie edycji tekstu;
+- hit testing z uwzględnieniem viewport.
 
 ## Użycie
 
-Ten kompozyt jest zazwyczaj parowany z `useCanvas()` i pomocnikami testów trafień z renderera.
+Composable jest zwykle używane razem z `useCanvas()` i functions hit testing zwracanymi przez renderer.
 
 ```ts
 useCanvasInput(
@@ -32,7 +32,7 @@ useCanvasInput(
 )
 ```
 
-## Podstawowy przykład
+## Przykład
 
 ```ts
 const canvas = useCanvas(canvasRef, editor)
@@ -46,9 +46,7 @@ useCanvasInput(
 )
 ```
 
-## Przykłady praktyczne
-
-### Śledź ruch kursora w przestrzeni kanvasu
+### Położenie pointer w coordinates obszaru roboczego
 
 ```ts
 useCanvasInput(
@@ -65,9 +63,9 @@ useCanvasInput(
 
 ## Uwagi
 
-Ten kompozyt jest niższego poziomu niż większość logiki paneli. Najlepiej nadaje się do powłok edytora i kontenerów kanvasu.
+To low-level composable jest przeznaczone przede wszystkim dla components zawierających obszar roboczy i własnych interfejsów edytora.
 
-## Powiązane API
+## Zobacz też
 
 - [useCanvas](./use-canvas)
 - [useEditor](./use-editor)

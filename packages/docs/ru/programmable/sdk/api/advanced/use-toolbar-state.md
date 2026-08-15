@@ -1,15 +1,15 @@
 ---
 title: useToolbarState
-description: Хелпер состояния тулбара для постраничной навигации в мобильных категориях.
+description: Presentation state toolbar для переключения mobile categories.
 ---
 
 # useToolbarState
 
-`useToolbarState()` возвращает состояние постраничной навигации по мобильным категориям и хелперы `goPrev()` и `goNext()` для адаптивных оболочек тулбара.
+`useToolbarState()` возвращает paging state mobile categories и functions `goPrev()` и `goNext()` для responsive toolbar shell.
 
-Используйте его при создании макетов тулбара поверх `ToolbarRoot`.
+Используйте composable при создании layout toolbar поверх `ToolbarRoot`.
 
-## Связанные API
+## См. также
 
 - [ToolbarRoot](../components/toolbar-root)
 - [ToolbarItem](../components/toolbar-item)

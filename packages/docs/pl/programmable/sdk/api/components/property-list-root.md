@@ -1,36 +1,51 @@
 ---
 title: PropertyListRoot
-description: Bezstanowy prymityw strukturalny dla UI list wypełnień, obrysów i efektów.
+description: Kontrolowana lista fills, strokes, effects albo innych array properties.
 ---
+
+<script setup lang="ts">
+import { data } from '#docs-api/components/property-list.data'
+</script>
 
 # PropertyListRoot
 
-`PropertyListRoot` to bezstanowy prymityw strukturalny dla edytorów właściwości opartych na tablicach.
+`PropertyListRoot` koordynuje interfejs właściwości przechowywanych jako array, na przykład fills, strokes i effects.
 
-Przeznaczony dla UI właściwości takich jak:
+Otrzymuje values i mixed state przez props, emituje zmiany, a przez slot udostępnia:
 
-- wypełnienia
-- obrysy
-- efekty
+- bieżące items;
+- mixed state;
+- actions dodawania, usuwania, zastępowania i częściowej aktualizacji;
+- action zmiany visibility pojedynczego item.
 
-Udostępnia przez slot właściwości dla:
-
-- bieżących elementów
-- wykrywania stanu mieszanego
-- operacji dodawania/usuwania/aktualizacji/łatania
-- przełączania widoczności per element
-
-## Użycie
+## Przykład
 
 ```vue
-<PropertyListRoot prop-key="fills" v-slot="{ items, add, remove }">
-  <div v-for="(fill, index) in items" :key="index">
-    <button @click="remove(index)">Usuń</button>
-  </div>
-  <button @click="add(defaultFill)">Dodaj wypełnienie</button>
-</PropertyListRoot>
+<script setup lang="ts">
+import { PropertyListRoot, useEditorPropertyList } from '@open-pencil/vue'
+
+const fills = useEditorPropertyList('fills')
+</script>
+
+<template>
+  <PropertyListRoot
+    prop-key="fills"
+    :items="fills.items.value"
+    :mixed="fills.isMixed.value"
+    @add="fills.actions.add"
+    @remove="fills.actions.remove"
+    v-slot="{ items, actions }"
+  >
+    <div v-for="(fill, index) in items" :key="index">
+      <button @click="actions.remove(index)">Usuń</button>
+    </div>
+    <button @click="actions.add(defaultFill)">Dodaj fill</button>
+  </PropertyListRoot>
+</template>
 ```
 
-## Powiązane API
+<ComponentApi :meta="data" />
 
-- [Przegląd API SDK](../)
+## Zobacz też
+
+- [Dokumentacja API](../)

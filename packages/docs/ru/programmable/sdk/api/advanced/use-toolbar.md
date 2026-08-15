@@ -1,15 +1,15 @@
 ---
 title: useToolbar
-description: Хелпер контекста примитива для потомков ToolbarRoot.
+description: Доступ к context ToolbarRoot из дочернего component.
 ---
 
 # useToolbar
 
-`useToolbar()` читает локальный контекст тулбара, предоставляемый `ToolbarRoot`.
+`useToolbar()` возвращает локальный context ближайшего `ToolbarRoot`.
 
-Используйте внутри потомков тулбара, которым нужен доступ к инструментам, состоянию активности или хелперам выбора инструментов.
+Используйте composable в дочерних components, которым нужны tools, active state или functions выбора tool.
 
-## Связанные API
+## См. также
 
 - [ToolbarRoot](../components/toolbar-root)
 - [ToolbarItem](../components/toolbar-item)

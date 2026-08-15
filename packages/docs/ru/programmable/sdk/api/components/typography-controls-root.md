@@ -1,16 +1,16 @@
 ---
 title: TypographyControlsRoot
-description: Headless-корневой примитив для управления шрифтом, выравниванием и форматированием.
+description: Headless root для font, alignment и formatting controls.
 ---
 
 # TypographyControlsRoot
 
-`TypographyControlsRoot` предоставляет состояние типографики и обработчики из `useTypography()` в виде структурного примитива.
+`TypographyControlsRoot` предоставляет typography state и handlers из `useTypography()` через структурный component.
 
-Используйте его, когда нужны кастомные элементы управления типографикой с поведением шрифта и форматирования, управляемым SDK.
+Используйте его для собственного интерфейса typography controls, когда загрузкой fonts и formatting управляет SDK.
 
-## Связанные API
+## См. также
 
 - [useTypography](../composables/use-typography)
 - [FontPickerRoot](./font-picker-root)
-- [Руководство по панелям свойств](../../guides/property-panels)
+- [Панели свойств](../../guides/property-panels)

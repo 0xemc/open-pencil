@@ -1,32 +1,48 @@
 ---
-title: Navigazione canvas
-description: Panoramica, zoom e strumento mano in OpenPencil.
+title: Navigazione nell'area di lavoro
+description: Sposta la vista, modifica lo zoom e usa lo strumento Mano in OpenPencil.
 ---
 
-# Navigazione canvas
+# Navigazione nell'area di lavoro
 
-Il canvas è il tuo spazio di lavoro infinito.
+L'area di lavoro non ha limiti. Sposta la vista e modifica lo zoom per lavorare sulle diverse parti del progetto.
 
-## Panoramica
+## Spostare la vista
 
-- <kbd>Spazio</kbd> + trascinamento — tieni <kbd>Spazio</kbd> e trascina
-- **Pulsante centrale del mouse** — premi e trascina
-- **Trackpad a due dita** — scorri con due dita
+Per spostare l'area visibile senza modificare gli oggetti:
 
-## Strumento mano
+- tieni premuta la <kbd>barra spaziatrice</kbd> e trascina l'area di lavoro;
+- trascina con il pulsante centrale del mouse;
+- scorri con due dita sul trackpad.
 
-Premi <kbd>H</kbd> per attivare lo strumento mano. Passa a un altro strumento (es. **V**) per disattivare.
+## Strumento Mano
+
+Premi <kbd>H</kbd> per attivare lo strumento Mano. Finché è selezionato, qualsiasi trascinamento sull'area di lavoro sposta la vista senza dover tenere premuta la barra spaziatrice.
+
+Seleziona un altro strumento, per esempio premi <kbd>V</kbd> per lo strumento Selezione, quando vuoi uscire da questa modalità.
 
 ## Zoom
 
-- <kbd>Ctrl</kbd> + scroll (o <kbd>⌘</kbd> + scroll su Mac) — zoom avanti/indietro
-- **Gesto pinch** — pinch sul trackpad
-- Scorciatoie da tastiera — vedi tabella
+Lo zoom viene applicato rispetto alla posizione del puntatore:
 
-| Azione | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Panoramica | <kbd>Spazio</kbd> + trascinamento | Spazio + trascinamento |
-| Strumento mano | <kbd>H</kbd> | <kbd>H</kbd> |
-| Zoom avanti | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Ctrl</kbd> + <kbd>+</kbd> |
-| Zoom indietro | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Ctrl</kbd> + <kbd>−</kbd> |
-| Zoom 100% | <kbd>⌘</kbd><kbd>0</kbd> | <kbd>Ctrl</kbd> + <kbd>0</kbd> |
+- <kbd>Ctrl</kbd> + rotellina, oppure <kbd>⌘</kbd> + rotellina su macOS;
+- gesto pinch sul trackpad;
+- scorciatoie da tastiera riportate nella tabella seguente.
+
+Il gesto pinch è disabilitato nei pannelli dei livelli e delle proprietà, per evitare che modifichi accidentalmente lo zoom dell'intera pagina del browser.
+
+## Scorciatoie da tastiera
+
+| Azione | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Spostare la vista | <kbd>barra spaziatrice</kbd> + trascinamento | <kbd>barra spaziatrice</kbd> + trascinamento |
+| Strumento Mano | <kbd>H</kbd> | <kbd>H</kbd> |
+| Aumentare lo zoom | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Ctrl</kbd> + <kbd>+</kbd> |
+| Ridurre lo zoom | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Ctrl</kbd> + <kbd>−</kbd> |
+| Zoom al 100% | <kbd>⌘</kbd><kbd>0</kbd> | <kbd>Ctrl</kbd> + <kbd>0</kbd> |
+
+## Suggerimenti
+
+- Prima di modificare lo zoom, posiziona il puntatore sull'area che vuoi esaminare.
+- Lo strumento Mano rimane attivo finché non ne selezioni un altro, quindi è utile quando devi spostarti spesso.
+- Consulta [Selezione e manipolazione](./selection-and-manipulation) per imparare a lavorare con gli oggetti.

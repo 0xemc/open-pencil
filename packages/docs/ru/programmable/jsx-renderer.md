@@ -1,17 +1,17 @@
 ---
-title: JSX-рендерер
-description: Создавайте дизайн с помощью JSX — синтаксиса, который LLM уже знают из миллионов React-компонентов.
+title: JSX Renderer
+description: Создание дизайна с помощью JSX — синтаксиса, знакомого LLM по миллионам React components.
 ---
 
-# JSX-рендерер
+# JSX Renderer
 
-OpenPencil использует JSX как язык создания дизайна. LLM видели миллионы React-компонентов — описание макета через `<Frame><Text>` естественно и не требует специального обучения. Каждый токен важен, когда ИИ-агент выполняет десятки операций, а JSX — это самое компактное декларативное представление.
+OpenPencil использует JSX как декларативный язык создания дизайна. LLM уже знакомы с миллионами React components, поэтому структура `<Frame><Text>` не требует отдельного обучения. Компактность особенно важна, когда AI agent выполняет десятки операций.
 
-JSX также поддаётся сравнению. Когда ИИ изменяет дизайн, изменение представлено как JSX-дифф — читаемый, проверяемый, пригодный для контроля версий.
+JSX удобно сравнивать. После изменения дизайна AI результат можно представить как обычный JSX diff: его легко прочитать, проверить и сохранить в version control.
 
 ## Создание дизайна
 
-Инструмент `render` (доступен в ИИ-чате, MCP и CLI eval) принимает JSX:
+Tool `render`, доступный в AI chat, MCP и CLI eval, принимает JSX:
 
 ```jsx
 <Frame name="Card" w={320} h="hug" flex="col" gap={16} p={24} bg="#FFF" rounded={16}>
@@ -20,90 +20,90 @@ JSX также поддаётся сравнению. Когда ИИ измен
 </Frame>
 ```
 
-В MCP-сервере и ИИ-чате инструмент `render` принимает JSX-строки напрямую. В CLI используйте команду `export` для обратного направления — [экспорт дизайна в JSX](./cli/exporting).
+В MCP server и AI chat передайте tool `render` строку JSX. Для обратного преобразования через CLI используйте `export` — подробнее в разделе [Экспорт дизайна в JSX](./cli/exporting).
 
-## Элементы
+## Elements
 
-Все типы узлов доступны как JSX-элементы:
+Типы объектов представлены JSX elements:
 
-| Элемент | Создаёт | Псевдонимы |
-|---------|---------|------------|
-| `<Frame>` | Фрейм (контейнер, поддерживает автолейаут) | `<View>` |
-| `<Rectangle>` | Прямоугольник | `<Rect>` |
-| `<Ellipse>` | Эллипс / круг | |
-| `<Text>` | Текстовый узел (дочерние элементы становятся текстовым содержимым) | |
-| `<Line>` | Линия | |
-| `<Star>` | Звезда | |
-| `<Polygon>` | Многоугольник | |
-| `<Vector>` | Векторный контур | |
-| `<Group>` | Группа | |
-| `<Section>` | Секция | |
+| Element | Создаёт | Alias |
+|---------|---------|-------|
+| `<Frame>` | Frame с поддержкой Auto layout | `<View>` |
+| `<Rectangle>` | Rectangle | `<Rect>` |
+| `<Ellipse>` | Ellipse или circle | |
+| `<Text>` | Text object; children становятся содержимым | |
+| `<Line>` | Line | |
+| `<Star>` | Star | |
+| `<Polygon>` | Polygon | |
+| `<Vector>` | Vector path | |
+| `<Group>` | Group | |
+| `<Section>` | Section | |
 
-## Свойства стиля
+## Style props
 
-Компактные сокращённые свойства, вдохновлённые именованием Tailwind.
+Для краткости props используют имена, близкие к Tailwind.
 
-### Лейаут
+### Layout
 
-| Свойство | Описание |
-|----------|----------|
-| `flex` | `"row"` или `"col"` — включает автолейаут |
-| `gap` | Расстояние между дочерними элементами |
-| `wrap` | Перенос дочерних элементов на следующую строку |
-| `rowGap` | Межстрочный интервал при переносе |
-| `justify` | `"start"`, `"end"`, `"center"`, `"between"` |
-| `items` | `"start"`, `"end"`, `"center"`, `"stretch"` |
-| `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl` | Отступы |
+| Prop | Назначение |
+|------|------------|
+| `flex` | `"row"` или `"col"`; включает Auto layout |
+| `gap` | Расстояние между children |
+| `wrap` | Перенос children на следующую строку |
+| `rowGap` | Расстояние по поперечной оси при wrap |
+| `justify` | `"start"`, `"end"`, `"center"` или `"between"` |
+| `items` | `"start"`, `"end"`, `"center"` или `"stretch"` |
+| `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl` | Padding |
 
-### Размер и позиция
+### Размер и положение
 
-| Свойство | Описание |
-|----------|----------|
-| `w`, `h` | Ширина/высота — число, `"fill"` или `"hug"` |
+| Prop | Назначение |
+|------|------------|
+| `w`, `h` | Width и height: число, `"fill"` или `"hug"` |
 | `minW`, `maxW`, `minH`, `maxH` | Ограничения размера |
-| `x`, `y` | Позиция |
+| `x`, `y` | Position |
 
 ### Внешний вид
 
-| Свойство | Описание |
-|----------|----------|
-| `bg` | Заливка фона (HEX-цвет) |
-| `fill` | Псевдоним для `bg` |
-| `stroke` | Цвет обводки |
-| `strokeWidth` | Толщина обводки (по умолчанию: 1) |
-| `rounded` | Скругление углов (или `roundedTL`, `roundedTR`, `roundedBL`, `roundedBR`) |
-| `cornerSmoothing` | Плавное скругление в стиле iOS (0–1) |
-| `opacity` | 0–1 |
-| `shadow` | Тень (напр. `"0 4 8 #00000040"`) |
-| `blur` | Радиус размытия слоя |
-| `rotate` | Поворот в градусах |
-| `blendMode` | Режим наложения |
+| Prop | Назначение |
+|------|------------|
+| `bg` | Background fill в hex format |
+| `fill` | Alias для `bg` |
+| `stroke` | Stroke color |
+| `strokeWidth` | Stroke width; по умолчанию 1 |
+| `rounded` | Corner radius; отдельные углы: `roundedTL`, `roundedTR`, `roundedBL`, `roundedBR` |
+| `cornerSmoothing` | Smooth corners в стиле iOS, от 0 до 1 |
+| `opacity` | От 0 до 1 |
+| `shadow` | Drop shadow, например `"0 4 8 #00000040"` |
+| `blur` | Layer blur radius |
+| `rotate` | Угол поворота в градусах |
+| `blendMode` | Blend mode |
 | `overflow` | `"hidden"` или `"visible"` |
 
-### Типографика
+### Typography
 
-| Свойство | Описание |
-|----------|----------|
-| `size` / `fontSize` | Размер шрифта |
-| `font` / `fontFamily` | Семейство шрифта |
+| Prop | Назначение |
+|------|------------|
+| `size` / `fontSize` | Font size |
+| `font` / `fontFamily` | Font family |
 | `weight` / `fontWeight` | `"bold"`, `"medium"`, `"normal"` или число |
-| `color` | Цвет текста |
-| `textAlign` | `"left"`, `"center"`, `"right"`, `"justified"` |
+| `color` | Text color |
+| `textAlign` | `"left"`, `"center"`, `"right"` или `"justified"` |
 
 ## Экспорт в JSX
 
-Конвертируйте существующий дизайн обратно в JSX:
+Существующий дизайн можно преобразовать обратно в JSX:
 
 ```sh
-openpencil export design.fig -f jsx                   # формат OpenPencil
-openpencil export design.fig -f jsx --style tailwind  # классы Tailwind
+openpencil export design.fig -f jsx                   # Формат OpenPencil
+openpencil export design.fig -f jsx --style tailwind  # Классы Tailwind
 ```
 
-Круговой цикл работает: экспортируйте дизайн как JSX, измените код, отрендерьте обратно.
+Преобразование работает в обе стороны: экспортируйте JSX, измените код и снова передайте его renderer.
 
-## Визуальное сравнение
+## Visual diff
 
-Поскольку дизайн можно представить как JSX, изменения становятся диффами кода:
+Поскольку дизайн можно представить как JSX, изменения выглядят как code diff:
 
 ```diff
  <Frame name="Card" w={320} flex="col" gap={16} p={24} bg="#FFF">
@@ -113,4 +113,4 @@ openpencil export design.fig -f jsx --style tailwind  # классы Tailwind
  </Frame>
 ```
 
-Это делает изменения дизайна доступными для ревью в пулл-реквестах, отслеживаемыми в системе контроля версий и проверяемыми в CI.
+Такой diff можно проверить в pull request, сохранить в version control и анализировать в CI.

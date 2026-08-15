@@ -69,6 +69,7 @@ export default defineConfig({
     resolve: {
       alias: {
         '#docs': fileURLToPath(new URL('.', import.meta.url)),
+        '#docs-api': fileURLToPath(new URL('../programmable/sdk/api', import.meta.url)),
         '#vue': fileURLToPath(new URL('../../vue/src', import.meta.url))
       }
     },

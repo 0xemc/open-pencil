@@ -1,18 +1,16 @@
 ---
 title: useAppearance
-description: Kontroluj widoczność, przezroczystość i stan promienia narożnika bieżącej selekcji.
+description: Zarządzanie visibility, opacity i corner radius bieżącego selection.
 ---
 
 # useAppearance
 
-`useAppearance()` to kompozyt kontrolek skupiony na wyglądzie dla paneli właściwości.
+`useAppearance()` udostępnia panelom właściwości state i actions związane z wyglądem zaznaczonych obiektów:
 
-Udostępnia stan UI pochodny od selekcji dla:
-
-- widoczności
-- przezroczystości
-- promienia narożnika
-- niezależnych promieni narożników
+- visibility;
+- opacity;
+- corner radius;
+- niezależne corner radii.
 
 ## Użycie
 
@@ -22,7 +20,7 @@ import { useAppearance } from '@open-pencil/vue'
 const appearance = useAppearance()
 ```
 
-## Podstawowy przykład
+## Przykład
 
 ```ts
 const {
@@ -34,23 +32,21 @@ const {
 } = useAppearance()
 ```
 
-## Przykłady praktyczne
-
-### Przełącz widoczność selekcji
+### Visibility selection
 
 ```ts
 appearance.toggleVisibility()
 ```
 
-### Edytuj promienie per narożnik
+### Osobne corner radii
 
 ```ts
 appearance.updateCornerProp('topLeftRadius', 12)
 appearance.commitCornerProp('topLeftRadius', 12, 8)
 ```
 
-## Powiązane API
+## Zobacz też
 
-- [Przegląd API SDK](../)
+- [Dokumentacja API](../)
 - [useLayout](./use-layout)
 - [useTypography](./use-typography)

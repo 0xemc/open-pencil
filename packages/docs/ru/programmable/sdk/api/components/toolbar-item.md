@@ -1,15 +1,15 @@
 ---
 title: ToolbarItem
-description: Headless-примитив элемента тулбара для одного инструмента редактора.
+description: Headless component одного editor tool в toolbar.
 ---
 
 # ToolbarItem
 
-`ToolbarItem` предоставляет состояние активности и поведение выбора для одного инструмента тулбара.
+`ToolbarItem` передаёт active state и поведение выбора одного tool.
 
-Используйте его внутри `ToolbarRoot`, когда нужна кастомная разметка кнопок при общем подключении выбора инструмента.
+Используйте его внутри `ToolbarRoot`, если приложению нужен собственный markup button при общем подключении tool selection.
 
-## Связанные API
+## См. также
 
 - [ToolbarRoot](./toolbar-root)
 - [useToolbar](../advanced/use-toolbar)

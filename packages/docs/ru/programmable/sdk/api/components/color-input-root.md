@@ -1,20 +1,20 @@
 ---
 title: ColorInputRoot
-description: Headless-хелпер для ввода цвета с разбором HEX и хелперами обновления.
+description: Headless color input с parsing hex и functions обновления.
 ---
 
 # ColorInputRoot
 
-`ColorInputRoot` — headless-хелпер для UI ввода цвета.
+`ColorInputRoot` предоставляет state и functions для собственного интерфейса ввода цвета.
 
-Выводит hex-значение из цвета и предоставляет хелперы обновления для hex и полного значения цвета.
+Component вычисляет hex из `Color` и позволяет обновить значение как через hex, так и через полный объект `Color`.
 
 ## Props
 
 <SdkPropsTable
   :rows="[
-    { name: 'color', type: 'Color', description: 'Текущее значение цвета.', required: true },
-    { name: 'editable', type: 'boolean | undefined', description: 'Должен ли потребитель представить значение как редактируемое.' }
+    { name: 'color', type: 'Color', description: 'Текущее значение color.', required: true },
+    { name: 'editable', type: 'boolean | undefined', description: 'Следует ли показывать value как доступное для редактирования.' }
   ]"
 />
 
@@ -22,7 +22,7 @@ description: Headless-хелпер для ввода цвета с разбор�
 
 <SdkEventsTable
   :rows="[
-    { name: 'update', payload: 'color: Color', description: 'Генерируется при изменении цвета.' }
+    { name: 'update', payload: 'color: Color', description: 'Вызывается после изменения color.' }
   ]"
 />
 
@@ -30,7 +30,7 @@ description: Headless-хелпер для ввода цвета с разбор�
 
 <SdkSlotsTable
   :rows="[
-    { name: 'default', props: '{ color: Color, editable: boolean, hex: string, updateFromHex: (value: string) => void, updateColor: (color: Color) => void }', description: 'Основной контракт рендеринга ввода цвета.' }
+    { name: 'default', props: '{ color: Color, editable: boolean, hex: string, updateFromHex: (value: string) => void, updateColor: (color: Color) => void }', description: 'Contract для интерфейса color input.' }
   ]"
 />
 
@@ -42,6 +42,6 @@ description: Headless-хелпер для ввода цвета с разбор�
 </ColorInputRoot>
 ```
 
-## Связанные API
+## См. также
 
 - [ColorPickerRoot](./color-picker-root)

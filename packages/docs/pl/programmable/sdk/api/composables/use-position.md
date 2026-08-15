@@ -1,13 +1,11 @@
 ---
 title: usePosition
-description: Odczytuj i aktualizuj pozycję, rozmiar, obrót, wyrównanie i odbicie zaznaczonego węzła.
+description: Odczytywanie i zmiana position, size, rotation, alignment i flip zaznaczonego obiektu.
 ---
 
 # usePosition
 
-`usePosition()` to kompozyt kontrolek dla UI związanego z pozycją.
-
-Udostępnia wartości zaznaczonego węzła takie jak:
+`usePosition()` udostępnia panelom położenia i rozmiaru wartości wybranego obiektu:
 
 - `x`
 - `y`
@@ -15,12 +13,12 @@ Udostępnia wartości zaznaczonego węzła takie jak:
 - `height`
 - `rotation`
 
-i akcje takie jak:
+oraz actions:
 
-- wyrównanie
-- odbicie
-- obrót
-- przeciąganie/aktualizacja właściwości liczbowych
+- alignment;
+- flip;
+- rotation;
+- preview i commit numeric properties.
 
 ## Użycie
 
@@ -30,35 +28,33 @@ import { usePosition } from '@open-pencil/vue'
 const position = usePosition()
 ```
 
-## Podstawowy przykład
+## Przykład
 
 ```ts
 const { x, y, width, height, rotation, updateProp, commitProp } = usePosition()
 ```
 
-## Przykłady praktyczne
-
-### Wyrównaj zaznaczone węzły
+### Alignment
 
 ```ts
 position.align('horizontal', 'center')
 position.align('vertical', 'min')
 ```
 
-### Odbij selekcję
+### Flip
 
 ```ts
 position.flip('horizontal')
 position.flip('vertical')
 ```
 
-### Obróć selekcję
+### Rotation
 
 ```ts
 position.rotate(90)
 ```
 
-## Powiązane API
+## Zobacz też
 
 - [useLayout](./use-layout)
 - [useAppearance](./use-appearance)

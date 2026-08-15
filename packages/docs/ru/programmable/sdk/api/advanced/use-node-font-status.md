@@ -1,15 +1,15 @@
 ---
 title: useNodeFontStatus
-description: Хелпер статуса отсутствующих шрифтов для текстовых узлов.
+description: Сведения об отсутствующих fonts в text object.
 ---
 
 # useNodeFontStatus
 
-`useNodeFontStatus(node)` возвращает информацию об отсутствующих шрифтах для геттера текстового узла.
+`useNodeFontStatus(node)` возвращает сведения об отсутствующих fonts для getter текстового объекта.
 
-Используйте в панелях типографики и предупреждениях, которым нужно сообщать о недоступных семействах шрифтов.
+Используйте composable в typography panel или warning, который должен сообщить о недоступном font family.
 
-## Связанные API
+## См. также
 
 - [useTypography](../composables/use-typography)
 - [TypographyControlsRoot](../components/typography-controls-root)

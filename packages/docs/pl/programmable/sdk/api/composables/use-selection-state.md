@@ -1,18 +1,18 @@
 ---
 title: useSelectionState
-description: Reaktywny stan edytora pochodny od selekcji dla bieżącego węzła, liczby i typu selekcji.
+description: Reaktywny state bieżącego selection, wybranego obiektu i jego type.
 ---
 
 # useSelectionState
 
-`useSelectionState()` udostępnia reaktywny stan pochodny od selekcji z bieżącego edytora.
+`useSelectionState()` udostępnia reaktywne informacje o bieżącym selection.
 
-Użyj go, gdy chcesz renderować UI na podstawie:
+Pozwala ustalić:
 
-- czy coś jest zaznaczone
-- ile węzłów jest zaznaczonych
-- głównego zaznaczonego węzła
-- czy bieżąca selekcja jest instancją, komponentem lub grupą
+- czy zaznaczono jakikolwiek obiekt;
+- ile obiektów jest zaznaczonych;
+- który obiekt jest główny;
+- czy główny obiekt jest instance, component albo group.
 
 ## Użycie
 
@@ -22,7 +22,7 @@ import { useSelectionState } from '@open-pencil/vue'
 const selection = useSelectionState()
 ```
 
-## Podstawowy przykład
+## Przykład
 
 ```vue
 <script setup lang="ts">
@@ -33,18 +33,16 @@ const { hasSelection, selectedCount, isInstance } = useSelectionState()
 
 <template>
   <div class="text-xs text-muted">
-    <span v-if="!hasSelection">Brak selekcji</span>
+    <span v-if="!hasSelection">Nic nie zaznaczono</span>
     <span v-else>
-      {{ selectedCount }} zaznaczono
-      <span v-if="isInstance">· instancja</span>
+      Zaznaczono: {{ selectedCount }}
+      <span v-if="isInstance">· instance</span>
     </span>
   </div>
 </template>
 ```
 
-## Co zwraca
-
-Przydatne wartości obejmują:
+## Zwracane wartości
 
 - `selectedIds`
 - `hasSelection`
@@ -56,21 +54,19 @@ Przydatne wartości obejmują:
 - `isGroup`
 - `canCreateComponentSet`
 
-## Przykłady praktyczne
-
-### Wyświetl akcje tylko dla instancji
+### Operacje dostępne tylko dla instance
 
 ```ts
 const { isInstance } = useSelectionState()
 ```
 
-### Włącz UI tworzenia zestawu komponentów
+### Tworzenie component set
 
 ```ts
 const { canCreateComponentSet } = useSelectionState()
 ```
 
-## Powiązane API
+## Zobacz też
 
 - [useSelectionCapabilities](./use-selection-capabilities)
 - [useEditorCommands](./use-editor-commands)

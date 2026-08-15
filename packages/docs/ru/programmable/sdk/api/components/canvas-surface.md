@@ -1,15 +1,15 @@
 ---
 title: CanvasSurface
-description: Примитив элемента canvas, привязывающийся к ближайшему контексту CanvasRoot.
+description: Элемент canvas, подключённый к ближайшему context CanvasRoot.
 ---
 
 # CanvasSurface
 
-`CanvasSurface` рендерит фактический элемент `<canvas>`, используемый стеком холста SDK.
+`CanvasSurface` создаёт элемент `<canvas>`, который использует canvas stack SDK.
 
-Используйте его внутри `CanvasRoot`, когда хотите ref-ы холста и интеграцию рендеринга, управляемые SDK, при собственном макете и стилях.
+Разместите его внутри `CanvasRoot`, если SDK должен управлять canvas refs и подключением renderer, а приложение — layout и оформлением.
 
-## Связанные API
+## См. также
 
 - [CanvasRoot](./canvas-root)
 - [useCanvasContext](../advanced/use-canvas-context)

@@ -1,17 +1,17 @@
 ---
-title: Renderer JSX
-description: Twórz projekty za pomocą JSX — składni, którą LLM-y już znają z milionów komponentów React.
+title: JSX Renderer
+description: Tworzenie projektu za pomocą JSX — składni znanej modelom LLM z milionów React components.
 ---
 
-# Renderer JSX
+# JSX Renderer
 
-OpenPencil używa JSX jako języka tworzenia projektów. LLM-y widziały miliony komponentów React — opisanie layoutu jako `<Frame><Text>` jest naturalne, bez potrzeby specjalnego trenowania. Każdy token ma znaczenie, gdy agent AI wykonuje dziesiątki operacji, a JSX jest najbardziej zwięzłą deklaratywną reprezentacją.
+OpenPencil używa JSX jako deklaratywnego języka tworzenia projektu. Modele LLM znają miliony React components, dlatego struktura `<Frame><Text>` nie wymaga osobnego treningu. Zwięzłość ma szczególne znaczenie, gdy AI agent wykonuje dziesiątki operacji.
 
-JSX jest również porównywalny w diffach. Gdy AI modyfikuje projekt, zmiana jest diffem JSX — czytelnym, weryfikowalnym, kontrolowalnym wersyjnie.
+JSX można łatwo porównywać. Po zmianie projektu przez AI wynik da się przedstawić jako zwykły JSX diff, który można przeczytać, sprawdzić i zachować w version control.
 
-## Tworzenie projektów
+## Tworzenie projektu
 
-Narzędzie `render` (dostępne w czacie AI, MCP i CLI eval) przyjmuje JSX:
+Tool `render`, dostępny w AI chat, MCP i CLI eval, przyjmuje JSX:
 
 ```jsx
 <Frame name="Card" w={320} h="hug" flex="col" gap={16} p={24} bg="#FFF" rounded={16}>
@@ -20,90 +20,90 @@ Narzędzie `render` (dostępne w czacie AI, MCP i CLI eval) przyjmuje JSX:
 </Frame>
 ```
 
-W serwerze MCP i czacie AI narzędzie `render` przyjmuje ciągi JSX bezpośrednio. W CLI użyj polecenia `export`, aby pójść w drugą stronę — [eksportowanie projektów jako JSX](./cli/exporting).
+W MCP server i AI chat przekaż do tool `render` ciąg JSX. Do konwersji w drugą stronę za pomocą CLI użyj `export` — więcej na stronie [Eksport projektu do JSX](./cli/exporting).
 
-## Elementy
+## Elements
 
-Wszystkie typy węzłów są dostępne jako elementy JSX:
+Typy obiektów są reprezentowane jako JSX elements:
 
-| Element | Tworzy | Aliasy |
-|---------|--------|--------|
-| `<Frame>` | Ramka (kontener, obsługuje auto-layout) | `<View>` |
-| `<Rectangle>` | Prostokąt | `<Rect>` |
-| `<Ellipse>` | Elipsa / koło | |
-| `<Text>` | Węzeł tekstowy (dzieci stają się treścią tekstu) | |
-| `<Line>` | Linia | |
-| `<Star>` | Gwiazda | |
-| `<Polygon>` | Wielokąt | |
-| `<Vector>` | Ścieżka wektorowa | |
-| `<Group>` | Grupa | |
-| `<Section>` | Sekcja | |
+| Element | Tworzy | Alias |
+|---------|--------|-------|
+| `<Frame>` | Frame obsługujący Auto layout | `<View>` |
+| `<Rectangle>` | Rectangle | `<Rect>` |
+| `<Ellipse>` | Ellipse albo circle | |
+| `<Text>` | Obiekt tekstowy; children stają się zawartością | |
+| `<Line>` | Line | |
+| `<Star>` | Star | |
+| `<Polygon>` | Polygon | |
+| `<Vector>` | Vector path | |
+| `<Group>` | Group | |
+| `<Section>` | Section | |
 
-## Właściwości stylów
+## Style props
 
-Zwięzłe skrócone właściwości inspirowane nazewnictwem Tailwind.
+Dla zwięzłości props mają nazwy zbliżone do Tailwind.
 
 ### Layout
 
-| Właściwość | Opis |
-|------------|------|
-| `flex` | `"row"` lub `"col"` — włącza auto-layout |
-| `gap` | Odstęp między dziećmi |
-| `wrap` | Zawijanie dzieci do następnej linii |
-| `rowGap` | Odstęp na osi poprzecznej przy zawijaniu |
-| `justify` | `"start"`, `"end"`, `"center"`, `"between"` |
-| `items` | `"start"`, `"end"`, `"center"`, `"stretch"` |
+| Prop | Zastosowanie |
+|------|--------------|
+| `flex` | `"row"` albo `"col"`; włącza Auto layout |
+| `gap` | Odległość między children |
+| `wrap` | Przenoszenie children do następnego wiersza |
+| `rowGap` | Odstęp na osi poprzecznej przy wrap |
+| `justify` | `"start"`, `"end"`, `"center"` albo `"between"` |
+| `items` | `"start"`, `"end"`, `"center"` albo `"stretch"` |
 | `p`, `px`, `py`, `pt`, `pr`, `pb`, `pl` | Padding |
 
-### Rozmiar i pozycja
+### Rozmiar i położenie
 
-| Właściwość | Opis |
-|------------|------|
-| `w`, `h` | Szerokość/wysokość — liczba, `"fill"` lub `"hug"` |
+| Prop | Zastosowanie |
+|------|--------------|
+| `w`, `h` | Width i height: liczba, `"fill"` albo `"hug"` |
 | `minW`, `maxW`, `minH`, `maxH` | Ograniczenia rozmiaru |
-| `x`, `y` | Pozycja |
+| `x`, `y` | Position |
 
 ### Wygląd
 
-| Właściwość | Opis |
-|------------|------|
-| `bg` | Wypełnienie tła (kolor hex) |
-| `fill` | Alias dla `bg` |
-| `stroke` | Kolor obrysu |
-| `strokeWidth` | Szerokość obrysu (domyślnie: 1) |
-| `rounded` | Zaokrąglenie narożników (lub `roundedTL`, `roundedTR`, `roundedBL`, `roundedBR`) |
-| `cornerSmoothing` | Gładkie narożniki w stylu iOS (0–1) |
-| `opacity` | 0–1 |
-| `shadow` | Cień (np. `"0 4 8 #00000040"`) |
-| `blur` | Promień rozmycia warstwy |
-| `rotate` | Obrót w stopniach |
-| `blendMode` | Tryb mieszania |
-| `overflow` | `"hidden"` lub `"visible"` |
+| Prop | Zastosowanie |
+|------|--------------|
+| `bg` | Background fill w formacie hex |
+| `fill` | Alias `bg` |
+| `stroke` | Stroke color |
+| `strokeWidth` | Stroke width; domyślnie 1 |
+| `rounded` | Corner radius; osobne narożniki: `roundedTL`, `roundedTR`, `roundedBL`, `roundedBR` |
+| `cornerSmoothing` | Smooth corners w stylu iOS, od 0 do 1 |
+| `opacity` | Od 0 do 1 |
+| `shadow` | Drop shadow, na przykład `"0 4 8 #00000040"` |
+| `blur` | Layer blur radius |
+| `rotate` | Kąt obrotu w stopniach |
+| `blendMode` | Blend mode |
+| `overflow` | `"hidden"` albo `"visible"` |
 
-### Typografia
+### Typography
 
-| Właściwość | Opis |
-|------------|------|
-| `size` / `fontSize` | Rozmiar czcionki |
-| `font` / `fontFamily` | Rodzina czcionki |
-| `weight` / `fontWeight` | `"bold"`, `"medium"`, `"normal"` lub liczba |
-| `color` | Kolor tekstu |
-| `textAlign` | `"left"`, `"center"`, `"right"`, `"justified"` |
+| Prop | Zastosowanie |
+|------|--------------|
+| `size` / `fontSize` | Font size |
+| `font` / `fontFamily` | Font family |
+| `weight` / `fontWeight` | `"bold"`, `"medium"`, `"normal"` albo liczba |
+| `color` | Text color |
+| `textAlign` | `"left"`, `"center"`, `"right"` albo `"justified"` |
 
 ## Eksport do JSX
 
-Konwertuj istniejące projekty z powrotem do JSX:
+Istniejący projekt można przekształcić z powrotem do JSX:
 
 ```sh
-openpencil export design.fig -f jsx                   # format OpenPencil
-openpencil export design.fig -f jsx --style tailwind  # klasy Tailwind
+openpencil export design.fig -f jsx                   # Format OpenPencil
+openpencil export design.fig -f jsx --style tailwind  # Klasy Tailwind
 ```
 
-Pełen cykl działa: wyeksportuj projekt jako JSX, zmodyfikuj kod, wyrenderuj z powrotem.
+Konwersja działa w obie strony: wyeksportuj JSX, zmień kod i ponownie przekaż go do renderer.
 
-## Wizualne porównywanie
+## Visual diff
 
-Ponieważ projekty są reprezentowalne jako JSX, zmiany stają się diffami kodu:
+Ponieważ projekt można przedstawić jako JSX, zmiany wyglądają jak code diff:
 
 ```diff
  <Frame name="Card" w={320} flex="col" gap={16} p={24} bg="#FFF">
@@ -113,4 +113,4 @@ Ponieważ projekty są reprezentowalne jako JSX, zmiany stają się diffami kodu
  </Frame>
 ```
 
-Dzięki temu zmiany projektowe są weryfikowalne w pull requestach, śledzone w systemie kontroli wersji i audytowalne w CI.
+Taki diff można sprawdzić w pull request, przechowywać w version control i analizować w CI.

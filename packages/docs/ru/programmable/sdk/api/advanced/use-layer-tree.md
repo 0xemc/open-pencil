@@ -1,15 +1,15 @@
 ---
 title: useLayerTree
-description: Хелпер контекста примитива для потомков LayerTreeRoot.
+description: Доступ к context LayerTreeRoot из дочернего component.
 ---
 
 # useLayerTree
 
-`useLayerTree()` читает локальный контекст дерева слоёв, предоставляемый `LayerTreeRoot`.
+`useLayerTree()` возвращает локальный context дерева, предоставленный ближайшим `LayerTreeRoot`.
 
-Используйте внутри кастомных потомков дерева слоёв, которым нужен доступ к элементам дерева, состоянию выделения, состоянию развёртывания или обработчикам строк.
+Используйте composable в собственных дочерних components, которым нужны tree items, selection state, expansion state или row actions.
 
-## Связанные API
+## См. также
 
 - [LayerTreeRoot](../components/layer-tree-root)
 - [LayerTreeItem](../components/layer-tree-item)

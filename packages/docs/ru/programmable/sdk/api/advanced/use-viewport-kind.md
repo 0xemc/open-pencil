@@ -1,13 +1,13 @@
 ---
 title: useViewportKind
-description: Грубые флаги мобильного и десктопного вьюпорта для адаптивных оболочек редактора.
+description: Mobile и desktop flags для responsive editor shell.
 ---
 
 # useViewportKind
 
-`useViewportKind()` возвращает простые адаптивные флаги, используемые UI редактора OpenPencil.
+`useViewportKind()` возвращает простые responsive flags, используемые интерфейсом OpenPencil.
 
-Используйте его, когда оболочке нужна лёгкая абстракция поверх брейкпоинтов вместо прямого подключения `useBreakpoints()`.
+Выберите composable, если shell достаточно небольшой abstraction над breakpoints и прямое подключение `useBreakpoints()` не нужно.
 
 ## Использование
 
@@ -17,11 +17,11 @@ import { useViewportKind } from '@open-pencil/vue'
 const { isMobile, isDesktop } = useViewportKind()
 ```
 
-## Возвращает
+## Возвращаемое API
 
 - `isMobile`
 - `isDesktop`
 
-## Связанные API
+## См. также
 
 - [useCanvas](../composables/use-canvas)

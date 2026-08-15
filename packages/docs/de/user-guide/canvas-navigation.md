@@ -1,44 +1,48 @@
 ---
-title: Canvas-Navigation
-description: Schwenken, Zoomen und das Handwerkzeug in OpenPencil.
+title: Navigation auf der Arbeitsfläche
+description: Arbeitsfläche verschieben, Ansicht vergrößern und Hand-Werkzeug in OpenPencil verwenden.
 ---
 
-# Canvas-Navigation
+# Navigation auf der Arbeitsfläche
 
-Der Canvas ist Ihr unendlicher Arbeitsbereich. Sie können frei schwenken und zoomen, um durch Ihr Design zu navigieren.
+Die Arbeitsfläche ist nicht begrenzt. Verschieben und vergrößern Sie die Ansicht, um an verschiedenen Bereichen Ihres Entwurfs zu arbeiten.
 
-## Schwenken
+## Ansicht verschieben
 
-Verschieben Sie den sichtbaren Bereich des Canvas, ohne Objekte zu beeinflussen.
+So verschieben Sie den sichtbaren Bereich, ohne Objekte zu bewegen:
 
-- <kbd>Leertaste</kbd> + Ziehen — <kbd>Leertaste</kbd> halten und irgendwo auf dem Canvas ziehen
-- **Mittlere Maustaste ziehen** — mittlere Maustaste drücken und ziehen
-- **Zwei-Finger-Trackpad** — mit zwei Fingern auf dem Trackpad wischen
+- Halten Sie <kbd>Leertaste</kbd> gedrückt und ziehen Sie die Arbeitsfläche.
+- Ziehen Sie mit gedrückter mittlerer Maustaste.
+- Wischen Sie mit zwei Fingern über das Trackpad.
 
-## Handwerkzeug
+## Hand-Werkzeug
 
-Drücken Sie <kbd>H</kbd>, um das Handwerkzeug für kontinuierliches Schwenken zu aktivieren. Jedes Ziehen auf dem Canvas schwenkt den Viewport, ohne die <kbd>Leertaste</kbd> halten zu müssen. Wechseln Sie zu einem anderen Werkzeug (z.B. <kbd>V</kbd> für Auswahl), um zu deaktivieren.
+Drücken Sie <kbd>H</kbd>, um das Hand-Werkzeug zu aktivieren. Solange es ausgewählt ist, verschiebt jedes Ziehen auf der Arbeitsfläche die Ansicht; die <kbd>Leertaste</kbd> muss dabei nicht gedrückt werden.
 
-## Zoomen
+Wählen Sie ein anderes Werkzeug, beispielsweise mit <kbd>V</kbd> das Auswahlwerkzeug, um diesen Modus zu verlassen.
 
-Hinein- und Herauszoomen, zentriert auf Ihre Cursorposition.
+## Vergrößerung
 
-- <kbd>Strg</kbd> + Scrollen (oder <kbd>⌘</kbd> + Scrollen auf Mac) — nach oben scrollen zum Hineinzoomen, nach unten zum Herauszoomen
-- **Pinch-Geste** — auf dem Trackpad zusammenziehen zum Zoomen
-- **Tastenkürzel** — siehe Tabelle unten
+Die Ansicht wird relativ zur Position des Mauszeigers vergrößert oder verkleinert:
+
+- <kbd>Strg</kbd> + Scrollen beziehungsweise <kbd>⌘</kbd> + Scrollen unter macOS;
+- Pinch-Geste auf dem Trackpad;
+- Tastenkürzel aus der folgenden Tabelle.
+
+Auf den Ebenen- und Eigenschaftenpanels ist die Pinch-Geste deaktiviert, damit sie nicht versehentlich den Zoom der gesamten Browserseite verändert.
 
 ## Tastenkürzel
 
-| Aktion | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Schwenken | <kbd>Leertaste</kbd> + Ziehen | Leertaste + Ziehen |
-| Handwerkzeug | <kbd>H</kbd> | <kbd>H</kbd> |
-| Hineinzoomen | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Strg</kbd> + <kbd>+</kbd> |
-| Herauszoomen | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Strg</kbd> + <kbd>−</kbd> |
-| Zoom auf 100% | <kbd>⌘</kbd><kbd>0</kbd> | Strg + 0 |
+| Aktion | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Ansicht verschieben | <kbd>Leertaste</kbd> + Ziehen | <kbd>Leertaste</kbd> + Ziehen |
+| Hand-Werkzeug | <kbd>H</kbd> | <kbd>H</kbd> |
+| Vergrößern | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Strg</kbd> + <kbd>+</kbd> |
+| Verkleinern | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Strg</kbd> + <kbd>−</kbd> |
+| 100 % | <kbd>⌘</kbd><kbd>0</kbd> | <kbd>Strg</kbd> + <kbd>0</kbd> |
 
 ## Tipps
 
-- Zoomen zielt immer auf die Cursorposition — zeigen Sie auf das, was Sie näher sehen möchten.
-- Das Handwerkzeug ist nützlich, wenn Sie häufig schwenken müssen — es bleibt aktiv, bis Sie das Werkzeug wechseln.
-- Siehe [Auswahl & Bearbeitung](./selection-and-manipulation) für die Arbeit mit Objekten auf dem Canvas.
+- Bewegen Sie den Mauszeiger vor dem Zoomen auf den Bereich, den Sie genauer betrachten möchten.
+- Das Hand-Werkzeug bleibt aktiv, bis Sie ein anderes Werkzeug auswählen. Es eignet sich daher besonders für häufiges Navigieren.
+- Wie Sie Objekte bearbeiten, erfahren Sie unter [Auswahl und Bearbeitung](./selection-and-manipulation).

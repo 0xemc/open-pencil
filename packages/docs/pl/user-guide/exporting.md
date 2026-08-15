@@ -1,49 +1,90 @@
 ---
-title: Eksportowanie
-description: Eksport obrazów (PNG, JPG, WEBP, SVG) i zarządzanie plikami .fig w OpenPencil.
+title: Eksport i pliki
+description: Eksport obrazów, SVG i wybranych obiektów do .fig oraz otwieranie dokumentów .fig i .pen.
 ---
-# Eksportowanie
+
+# Eksport i pliki
+
+OpenPencil eksportuje pojedyncze obiekty jako obrazy, SVG albo osobne dokumenty `.fig`. Edytor otwiera pełne dokumenty `.fig` i `.pen`.
 
 ## Eksport obrazów
 
-Wybierz węzeł i użyj sekcji Eksport w panelu właściwości.
+Zaznacz obiekt i otwórz sekcję Export na panelu właściwości.
 
-### Ustawienia eksportu
+### Ustawienia
 
-- **Skala** — 0,5×, 0,75×, 1×, 1,5×, 2×, 3× lub 4× (ukryta dla SVG — wektory są niezależne od rozdzielczości)
-- **Format** — PNG (przezroczyste tło), JPG (białe tło), WEBP (przezroczyste tło), SVG (wektor)
+- **Scale:** 0,5×, 0,75×, 1×, 1,5×, 2×, 3× lub 4×. Dla SVG skala nie jest wyświetlana, ponieważ vector graphics nie zależą od rozdzielczości.
+- **Format:** PNG z przezroczystym tłem, JPG z białym tłem, WEBP z przezroczystym tłem, SVG albo osobny dokument `.fig`.
 
-### Metody eksportu
+Dla jednego obiektu można dodać kilka wariantów eksportu z różnymi formatami i skalami. Preview na tle szachownicy pokazuje przyszły wynik.
 
-| Metoda | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Skrót klawiszowy | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>E</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>E</kbd> |
-| Menu kontekstowe | Prawy klik <kbd>→</kbd> Eksportuj… | Prawy klik <kbd>→</kbd> Eksportuj… |
-| Panel właściwości | Przycisk "Eksportuj" | Przycisk "Eksportuj" |
+### Sposoby eksportu
 
-## Kopiuj jako
+| Sposób | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Skrót | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>E</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>E</kbd> |
+| Menu kontekstowe | Prawy przycisk <kbd>→</kbd> Export… | Prawy przycisk <kbd>→</kbd> Export… |
+| Panel właściwości | Naciśnij Export | Naciśnij Export |
 
-Menu kontekstowe **Kopiuj jako** oferuje dodatkowe formaty:
+W desktop app ścieżkę wybiera się w systemowym oknie. W browser plik jest pobierany w zwykły sposób.
 
-| Action | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Kopiuj jako tekst | — | — |
-| Kopiuj jako SVG | — | — |
-| Kopiuj jako PNG | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>C</kbd> |
-| Kopiuj jako JSX | — | — |
+## Copy/Paste as
 
-## Operacje na plikach .fig
+Menu kontekstowe **Copy/Paste as** umieszcza selection w clipboard w kilku formatach:
 
-| Action | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Otwórz | <kbd>⌘</kbd><kbd>O</kbd> | <kbd>Ctrl</kbd> + <kbd>O</kbd> |
-| Zapisz | <kbd>⌘</kbd><kbd>S</kbd> | <kbd>Ctrl</kbd> + <kbd>S</kbd> |
-| Zapisz jako | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>S</kbd> |
+| Działanie | macOS | Windows / Linux |
+|-----------|-------|-----------------|
+| Copy as text | — | — |
+| Copy as SVG | — | — |
+| Copy as PNG | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>C</kbd> |
+| Copy as JSX | — | — |
 
-Pliki eksportowane z OpenPencil można otwierać w Figmie i odwrotnie.
+- **Copy as text** kopiuje widoczny tekst zaznaczonych obiektów.
+- **Copy as SVG** kopiuje SVG markup, który można wkleić do edytora kodu lub Inkscape.
+- **Copy as PNG** renderuje obraz w skali 2× i kopiuje go do Slacka, Notion i innych aplikacji.
+- **Copy as JSX** kopiuje OpenPencil JSX zgodny z `renderJsx()`.
+
+## Dokumenty .fig i .pen
+
+OpenPencil używa tego samego binary format `.fig` co Figma i otwiera również dokumenty `.pen`.
+
+### Otwieranie
+
+| Działanie | macOS | Windows / Linux |
+|-----------|-------|-----------------|
+| Otworzyć plik | <kbd>⌘</kbd><kbd>O</kbd> | <kbd>Ctrl</kbd> + <kbd>O</kbd> |
+
+Okno wyboru pokazuje pliki `.fig` i `.pen`. Desktop app używa systemowego okna dialogowego.
+
+### Zapisywanie
+
+| Działanie | macOS | Windows / Linux |
+|-----------|-------|-----------------|
+| Save | <kbd>⌘</kbd><kbd>S</kbd> | <kbd>Ctrl</kbd> + <kbd>S</kbd> |
+| Save As | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>S</kbd> |
+
+- **Save** nadpisuje bieżący plik bez dodatkowego okna.
+- **Save As** pozwala wybrać nową ścieżkę.
+
+Zapisany plik jest skompresowany i zawiera thumbnail widoczny w managerze plików.
+
+### Zgodność z Figmą
+
+Pliki wyeksportowane z OpenPencil można otworzyć w Figmie, a dokumenty Figmy — w OpenPencil. Format `.fig` zachowuje typy obiektów, properties, fills, strokes, effects, vector data i parametry layout.
+
+## Skróty klawiaturowe
+
+| Działanie | macOS | Windows / Linux |
+|-----------|-------|-----------------|
+| Wyeksportować selection | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>E</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>E</kbd> |
+| Copy as PNG | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>C</kbd> |
+| Otworzyć plik | <kbd>⌘</kbd><kbd>O</kbd> | <kbd>Ctrl</kbd> + <kbd>O</kbd> |
+| Save | <kbd>⌘</kbd><kbd>S</kbd> | <kbd>Ctrl</kbd> + <kbd>S</kbd> |
+| Save As | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>S</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>S</kbd> |
 
 ## Wskazówki
 
-- Używaj skali 2× lub 3× dla ekranów o wysokiej rozdzielczości.
-- JPG zawsze używa białego tła — używaj PNG lub WEBP dla przezroczystości.
-- Używaj eksportu SVG do dalszej edycji wektorowej w edytorach kodu lub Illustratorze.
+- Dla ekranów o dużej gęstości pikseli używaj skali 2× lub 3×.
+- JPG zawsze otrzymuje białe tło. Do przezroczystości wybierz PNG lub WEBP.
+- SVG nadaje się do dalszej edycji w Illustratorze, Inkscape lub kodzie.
+- Thumbnail wewnątrz `.fig` pozwala zobaczyć dokument w managerze plików i oknie otwierania Figmy.

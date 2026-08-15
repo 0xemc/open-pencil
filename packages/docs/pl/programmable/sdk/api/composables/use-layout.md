@@ -1,19 +1,17 @@
 ---
 title: useLayout
-description: Pracuj z auto-layoutem, rozmiarem, paddingiem, wyrównaniem i torami siatki.
+description: Zarządzanie Auto layout, rozmiarem, padding, alignment i grid tracks.
 ---
 
 # useLayout
 
-`useLayout()` to główny kompozyt kontrolek dla paneli związanych z layoutem.
+`useLayout()` udostępnia state i actions dla paneli układu:
 
-Udostępnia stan i akcje dla:
-
-- trybu flex vs grid
-- rozmiaru szerokości/wysokości
-- paddingu
-- wyrównania
-- edycji torów szablonu siatki
+- wybór flex lub grid;
+- tryby width i height;
+- padding;
+- alignment;
+- zmianę grid template tracks.
 
 ## Użycie
 
@@ -23,7 +21,7 @@ import { useLayout } from '@open-pencil/vue'
 const layout = useLayout()
 ```
 
-## Podstawowy przykład
+## Przykład
 
 ```ts
 const {
@@ -37,28 +35,26 @@ const {
 } = useLayout()
 ```
 
-## Przykłady praktyczne
-
-### Przełącz między jednolitym i indywidualnym paddingiem
+### Wspólny i osobny padding
 
 ```ts
 layout.toggleIndividualPadding()
 ```
 
-### Aktualizuj tory siatki
+### Grid tracks
 
 ```ts
 layout.updateGridTrack('gridTemplateColumns', 0, { sizing: 'FIXED', value: 240 })
 layout.addTrack('gridTemplateRows')
 ```
 
-### Zmień wyrównanie
+### Alignment
 
 ```ts
 layout.setAlignment('CENTER', 'MAX')
 ```
 
-## Powiązane API
+## Zobacz też
 
 - [usePosition](./use-position)
 - [useEditor](./use-editor)

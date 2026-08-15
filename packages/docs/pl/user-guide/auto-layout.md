@@ -1,54 +1,106 @@
 ---
-title: Auto-layout
-description: Layout flex i grid w OpenPencil — kierunek, odstępy, padding, wyrównanie, rozmiary i ścieżki CSS Grid.
+title: Auto layout
+description: "Flex i grid w OpenPencil: kierunek, gap, padding, wyrównanie, rozmiary elementów potomnych i grid tracks."
 ---
-# Auto-layout
 
-Auto-layout automatycznie pozycjonuje dzieci wewnątrz ramki. Obsługuje dwa tryby: **flex** (przepływ poziomy/pionowy) i **grid** (wiersze i kolumny z wymiarowaniem ścieżek).
+# Auto layout
 
-<kbd>⇧</kbd><kbd>A</kbd> aby włączyć/wyłączyć lub opakować zaznaczenie.
+Auto layout automatycznie rozmieszcza elementy potomne wewnątrz frame. Dostępne są dwa tryby: **flex** z przepływem poziomym lub pionowym oraz **grid** z wierszami, kolumnami i konfigurowalnymi tracks.
+
+## Włączanie Auto layout
+
+- Zaznacz frame i naciśnij <kbd>⇧</kbd><kbd>A</kbd>, aby włączyć lub wyłączyć Auto layout.
+- Zaznacz obiekty bez wspólnego parent frame i naciśnij <kbd>⇧</kbd><kbd>A</kbd>, aby umieścić je w nowym frame z Auto layout.
+
+Podczas tworzenia frame obiekty są sortowane według położenia: od lewej do prawej dla układu poziomego i od góry do dołu dla pionowego.
 
 ## Kierunek
-- **Poziomy** — od lewej do prawej
-- **Pionowy** — z góry na dół
-- **Zawijanie** — zawija gdy brakuje miejsca
+
+- **Horizontal:** obiekty są rozmieszczane od lewej do prawej.
+- **Vertical:** obiekty są rozmieszczane od góry do dołu.
+- **Wrap:** po wyczerpaniu miejsca obiekty przechodzą do następnego wiersza lub kolumny.
 
 ## Odstępy
-**Gap** między sąsiednimi dziećmi. **Padding** między krawędzią ramki a dziećmi.
+
+### Gap
+
+Odległość między sąsiednimi elementami potomnymi. Jedna wartość dotyczy wszystkich przerw.
+
+### Padding
+
+Odległość między krawędzią frame a jego zawartością. Można ustawić jedną wartość albo osobne wartości dla każdej strony.
 
 ## Wyrównanie
-- **Oś główna (Justify):** początek, środek, koniec, rozłóż
-- **Oś poprzeczna (Align):** początek, środek, koniec, rozciągnij
 
-## Rozmiar dzieci
-- **Stały** — jawna szerokość/wysokość
-- **Wypełnij** — rozciąga się w dostępnej przestrzeni
-- **Dopasuj** — kurczy się do zawartości
+### Justify — główna oś
+
+- **Start:** przy początku osi;
+- **Center:** pośrodku;
+- **End:** przy końcu osi;
+- **Space between:** wolne miejsce zostaje równo rozdzielone między obiekty.
+
+### Align — oś poprzeczna
+
+- **Start:** przy początku osi poprzecznej;
+- **Center:** pośrodku;
+- **End:** przy końcu osi;
+- **Stretch:** rozciągnięcie na dostępną szerokość lub wysokość.
+
+## Rozmiar elementów potomnych
+
+Każda oś może mieć osobny tryb:
+
+- **Fixed:** używa jawnej szerokości lub wysokości;
+- **Fill:** zajmuje dostępne miejsce w parent;
+- **Hug:** dopasowuje rozmiar do zawartości.
+
+## Zmiana kolejności
+
+Przeciągnij element potomny wewnątrz frame, aby zmienić jego miejsce. Wskaźnik pokazuje przyszłą pozycję.
+
+## Panel właściwości
+
+Po zaznaczeniu frame z Auto layout sekcja Layout pokazuje direction, gap, padding, justify i align.
+
+## Skrót klawiaturowy
+
+| Działanie | macOS | Windows / Linux |
+|-----------|-------|-----------------|
+| Włączyć lub wyłączyć Auto layout | <kbd>⇧</kbd><kbd>A</kbd> | <kbd>Shift</kbd> + <kbd>A</kbd> |
 
 ## CSS Grid
 
-Layout siatkowy (grid) organizuje dzieci w wierszach i kolumnach z jawnym wymiarowaniem ścieżek.
+Grid rozmieszcza elementy potomne w wierszach i kolumnach z jawnie określonym rozmiarem tracks.
 
-### Włączanie siatki
+### Włączanie Grid
 
-Wybierz ramkę z włączonym auto-layout i kliknij ikonę siatki w pasku narzędzi layout, aby przełączyć z flex na grid.
+Zaznacz frame z Auto layout i naciśnij ikonę grid w panelu Layout, aby przełączyć tryb flex na grid.
 
-### Wymiarowanie ścieżek
+### Rozmiary tracks
 
-Zdefiniuj ścieżki kolumn i wierszy za pomocą trzech trybów:
+- **fr:** część dostępnego miejsca;
+- **px:** stała liczba pikseli;
+- **auto:** rozmiar zależny od zawartości.
 
-- **fr** — jednostka ułamkowa, dzieli dostępną przestrzeń proporcjonalnie
-- **px** — stały rozmiar w pikselach
-- **auto** — dopasowuje się do zawartości
+Na przykład `1fr 200px 1fr` tworzy trzy kolumny: stałą środkową i dwie elastyczne boczne.
 
-### Odstępy siatki
+### Gap w Grid
 
-Ustaw oddzielne odstępy poziome (kolumny) i pionowe (wiersze) między komórkami.
+Dla wierszy i kolumn można ustawić osobne wartości gap.
 
-### Pozycjonowanie dzieci
+### Rozmieszczanie obiektów
 
-Dzieci są umieszczane w komórkach siatki automatycznie w kolejności wierszy. Można nadpisać umieszczenie wartościami początku kolumny/wiersza i rozpiętości we właściwościach layout dziecka.
+Domyślnie obiekty kolejno wypełniają komórki wierszami. We właściwościach elementu potomnego można zmienić początkowy wiersz lub kolumnę oraz określić span.
 
-### Eksport JSX i Tailwind
+### Eksport do JSX i Tailwind
 
-Layouty siatkowe eksportują się jako JSX z klasami Tailwind: `grid grid-cols-3`, `gap-x-4 gap-y-2`, `col-start-2 row-span-2`.
+Grid jest eksportowany do JSX z klasami Tailwind, na przykład `grid grid-cols-3`, `gap-x-4 gap-y-2` i `col-start-2 row-span-2`.
+
+## Wskazówki
+
+- Auto layout jest obliczany natychmiast po utworzeniu, więc granice zaznaczenia od razu się aktualizują.
+- Zagnieżdżaj frames z Auto layout, aby tworzyć złożone interfejsy responsywne.
+- Fill wykorzystuje pozostałe miejsce podobnie do `flex-grow: 1` w CSS.
+- Grid sprawdza się w dashboardach, galeriach, formularzach i innych strukturach dwuwymiarowych.
+- Tworzenie frames opisano na stronie [Kształty](./drawing-shapes).
+- Użycie Auto layout wewnątrz komponentów opisano na stronie [Komponenty](./components).

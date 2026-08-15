@@ -1,15 +1,15 @@
 ---
 title: LayerTreeItem
-description: Headless-примитив строки для одного узла дерева слоёв.
+description: Headless component одной строки дерева слоёв.
 ---
 
 # LayerTreeItem
 
-`LayerTreeItem` рендерит одну строку дерева слоёв и предоставляет через дефолтный слот обработчики выделения, раскрытия, видимости, блокировки и переименования.
+`LayerTreeItem` представляет одну строку дерева и передаёт через slot handlers для selection, expand, visibility, lock и rename.
 
-Используйте его, когда нужна разметка строки на стороне приложения с поведением дерева слоёв, обеспечиваемым SDK.
+Используйте его, если SDK должен предоставить поведение дерева, а приложение — markup строки.
 
-## Связанные API
+## См. также
 
 - [LayerTreeRoot](./layer-tree-root)
 - [useLayerTree](../advanced/use-layer-tree)

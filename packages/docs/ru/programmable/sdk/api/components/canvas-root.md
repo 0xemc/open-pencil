@@ -1,15 +1,15 @@
 ---
 title: CanvasRoot
-description: Headless-примитив холста для поверхностей рендеринга OpenPencil.
+description: Headless component для rendering surfaces OpenPencil.
 ---
 
 # CanvasRoot
 
-`CanvasRoot` — структурный примитив холста в `@open-pencil/vue`.
+`CanvasRoot` задаёт структуру холста и предоставляет его context в `@open-pencil/vue`.
 
-Используйте его, когда хотите структуру холста и контекст, предоставляемые SDK, при собственном макете и стилях.
+Используйте component, если SDK должен управлять context и подключением холста, а приложение — layout и оформлением.
 
-## Связанные API
+## См. также
 
 - [useCanvas](../composables/use-canvas)
 - [useCanvasInput](../composables/use-canvas-input)

@@ -1,13 +1,13 @@
 ---
 title: useColorVariableBinding
-description: Хелпер привязки переменных для редакторов цвета заливок и обводок.
+description: Binding color variables в редакторах fill и stroke.
 ---
 
 # useColorVariableBinding
 
-`useColorVariableBinding(kind)` предоставляет хелперы поиска, привязки и отвязки переменных цвета, используемые в редакторах заливок и обводок.
+`useColorVariableBinding(kind)` предоставляет search, bind и unbind для color variables, используемых редакторами fills и strokes.
 
-Используйте его при создании UI цвета, которому нужно связывать заливки или обводки с переменными дизайна.
+Используйте composable, если color UI должен связывать fill или stroke с design variable.
 
 ## Использование
 
@@ -18,7 +18,7 @@ const fillBinding = useColorVariableBinding('fills')
 const strokeBinding = useColorVariableBinding('strokes')
 ```
 
-## Связанные API
+## См. также
 
 - [useFillControls](../composables/use-fill-controls)
 - [useStrokeControls](../composables/use-stroke-controls)

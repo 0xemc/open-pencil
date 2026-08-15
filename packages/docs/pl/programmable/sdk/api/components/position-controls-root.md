@@ -1,15 +1,16 @@
 ---
 title: PositionControlsRoot
-description: Bezstanowy prymityw korzenia dla kontrolek pozycji, rozmiaru, wyrównania i transformacji.
+description: Component headless dla position, size, alignment i transform.
 ---
 
 # PositionControlsRoot
 
-`PositionControlsRoot` udostępnia obsługę pozycji, rozmiaru, obrotu, wyrównania, odbicia i obracania dla bieżącej selekcji.
+`PositionControlsRoot` udostępnia values i actions dla position, size, rotation, alignment i flip bieżącego selection.
 
-Użyj go, gdy chcesz niestandardowe kontrolki pozycji bez ponownego implementowania okablowania edytora.
+Użyj go, aby zbudować własne pola i buttons bez ponownego podłączania operacji edytora.
 
-## Powiązane API
+
+## Zobacz też
 
 - [usePosition](../composables/use-position)
-- [Przewodnik po panelach właściwości](../../guides/property-panels)
+- [Panele właściwości](../../guides/property-panels)

@@ -1,15 +1,15 @@
 ---
 title: PositionControlsRoot
-description: Headless-корневой примитив для управления позицией, размером, выравниванием и трансформацией.
+description: Headless root для position, size, alignment и transform controls.
 ---
 
 # PositionControlsRoot
 
-`PositionControlsRoot` предоставляет позицию, размер, поворот, выравнивание, отражение и обработчики поворота для текущего выделения.
+`PositionControlsRoot` передаёт position, size и rotation текущего selection, а также handlers для align, flip и rotate.
 
-Используйте его, когда нужны кастомные элементы управления позицией без необходимости заново реализовывать логику редактора.
+Используйте его для собственного интерфейса position controls, чтобы не реализовывать подключение к editor state заново.
 
-## Связанные API
+## См. также
 
 - [usePosition](../composables/use-position)
-- [Руководство по панелям свойств](../../guides/property-panels)
+- [Панели свойств](../../guides/property-panels)

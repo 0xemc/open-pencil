@@ -1,15 +1,15 @@
 ---
 title: toolCursor
-description: Хелпер, определяющий строку курсора для инструмента редактора.
+description: Выбор CSS cursor для editor tool.
 ---
 
 # toolCursor
 
-`toolCursor(tool, override?)` сопоставляет инструмент редактора с курсором, который должен использовать SDK, при этом допуская явное переопределение.
+`toolCursor(tool, override?)` сопоставляет editor tool с CSS cursor и позволяет явно заменить результат через `override`.
 
-Используйте при создании кастомных оболочек холста или UI инструментов, которым нужно согласованное поведение курсора.
+Используйте function в собственном canvas shell или tool UI для единообразного cursor behavior.
 
-## Связанные API
+## См. также
 
 - [useCanvas](../composables/use-canvas)
 - [useEditorCommands](../composables/use-editor-commands)
