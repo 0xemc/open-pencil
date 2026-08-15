@@ -162,7 +162,7 @@ Keep this section light; implementation details move often.
 
 - ACP UI/transport lives under `src/app/ai/acp/**`; provider definitions live in `packages/core/src/constants.ts`; app prompts live under `src/app/ai/**`. Direct model configuration lives under `src/app/ai/models/**`: reusable profiles reference provider connections, roles resolve to profiles, and runtime creation resolves credentials lazily. Keep model profiles, provider connections, and role assignments separate rather than returning to singleton provider/model settings. Public docs: `packages/docs/programmable/ai-chat.md` and `packages/docs/programmable/mcp-server.md`.
 - ACP transport uses Tauri shell permissions, so check `desktop/capabilities/**` when changing agent launch behavior.
-- Collaboration lives under `src/app/collab/**` and is documented in `packages/docs/programmable/collaboration.md`. It uses Trystero + Yjs + awareness; preserve crypto-safe room IDs and peer cleanup semantics when changing it.
+- Collaboration lives under `src/app/collab/**` and is documented in `packages/docs/programmable/collaboration.md`. It uses Trystero + Yjs + awareness; preserve crypto-safe room IDs and peer cleanup semantics when changing it. Cloud documents join ticket-derived, password-protected rooms, publish authenticated or stable guest identities with view/edit presence, and refresh short-lived tickets before expiry. Keep `serverEnforcedWrites: false` explicit until an authenticated relay exists; P2P tickets do not provide authoritative server-side write enforcement.
 
 ## Code conventions
 

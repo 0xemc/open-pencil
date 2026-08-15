@@ -7,6 +7,7 @@ import { TRYSTERO_APP_ID } from '@/constants'
 
 type CollabRoomOptions = {
   roomId: string
+  roomPassword?: string
   canSendUpdates: () => boolean
   ydoc: Y.Doc
   awareness: awarenessProtocol.Awareness
@@ -23,6 +24,7 @@ export type CollabRoomConnection = {
 
 export function connectCollabRoom({
   roomId,
+  roomPassword,
   canSendUpdates,
   ydoc,
   awareness,
@@ -32,6 +34,7 @@ export function connectCollabRoom({
   const room = joinTrysteroRoom(
     {
       appId: TRYSTERO_APP_ID,
+      ...(roomPassword ? { password: roomPassword } : {}),
       rtcConfig: {
         iceServers: [
           { urls: 'stun:stun.l.google.com:19302' },

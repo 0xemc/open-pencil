@@ -19,6 +19,7 @@ import {
 } from '@/app/integrations/storage'
 import { getLocalCanvasStore } from '@/app/storage/local-store'
 import { seedStorageCanvasFromRemote } from '@/app/storage/sync/persist'
+import { emitActiveDocumentOpened } from '@/app/tabs/events'
 import { createFileOpenCoordinator } from '@/app/tabs/open/coordinator'
 import { findTabByFileIdentity } from '@/app/tabs/open/identity'
 
@@ -84,6 +85,7 @@ function activateTab(tab: Tab) {
   setActiveEditorStore(tab.store)
   triggerRef(tabsRef)
   setOpenPencilStore(tab.store)
+  emitActiveDocumentOpened(tab.store)
 }
 
 export function switchTab(tabId: string) {
@@ -191,6 +193,7 @@ export async function openStorageDocumentInNewTab(document: StorageDocument): Pr
     const pageId = store.graph.getPages()[0]?.id ?? store.graph.rootId
     await store.switchPage(pageId)
     await store.fitCurrentPageToViewport()
+    emitActiveDocumentOpened(store)
   } finally {
     store.state.loading = false
   }
