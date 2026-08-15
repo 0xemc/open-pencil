@@ -1,13 +1,13 @@
 ---
 title: useColorVariableBinding
-description: Pomocnik powiązania zmiennych dla edytorów kolorów wypełnień i obrysów.
+description: Powiązanie fill albo stroke color z variable.
 ---
 
 # useColorVariableBinding
 
-`useColorVariableBinding(kind)` udostępnia pomocniki wyszukiwania, wiązania i odwiązania dla zmiennych kolorów używanych przez edytory wypełnień i obrysów.
+`useColorVariableBinding(kind)` udostępnia functions wyszukiwania, ustawiania i usuwania binding dla color variables używanych przez fills albo strokes.
 
-Użyj go przy budowaniu UI kolorów, które muszą łączyć wypełnienia lub obrysy ze zmiennymi projektowymi.
+Użyj composable w color controls obsługujących design variables.
 
 ## Użycie
 
@@ -18,7 +18,7 @@ const fillBinding = useColorVariableBinding('fills')
 const strokeBinding = useColorVariableBinding('strokes')
 ```
 
-## Powiązane API
+## Zobacz też
 
 - [useFillControls](../composables/use-fill-controls)
 - [useStrokeControls](../composables/use-stroke-controls)

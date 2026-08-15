@@ -1,15 +1,15 @@
 ---
 title: useInlineRename
-description: Pomocnik stanu zmiany nazwy inline i zarządzania fokusem.
+description: State, focus i keyboard handling podczas zmiany nazwy w miejscu.
 ---
 
 # useInlineRename
 
-`useInlineRename(onCommit)` zarządza stanem edycji, fokusem, obsługą kliknięcia poza obszarem i zachowaniem klawiatury dla przepływów zmiany nazwy inline.
+`useInlineRename(onCommit)` zarządza trybem edycji nazwy, focus, kliknięciem poza polem oraz obsługą Enter i Escape.
 
-Użyj go w niestandardowych listach stron, drzewach warstw lub podobnych UI zmiany nazwy w miejscu.
+Użyj composable w listach stron, drzewach warstw i innych interfaces umożliwiających zmianę nazwy bez otwierania osobnego dialog.
 
-## Powiązane API
+## Zobacz też
 
 - [PageListRoot](../components/page-list-root)
 - [LayerTreeItem](../components/layer-tree-item)

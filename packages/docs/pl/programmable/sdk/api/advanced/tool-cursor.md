@@ -1,15 +1,15 @@
 ---
 title: toolCursor
-description: Pomocnik rozwiązujący ciąg kursora dla narzędzia edytora.
+description: CSS cursor odpowiadający aktywnemu tool edytora.
 ---
 
 # toolCursor
 
-`toolCursor(tool, override?)` mapuje narzędzie edytora na kursor, który SDK powinien używać, pozwalając jednocześnie na jawne nadpisanie.
+`toolCursor(tool, override?)` zwraca CSS cursor dla podanego tool. Opcjonalny `override` pozwala wymusić inną wartość.
 
-Użyj go przy budowaniu niestandardowych powłok kanvasu lub UI narzędzi, które potrzebują spójnego zachowania kursora.
+Użyj function w własnym obszarze roboczym albo toolbar, aby zachować spójny cursor dla każdego tool.
 
-## Powiązane API
+## Zobacz też
 
 - [useCanvas](../composables/use-canvas)
 - [useEditorCommands](../composables/use-editor-commands)

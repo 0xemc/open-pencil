@@ -1,13 +1,13 @@
 ---
 title: useVariablesTable
-description: Buduj definicje kolumn TanStack Table dla UI zmiennych OpenPencil.
+description: Definicje columns TanStack Table dla edytora variables.
 ---
 
 # useVariablesTable
 
-`useVariablesTable(options)` zwraca reaktywne definicje kolumn TanStack Table dla edytorów zmiennych.
+`useVariablesTable(options)` zwraca reaktywne definitions columns TanStack Table używane w tabeli variables.
 
-Użyj go, gdy chcesz zachowanie tabeli zmiennych SDK, ale musisz dostarczyć własną instancję tabeli, niestandardowe ikony lub komponenty powłoki specyficzne dla aplikacji.
+Użyj composable, jeśli chcesz wykorzystać zachowanie SDK, ale samodzielnie tworzysz table instance albo przekazujesz własne icons i components.
 
 ## Użycie
 
@@ -19,10 +19,9 @@ const { columns } = useVariablesTable(options)
 
 ## Uwagi
 
-- to jest wyspecjalizowany pomocnik integracji dla UI zmiennych opartych na tabelach
-- większość konsumentów powinna zacząć od `useVariablesEditor()`, chyba że potrzebuje większej kontroli
+W większości przypadków wygodniejszym punktem wejścia jest `useVariablesEditor()`. Wybierz `useVariablesTable()`, gdy potrzebujesz bezpośredniej kontroli nad konfiguracją tabeli.
 
-## Powiązane API
+## Zobacz też
 
 - [useVariablesEditor](../composables/use-variables-editor)
 - [useVariables](./use-variables)
