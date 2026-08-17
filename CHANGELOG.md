@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Changed
+
+- Update compatible application, workspace, desktop, build, and test dependencies while preserving browser package boundaries.
+
 ### Added
 
 - Import, render, edit, resize, select, and export Figma text-on-path layers while preserving their curved glyph layout.
