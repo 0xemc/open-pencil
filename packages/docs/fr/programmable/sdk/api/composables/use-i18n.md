@@ -1,13 +1,13 @@
 ---
 title: useI18n
-description: Lit les messages de l'UI OpenPencil localisés et change la locale active du SDK.
+description: Lire les Labels localisés d’OpenPencil et changer le Locale actif du SDK.
 ---
 
 # useI18n
 
-`useI18n()` retourne des groupes de traduction réactifs ainsi que des contrôles de locale pour les shells d'éditeur propulsés par OpenPencil.
+`useI18n()` renvoie des Translations réactives et des Functions pour changer de Locale.
 
-Utilisez-le quand vous voulez des libellés fournis par le SDK pour les menus, commandes, panneaux, pages et dialogues, ou quand vous devez permettre aux utilisateurs de changer de locale.
+Le composable fournit les Labels des Menus, Commands, Tools, Panneaux, Pages et Dialogs et permet de créer un Locale picker personnalisé.
 
 ## Utilisation
 
@@ -17,7 +17,7 @@ import { useI18n } from '@open-pencil/vue'
 const { menu, commands, panels, locale, availableLocales, localeLabels, setLocale } = useI18n()
 ```
 
-## Retourne
+## Values
 
 - `menu`
 - `commands`
@@ -30,7 +30,7 @@ const { menu, commands, panels, locale, availableLocales, localeLabels, setLocal
 - `localeLabels`
 - `setLocale`
 
-## Exemple de base
+## Exemple
 
 ```vue
 <script setup lang="ts">
@@ -53,10 +53,10 @@ const { menu, locale, availableLocales, localeLabels, setLocale } = useI18n()
 
 ## Notes
 
-- les changements de locale sont réactifs dans tous les groupes de messages du SDK
-- le SDK exporte aussi des primitives de locale de plus bas niveau quand vous avez besoin d'un accès direct au store
+- Un changement de Locale met à jour tous les Translation groups du SDK de manière réactive.
+- Le SDK exporte également une Low-level Locale API pour accéder directement au Store.
 
-## API associées
+## Voir aussi
 
 - [useMenuModel](./use-menu-model)
-- [API Locale SDK](../advanced/locale-apis)
+- [Locale API](../advanced/locale-apis)

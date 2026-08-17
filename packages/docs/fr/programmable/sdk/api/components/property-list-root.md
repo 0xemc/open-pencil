@@ -1,36 +1,51 @@
 ---
 title: PropertyListRoot
-description: Primitive structurelle headless pour les interfaces de liste de remplissages, contours et effets.
+description: Controlled list pour Fills, Strokes, Effects et autres Array properties.
 ---
+
+<script setup lang="ts">
+import { data } from '#docs-api/components/property-list.data'
+</script>
 
 # PropertyListRoot
 
-`PropertyListRoot` est une primitive structurelle headless pour les éditeurs de propriétés basés sur des tableaux.
+`PropertyListRoot` coordonne une interface pour les Properties stockées sous forme d’Array, par exemple Fills, Strokes et Effects.
 
-Elle est destinée aux interfaces de propriétés comme :
+Values et Mixed state sont transmis via Props. Les modifications sont émises sous forme d’Events. Le Slot reçoit :
 
-- les remplissages
-- les contours
-- les effets
+- les Items actuels ;
+- le Mixed state ;
+- les Actions pour ajouter, supprimer, remplacer et mettre à jour partiellement ;
+- l’Action de modification de Visibility d’un Item.
 
-Elle fournit des props de slot pour :
-
-- les éléments courants
-- la détection d'état mixte
-- les opérations d'ajout/suppression/mise à jour/correctif
-- le basculement de visibilité par élément
-
-## Utilisation
+## Exemple
 
 ```vue
-<PropertyListRoot prop-key="fills" v-slot="{ items, add, remove }">
-  <div v-for="(fill, index) in items" :key="index">
-    <button @click="remove(index)">Supprimer</button>
-  </div>
-  <button @click="add(defaultFill)">Ajouter un remplissage</button>
-</PropertyListRoot>
+<script setup lang="ts">
+import { PropertyListRoot, useEditorPropertyList } from '@open-pencil/vue'
+
+const fills = useEditorPropertyList('fills')
+</script>
+
+<template>
+  <PropertyListRoot
+    prop-key="fills"
+    :items="fills.items.value"
+    :mixed="fills.isMixed.value"
+    @add="fills.actions.add"
+    @remove="fills.actions.remove"
+    v-slot="{ items, actions }"
+  >
+    <div v-for="(fill, index) in items" :key="index">
+      <button @click="actions.remove(index)">Supprimer</button>
+    </div>
+    <button @click="actions.add(defaultFill)">Ajouter un Fill</button>
+  </PropertyListRoot>
+</template>
 ```
 
-## API associées
+<SdkComponentAPI :components="data.components" />
 
-- [Aperçu de l'API SDK](../)
+## Voir aussi
+
+- [Référence API](../)

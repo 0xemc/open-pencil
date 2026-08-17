@@ -1,18 +1,16 @@
 ---
 title: useAppearance
-description: Contrôle la visibilité, l'opacité et le rayon de coin de la sélection courante.
+description: Gérer Visibility, Opacity et Corner radius de la Selection actuelle.
 ---
 
 # useAppearance
 
-`useAppearance()` est le composable de contrôle axé sur l'apparence pour les panneaux de propriétés.
+`useAppearance()` fournit State et Actions pour l’Appearance des objets sélectionnés :
 
-Il expose l'état UI dérivé de la sélection pour :
-
-- la visibilité
-- l'opacité
-- le rayon de coin
-- les rayons de coin indépendants
+- Visibility ;
+- Opacity ;
+- Corner radius ;
+- Corner radii indépendants.
 
 ## Utilisation
 
@@ -22,7 +20,7 @@ import { useAppearance } from '@open-pencil/vue'
 const appearance = useAppearance()
 ```
 
-## Exemple de base
+## Exemple
 
 ```ts
 const {
@@ -34,23 +32,21 @@ const {
 } = useAppearance()
 ```
 
-## Exemples pratiques
-
-### Basculer la visibilité de la sélection
+### Modifier Visibility
 
 ```ts
 appearance.toggleVisibility()
 ```
 
-### Éditer les rayons de coin individuels
+### Modifier les Corner radii indépendants
 
 ```ts
 appearance.updateCornerProp('topLeftRadius', 12)
 appearance.commitCornerProp('topLeftRadius', 12, 8)
 ```
 
-## API associées
+## Voir aussi
 
-- [Aperçu de l'API SDK](../)
+- [Référence API](../)
 - [useLayout](./use-layout)
 - [useTypography](./use-typography)

@@ -1,18 +1,16 @@
 ---
 title: useSelectionState
-description: "État réactif de l'éditeur dérivé de la sélection : nœud courant, nombre et type de sélection."
+description: State réactif de la Selection actuelle, de l’objet principal et de son Type.
 ---
 
 # useSelectionState
 
-`useSelectionState()` expose un état réactif dérivé de la sélection depuis l'éditeur courant.
+`useSelectionState()` fournit des informations réactives sur la Selection :
 
-Utilisez-le quand vous avez besoin d'afficher une UI basée sur :
-
-- si quelque chose est sélectionné
-- combien de nœuds sont sélectionnés
-- le nœud sélectionné principal
-- si la sélection courante est une instance, un composant ou un groupe
+- présence d’un objet sélectionné ;
+- nombre d’objets sélectionnés ;
+- objet principal ;
+- nature du principal objet : Instance, Component ou Group.
 
 ## Utilisation
 
@@ -22,7 +20,7 @@ import { useSelectionState } from '@open-pencil/vue'
 const selection = useSelectionState()
 ```
 
-## Exemple de base
+## Exemple
 
 ```vue
 <script setup lang="ts">
@@ -33,18 +31,16 @@ const { hasSelection, selectedCount, isInstance } = useSelectionState()
 
 <template>
   <div class="text-xs text-muted">
-    <span v-if="!hasSelection">Aucune sélection</span>
+    <span v-if="!hasSelection">Aucune Selection</span>
     <span v-else>
       {{ selectedCount }} sélectionné(s)
-      <span v-if="isInstance">· instance</span>
+      <span v-if="isInstance">· Instance</span>
     </span>
   </div>
 </template>
 ```
 
-## Ce qu'il retourne
-
-Les valeurs utiles incluent :
+## Values
 
 - `selectedIds`
 - `hasSelection`
@@ -56,21 +52,19 @@ Les valeurs utiles incluent :
 - `isGroup`
 - `canCreateComponentSet`
 
-## Exemples pratiques
-
-### Afficher des actions réservées aux instances
+### Actions propres aux Instances
 
 ```ts
 const { isInstance } = useSelectionState()
 ```
 
-### Activer l'UI de création de set de composants
+### Créer un Component set
 
 ```ts
 const { canCreateComponentSet } = useSelectionState()
 ```
 
-## API associées
+## Voir aussi
 
 - [useSelectionCapabilities](./use-selection-capabilities)
 - [useEditorCommands](./use-editor-commands)

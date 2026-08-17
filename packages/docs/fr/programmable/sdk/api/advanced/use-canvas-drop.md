@@ -1,15 +1,15 @@
 ---
 title: useCanvasDrop
-description: Helper de drag-and-drop de fichiers images pour les surfaces canvas.
+description: Traiter le Drag and drop d’Image files sur le canvas.
 ---
 
 # useCanvasDrop
 
-`useCanvasDrop(canvasRef, editor)` câble les handlers dragenter, dragover, dragleave et drop pour que les fichiers images déposés sur le canvas soient placés dans la scène.
+`useCanvasDrop(canvasRef, editor)` relie les Events `dragenter`, `dragover`, `dragleave` et `drop` au canvas. Les Image files compatibles sont ajoutés au document à la Position appropriée.
 
-Utilisez-le pour construire des surfaces canvas personnalisées qui acceptent les dépôts d'images.
+Utilisez le composable dans un Canvas component personnalisé pour importer des Images par Drag and drop.
 
-## API associées
+## Voir aussi
 
 - [CanvasRoot](../components/canvas-root)
 - [CanvasSurface](../components/canvas-surface)

@@ -1,15 +1,15 @@
 ---
 title: useGradientStops
-description: Helper d'état et de mutation des points d'arrêt de dégradé pour les éditeurs de remplissage.
+description: State et Actions pour Gradient stops.
 ---
 
 # useGradientStops
 
-`useGradientStops(fill, onUpdate)` gère l'état du point d'arrêt actif, le changement de sous-type, le déplacement des points d'arrêt, et les mises à jour de couleur ou d'opacité pour les remplissages dégradés.
+`useGradientStops(fill, onUpdate)` gère Active stop, Gradient subtype, Drag des Stops et modifications de Position, Color et Opacity.
 
-Utilisez-le pour construire des éditeurs de dégradé personnalisés au-delà des primitives packagées.
+Utilisez le composable pour créer un Gradient editor personnalisé sans réimplémenter cette Logic.
 
-## API associées
+## Voir aussi
 
 - [GradientEditorRoot](../components/gradient-editor-root)
 - [GradientEditorBar](../components/gradient-editor-bar)

@@ -1,13 +1,13 @@
 ---
 title: useVariables
-description: Lit et modifie les collections de variables, les variables et les valeurs de variables.
+description: Lire et modifier Variable collections, Variables, Modes et Values.
 ---
 
 # useVariables
 
-`useVariables()` est le composable de variables de bas niveau derrière les helpers d'éditeur de variables de plus haut niveau.
+`useVariables()` fournit le Low-level state et les Actions d’un Variables editor.
 
-Utilisez-le quand vous voulez un contrôle direct sur les collections, les modes actifs, le filtrage et les opérations CRUD sans prendre l'abstraction complète de tableau/dialogue.
+Utilisez le composable pour contrôler directement Collections, Active modes, filtres et CRUD operations sans Table ou Dialog préconfiguré.
 
 ## Utilisation
 
@@ -17,7 +17,7 @@ import { useVariables } from '@open-pencil/vue'
 const variables = useVariables()
 ```
 
-## Retourne
+## Values
 
 - `collections`
 - `activeCollectionId`
@@ -37,7 +37,7 @@ const variables = useVariables()
 - `parseVariableValue()`
 - `shortName()`
 
-## API associées
+## Voir aussi
 
 - [useVariablesEditor](../composables/use-variables-editor)
 - [useVariablesDialogState](./use-variables-dialog-state)

@@ -1,48 +1,50 @@
 ---
-title: Navigation dans la zone de travail
-description: Déplacez la vue, modifiez le zoom et utilisez l'outil Main dans OpenPencil.
+title: Navigation sur le canvas
+description: Déplacer le Viewport, utiliser Zoom et Hand tool dans OpenPencil.
 ---
 
-# Navigation dans la zone de travail
+# Navigation sur le canvas
 
-La zone de travail n'a pas de limites. Déplacez la vue et modifiez le zoom pour travailler sur les différentes parties de votre création.
+Le canvas est sans limites. Pan et Zoom permettent d’atteindre toutes les zones du document.
 
-## Déplacer la vue
+## Pan
 
-Pour déplacer la zone visible sans modifier les objets :
+Déplacez la zone visible sans modifier les objets :
 
-- maintenez la <kbd>barre d'espace</kbd> enfoncée et faites glisser la zone de travail ;
-- faites glisser avec le bouton central de la souris ;
-- faites glisser deux doigts sur le trackpad.
+- maintenez <kbd>Space</kbd> et faites un Drag sur le canvas ;
+- utilisez le Button central de la souris ;
+- faites défiler deux doigts sur le Trackpad.
 
-## Outil Main
+## Hand tool
 
-Appuyez sur <kbd>H</kbd> pour activer l'outil Main. Tant qu'il est sélectionné, tout glissement sur la zone de travail déplace la vue sans qu'il soit nécessaire de maintenir la barre d'espace.
+Appuyez sur <kbd>H</kbd>. Tant que Hand tool est actif, tout Drag sur le canvas déplace le Viewport sans maintenir <kbd>Space</kbd>.
 
-Sélectionnez un autre outil, par exemple <kbd>V</kbd> pour l'outil Sélection, afin de quitter ce mode.
+Sélectionnez un autre Tool, par exemple Select avec <kbd>V</kbd>, pour quitter.
 
 ## Zoom
 
-Le zoom s'effectue autour de la position du pointeur :
+Zoom se centre sur la Position du Pointer :
 
-- <kbd>Ctrl</kbd> + molette, ou <kbd>⌘</kbd> + molette sous macOS ;
-- geste de pincement sur le trackpad ;
-- raccourcis clavier du tableau ci-dessous.
+- <kbd>Ctrl</kbd> + Scroll ou <kbd>⌘</kbd> + Scroll sur macOS ;
+- Pinch gesture sur le Trackpad ;
+- raccourcis du tableau.
 
-Le geste de pincement est désactivé sur les panneaux de calques et de propriétés afin d'éviter qu'il ne modifie accidentellement le zoom de toute la page du navigateur.
+Les Gestures sur les panneaux Layers et Properties ne sont pas transmis au canvas. Ils ne modifient donc ni le Zoom de l’éditeur ni celui de la page du Browser.
 
-## Raccourcis clavier
+## Raccourcis
 
 | Action | macOS | Windows / Linux |
 |--------|-------|-----------------|
-| Déplacer la vue | <kbd>barre d'espace</kbd> + glisser | <kbd>barre d'espace</kbd> + glisser |
-| Outil Main | <kbd>H</kbd> | <kbd>H</kbd> |
-| Zoom avant | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Ctrl</kbd> + <kbd>+</kbd> |
-| Zoom arrière | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Ctrl</kbd> + <kbd>−</kbd> |
-| Zoom à 100 % | <kbd>⌘</kbd><kbd>0</kbd> | <kbd>Ctrl</kbd> + <kbd>0</kbd> |
+| Pan | <kbd>Space</kbd> + Drag | <kbd>Space</kbd> + Drag |
+| Hand tool | <kbd>H</kbd> | <kbd>H</kbd> |
+| Zoom in | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Ctrl</kbd><kbd>+</kbd> |
+| Zoom out | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Ctrl</kbd><kbd>−</kbd> |
+| 100 % | <kbd>⌘</kbd><kbd>0</kbd> | <kbd>Ctrl</kbd><kbd>0</kbd> |
+| Fit | <kbd>⌘</kbd><kbd>1</kbd> | <kbd>Ctrl</kbd><kbd>1</kbd> |
+| Zoom to selection | <kbd>⌘</kbd><kbd>2</kbd> | <kbd>Ctrl</kbd><kbd>2</kbd> |
 
 ## Conseils
 
-- Avant de modifier le zoom, placez le pointeur sur la zone que vous souhaitez examiner.
-- L'outil Main reste actif jusqu'à ce que vous choisissiez un autre outil. Il est donc pratique pour les déplacements fréquents.
-- Consultez [Sélection et manipulation](./selection-and-manipulation) pour apprendre à travailler avec les objets.
+- Placez le Pointer sur la zone à conserver au centre avant de zoomer.
+- Hand tool reste actif jusqu’à la sélection d’un autre Tool.
+- Consultez [Sélectionner et transformer](./selection-and-manipulation) pour modifier des objets.

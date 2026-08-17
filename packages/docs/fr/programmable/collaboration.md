@@ -1,38 +1,38 @@
 ---
 title: Collaboration
-description: Édition collaborative en temps réel via P2P WebRTC — sans serveur, sans compte.
+description: Édition simultanée en P2P via WebRTC, sans serveur central.
 ---
 
 # Collaboration
 
-Éditez des designs ensemble en temps réel. Les pairs se connectent directement — aucun serveur ne relaie vos données, aucun compte n'est requis.
+Plusieurs personnes peuvent modifier le même document. Les Peers se connectent directement via WebRTC et aucun compte n’est requis.
 
-## Partager une salle
+## Partager un Room
 
-1. Cliquez sur le bouton de partage dans le coin supérieur droit
-2. Copiez le lien généré (`app.openpencil.dev/share/<room-id>`)
-3. Envoyez-le à vos collaborateurs
+1. Ouvrez le Share button en haut à droite.
+2. Copiez le lien `app.openpencil.dev/share/<room-id>`.
+3. Envoyez-le aux autres participants.
 
-Toute personne ayant le lien peut rejoindre la salle. La salle reste active tant qu'au moins un participant a la page ouverte.
+Toute personne disposant du lien peut entrer. Le Room reste accessible tant qu’au moins un participant conserve la Page ouverte.
 
-## Ce qui se synchronise
+## Données synchronisées
 
-- **Modifications du document** — chaque modification (formes, texte, propriétés, mise en page) se synchronise instantanément
-- **Curseurs** — voyez où chaque collaborateur pointe, avec son nom et sa couleur
-- **Sélections** — les sélections en surbrillance sont visibles par tous
+- **Document :** changements de Shapes, Text, Properties et Layout ;
+- **Cursors :** Position, Name et Color de chaque participant ;
+- **Selections :** objets sélectionnés par les autres Peers.
 
-## Mode suivi
+## Follow mode
 
-Cliquez sur l'avatar d'un collaborateur dans la barre supérieure pour suivre son viewport. Votre canevas se déplace et zoome pour correspondre à sa vue. Cliquez à nouveau pour arrêter de suivre.
+Cliquez sur un Avatar de la barre supérieure pour suivre le Viewport de ce Peer. Pan et Zoom s’adaptent à sa vue. Un autre Click arrête Follow mode.
 
-## Comment ça fonctionne
+## Fonctionnement
 
-Les pairs se connectent directement via WebRTC — vos données de design passent directement d'un navigateur à l'autre, jamais par un serveur central. L'état du document utilise un CRDT (type de données répliqué sans conflit), donc les modifications concurrentes fusionnent automatiquement sans conflits.
+WebRTC transmet les données de design directement entre les Peers. Aucun Application server central ne relaie les modifications du document.
 
-La salle persiste localement — si vous rafraîchissez la page, vous rejoignez avec le même état.
+Yjs synchronise le State sous forme de CRDT et fusionne automatiquement les changements simultanés. IndexedDB stocke l’état local afin qu’un Reload du même Room puisse le restaurer.
 
 ## Conseils
 
-- Fonctionne dans le navigateur et l'application de bureau
-- Les identifiants de salle sont cryptographiquement aléatoires — seules les personnes ayant le lien peuvent rejoindre
-- Les curseurs obsolètes sont nettoyés automatiquement lorsqu'un participant se déconnecte
+- Collaboration fonctionne dans le Browser et l’application de bureau.
+- Les Room IDs utilisent des valeurs aléatoires cryptographiquement sûres. Seules les personnes connaissant le lien peuvent entrer.
+- Les Cursors et Presence entries des Peers déconnectés sont supprimés automatiquement.

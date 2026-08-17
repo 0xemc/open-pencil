@@ -1,37 +1,37 @@
 ---
-title: Inspecter des fichiers
-description: Parcourez les arborescences de nœuds, recherchez par nom ou type, et examinez les propriétés depuis le terminal.
+title: Examiner des fichiers
+description: Lire le Document tree, les Nodes, les Pages et les Variables avec la CLI.
 ---
 
-# Inspecter des fichiers
+# Examiner des fichiers
 
-Le CLI vous permet d'explorer des fichiers `.fig` sans ouvrir l'éditeur. Chaque commande fonctionne aussi sur l'application en cours d'exécution — il suffit d'omettre l'argument fichier.
+La CLI lit les fichiers `.fig` sans ouvrir l’éditeur. Lorsque l’application de bureau est active, la plupart des Commands acceptent l’omission du fichier et utilisent RPC avec le document ouvert.
 
 ::: tip Installation
 ```sh
 npm install -g @open-pencil/cli
 # ou
+bun add -g @open-pencil/cli
+# ou
 brew install open-pencil/tap/open-pencil
 ```
 :::
 
-## Informations sur le document
+## Informations du document
 
-Obtenez un aperçu rapide — nombre de pages, nombre total de nœuds, polices utilisées, taille du fichier :
+Affiche les Pages, le nombre de Nodes, les Fonts utilisés et la taille du fichier :
 
 ```sh
 openpencil info design.fig
 ```
 
-## Arborescence des nœuds
-
-Affichez la hiérarchie complète des nœuds :
+## Document tree
 
 ```sh
 openpencil tree design.fig
 ```
 
-```
+```text
 [0] [page] "Getting started" (0:46566)
   [0] [section] "" (0:46567)
     [0] [frame] "Body" (0:46568)
@@ -40,33 +40,31 @@ openpencil tree design.fig
           [0] [frame] "Guidance" (0:46571)
 ```
 
-## Trouver des nœuds
+## Rechercher des Nodes
 
-Rechercher par type :
+Par Type :
 
 ```sh
 openpencil find design.fig --type TEXT
 ```
 
-Rechercher par nom :
+Par Name :
 
 ```sh
 openpencil find design.fig --name "Button"
 ```
 
-Les deux options peuvent être combinées pour affiner les résultats.
+Les deux Flags peuvent être combinés.
 
-## Détails d'un nœud
-
-Inspectez toutes les propriétés d'un nœud spécifique par son identifiant :
+## Node details
 
 ```sh
 openpencil node design.fig --id 1:23
 ```
 
-## Pages
+Affiche les Properties du Node indiqué.
 
-Listez toutes les pages du document :
+## Pages
 
 ```sh
 openpencil pages design.fig
@@ -74,24 +72,22 @@ openpencil pages design.fig
 
 ## Variables
 
-Listez les variables de design et leurs collections :
-
 ```sh
 openpencil variables design.fig
 ```
 
-## Mode application en direct
+## Document ouvert
 
-Quand l'application de bureau est en cours d'exécution, omettez l'argument fichier — le CLI se connecte via RPC et opère sur le canevas en direct :
+Avec l’application de bureau active :
 
 ```sh
-openpencil tree              # inspecter le document en direct
-openpencil eval -c "..."     # interroger l'éditeur
+openpencil tree           # Document ouvert
+openpencil eval -c "..." # Interroger via Figma Plugin API
 ```
 
-## Sortie JSON
+## JSON output
 
-Toutes les commandes supportent `--json` pour une sortie lisible par machine — redirigez vers `jq`, alimentez des scripts CI, ou traitez avec d'autres outils :
+Les Commands d’Inspection acceptent `--json`. La sortie peut être traitée avec `jq`, la CI ou d’autres Tools :
 
 ```sh
 openpencil tree design.fig --json | jq '.[] | .name'

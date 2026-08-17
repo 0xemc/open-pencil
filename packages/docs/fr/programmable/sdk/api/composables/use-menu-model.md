@@ -1,13 +1,11 @@
 ---
 title: useMenuModel
-description: Construisez des modèles de menu applicatif et canvas depuis l'état courant de l'éditeur.
+description: Créer des modèles de Menu pour l’Application et le canvas à partir de l’Editor state.
 ---
 
 # useMenuModel
 
-`useMenuModel()` construit des structures de menu de plus haut niveau au-dessus des commandes éditeur et de l'état de sélection.
-
-Il est utile quand vous voulez des groupes de menu prêts à l'affichage plutôt que de composer les commandes manuellement.
+`useMenuModel()` crée des Menus prêts à rendre à partir des Editor commands et de la Selection. Il évite de recomposer chaque Menu avec des Commands individuels.
 
 ## Utilisation
 
@@ -17,37 +15,35 @@ import { useMenuModel } from '@open-pencil/vue'
 const { appMenu, canvasMenu, selectionLabelMenu } = useMenuModel()
 ```
 
-## Exemple de base
+## Exemple
 
 ```ts
 const { canvasMenu } = useMenuModel()
 ```
 
-Affichez `canvasMenu.value` dans votre composant de menu contextuel.
+Transmettez `canvasMenu.value` à un Component de Menu contextuel.
 
-## Exemples pratiques
+## Application menu
 
-### Menu principal en style applicatif
+`appMenu` regroupe les Options dans :
 
-`appMenu` regroupe les entrées en :
+- Edit ;
+- View ;
+- Object ;
+- Arrange.
 
-- Édition
-- Vue
-- Objet
-- Disposition
+## Menu contextuel
 
-### Menu contextuel avec déplacements entre pages
+`canvasMenu` contient des Options dépendant du State, par exemple Move to page avec les Pages disponibles.
 
-`canvasMenu` inclut des éléments dynamiques comme « Déplacer vers la page » selon la sélection courante et les pages disponibles.
+## Labels de Selection
 
-### Libellés de sélection
+`selectionLabelMenu` renvoie la variante adaptée :
 
-`selectionLabelMenu` expose des libellés sensibles au contexte comme :
+- Hide ou Show ;
+- Lock ou Unlock.
 
-- `Masquer` / `Afficher`
-- `Verrouiller` / `Déverrouiller`
-
-## API associées
+## Voir aussi
 
 - [useEditorCommands](./use-editor-commands)
 - [useSelectionState](./use-selection-state)

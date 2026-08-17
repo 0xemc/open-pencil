@@ -1,15 +1,15 @@
 ---
 title: CanvasSurface
-description: Primitive élément canvas lié au contexte CanvasRoot le plus proche.
+description: Élément canvas connecté au CanvasRoot le plus proche.
 ---
 
 # CanvasSurface
 
-`CanvasSurface` affiche l'élément `<canvas>` réel utilisé par la pile canvas du SDK.
+`CanvasSurface` rend l’élément `<canvas>` utilisé par le SDK renderer.
 
-Utilisez-la à l'intérieur de `CanvasRoot` quand vous voulez des refs canvas et une intégration de rendu gérés par le SDK, mais une mise en page et des styles appartenant à votre application.
+Dans `CanvasRoot`, le SDK gère les Refs et la Renderer integration, tandis que l’application contrôle Layout et Styles.
 
-## API associées
+## Voir aussi
 
 - [CanvasRoot](./canvas-root)
 - [useCanvasContext](../advanced/use-canvas-context)

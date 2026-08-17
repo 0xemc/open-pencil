@@ -1,19 +1,19 @@
 ---
 title: useSelectionCapabilities
-description: Dérive des booléens adaptés aux commandes pour les UI et actions pilotées par la sélection.
+description: Boolean values réactifs pour les Actions disponibles avec la Selection actuelle.
 ---
 
 # useSelectionCapabilities
 
-`useSelectionCapabilities()` expose des booléens réactifs indiquant si les actions éditeur courantes sont actuellement autorisées.
+`useSelectionCapabilities()` renvoie des Boolean values indiquant si les Actions courantes de l’Editor sont disponibles pour la Selection actuelle.
 
-Utilisez-le pour construire :
+Le composable convient aux :
 
-- des menus
-- des barres d'outils
-- des raccourcis clavier
-- des boutons d'action
-- des panneaux contextuels
+- Menus ;
+- Toolbars ;
+- raccourcis ;
+- Action buttons ;
+- panneaux dépendant du Context.
 
 ## Utilisation
 
@@ -23,7 +23,7 @@ import { useSelectionCapabilities } from '@open-pencil/vue'
 const caps = useSelectionCapabilities()
 ```
 
-## Exemple de base
+## Exemple
 
 ```vue
 <script setup lang="ts">
@@ -34,28 +34,26 @@ const { canDelete, canDuplicate, canCreateComponent } = useSelectionCapabilities
 
 <template>
   <div class="flex gap-2">
-    <button :disabled="!canDuplicate">Dupliquer</button>
-    <button :disabled="!canDelete">Supprimer</button>
-    <button :disabled="!canCreateComponent">Créer un composant</button>
+    <button :disabled="!canDuplicate">Duplicate</button>
+    <button :disabled="!canDelete">Delete</button>
+    <button :disabled="!canCreateComponent">Create component</button>
   </div>
 </template>
 ```
 
-## Exemples pratiques
-
-### Conditionner les entrées de menu
+### Disponibilité des options du Menu
 
 ```ts
 const { canMoveToPage, canGoToMainComponent } = useSelectionCapabilities()
 ```
 
-### Activer les commandes de zoom uniquement quand utile
+### Zoom to selection
 
 ```ts
 const { canZoomToSelection } = useSelectionCapabilities()
 ```
 
-## API associées
+## Voir aussi
 
 - [useSelectionState](./use-selection-state)
 - [useEditorCommands](./use-editor-commands)

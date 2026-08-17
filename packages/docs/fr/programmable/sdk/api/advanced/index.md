@@ -1,19 +1,19 @@
 ---
-title: Avancé
-description: API de bas niveau et spécialisées dans @open-pencil/vue.
+title: Advanced API
+description: APIs Low-level et spécialisées de @open-pencil/vue.
 ---
 
-# Avancé
+# Advanced API
 
-Ces API sont publiques, mais elles sont plus spécialisées que la surface principale des composants et composables.
+Ces APIs publiques ciblent des Integrations plus spécialisées que les Components et composables principaux.
 
-## Helpers de sélection et de scène
+## Selection et SceneGraph
 
 - [useNodeProps](./use-node-props)
 - [useSceneComputed](./use-scene-computed)
 - [usePropScrub](./use-prop-scrub)
 
-## Sélecteurs, variables, locale et internals d'éditeur
+## Pickers, Variables, Locale et Editor state
 
 - [useColorVariableBinding](./use-color-variable-binding)
 - [useGradientStops](./use-gradient-stops)
@@ -22,11 +22,11 @@ Ces API sont publiques, mais elles sont plus spécialisées que la surface princ
 - [useVariables](./use-variables)
 - [useVariablesDialogState](./use-variables-dialog-state)
 - [useVariablesTable](./use-variables-table)
-- [API Locale](./locale-apis)
+- [Locale API](./locale-apis)
 - [useToolbarState](./use-toolbar-state)
 - [useNodeFontStatus](./use-node-font-status)
 
-## Utilitaires de shell d'éditeur
+## Interfaces d’édition personnalisées
 
 - [useLayerDrag](./use-layer-drag)
 - [useInlineRename](./use-inline-rename)
@@ -35,7 +35,7 @@ Ces API sont publiques, mais elles sont plus spécialisées que la surface princ
 - [useViewportKind](./use-viewport-kind)
 - [toolCursor](./tool-cursor)
 
-## Helpers de contexte de primitive
+## Context des Headless components
 
 - [useCanvasContext](./use-canvas-context)
 - [useLayerTree](./use-layer-tree)

@@ -1,26 +1,26 @@
 ---
 title: useCanvasInput
-description: "Câble les interactions pointeur du canvas : glisser, sélectionner, redimensionner, rotation et comportement des outils."
+description: Connecter Pointer input, Drag, Selection, Resize, Rotation et Tools au canvas.
 ---
 
 # useCanvasInput
 
-`useCanvasInput()` connecte les interactions pointeur et souris au canvas de l'éditeur.
+`useCanvasInput()` connecte les Pointer et Mouse interactions au canvas de l’Editor.
 
-Il gère les préoccupations d'interaction comme :
+Il gère :
 
-- la sélection
-- le glissement
-- le redimensionnement
-- la rotation
-- le panoramique
-- les flux de dessin au stylo
-- l'interaction de l'édition de texte
-- le test de collision sensible à la portée
+- Selection ;
+- Drag ;
+- Resize ;
+- Rotation ;
+- Pan ;
+- dessin avec Pen tool ;
+- Interactions du Text edit mode ;
+- Hit testing tenant compte du Viewport.
 
 ## Utilisation
 
-Ce composable est généralement associé à `useCanvas()` et aux helpers de test de collision du renderer.
+Ce composable s’utilise généralement avec `useCanvas()` et les Hit-test functions du Renderer :
 
 ```ts
 useCanvasInput(
@@ -32,7 +32,7 @@ useCanvasInput(
 )
 ```
 
-## Exemple de base
+## Exemple
 
 ```ts
 const canvas = useCanvas(canvasRef, editor)
@@ -46,9 +46,7 @@ useCanvasInput(
 )
 ```
 
-## Exemples pratiques
-
-### Suivre le mouvement du curseur dans l'espace canvas
+### Position du Pointer en Coordinates du canvas
 
 ```ts
 useCanvasInput(
@@ -65,9 +63,9 @@ useCanvasInput(
 
 ## Notes
 
-Ce composable est plus bas niveau que la plupart des logiques de panneau. Il est mieux adapté aux shells d'éditeur et aux conteneurs canvas.
+Ce Low-level composable s’adresse principalement aux Components qui contiennent le canvas d’une interface d’édition personnalisée.
 
-## API associées
+## Voir aussi
 
 - [useCanvas](./use-canvas)
 - [useEditor](./use-editor)

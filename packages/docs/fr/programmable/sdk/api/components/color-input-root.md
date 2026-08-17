@@ -1,28 +1,28 @@
 ---
 title: ColorInputRoot
-description: Helper headless pour la saisie de couleur avec analyse hexadécimale et helpers de mise à jour.
+description: Hex value et Color updates pour un Color input personnalisé.
 ---
 
 # ColorInputRoot
 
-`ColorInputRoot` est un helper headless pour les interfaces de saisie de couleur.
+`ColorInputRoot` convertit le Color value actuel en Hex et fournit des Functions de mise à jour via un Hex string ou un objet `Color` complet.
 
-Il dérive une valeur hexadécimale d'une couleur et expose des helpers de mise à jour pour les changements hexadécimaux et de couleur complète.
+L’application rend l’Input via le Default slot.
 
 ## Props
 
 <SdkPropsTable
   :rows="[
-    { name: 'color', type: 'Color', description: 'Valeur de couleur courante.', required: true },
-    { name: 'editable', type: 'boolean | undefined', description: 'Si le consommateur doit présenter la valeur comme modifiable.' }
+    { name: 'color', type: 'Color', description: 'Color value actuel.', required: true },
+    { name: 'editable', type: 'boolean | undefined', description: 'Indique si l’application doit présenter le Value comme modifiable.' }
   ]"
 />
 
-## Événements
+## Events
 
 <SdkEventsTable
   :rows="[
-    { name: 'update', payload: 'color: Color', description: 'Émis quand la couleur change.' }
+    { name: 'update', payload: 'color: Color', description: 'Émis lorsque le Color value change.' }
   ]"
 />
 
@@ -30,7 +30,7 @@ Il dérive une valeur hexadécimale d'une couleur et expose des helpers de mise 
 
 <SdkSlotsTable
   :rows="[
-    { name: 'default', props: '{ color: Color, editable: boolean, hex: string, updateFromHex: (value: string) => void, updateColor: (color: Color) => void }', description: 'Contrat de rendu principal de la saisie de couleur.' }
+    { name: 'default', props: '{ color: Color, editable: boolean, hex: string, updateFromHex: (value: string) => void, updateColor: (color: Color) => void }', description: 'State et Actions pour rendre le Color input.' }
   ]"
 />
 
@@ -42,6 +42,6 @@ Il dérive une valeur hexadécimale d'une couleur et expose des helpers de mise 
 </ColorInputRoot>
 ```
 
-## API associées
+## Voir aussi
 
 - [ColorPickerRoot](./color-picker-root)

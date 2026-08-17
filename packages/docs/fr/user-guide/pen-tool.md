@@ -1,27 +1,54 @@
 ---
-title: Outil plume
-description: Tracés vectoriels avec courbes de Bézier dans OpenPencil.
+title: Pen tool
+description: Dessiner des Vector paths et Bezier curves avec Pen tool.
 ---
-# Outil plume
 
-## Activation
-**P**
+# Pen tool
 
-## Placer des points
-- **Clic** — place un point d’angle
-- **Clic + glisser** — place un point de courbe avec des poignées tangentes de Bézier
-  - **Maintenir <kbd>Space</kbd>** pendant le glissement pour déplacer le point lui-même
+Pen tool crée des Vector paths avec le modèle Vector network compatible avec Figma.
 
-## Fermer un tracé
-Cliquez sur le premier point pour fermer le tracé en boucle.
+## Activer
 
-## Tracés ouverts
-Appuyez sur <kbd>Escape</kbd> pour valider un tracé ouvert.
+Appuyez sur <kbd>P</kbd>.
 
-## Réseaux vectoriels
-Les tracés dans OpenPencil utilisent des réseaux vectoriels — un modèle plus flexible que les listes de points simples, qui prend en charge les tracés ramifiés et les topologies complexes. C'est le même modèle que Figma, les tracés sont donc parfaitement conservés dans les fichiers .fig.
+## Créer des Anchors
 
-| Action | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Outil plume | <kbd>P</kbd> | <kbd>P</kbd> |
-| Valider | <kbd>Escape</kbd> | Escape |
+- Click crée un Corner anchor et un Segment droit.
+- Click et Drag crée un Anchor avec des Bezier handles.
+- Maintenez <kbd>Space</kbd> pendant le Drag pour déplacer l’Anchor sans relâcher le Button.
+
+Chaque Anchor supplémentaire prolonge le Path d’un Segment. Une Preview line relie le dernier Anchor au Pointer.
+
+## Fermer un Path
+
+Cliquez sur le premier Anchor pour fermer le Path. Un Path fermé peut recevoir un Fill.
+
+## Path ouvert
+
+Appuyez sur <kbd>Escape</kbd> pour terminer sans fermer. Les Paths ouverts sont affichés uniquement avec leurs Strokes.
+
+## Vector networks
+
+OpenPencil stocke les Vectors sous forme de Vector networks plutôt que de listes de points. Ce modèle permet les Topologies ramifiées et enregistre la géométrie dans `.fig` sans conversion.
+
+## Continuer en Edit mode
+
+Avec Pen tool actif :
+
+- Click sur l’Endpoint d’un Path ouvert reprend le dessin ;
+- Click sur un Segment insère un Anchor ;
+- <kbd>Option</kbd>/<kbd>Alt</kbd> + Click supprime un Anchor si la Topology le permet.
+
+Consultez [Modifier des Vectors](./vector-edit) pour l’Edit mode.
+
+## Raccourcis
+
+| Action | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Pen tool | <kbd>P</kbd> | <kbd>P</kbd> |
+| Terminer un Path ouvert | <kbd>Escape</kbd> | <kbd>Escape</kbd> |
+
+## Conseils
+
+- Un Drag plus long produit des Bezier handles plus longs.
+- Fill, Stroke et Effects peuvent ensuite être modifiés dans le panneau Properties.

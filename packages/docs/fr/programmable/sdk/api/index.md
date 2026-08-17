@@ -1,20 +1,20 @@
 ---
 title: Référence API
-description: Documentation de référence pour les composants, composables et API avancées de @open-pencil/vue.
+description: Components, composables et Advanced APIs de @open-pencil/vue.
 ---
 
 # Référence API
 
-La référence du Vue SDK est organisée en trois sections.
+La référence du SDK Vue est divisée en trois parties.
 
 <SdkCardGroup>
-  <SdkCard title="Composants" to="/programmable/sdk/api/components/" description="Primitives structurelles headless comme CanvasRoot, ToolbarRoot, FontPickerRoot et NumberFieldRoot." />
-  <SdkCard title="Composables" to="/programmable/sdk/api/composables/" description="Composables orientés éditeur pour le contexte, le câblage canvas, la sélection, les commandes et les panneaux de propriétés." />
-  <SdkCard title="Avancé" to="/programmable/sdk/api/advanced/" description="Helpers de bas niveau, contextes de primitives et API spécialisées pour les intégrations avancées." />
+  <SdkCard title="Components" to="/programmable/sdk/api/components/" description="Headless components comme CanvasRoot, ToolbarRoot, FontPickerRoot et NumberField." />
+  <SdkCard title="Composables" to="/programmable/sdk/api/composables/" description="State et Actions pour Editor context, Canvas, Selection, Commands et panneaux Properties." />
+  <SdkCard title="Advanced API" to="/programmable/sdk/api/advanced/" description="Context APIs Low-level et Functions spécialisées pour les Integrations personnalisées." />
 </SdkCardGroup>
 
-## Parcours suggéré
+## Point de départ
 
-- Commencez par les **Composants** si vous construisez des primitives UI d'éditeur réutilisables.
-- Commencez par les **Composables** si vous câblez l'état et les actions de l'éditeur.
-- Utilisez **Avancé** uniquement quand vous avez besoin de helpers de bas niveau ou de contextes de primitives.
+- **Components** pour les Structures et Controls réutilisables de l’Editor UI.
+- **Composables** pour Editor state et Actions.
+- **Advanced API** pour les Integrations spécialisées nécessitant un accès direct au Low-level State ou Context.

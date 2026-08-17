@@ -1,20 +1,20 @@
 ---
 title: useTextEdit
-description: Gère l'édition DOM de texte, la composition, la mise en forme et la synchronisation pour les nœuds texte du canvas.
+description: Gérer DOM text input, IME, Formatting et synchronisation des objets texte.
 ---
 
 # useTextEdit
 
-`useTextEdit()` fait le pont entre la saisie de texte DOM et le modèle d'édition de texte canvas de l'éditeur.
+`useTextEdit()` connecte le DOM input à l’édition de texte du canvas de l’Editor.
 
-Il coordonne :
+Le composable coordonne :
 
-- la saisie de texte via textarea
-- la composition IME
-- le clignotement du curseur
-- le comportement supprimer/retour arrière
-- les commandes de mise en forme comme gras/italique/souligné
-- la synchronisation des modifications de texte dans le graphe
+- la saisie via `textarea` ;
+- les IME ;
+- le clignotement du Caret ;
+- Delete et Backspace ;
+- les Commands Bold, Italic et Underline ;
+- l’écriture des modifications dans SceneGraph.
 
 ## Utilisation
 
@@ -22,25 +22,21 @@ Il coordonne :
 useTextEdit(canvasRef, editor)
 ```
 
-## Exemple de base
+Utilisez-le dans le Component qui contient le canvas, généralement avec `useCanvas()` et `useCanvasInput()`.
 
-Utilisez-le dans le composant propriétaire du canvas avec `useCanvas()` et `useCanvasInput()`.
+## Raccourcis de Formatting
 
-## Exemples pratiques
+Pendant l’édition de texte, `useTextEdit()` traite les raccourcis Bold, Italic et Underline.
 
-### Prendre en charge les raccourcis de mise en forme
+## Synchronisation
 
-`useTextEdit()` gère déjà les actions de mise en forme clavier comme gras, italique et souligné pendant que l'édition de texte est active.
-
-### Garder canvas et éditeur de texte synchronisés
-
-Il met à jour le texte du graphe et les passages de style au fur et à mesure que l'utilisateur tape ou édite des plages mises en forme.
+Pendant la saisie, la Function met à jour le texte et les Style runs dans SceneGraph.
 
 ## Notes
 
-C'est un composable d'intégration canvas/éditeur, pas un composable générique de champ de texte.
+Ce composable intègre l’édition de texte au canvas. Il ne s’adresse pas aux Fields texte ordinaires.
 
-## API associées
+## Voir aussi
 
 - [useCanvas](./use-canvas)
 - [useCanvasInput](./use-canvas-input)

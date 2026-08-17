@@ -1,92 +1,75 @@
 ---
-title: Édition d'objets vectoriels
-description: "Comment modifier la géométrie d'un tracé vectoriel : ancres, poignées de Bézier, modificateurs et actions de l'outil Plume en mode édition."
+title: Modifier des Vectors
+description: Modifier Anchors, Bezier handles et Segments et utiliser Pen tool en Edit mode.
 ---
 
-# Édition d'objets vectoriels
+# Modifier des Vectors
 
-Le mode Édition d'objets vectoriels permet de modifier la **géométrie** d'une courbe : positions des ancres, forme des segments et poignées de Bézier.  
-Dans ce mode, vous éditez le tracé lui-même, et non les transformations standard de l'objet.
+Vector edit mode modifie la géométrie d’un Path : Position des Anchors, forme des Segments et Bezier handles. Il ne transforme pas l’objet entier, mais le Path lui-même.
 
-## Entrer dans le mode
+## Ouvrir Edit mode
 
-- Sélectionnez un objet vectoriel avec l'outil Sélection.
-- **Double-cliquez sur la courbe**.
+1. Sélectionnez un Vector object avec Select tool.
+2. Faites un Double-click sur la Curve.
 
-La modification de géométrie est alors activée pour le vecteur sélectionné.
+Appuyez sur <kbd>Escape</kbd> ou changez de contexte pour quitter.
 
-## Quitter le mode
+## Comportement
 
-- Appuyez sur <kbd>Échap</kbd>.
-- Ou basculez vers un autre contexte d'édition.
+- Le Transform bounding box habituel est masqué.
+- Anchors, Segments et Handles peuvent être sélectionnés et modifiés.
+- Les coins du Bounding box n’activent ni Resize ni Rotation.
 
-## Ce qui change dans ce mode
+## Opérations de base
 
-- Le cadre de transformation habituel est désactivé pour l'objet.
-- L'édition des ancres, des segments et des poignées devient disponible.
-- Le curseur ne passe plus en mode redimensionnement/rotation aux coins du cadre englobant.
+### Déplacer un Anchor
 
-## Actions de base
+Faites un Drag sur l’Anchor. Les Segments reliés et la forme du Path sont mis à jour pendant le Drag.
 
-### Déplacer une ancre
+### Modifier un Bezier handle
 
-- Faites glisser un point d'ancrage.
-- Les segments connectés et la forme du tracé sont mis à jour en temps réel dans l'aperçu.
+Faites un Drag sur le Handle d’un Anchor. Le comportement dépend de sa Handle composition actuelle.
 
-### Modifier une poignée de Bézier
+## Modifiers
 
-- Faites glisser une poignée sur l'ancre.
-- Par défaut, le comportement suit la composition de poignées actuelle de l'ancre.
+| Comportement | macOS | Windows / Linux |
+|---------------|-------|-----------------|
+| Continuous | <kbd>Cmd</kbd> + Drag | <kbd>Ctrl</kbd> + Drag |
+| Corner, Handles indépendants | <kbd>Option</kbd> + Drag | <kbd>Alt</kbd> + Drag |
+| Conserver Direction, modifier seulement Length | <kbd>Shift</kbd> + Drag | <kbd>Shift</kbd> + Drag |
 
-## Modificateurs de déplacement des poignées
+### Continuous
 
-| Action | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Continu (Lisse / Continu) | <kbd>Cmd</kbd> + glisser | <kbd>Ctrl</kbd> + glisser |
-| Coin (poignées indépendantes) | <kbd>Option</kbd> + glisser | <kbd>Alt</kbd> + glisser |
-| Verrouillage de direction (longueur uniquement) | <kbd>Shift</kbd> + glisser | <kbd>Shift</kbd> + glisser |
+Avec <kbd>Cmd</kbd> ou <kbd>Ctrl</kbd>, l’Active handle reste aligné sur le Handle opposé. Seule sa Length change et la Curve conserve une transition fluide.
 
-### Continu : <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + glisser
+### Corner
 
-- La poignée active est contrainte sur la même ligne que la poignée opposée.
-- Seule la longueur de la poignée active change.
-- Utilisez ce mode pour des transitions fluides sans rupture de coin.
+Avec <kbd>Option</kbd> ou <kbd>Alt</kbd>, l’Active handle est modifié indépendamment. Le Handle opposé reste en place, ce qui permet de créer un Corner marqué.
 
-### Coin : <kbd>Option</kbd>/<kbd>Alt</kbd> + glisser
+### Conserver Direction
 
-- La poignée active est éditée de façon indépendante.
-- La poignée opposée reste en place.
-- Utilisez ce mode pour créer une transition en coin net.
+Pour les Anchors avec Composition **Continuous** ou **Symmetric**, <kbd>Shift</kbd> conserve la Direction présente avant le Drag. Seule la Length d’un ou deux Handles change selon la Composition.
 
-### Verrouillage de direction : <kbd>Shift</kbd> + glisser
+## Bend par Drag de l’Anchor
 
-Pour les ancres dont la composition est **Continu** ou **Symétrique** :
+Lorsqu’un Anchor est déplacé avec <kbd>Cmd</kbd> ou <kbd>Ctrl</kbd>, OpenPencil choisit le Target handle selon la Direction du Segment connecté, et non selon la distance au point voisin.
 
-- la direction de la poignée est verrouillée sur la valeur d'**avant le début du glissement en cours** ;
-- le glissement ne modifie que la longueur de la poignée (ou des poignées, selon la composition).
+Ce comportement fonctionne aussi sur les Anchors ramifiés d’un Vector network. Une fois choisi, le même Target handle reste actif jusqu’à la fin du Drag.
 
-## Remplacement de courbure par déplacement d'ancre
+## Pen tool en Edit mode
 
-Lorsque vous faites glisser une ancre en maintenant <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>, l'éditeur sélectionne la poignée cible en fonction de la **direction d'attache du segment** au niveau de cette ancre (et non par la distance au point voisin le plus proche).  
-Cela fonctionne également sur les ancres de réseau vectoriel multi-branches : une fois résolue, la poignée cible reste verrouillée pour le glissement en cours.
+Avec Pen tool actif :
 
-## Utiliser l'outil Plume en mode édition
+- Click sur un Segment insère un Anchor et divise le Segment ;
+- Click sur l’Endpoint d’un Path ouvert reprend le dessin ;
+- <kbd>Option</kbd>/<kbd>Alt</kbd> + Click supprime un Anchor si la Topology le permet.
 
-Avec l'outil Plume actif :
+Consultez [Pen tool](./pen-tool.md) pour créer et fermer des Paths.
 
-- **Cliquez sur un segment** pour insérer une nouvelle ancre (diviser le segment).
-- **Cliquez sur l'extrémité d'un tracé ouvert** pour reprendre le dessin depuis ce point.
-- **Option/Alt + clic sur une ancre** pour la supprimer (lorsque la topologie le permet).
+## Exemple
 
-Pour le comportement de création et de fermeture de tracés, voir [Outil Plume](./pen-tool.md).
-
-## Flux de travail pratique
-
-1. Dessinez une forme avec l'outil Plume.
-2. Double-cliquez sur la courbe pour entrer en mode Édition d'objets vectoriels.
-3. Déplacez les ancres pour affiner la silhouette.
-4. Faites glisser les poignées :
-   - avec <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> pour des transitions continues et fluides,
-   - avec <kbd>Option</kbd>/<kbd>Alt</kbd> pour des modifications indépendantes,
-   - avec <kbd>Shift</kbd> pour modifier uniquement la longueur.
-5. Appuyez sur <kbd>Échap</kbd> pour quitter.
+1. Dessinez un Shape avec Pen tool.
+2. Ouvrez la Curve avec un Double-click.
+3. Déplacez les Anchors pour ajuster le contour.
+4. Modifiez les Handles avec <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>, <kbd>Option</kbd>/<kbd>Alt</kbd> ou <kbd>Shift</kbd>.
+5. Appuyez sur <kbd>Escape</kbd>.

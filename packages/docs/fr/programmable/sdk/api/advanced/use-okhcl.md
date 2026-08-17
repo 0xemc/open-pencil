@@ -1,13 +1,13 @@
 ---
 title: useOkHCL
-description: Travaillez avec les modèles de couleur RGBA et OkHCL pour les remplissages et contours.
+description: Gérer les Color models RGBA et OkHCL pour Fills et Strokes.
 ---
 
 # useOkHCL
 
-`useOkHCL()` expose des helpers pour lire, activer, désactiver et mettre à jour les valeurs de couleur OkHCL sur les remplissages et contours des nœuds.
+`useOkHCL()` lit et change le Color model utilisé par Fills et Strokes. L’API permet d’activer ou désactiver OkHCL et de modifier ses Values.
 
-Utilisez-le quand vous construisez des outils de couleur avancés qui ont besoin de basculer entre l'édition RGBA standard et l'édition OkHCL perceptuelle.
+Utilisez le composable dans un Color picker avancé prenant en charge RGBA et le modèle perceptuel OkHCL.
 
 ## Utilisation
 
@@ -17,7 +17,7 @@ import { useOkHCL } from '@open-pencil/vue'
 const okhcl = useOkHCL()
 ```
 
-## Retourne
+## Values
 
 - `getFillColorModel()`
 - `getStrokeColorModel()`
@@ -31,7 +31,7 @@ const okhcl = useOkHCL()
 - `updateStrokeOkHCL()`
 - `modelOptions`
 
-## API associées
+## Voir aussi
 
 - [useFillControls](../composables/use-fill-controls)
 - [useStrokeControls](../composables/use-stroke-controls)

@@ -1,44 +1,19 @@
 ---
 title: ColorPickerRoot
-description: Primitive headless de sélecteur de couleur basé sur un popover.
+description: Headless component pour créer un Color picker.
 ---
+
+<script setup lang="ts">
+import { data } from '#docs-api/components/color-picker-root.data'
+</script>
 
 # ColorPickerRoot
 
-`ColorPickerRoot` est une primitive headless de sélecteur de couleur basé sur un popover.
+`ColorPickerRoot` fournit les Slots nécessaires à un Color picker :
 
-Elle fournit :
-
-- un slot déclencheur avec le style de fond de l'échantillon
-- un déclencheur par défaut de secours
-- un slot de contenu avec `color` et `update()`
-
-## Props
-
-<SdkPropsTable
-  :rows="[
-    { name: 'color', type: 'Color', description: 'Valeur de couleur courante.', required: true },
-    { name: 'contentClass', type: 'string | undefined', description: 'Classe optionnelle pour le contenu du popover.' },
-    { name: 'swatchClass', type: 'string | undefined', description: 'Classe optionnelle pour le bouton déclencheur par défaut.' }
-  ]"
-/>
-
-## Événements
-
-<SdkEventsTable
-  :rows="[
-    { name: 'update', payload: 'color: Color', description: 'Émis quand la couleur change.' }
-  ]"
-/>
-
-## Slots
-
-<SdkSlotsTable
-  :rows="[
-    { name: 'trigger', props: '{ style: Record<string, string> }', description: 'Déclencheur personnalisé avec le style de fond de l\'échantillon.' },
-    { name: 'default', props: '{ color: Color, update: (color: Color) => void }', description: 'Contenu principal de l\'éditeur de couleur.' }
-  ]"
-/>
+- `trigger` avec le Style du Color swatch ;
+- un Default trigger si l’application n’en fournit pas ;
+- `default` avec le `color` actuel et la Function `update()`.
 
 ## Exemple
 
@@ -54,6 +29,8 @@ Elle fournit :
 </ColorPickerRoot>
 ```
 
-## API associées
+<SdkComponentAPI :components="data.components" />
+
+## Voir aussi
 
 - [ColorInputRoot](./color-input-root)

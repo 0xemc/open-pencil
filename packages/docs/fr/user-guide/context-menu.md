@@ -1,36 +1,73 @@
 ---
 title: Menu contextuel
-description: Actions du menu contextuel (clic droit) dans OpenPencil.
+description: Actions pour Clipboard, ordre, Groups, Components, Visibility et Pages.
 ---
+
 # Menu contextuel
 
-Clic droit sur le canevas pour ouvrir le menu contextuel. Clic droit sur un nœud le sélectionne d'abord.
+Un Right-click sur le canvas ouvre le menu contextuel. Sur un objet, OpenPencil le sélectionne d’abord. Sur une zone libre, il annule la Selection.
 
-## Copier en tant que
+## Copy as
 
-Le sous-menu **Copier en tant que** offre ces formats :
+Le Submenu **Copy as** écrit la Selection dans le Clipboard :
 
-| Action | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Copier en tant que texte | — | — |
-| Copier en tant que SVG | — | — |
-| Copier en tant que PNG | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>C</kbd> |
-| Copier en tant que JSX | — | — |
+| Action | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Copy as text | — | — |
+| Copy as SVG | — | — |
+| Copy as PNG | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>C</kbd> |
+| Copy as JSX | — | — |
 
-## Presse-papiers
-Copier (<kbd>⌘</kbd><kbd>C</kbd>), Couper (<kbd>⌘</kbd><kbd>X</kbd>), Coller (<kbd>⌘</kbd><kbd>V</kbd>), Dupliquer (<kbd>⌘</kbd><kbd>D</kbd>), Supprimer (⌫)
+## Clipboard
 
-## Ordre Z
-**]** au premier plan · **[** à l'arrière-plan
+| Action | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Copy | <kbd>⌘</kbd><kbd>C</kbd> | <kbd>Ctrl</kbd><kbd>C</kbd> |
+| Cut | <kbd>⌘</kbd><kbd>X</kbd> | <kbd>Ctrl</kbd><kbd>X</kbd> |
+| Paste here | <kbd>⌘</kbd><kbd>V</kbd> | <kbd>Ctrl</kbd><kbd>V</kbd> |
+| Duplicate | <kbd>⌘</kbd><kbd>D</kbd> | <kbd>Ctrl</kbd><kbd>D</kbd> |
+| Delete | <kbd>⌫</kbd> | Backspace/<kbd>Suppr</kbd> |
 
-## Groupement
-Grouper (<kbd>⌘</kbd><kbd>G</kbd>), Dégrouper (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd>), Ajouter mise en page auto (<kbd>⇧</kbd><kbd>A</kbd>)
+## Ordre
 
-## Composants
-Créer composant (<kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd>), Créer jeu de composants (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd>), Créer instance, Aller au composant principal, Détacher instance (<kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd>). Actions en violet.
+| Action | Raccourci |
+|--------|-----------|
+| Bring to front | ] |
+| Send to back | [ |
 
-## Visibilité et verrouillage
-Masquer/Afficher (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd>), Verrouiller/Déverrouiller (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd>)
+## Groups et Auto layout
 
-## Déplacer vers la page
-Sous-menu avec toutes les pages sauf la page courante.
+| Action | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Group | <kbd>⌘</kbd><kbd>G</kbd> | <kbd>Ctrl</kbd><kbd>G</kbd> |
+| Ungroup | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>G</kbd> |
+| Add Auto layout | <kbd>⇧</kbd><kbd>A</kbd> | <kbd>Shift</kbd><kbd>A</kbd> |
+
+## Components
+
+Les Component actions sont affichées en violet.
+
+| Action | macOS | Windows / Linux | Disponible pour |
+|--------|-------|-----------------|-----------------|
+| Create component | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>K</kbd> | Frames et Groups |
+| Create component set | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>K</kbd> | Deux Components ou plus |
+| Create instance | — | — | Components |
+| Go to main component | — | — | Instances |
+| Detach instance | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>B</kbd> | Instances |
+
+## Visibility et Lock
+
+| Action | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Hide / Show | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>H</kbd> |
+| Lock / Unlock | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>L</kbd> |
+
+## Move to page
+
+Le Submenu **Move to page** contient toutes les Pages sauf la Page actuelle.
+
+## Conseils
+
+- Un Right-click sur une zone libre propose Paste.
+- Les Component actions n’apparaissent que si elles sont compatibles avec la Selection.
+- Le menu affiche les raccourcis et permet de découvrir les Commands disponibles.

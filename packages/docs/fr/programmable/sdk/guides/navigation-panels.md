@@ -1,20 +1,15 @@
 ---
 title: Panneaux de navigation
-description: Créez des barres latérales de pages et de calques avec PageListRoot, LayerTreeRoot et l'état de sélection.
+description: Panneaux latéraux Pages et Layers avec PageListRoot, LayerTreeRoot et Selection state.
 ---
 
 # Panneaux de navigation
 
-Les barres latérales OpenPencil combinent généralement deux préoccupations :
+Un panneau latéral OpenPencil contient souvent une Page list et le Layer tree. Le SDK Vue fournit des Headless components pour ces deux zones.
 
-- la navigation entre pages
-- la navigation entre calques
+## Pages
 
-Le Vue SDK fournit des primitives headless pour les deux.
-
-## Navigation entre pages
-
-Utilisez `PageListRoot` ou `usePageList()`.
+Utilisez `PageListRoot` ou `usePageList()` :
 
 ```vue
 <PageListRoot v-slot="{ pages, currentPageId, switchPage, addPage }">
@@ -22,14 +17,14 @@ Utilisez `PageListRoot` ou `usePageList()`.
     <button v-for="page in pages" :key="page.id" @click="switchPage(page.id)">
       {{ page.name }}
     </button>
-    <button @click="addPage()">Nouvelle page</button>
+    <button @click="addPage()">Nouvelle Page</button>
   </div>
 </PageListRoot>
 ```
 
-## Navigation entre calques
+## Layers
 
-Utilisez `LayerTreeRoot` quand vous voulez une structure d'arbre gérée par le SDK mais une présentation appartenant à l'application.
+Utilisez `LayerTreeRoot` lorsque le SDK doit gérer Tree structure et Interactions tandis que l’application définit Markup et Styles :
 
 ```vue
 <LayerTreeRoot v-slot="{ items, selectedIds, select, toggleExpand, getKey, getChildren }">
@@ -44,15 +39,13 @@ Utilisez `LayerTreeRoot` quand vous voulez une structure d'arbre gérée par le 
 </LayerTreeRoot>
 ```
 
-## Pattern pratique
+## Layout courant
 
-Une mise en page courante est :
+- Pages en haut du panneau ;
+- Layers en dessous ;
+- détails et Inline rename dans les Row components.
 
-- les pages en haut de la barre latérale
-- les calques en dessous
-- les détails ou contrôles de renommage intégrés dans vos composants de ligne
-
-## API associées
+## Voir aussi
 
 - [usePageList](../api/composables/use-page-list)
 - [PageListRoot](../api/components/page-list-root)

@@ -1,13 +1,11 @@
 ---
 title: useFillControls
-description: Composable du panneau de remplissages avec le comportement de remplissage par défaut.
+description: Default value d’un nouveau Fill dans le panneau Properties.
 ---
 
 # useFillControls
 
-`useFillControls()` est le composable de propriété de remplissage utilisé par les interfaces d'édition de remplissage.
-
-Il ajoute une valeur de remplissage par défaut réutilisable.
+`useFillControls()` fournit le Default fill qu’un panneau utilise lors de l’ajout d’un Fill.
 
 ## Utilisation
 
@@ -17,20 +15,16 @@ import { useFillControls } from '@open-pencil/vue'
 const fills = useFillControls()
 ```
 
-## Ce qu'il fournit
-
-Il expose :
+## Value
 
 - `defaultFill`
 
-## Exemples pratiques
-
-### Ajouter une nouvelle ligne de remplissage
+### Ajouter un Fill
 
 ```ts
 propertyList.add(fills.defaultFill)
 ```
 
-## API associées
+## Voir aussi
 
 - [PropertyListRoot](../components/property-list-root)

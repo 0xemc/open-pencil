@@ -1,15 +1,15 @@
 ---
 title: useLayerDrag
-description: Helper de câblage drag-and-drop pour la réorganisation de l'arbre des calques.
+description: Drag and drop pour modifier l’ordre et le Parent des Layers.
 ---
 
 # useLayerDrag
 
-`useLayerDrag(editor, indentPerLevel?)` câble le comportement de drag-and-drop pragmatique pour les lignes de l'arbre des calques et mappe les instructions de dépôt vers les opérations de réorganisation de l'éditeur.
+`useLayerDrag(editor, indentPerLevel?)` relie `pragmatic-drag-and-drop` aux Rows du Layer tree et transforme les Drop instructions en changements d’ordre ou de Parent dans SceneGraph.
 
-Utilisez-le pour étendre ou remplacer l'UI de drag de l'arbre des calques par défaut.
+Utilisez le composable pour créer un Layer tree personnalisé avec Drag and drop.
 
-## API associées
+## Voir aussi
 
 - [LayerTreeRoot](../components/layer-tree-root)
 - [LayerTreeItem](../components/layer-tree-item)

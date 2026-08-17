@@ -1,64 +1,78 @@
 ---
-title: Chat IA
-description: Assistant IA intégré avec plus de 90 outils pour créer et modifier des designs.
+title: AI Chat
+description: AI Assistant intégré avec plus de 90 Tools pour créer et modifier des designs.
 ---
 
-# Chat IA
+# AI Chat
 
-Appuyez sur <kbd>⌘</kbd><kbd>J</kbd> (<kbd>Ctrl</kbd> + <kbd>J</kbd>) pour ouvrir l'assistant IA. Décrivez ce que vous voulez — il crée des formes, définit des styles, gère la mise en page, travaille avec les composants et analyse votre design.
+Appuyez sur <kbd>⌘</kbd><kbd>J</kbd> ou <kbd>Ctrl</kbd><kbd>J</kbd>. L’Assistant peut créer des Shapes, modifier des Styles, configurer le Layout, travailler avec des Components et analyser le document.
 
 ## Configuration
 
-1. Ouvrez le panneau de chat IA (<kbd>⌘</kbd><kbd>J</kbd>)
-2. Cliquez sur l'icône de paramètres
-3. Choisissez un fournisseur et entrez votre clé API
-4. Sélectionnez un modèle
+1. Ouvrez AI Chat.
+2. Sélectionnez le Settings icon.
+3. Ajoutez un Model et configurez Provider, Model ID, Credentials et Capabilities.
+4. Enregistrez le Model et attribuez-le à **Design agent**.
 
-### Fournisseurs pris en charge
+Plusieurs Models peuvent être enregistrés et attribués séparément au Design, aux Reviews, aux Tasks rapides et à l’Image input. Les Models partageant une Provider connection réutilisent le même Credential stocké de manière sécurisée.
 
-| Fournisseur | Modèles | Configuration |
-|-------------|---------|---------------|
-| **OpenRouter** | Claude, GPT-4, Gemini, DeepSeek et autres | Clé API de [openrouter.ai](https://openrouter.ai) |
-| **Anthropic** | Claude 3.5 Sonnet, Claude 3 Opus, etc. | Clé API de [console.anthropic.com](https://console.anthropic.com) |
-| **OpenAI** | GPT-4o, GPT-4, etc. | Clé API de [platform.openai.com](https://platform.openai.com) |
-| **Google AI** | Gemini 2.0, Gemini 1.5, etc. | Clé API de [aistudio.google.dev](https://aistudio.google.dev) |
-| **Compatible OpenAI** | Tout endpoint au format API OpenAI | URL de base personnalisée + clé. Supporte le basculement entre API Completions et Responses. |
-| **Compatible Anthropic** | Tout endpoint au format API Anthropic | URL de base personnalisée + clé |
+### Providers
 
-Pas de backend ni d’abonnement : votre clé communique directement avec le fournisseur. Les requêtes du navigateur sont soumises à la politique CORS du fournisseur, et la fiabilité des appels d’outils en streaming varie selon les déploiements. Consultez la référence en anglais sur la [compatibilité des fournisseurs et modèles BYOK](/programmable/byok-provider-compatibility) pour les résultats mesurés et les tests reproductibles.
+| Provider | Exemples | Configuration |
+|----------|----------|---------------|
+| **OpenRouter** | Claude, GPT, Gemini, DeepSeek, Qwen et autres | API key de [openrouter.ai](https://openrouter.ai) |
+| **Anthropic** | Claude Sonnet 4.6, Claude Opus 4.6 | API key de [console.anthropic.com](https://console.anthropic.com) |
+| **OpenAI** | GPT-5.3 Codex, GPT-4.1, o3, o4-mini | API key de [platform.openai.com](https://platform.openai.com) |
+| **Google AI** | Gemini 3.1 Pro, Gemini 3 Flash | API key de [aistudio.google.dev](https://aistudio.google.dev) |
+| **Z.ai** | GLM-5.1, GLM-5, GLM-4.7 et famille GLM-4.5 | API key selon la [documentation Z.ai](https://docs.z.ai/devpack/quick-start) |
+| **MiniMax** | MiniMax M3, M2.7, M2.7-highspeed, M2.5 et M2.1 | API key de [platform.minimax.io](https://platform.minimax.io/user-center/basic-information/interface-key) |
+| **OpenAI-compatible** | Endpoint au format OpenAI API | Base URL et Key propres ; Completions ou Responses API |
+| **Anthropic-compatible** | Endpoint au format Anthropic API | Base URL et Key propres |
 
-## Fonctionnalités
+OpenPencil n’utilise aucun Backend intermédiaire pour ces connexions. Les Requests sont envoyées directement au Provider. Dans le Browser, ses CORS policies s’appliquent. La fiabilité des Streaming tool calls varie également selon les Model deployments. Consultez la [compatibilité BYOK](/programmable/byok-provider-compatibility) pour les mesures et étapes de reproduction.
 
-L'assistant dispose de plus de 90 outils répartis dans ces catégories :
+### Connexions MCP externes
 
-- **Créer** — frames, formes, texte, composants, pages. Rendu JSX pour les mises en page complexes.
-- **Styliser** — remplissages, contours, effets, opacité, rayon d'arrondi, modes de fusion.
-- **Mise en page** — auto-layout, grille, alignement, espacement, dimensionnement.
-- **Composants** — créer des composants, des instances, des ensembles de composants. Gérer les surcharges.
-- **Variables** — créer/modifier des variables, des collections, des modes. Lier aux remplissages.
-- **Requêter** — trouver des nœuds, sélecteurs XPath, lire des propriétés, lister les pages, les polices, la sélection.
-- **Inspecter** — `get_jsx` pour la vue JSX, `diff_jsx` pour les différences structurelles, `describe` pour le rôle sémantique et les problèmes de design.
-- **Analyser** — palette de couleurs, audit typographique, cohérence de l'espacement, détection de motifs récurrents.
-- **Exporter** — PNG, SVG, JSX avec classes Tailwind. Vérification visuelle via `export_image`.
-- **Vectoriel** — opérations booléennes, manipulation de chemins.
+Les ACP agents de l’application de bureau peuvent utiliser des serveurs [Model Context Protocol](https://modelcontextprotocol.io/) distants et approuvés. Dans **Settings → MCP connections**, ajoutez un Streamable HTTP endpoint nommé, enregistrez éventuellement un Bearer token et activez la Connection.
+
+Le Token est conservé dans le Credential backend configuré, et non dans les Settings ordinaires. Il n’est résolu qu’au démarrage de l’ACP session.
+
+Les Remote servers doivent utiliser HTTPS. Les Loopback HTTP endpoints sont acceptés pour le développement local. N’activez qu’un Server de confiance : ses Tools peuvent lire des données externes ou effectuer des Actions avec les Credentials fournis. Le Design MCP server intégré est connecté automatiquement et ne doit pas être ajouté ici.
+
+## Tools
+
+AI Chat dispose de plus de 90 Tools :
+
+- **Create :** Frames, Shapes, Text, Components et Pages ; JSX pour les Layouts complexes ;
+- **Style :** Fills, Strokes, Effects, Opacity, Corner radius et Blend modes ;
+- **Layout :** Auto layout, Grid, Alignment, Spacing et Sizing ;
+- **Components :** Components, Instances, Component sets et Overrides ;
+- **Variables :** Variables, Collections, Modes et Fill bindings ;
+- **Query :** rechercher des Nodes et XPath selectors, lire Properties, Pages, Fonts et Selection ;
+- **Inspect :** `get_jsx`, `diff_jsx` et `describe` pour Structure, Role et Design issues ;
+- **Analyze :** Color palette, Typography, Spacing et Clusters ;
+- **Export :** PNG, SVG et JSX avec Tailwind classes, ainsi que `export_image` pour la vérification visuelle ;
+- **Vector :** Boolean operations et Path manipulation.
 
 ## Vérification visuelle
 
-L'assistant peut vérifier visuellement son travail. Après avoir créé ou modifié des designs, il utilise `export_image` pour capturer une image et vérifier le résultat par rapport à la demande initiale.
+Après une modification, l’Assistant peut rendre le résultat avec `export_image` et le comparer à la demande. Il détecte ainsi les erreurs de Layout, les éléments manquants et les Colors incorrectes.
 
-## Exemples de prompts
+## Exemples
 
-- « Créer une carte avec un titre, une description et un bouton bleu »
-- « Faire en sorte que tous les boutons de cette page utilisent le même rayon d'arrondi »
-- « Quelles polices sont utilisées dans ce fichier ? »
-- « Changer l'arrière-plan du frame sélectionné en un dégradé du bleu au violet »
-- « Exporter le frame sélectionné en SVG »
-- « Montre-moi le JSX de ce frame »
+- « Crée une Card avec un titre, une description et un Button bleu. »
+- « Utilise le même Corner radius pour tous les Buttons de cette Page. »
+- « Quels Fonts ce fichier utilise-t-il ? »
+- « Remplace le Background du Frame sélectionné par un Gradient bleu et violet. »
+- « Exporte le Frame sélectionné en SVG. »
+- « Trouve tous les objets texte dont la Font size est inférieure à 12. »
+- « Décris la fonction du Component sélectionné. »
+- « Affiche le JSX de ce Frame. »
 
 ## Conseils
 
-- Sélectionnez des nœuds avant de poser votre question — l'assistant sait ce qui est sélectionné.
-- Soyez précis sur les couleurs, tailles et positions pour des résultats exacts.
-- L'assistant peut modifier plusieurs nœuds en un seul message.
-- Utilisez « annuler » dans l'éditeur — les mutations IA supportent l'annulation complète.
-- Tous les layouts sont recalculés automatiquement après chaque exécution d'outil.
+- Sélectionnez les objets avant la demande ; l’Assistant connaît la Selection.
+- Indiquez précisément Colors, Sizes et Positions.
+- Un message peut modifier plusieurs objets.
+- Les changements AI peuvent être annulés avec Undo.
+- Le Layout est recalculé après chaque Tool call.

@@ -1,19 +1,19 @@
 ---
 title: useEditorCommands
-description: Construisez des menus, actions et UI pilotée par commandes au-dessus de l'éditeur.
+description: Créer des Menus et autres interfaces à partir des Commands communs de l’Editor.
 ---
 
 # useEditorCommands
 
-`useEditorCommands()` expose une couche orientée commandes au-dessus des actions de l'éditeur.
+`useEditorCommands()` fournit un accès commun aux Editor commands.
 
-Il est utile pour construire :
+Le composable convient aux :
 
-- des menus applicatifs
-- des menus contextuels
-- des barres d'outils
-- des adaptateurs de commandes clavier
-- des sous-menus de déplacement entre pages
+- Application menus ;
+- Menus contextuels ;
+- Toolbars ;
+- gestion des raccourcis ;
+- Submenu Move to page.
 
 ## Utilisation
 
@@ -23,7 +23,7 @@ import { useEditorCommands } from '@open-pencil/vue'
 const { commands, menuItem, runCommand, moveSelectionToPage, otherPages } = useEditorCommands()
 ```
 
-## Exemple de base
+## Exemple
 
 ```ts
 const { menuItem } = useEditorCommands()
@@ -36,16 +36,14 @@ const editMenu = [
 ]
 ```
 
-## Exemples pratiques
-
-### Exécuter une commande directement
+### Exécuter une Command
 
 ```ts
 const { runCommand } = useEditorCommands()
 runCommand('selection.duplicate')
 ```
 
-### Construire un sous-menu « Déplacer vers la page »
+### Submenu Move to page
 
 ```ts
 const { otherPages, moveSelectionToPage } = useEditorCommands()
@@ -56,7 +54,7 @@ const items = otherPages.value.map(page => ({
 }))
 ```
 
-## API associées
+## Voir aussi
 
 - [useMenuModel](./use-menu-model)
 - [useSelectionState](./use-selection-state)

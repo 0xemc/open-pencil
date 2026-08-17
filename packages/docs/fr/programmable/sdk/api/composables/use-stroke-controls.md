@@ -1,18 +1,16 @@
 ---
 title: useStrokeControls
-description: Helpers du panneau de contours pour l'alignement, la sélection de côté et les épaisseurs de contour par côté.
+description: Gérer Stroke alignment, Sides et Weights dans le panneau Properties.
 ---
 
 # useStrokeControls
 
-`useStrokeControls()` est le composable de propriété de contour utilisé par les panneaux d'édition de contours.
+`useStrokeControls()` fournit à un panneau Strokes :
 
-Il fournit :
-
-- les options d'alignement du contour
-- les préréglages de côté : tous, haut, bas, gauche, droite, personnalisé
-- les données de contour par défaut
-- des helpers pour les épaisseurs de bordure par côté
+- les Options de Stroke alignment ;
+- la sélection All, Top, Bottom, Left, Right ou une combinaison libre ;
+- le Default value d’un nouveau Stroke ;
+- des Functions pour des Stroke weights indépendants par côté.
 
 ## Utilisation
 
@@ -22,26 +20,24 @@ import { useStrokeControls } from '@open-pencil/vue'
 const strokes = useStrokeControls()
 ```
 
-## Exemple de base
+## Exemple
 
 ```ts
 const { alignOptions, sideOptions, currentAlign, currentSides, selectSide } = useStrokeControls()
 ```
 
-## Exemples pratiques
-
-### Définir l'alignement du contour
+### Stroke à l’intérieur de la limite
 
 ```ts
 strokes.updateAlign('INSIDE', activeNode)
 ```
 
-### Limiter un contour à un seul côté
+### Stroke uniquement en haut
 
 ```ts
 strokes.selectSide('TOP', activeNode)
 ```
 
-## API associées
+## Voir aussi
 
 - [PropertyListRoot](../components/property-list-root)

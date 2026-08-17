@@ -1,15 +1,15 @@
 ---
 title: useToolbarState
-description: Helper d'état de barre d'outils orienté présentation pour la pagination de catégories mobiles.
+description: Afficher les Categories d’une Toolbar par Pages sur les petits Viewports.
 ---
 
 # useToolbarState
 
-`useToolbarState()` retourne l'état de pagination de catégories mobiles et des helpers comme `goPrev()` et `goNext()` pour les shells de barre d'outils adaptatifs.
+`useToolbarState()` renvoie le State de la Category actuelle ainsi que `goPrev()` et `goNext()`. Ces Functions permettent de naviguer entre des Groups de Tools sur les petits écrans.
 
-Utilisez-le pour construire des mises en page de barre d'outils au-dessus de `ToolbarRoot`.
+Utilisez le composable pour une Toolbar responsive fondée sur `ToolbarRoot`.
 
-## API associées
+## Voir aussi
 
 - [ToolbarRoot](../components/toolbar-root)
 - [ToolbarItem](../components/toolbar-item)

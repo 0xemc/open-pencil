@@ -1,13 +1,11 @@
 ---
 title: usePageList
-description: Lit les pages et pilote le changement de page, la création, la suppression et le renommage.
+description: Lire, changer, créer, supprimer et renommer des Pages.
 ---
 
 # usePageList
 
-`usePageList()` est le composable de gestion des pages derrière les interfaces de liste de pages.
-
-Il expose :
+`usePageList()` fournit State et Actions pour une Page list :
 
 - `pages`
 - `currentPageId`
@@ -24,27 +22,25 @@ import { usePageList } from '@open-pencil/vue'
 const pageList = usePageList()
 ```
 
-## Exemple de base
+## Exemple
 
 ```ts
 const { pages, currentPageId, switchPage, addPage } = usePageList()
 ```
 
-## Exemples pratiques
-
-### Changer de page
+### Changer de Page
 
 ```ts
 switchPage(pageId)
 ```
 
-### Créer une nouvelle page
+### Créer une Page
 
 ```ts
 addPage()
 ```
 
-## API associées
+## Voir aussi
 
 - [PageListRoot](../components/page-list-root)
 - [useMenuModel](./use-menu-model)

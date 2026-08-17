@@ -1,20 +1,18 @@
 ---
 title: useEffectsControls
-description: Helpers du panneau d'effets pour les ombres, flous, état d'expansion et flux de glissement/validation.
+description: Gérer Shadows et Blur effects dans un panneau Effects.
 ---
 
 # useEffectsControls
 
-`useEffectsControls()` est le composable de propriété d'effets utilisé par les panneaux d'effets.
+`useEffectsControls()` fournit à un panneau Effects :
 
-Il fournit des helpers pour :
-
-- les effets par défaut
-- la logique ombre versus flou
-- l'état d'expansion des éléments
-- l'édition par aperçu de glissement
-- les mises à jour de validation à la fin
-- les changements de type et de couleur d'effet
+- des Default values pour les nouveaux Effects ;
+- la configuration des Shadows et Blur effects ;
+- le State des Items développés ;
+- une Preview pendant Scrubbing ;
+- le Commit du Value final ;
+- la modification du Type et de la Color d’un Effect.
 
 ## Utilisation
 
@@ -24,27 +22,25 @@ import { useEffectsControls } from '@open-pencil/vue'
 const effects = useEffectsControls()
 ```
 
-## Exemple de base
+## Exemple
 
 ```ts
 const { effectOptions, createDefaultEffect, toggleExpand, scrubEffect, commitEffect } = useEffectsControls()
 ```
 
-## Exemples pratiques
-
-### Ajouter un effet par défaut
+### Créer un Effect
 
 ```ts
 const effect = effects.createDefaultEffect()
 ```
 
-### Prévisualiser les changements par glissement, puis valider
+### Preview et Commit
 
 ```ts
 effects.scrubEffect(node, index, { radius: 12 })
 effects.commitEffect(node, index, { radius: 12 })
 ```
 
-## API associées
+## Voir aussi
 
 - [PropertyListRoot](../components/property-list-root)

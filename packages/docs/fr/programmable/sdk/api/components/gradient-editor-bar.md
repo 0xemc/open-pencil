@@ -1,53 +1,30 @@
 ---
 title: GradientEditorBar
-description: Primitive de barre déplaçable headless pour les points d'arrêt de dégradé.
+description: Gradient bar interactif pour sélectionner et déplacer des Stops.
 ---
 
 # GradientEditorBar
 
-`GradientEditorBar` est la primitive de barre déplaçable utilisée dans les éditeurs de dégradé.
+`GradientEditorBar` fournit State et Pointer handlers pour rendre un Gradient bar. Le Component gère Selection et Drag des Stops.
 
 ## Props
 
 <SdkPropsTable
   :rows="[
-    { name: 'stops', type: 'GradientStop[]', description: 'Points d\'arrêt de dégradé courants.', required: true },
-    { name: 'activeStopIndex', type: 'number', description: 'Index du point d\'arrêt actif.', required: true },
-    { name: 'barBackground', type: 'string', description: 'Chaîne CSS de fond pour la barre.', required: true }
+    { name: 'stops', type: 'GradientStop[]', description: 'Gradient stops actuels.', required: true },
+    { name: 'activeStopIndex', type: 'number', description: 'Index de l’Active stop.', required: true },
+    { name: 'barBackground', type: 'string', description: 'CSS background du Bar.', required: true }
   ]"
 />
 
-## Événements
+## Events
 
 <SdkEventsTable
   :rows="[
-    { name: 'selectStop', payload: 'index: number', description: 'Émis quand un point d\'arrêt est sélectionné.' },
-    { name: 'dragStop', payload: 'index: number, position: number', description: 'Émis pendant le déplacement d\'un point d\'arrêt.' }
+    { name: 'selectStop', payload: 'index: number', description: 'Émis lors de la sélection d’un Stop.' },
+    { name: 'dragStop', payload: 'index: number, position: number', description: 'Émis pendant le Drag d’un Stop.' }
   ]"
 />
-
-## Slots
-
-<SdkSlotsTable
-  :rows="[
-    { name: 'default', props: 'état de la barre + handlers de déplacement', description: 'Contrat de rendu complet de la barre de dégradé.' }
-  ]"
-/>
-
-### Props du slot par défaut
-
-```ts
-{
-  stops: GradientStop[]
-  activeStopIndex: number
-  barBackground: string
-  barRef: (el: unknown) => void
-  onStopPointerDown: (index: number, event: PointerEvent) => void
-  onPointerMove: (event: PointerEvent) => void
-  onPointerUp: () => void
-  draggingIndex: number | null
-}
-```
 
 ## Exemple
 
@@ -64,7 +41,7 @@ description: Primitive de barre déplaçable headless pour les points d'arrêt d
 </GradientEditorBar>
 ```
 
-## API associées
+## Voir aussi
 
 - [GradientEditorRoot](./gradient-editor-root)
 - [GradientEditorStop](./gradient-editor-stop)

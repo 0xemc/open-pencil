@@ -1,52 +1,52 @@
 ---
 title: Analyser des designs
-description: Auditez les couleurs, la typographie, l'espacement et les motifs récurrents dans les fichiers .fig.
+description: Examiner Colors, Typography, Spacing et Structures répétées dans des fichiers `.fig`.
 ---
 
 # Analyser des designs
 
-Les commandes `analyze` permettent d'auditer un système de design entier depuis le terminal — trouvez les incohérences, extrayez la vraie palette, repérez les composants qui attendent d'être extraits.
+Les Commands `analyze` examinent un document complet depuis le terminal. Elles affichent Colors et Text styles, les écarts de Spacing et les Structures répétées qui pourraient devenir des Components.
 
-## Couleurs
+## Colors
 
 ```sh
 openpencil analyze colors design.fig
 ```
 
-Trouve chaque couleur dans le fichier, compte les utilisations et affiche un histogramme visuel :
+Compte chaque Color du document et affiche un Histogram :
 
-```
+```text
 #1d1b20  ██████████████████████████████ 17155×
 #49454f  ██████████████████████████████ 9814×
 #ffffff  ██████████████████████████████ 8620×
 #6750a4  ██████████████████████████████ 3967×
 ```
 
-## Typographie
+## Typography
 
 ```sh
 openpencil analyze typography design.fig
 ```
 
-Liste chaque combinaison de famille de polices, taille et graisse avec le nombre d'utilisations. Utile pour repérer les styles de texte ponctuels qui devraient être consolidés.
+Liste les combinaisons Font family, Size et Style avec leur fréquence afin de repérer les Text styles isolés.
 
-## Espacement
+## Spacing
 
 ```sh
 openpencil analyze spacing design.fig
 ```
 
-Audite les valeurs de gap et de padding à travers les frames avec auto-layout. Aide à identifier les incohérences d'échelle d'espacement — par exemple, un gap de `13px` isolé parmi des valeurs de `8/16/24`.
+Examine Gap et Padding des Auto-layout Frames. Une valeur `13px` au milieu d’une échelle `8/16/24` devient ainsi visible.
 
-## Motifs récurrents
+## Clusters
 
 ```sh
 openpencil analyze clusters design.fig
 ```
 
-Trouve les motifs de nœuds répétés qui pourraient être extraits en composants :
+Recherche des Node structures répétées pouvant être regroupées en Components :
 
-```
+```text
 3771× frame "container" (100% match)
      size: 40×40, structure: Frame > [Frame]
 
@@ -54,12 +54,10 @@ Trouve les motifs de nœuds répétés qui pourraient être extraits en composan
      size: 48×48, structure: Instance > [Frame]
 ```
 
-## Sortie JSON
-
-Toutes les commandes d'analyse supportent `--json` pour une sortie lisible par machine :
+## JSON output
 
 ```sh
 openpencil analyze colors design.fig --json
 ```
 
-Redirigez vers `jq`, alimentez des vérifications CI, ou utilisez dans des scripts qui contrôlent les budgets de tokens de design.
+Toutes les Analyze commands acceptent `--json`. La sortie peut être traitée avec `jq`, vérifiée dans la CI ou utilisée dans des Scripts appliquant des règles de Design tokens.

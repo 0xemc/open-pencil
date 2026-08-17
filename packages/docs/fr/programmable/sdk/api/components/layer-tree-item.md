@@ -1,15 +1,15 @@
 ---
 title: LayerTreeItem
-description: Primitive headless de ligne pour un nœud individuel de l'arbre des calques.
+description: Un Item du Layer tree.
 ---
 
 # LayerTreeItem
 
-`LayerTreeItem` affiche une ligne de l'arbre des calques et expose des handlers de sélection, expansion, visibilité, verrouillage et renommage via son slot par défaut.
+`LayerTreeItem` représente une Row du Layer tree. Son Default slot reçoit State et Actions pour Selection, développement des Children, Visibility, Lock et Inline rename.
 
-Utilisez-la quand vous voulez un balisage de ligne appartenant à l'application avec un comportement d'arbre de calques fourni par le SDK.
+L’application peut rendre son propre Row markup tout en conservant les Interactions du SDK.
 
-## API associées
+## Voir aussi
 
 - [LayerTreeRoot](./layer-tree-root)
 - [useLayerTree](../advanced/use-layer-tree)

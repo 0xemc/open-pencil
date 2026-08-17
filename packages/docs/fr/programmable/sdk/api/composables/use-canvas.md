@@ -1,20 +1,20 @@
 ---
 title: useCanvas
-description: Attache le rendu CanvasKit à un élément canvas pour un éditeur OpenPencil.
+description: Connecter le CanvasKit renderer à un élément canvas et à un Editor OpenPencil.
 ---
 
 # useCanvas
 
-`useCanvas()` connecte un éditeur à un vrai élément `<canvas>`.
+`useCanvas()` relie une instance Editor à un élément `<canvas>`.
 
-Il gère :
+Le composable prend en charge :
 
-- l'initialisation de CanvasKit
-- la création de surface
-- la planification du rendu
-- la gestion du redimensionnement
-- la visibilité optionnelle des règles
-- le callback de disponibilité du renderer
+- l’initialisation de CanvasKit ;
+- la création de la Surface ;
+- la planification du Rendering ;
+- la gestion du Resize ;
+- des Rulers facultatives ;
+- un Callback lorsque le Renderer est prêt.
 
 ## Utilisation
 
@@ -29,7 +29,7 @@ const editor = useEditor()
 useCanvas(canvasRef, editor)
 ```
 
-## Exemple de base
+## Exemple
 
 ```vue
 <script setup lang="ts">
@@ -43,7 +43,7 @@ const editor = useEditor()
 useCanvas(canvasRef, editor, {
   showRulers: true,
   onReady: () => {
-    console.log('Renderer prêt')
+    console.log('Renderer ready')
   },
 })
 </script>
@@ -53,9 +53,7 @@ useCanvas(canvasRef, editor, {
 </template>
 ```
 
-## Exemples pratiques
-
-### Désactiver les règles pour un aperçu intégré
+### Masquer les Rulers dans une Preview intégrée
 
 ```ts
 useCanvas(canvasRef, editor, {
@@ -63,7 +61,7 @@ useCanvas(canvasRef, editor, {
 })
 ```
 
-### Conserver le tampon de dessin pour les captures d'écran
+### Conserver le Drawing buffer pour les Screenshots
 
 ```ts
 useCanvas(canvasRef, editor, {
@@ -73,11 +71,11 @@ useCanvas(canvasRef, editor, {
 
 ## Notes
 
-- `useCanvas()` est orienté renderer et pratiquement uniquement côté navigateur
-- il est responsable du pipeline canvas en direct, pas des flux de fichiers au niveau applicatif
-- il devrait généralement être associé à `useCanvasInput()` pour la gestion des interactions
+- `useCanvas()` intègre le Renderer et cible les Browser environments.
+- Il gère le canvas actif, pas l’ouverture ou l’enregistrement des fichiers.
+- Il est généralement associé à `useCanvasInput()` pour les Pointer interactions.
 
-## API associées
+## Voir aussi
 
 - [useEditor](./use-editor)
 - [useCanvasInput](./use-canvas-input)

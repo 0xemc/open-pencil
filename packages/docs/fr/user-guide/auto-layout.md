@@ -1,54 +1,94 @@
 ---
-title: Mise en page auto
-description: Layout flex et grille dans OpenPencil — direction, espacement, padding, alignement, dimensionnement et tracks CSS Grid.
+title: Auto layout
+description: Layout Flex et Grid avec Direction, Gap, Padding, Alignment, Child sizing et Grid tracks.
 ---
-# Mise en page auto
 
-La mise en page auto positionne automatiquement les enfants dans un cadre. Deux modes sont pris en charge : **flex** (flux horizontal/vertical) et **grille** (lignes et colonnes avec dimensionnement de pistes).
+# Auto layout
 
-<kbd>⇧</kbd><kbd>A</kbd> pour activer/désactiver ou envelopper la sélection.
+Auto layout répartit automatiquement les Children d’un Frame. Deux modes sont disponibles :
+
+- **Flex :** Flow horizontal ou vertical ;
+- **Grid :** Rows et Columns avec Tracks configurables.
+
+## Activer Auto layout
+
+- Sélectionnez un Frame et appuyez sur <kbd>⇧</kbd><kbd>A</kbd> pour activer ou désactiver Auto layout.
+- Sélectionnez plusieurs objets libres et utilisez le même raccourci pour les envelopper dans un nouvel Auto-layout Frame.
+
+OpenPencil trie d’abord les objets selon leur position visuelle.
 
 ## Direction
-- **Horizontale** — de gauche à droite
-- **Verticale** — de haut en bas
-- **Retour à la ligne** — retour quand l'espace manque
+
+- **Horizontal :** Children de gauche à droite.
+- **Vertical :** Children de haut en bas.
+- **Wrap :** crée une autre ligne ou colonne lorsque l’espace manque.
 
 ## Espacement
-**Gap** entre enfants adjacents. **Padding** entre bord du cadre et enfants.
 
-## Alignement
-- **Axe principal (Justify) :** début, centre, fin, espace entre
-- **Axe transversal (Align) :** début, centre, fin, étirer
+### Gap
 
-## Dimensionnement enfants
-- **Fixe** — largeur/hauteur explicite
-- **Remplir** — s'étend dans l'espace disponible
-- **Ajuster** — se réduit au contenu
+Gap définit la distance entre des Children adjacents.
+
+### Padding
+
+Padding définit la distance entre le bord du Frame et ses Children. Une valeur commune ou quatre valeurs indépendantes peuvent être utilisées.
+
+## Alignment
+
+### Main axis
+
+- **Start :** Children au début de l’Axis.
+- **Center :** Children centrés.
+- **End :** Children à la fin.
+- **Space between :** espace libre réparti entre les Children.
+
+### Cross axis
+
+- **Start :** au début du Cross axis.
+- **Center :** au centre.
+- **End :** à la fin.
+- **Stretch :** occupe tout le Cross axis.
+
+## Child sizing
+
+- **Fixed :** utilise Width ou Height explicite ;
+- **Fill :** occupe l’espace disponible ;
+- **Hug :** adapte la taille au contenu.
+
+La première modification réelle de Width ou Height fait passer uniquement cet Axis de Hug ou Fill à Fixed. Le simple Focus d’un Field ne modifie pas le Sizing mode.
+
+## Réordonner par Drag
+
+Les Children d’un Auto-layout Frame peuvent être déplacés parmi leurs Siblings. Un Indicator affiche la nouvelle position.
 
 ## CSS Grid
 
-Le layout en grille organise les enfants en lignes et colonnes avec un dimensionnement de pistes explicite.
+Grid répartit les Children dans des Rows et Columns avec des Track sizes explicites.
 
-### Activer la grille
+### Activer Grid
 
-Sélectionnez un cadre avec auto-layout activé et cliquez sur l'icône grille dans la barre d'outils layout pour passer de flex à grille.
+Sélectionnez un Frame avec Auto layout, puis passez de Flex à Grid dans les Layout controls.
 
-### Dimensionnement des pistes
+### Track sizes
 
-Définissez les pistes de colonnes et de lignes avec trois modes :
+- **fr :** part proportionnelle de l’espace disponible ;
+- **px :** taille fixe en pixels ;
+- **auto :** taille déterminée par le contenu.
 
-- **fr** — unité fractionnaire, divise l'espace disponible proportionnellement
-- **px** — taille fixe en pixels
-- **auto** — s'adapte au contenu
+### Row gap et Column gap
 
-### Espacement de la grille
+Les espacements horizontal et vertical entre Cells se configurent séparément.
 
-Définissez des gaps horizontaux (colonnes) et verticaux (lignes) séparés entre les cellules.
+### Placement
 
-### Positionnement des enfants
-
-Les enfants sont placés dans les cellules de la grille automatiquement en ordre de ligne. Vous pouvez surcharger le placement avec des valeurs de début de colonne/ligne et d'étendue dans les propriétés layout de l'enfant.
+Par défaut, les Children occupent les Cells libres dans l’ordre des Rows. Column start, Row start et Span se définissent dans les Layout properties du Child.
 
 ### Export JSX et Tailwind
 
-Les layouts en grille s'exportent en JSX avec des classes Tailwind : `grid grid-cols-3`, `gap-x-4 gap-y-2`, `col-start-2 row-span-2`.
+Les Grid layouts sont exportés en JSX avec des Tailwind classes, par exemple `grid grid-cols-3`, `gap-x-4 gap-y-2` et `col-start-2 row-span-2`.
+
+## Conseils
+
+- Imbriquez plusieurs Auto-layout Frames pour des Layouts responsive complexes.
+- Fill correspond approximativement à `flex-grow: 1` dans de nombreux Flex layouts.
+- Grid convient aux Dashboards, Galeries, Formulaires et autres structures bidimensionnelles.

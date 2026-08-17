@@ -1,13 +1,11 @@
 ---
 title: usePosition
-description: Lit et met à jour la position, la taille, la rotation, l'alignement et le retournement du nœud sélectionné.
+description: Lire et modifier Position, Size, Rotation, Alignment et Flip des objets sélectionnés.
 ---
 
 # usePosition
 
-`usePosition()` est un composable de contrôle pour les UI liées à la position.
-
-Il expose les valeurs du nœud sélectionné comme :
+`usePosition()` fournit aux panneaux Position et Size les Values suivants :
 
 - `x`
 - `y`
@@ -15,12 +13,7 @@ Il expose les valeurs du nœud sélectionné comme :
 - `height`
 - `rotation`
 
-et des actions comme :
-
-- aligner
-- retourner
-- faire pivoter
-- glisser/mettre à jour des propriétés numériques
+Il inclut également des Actions pour Alignment, Flip, Rotation ainsi que Preview et Commit des Properties numériques.
 
 ## Utilisation
 
@@ -30,35 +23,33 @@ import { usePosition } from '@open-pencil/vue'
 const position = usePosition()
 ```
 
-## Exemple de base
+## Exemple
 
 ```ts
 const { x, y, width, height, rotation, updateProp, commitProp } = usePosition()
 ```
 
-## Exemples pratiques
-
-### Aligner les nœuds sélectionnés
+### Alignment
 
 ```ts
 position.align('horizontal', 'center')
 position.align('vertical', 'min')
 ```
 
-### Retourner la sélection
+### Flip
 
 ```ts
 position.flip('horizontal')
 position.flip('vertical')
 ```
 
-### Faire pivoter la sélection
+### Rotation
 
 ```ts
 position.rotate(90)
 ```
 
-## API associées
+## Voir aussi
 
 - [useLayout](./use-layout)
 - [useAppearance](./use-appearance)
