@@ -77,6 +77,7 @@
     "@atlaskit/pragmatic-drag-and-drop": "^1.7.9",
     "@atlaskit/pragmatic-drag-and-drop-hitbox": "^1.1.0",
     "@chenglou/pretext": "^0.0.7",
+    "@hocuspocus/provider": "^4.6.0",
     "@open-pencil/cli": "workspace:*",
     "@open-pencil/cloud": "workspace:*",
     "@open-pencil/core": "workspace:*",
@@ -130,7 +131,8 @@
     "vue-stream-markdown": "^0.6.5",
     "y-indexeddb": "^9.0.12",
     "y-protocols": "^1.0.7",
-    "yjs": "^13.6.29",
+    "y-websocket": "^3.1.0",
+    "yjs": "^13.6.32",
     "yoga-layout": "npm:@open-pencil/yoga-layout@3.3.0-grid.3",
     "zod": "^4.3.6"
   },
