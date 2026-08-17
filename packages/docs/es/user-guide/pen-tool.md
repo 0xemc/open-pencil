@@ -1,36 +1,54 @@
 ---
-title: Herramienta pluma
-description: Trazados vectoriales con curvas de Bézier en OpenPencil.
+title: Pen tool
+description: Dibujar Vector paths y Bezier curves con Pen tool.
 ---
-# Herramienta pluma
 
-La herramienta pluma crea trazados vectoriales usando un modelo de redes vectoriales, compatible con el formato .fig de Figma.
+# Pen tool
 
-## Activación
+Pen tool crea Vector paths mediante el modelo Vector network compatible con Figma.
 
-Pulsa <kbd>P</kbd> para activar la herramienta pluma.
+## Activar
 
-## Colocar puntos
+Pulsa <kbd>P</kbd>.
 
-- **Clic** — punto de esquina (segmento recto)
-- **Clic + arrastrar** — punto de curva con manejadores de tangente Bézier — la dirección y longitud del arrastre controlan la forma de la curva
-  - **Mantener <kbd>Space</kbd>** mientras arrastras (sin soltar el botón del ratón) para mover el punto en sí
+## Crear Anchors
 
-## Cerrar un trazado
+- Click crea un Corner anchor y un Segment recto.
+- Click y Drag crea un Anchor con Bezier handles.
+- Mantén <kbd>Space</kbd> durante el Drag para mover el propio Anchor sin soltar el Button.
 
-Haz clic en el **primer punto** del trazado para cerrarlo en un bucle. Los trazados cerrados se pueden rellenar.
+Cada Anchor adicional amplía el Path con un nuevo Segment. Una Preview line conecta el último Anchor con el Pointer.
 
-## Trazados abiertos
+## Cerrar un Path
 
-Pulsa <kbd>Escape</kbd> para confirmar el trazado actual como trazado abierto. Los trazados abiertos se renderizan solo como trazos — no se rellenan.
+Haz Click en el primer Anchor para cerrar el Path. Los Paths cerrados pueden tener Fill.
 
-## Redes vectoriales
+## Path abierto
 
-Los trazados en OpenPencil usan redes vectoriales — un modelo más flexible que las listas simples de puntos que soporta trazados ramificados y topología compleja. Es el mismo modelo que usa Figma, así que los trazados se mantienen perfectamente al abrir y guardar archivos .fig.
+Pulsa <kbd>Escape</kbd> para terminar sin cerrar. Los Paths abiertos se muestran únicamente mediante Strokes.
 
-## Atajos de teclado
+## Vector networks
 
-| Acción | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Herramienta pluma | <kbd>P</kbd> | <kbd>P</kbd> |
-| Confirmar trazado abierto | <kbd>Escape</kbd> | Escape |
+OpenPencil no almacena los Vectors como una lista simple de puntos, sino como Vector networks. Este modelo permite Topologies ramificadas y guarda la geometría en `.fig` sin convertirla.
+
+## Continuar en Edit mode
+
+Con Pen tool activo:
+
+- Click en el Endpoint de un Path abierto continúa el dibujo desde allí;
+- Click en un Segment inserta un Anchor;
+- <kbd>Option</kbd>/<kbd>Alt</kbd> + Click elimina un Anchor si la Topology lo permite.
+
+Consulta [Editar Vectors](./vector-edit) para conocer el Edit mode.
+
+## Atajos
+
+| Acción | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Pen tool | <kbd>P</kbd> | <kbd>P</kbd> |
+| Terminar un Path abierto | <kbd>Escape</kbd> | <kbd>Escape</kbd> |
+
+## Consejos
+
+- Un Drag más largo genera Bezier handles más largos.
+- Después puedes modificar Fill, Stroke y Effects desde el panel Properties.

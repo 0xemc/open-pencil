@@ -1,15 +1,15 @@
 ---
 title: useGradientStops
-description: Estado y helper de mutación de paradas de degradado para editores de relleno.
+description: State y Actions para Gradient stops.
 ---
 
 # useGradientStops
 
-`useGradientStops(fill, onUpdate)` gestiona el estado de la parada activa, el cambio de subtipo, el arrastre de paradas y las actualizaciones de color u opacidad para rellenos degradados.
+`useGradientStops(fill, onUpdate)` gestiona Active stop, Gradient subtype, Drag de Stops y cambios de Position, Color y Opacity.
 
-Úsalo cuando construyas editores de degradado personalizados más allá de los primitivos incluidos.
+Usa el composable para crear un Gradient editor propio sin volver a implementar esta Logic.
 
-## APIs relacionadas
+## Consulta también
 
 - [GradientEditorRoot](../components/gradient-editor-root)
 - [GradientEditorBar](../components/gradient-editor-bar)

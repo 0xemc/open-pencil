@@ -1,20 +1,20 @@
 ---
 title: useCanvas
-description: Adjunta el renderizado respaldado por CanvasKit a un elemento canvas para un editor de OpenPencil.
+description: Conectar el CanvasKit renderer con un elemento canvas y un Editor de OpenPencil.
 ---
 
 # useCanvas
 
-`useCanvas()` conecta un editor a un elemento `<canvas>` real.
+`useCanvas()` conecta una instancia del Editor con un elemento `<canvas>`.
 
-Se encarga de:
+El composable se ocupa de:
 
-- inicialización de CanvasKit
-- creación de la superficie
-- programación del renderizado
-- gestión del redimensionado
-- visibilidad opcional de las reglas
-- callback de disponibilidad del renderer
+- inicializar CanvasKit;
+- crear la Surface;
+- programar el Rendering;
+- gestionar Resize;
+- mostrar Rulers opcionales;
+- ejecutar un Callback cuando el Renderer está preparado.
 
 ## Uso
 
@@ -29,7 +29,7 @@ const editor = useEditor()
 useCanvas(canvasRef, editor)
 ```
 
-## Ejemplo básico
+## Ejemplo
 
 ```vue
 <script setup lang="ts">
@@ -53,9 +53,7 @@ useCanvas(canvasRef, editor, {
 </template>
 ```
 
-## Ejemplos prácticos
-
-### Deshabilitar las reglas para una vista previa integrada
+### Ocultar Rulers en un Preview integrado
 
 ```ts
 useCanvas(canvasRef, editor, {
@@ -63,7 +61,7 @@ useCanvas(canvasRef, editor, {
 })
 ```
 
-### Conservar el buffer de dibujo para capturas de pantalla
+### Conservar el Drawing buffer para Screenshots
 
 ```ts
 useCanvas(canvasRef, editor, {
@@ -73,11 +71,11 @@ useCanvas(canvasRef, editor, {
 
 ## Notas
 
-- `useCanvas()` está orientado al renderer y es de uso exclusivo en el navegador en la práctica
-- es responsable del pipeline de canvas en vivo, no de los flujos de archivos a nivel de app
-- normalmente debe combinarse con `useCanvasInput()` para el manejo de interacciones
+- `useCanvas()` integra el Renderer y está pensado para Browser environments.
+- Gestiona el canvas activo, no la apertura o el guardado de archivos.
+- Normalmente se combina con `useCanvasInput()` para Pointer interactions.
 
-## APIs relacionadas
+## Consulta también
 
 - [useEditor](./use-editor)
 - [useCanvasInput](./use-canvas-input)

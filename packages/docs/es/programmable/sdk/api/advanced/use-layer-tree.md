@@ -1,15 +1,15 @@
 ---
 title: useLayerTree
-description: Helper de contexto de primitivo para los descendientes de LayerTreeRoot.
+description: Acceder al Context proporcionado por LayerTreeRoot.
 ---
 
 # useLayerTree
 
-`useLayerTree()` lee el contexto local del árbol de capas proporcionado por `LayerTreeRoot`.
+`useLayerTree()` devuelve el Context del `LayerTreeRoot` más cercano.
 
-Úsalo dentro de descendientes personalizados del árbol de capas que necesiten acceso a los elementos del árbol, el estado de selección, el estado de expansión o los manejadores de filas.
+Usa el composable en Child components propios que necesiten Tree items, Selection, Expanded state o Row actions.
 
-## APIs relacionadas
+## Consulta también
 
 - [LayerTreeRoot](../components/layer-tree-root)
 - [LayerTreeItem](../components/layer-tree-item)

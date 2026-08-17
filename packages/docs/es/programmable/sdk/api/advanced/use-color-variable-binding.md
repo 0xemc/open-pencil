@@ -1,13 +1,13 @@
 ---
 title: useColorVariableBinding
-description: Helper de vinculación de variables para editores de color de relleno y trazo.
+description: Vincular el Color de un Fill o Stroke con una Variable.
 ---
 
 # useColorVariableBinding
 
-`useColorVariableBinding(kind)` expone helpers de búsqueda, vinculación y desvinculación para las variables de color usadas por los editores de relleno y trazo.
+`useColorVariableBinding(kind)` proporciona Functions para buscar, establecer y eliminar un Binding de Color variables en Fills o Strokes.
 
-Úsalo cuando construyas interfaces de color que necesiten conectar rellenos o trazos a variables de diseño.
+Usa el composable en Color controls compatibles con Design variables.
 
 ## Uso
 
@@ -18,7 +18,7 @@ const fillBinding = useColorVariableBinding('fills')
 const strokeBinding = useColorVariableBinding('strokes')
 ```
 
-## APIs relacionadas
+## Consulta también
 
 - [useFillControls](../composables/use-fill-controls)
 - [useStrokeControls](../composables/use-stroke-controls)

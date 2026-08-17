@@ -1,15 +1,15 @@
 ---
 title: useInlineRename
-description: Estado y helper de gestión del foco para el renombrado inline.
+description: State, Focus y Keyboard handling al renombrar un Item en una List.
 ---
 
 # useInlineRename
 
-`useInlineRename(onCommit)` gestiona el estado de edición, el foco, el manejo de clics fuera y el comportamiento del teclado para los flujos de renombrado en el lugar.
+`useInlineRename(onCommit)` gestiona Edit state, Focus, Click fuera, Enter y Escape.
 
-Úsalo en listas de páginas personalizadas, árboles de capas o interfaces similares de renombrado en el lugar.
+Usa el composable en Page lists, Layer trees y otras Interfaces donde un Name se modifique sin abrir un Dialog independiente.
 
-## APIs relacionadas
+## Consulta también
 
 - [PageListRoot](../components/page-list-root)
 - [LayerTreeItem](../components/layer-tree-item)

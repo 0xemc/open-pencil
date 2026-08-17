@@ -1,13 +1,11 @@
 ---
 title: useFillControls
-description: Composable del panel de rellenos con comportamiento de relleno por defecto.
+description: Default value de un nuevo Fill en el panel Properties.
 ---
 
 # useFillControls
 
-`useFillControls()` es el composable de propiedades de relleno usado por las interfaces de edición de rellenos.
-
-Añade un valor de relleno por defecto reutilizable.
+`useFillControls()` proporciona el Default fill que un panel puede usar al añadir un nuevo Fill.
 
 ## Uso
 
@@ -17,20 +15,16 @@ import { useFillControls } from '@open-pencil/vue'
 const fills = useFillControls()
 ```
 
-## Qué te ofrece
-
-Expone:
+## Value
 
 - `defaultFill`
 
-## Ejemplos prácticos
-
-### Añadir una nueva fila de relleno
+### Añadir un Fill
 
 ```ts
 propertyList.add(fills.defaultFill)
 ```
 
-## APIs relacionadas
+## Consulta también
 
 - [PropertyListRoot](../components/property-list-root)

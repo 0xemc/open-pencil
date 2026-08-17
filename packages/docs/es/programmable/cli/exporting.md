@@ -1,39 +1,40 @@
 ---
-title: Exportar
-description: Renderiza archivos .fig a PNG, JPG, WEBP, SVG o JSX con clases Tailwind.
+title: Export con la CLI
+description: Exportar PNG, JPG, WEBP, SVG, `.fig`, JSX y HTML o convertir formatos de documento.
 ---
 
-# Exportar
+# Export con la CLI
 
-Exporta diseños desde la terminal — imágenes rasterizadas, vectores o código JSX.
+La CLI exporta Images, SVG, partes de un documento como `.fig`, JSX y HTML.
 
-## Exportar Imágenes
+## Formatos
 
 ```sh
-openpencil export design.fig                          # PNG (predeterminado)
-openpencil export design.fig -f jpg -s 2 -q 90       # JPG a 2×, calidad 90
+openpencil export design.fig                           # PNG predeterminado
+openpencil export design.fig -f jpg -s 2 -q 90        # JPG a 2×, Quality 90
 openpencil export design.fig -f webp -s 3             # WEBP a 3×
-openpencil export design.fig -f svg                   # SVG vectorial
+openpencil export design.fig -f svg                   # SVG
+openpencil export design.fig -f fig --page "Page 1"   # una Page como .fig
+openpencil export design.fig -f fig --node 1:23        # un Node como .fig
+openpencil export design.fig -f html --css tailwind    # HTML fragment con Tailwind classes
 ```
 
-Opciones:
+Options:
 
-- `-f` — formato: `png`, `jpg`, `webp`, `svg`, `jsx`
-- `-s` — escala: `1`–`4`
-- `-q` — calidad: `0`–`100` (solo JPG/WEBP)
-- `-o` — ruta de salida
-- `--page` — nombre de página
-- `--node` — ID de nodo específico
+- `-f`: `png`, `jpg`, `webp`, `svg`, `jsx`, `html` o `fig`;
+- `-s`: Scale de 1 a 4;
+- `-q`: Quality de 0 a 100, solo para JPG y WEBP;
+- `-o`: Output path;
+- `--page`: Page name;
+- `--node`: Node ID.
 
-## Exportar JSX
-
-Exporta como JSX con clases de utilidad Tailwind:
+## JSX
 
 ```sh
 openpencil export design.fig -f jsx --style tailwind
 ```
 
-Salida:
+Output:
 
 ```html
 <div className="flex flex-col gap-4 p-6 bg-white rounded-xl">
@@ -42,18 +43,39 @@ Salida:
 </div>
 ```
 
-También soporta `--style openpencil` para el formato JSX nativo (ver [Renderizador JSX](../jsx-renderer)).
+`--style openpencil` genera el formato JSX nativo del [JSX renderer](../jsx-renderer).
 
-## Miniaturas
+## HTML
+
+Por defecto, el Export produce un HTML fragment con Inline styles. También puede usar Tailwind utility classes:
+
+```sh
+openpencil export design.fig -f html
+openpencil export design.fig -f html --css tailwind
+```
+
+`--html standalone` crea un documento completo que se puede abrir directamente en el navegador, con Reset styles y Page wrapper:
+
+```sh
+openpencil export design.fig -f html --html standalone --css inline
+openpencil export design.fig -f html --html standalone --css tailwind
+openpencil export design.fig -f html --html standalone --css tailwind --assets external
+```
+
+Standalone Tailwind se compila durante el Export y no necesita Tailwind browser runtime. `--assets external` escribe el CSS y los Images extraídos junto al archivo HTML. Con Assets externos, `--fonts assets` resuelve los Fonts detectados en SceneGraph mediante los Web-font providers configurados y genera archivos `@font-face` locales.
+
+Standalone HTML está pensado para Handoff, Inspection y procesamiento posterior, no como sustituto pixel-perfect del Canvas renderer. HTML export solo está disponible en File mode.
+
+## Thumbnail
 
 ```sh
 openpencil export design.fig --thumbnail --width 1920 --height 1080
 ```
 
-## Modo Aplicación en Vivo
+## Documento abierto
 
-Omite el archivo para exportar desde la aplicación en ejecución:
+Omite el archivo para exportar desde la aplicación de escritorio:
 
 ```sh
-openpencil export -f png    # captura de pantalla del lienzo actual
+openpencil export -f png    # Screenshot del canvas actual
 ```

@@ -1,18 +1,16 @@
 ---
 title: useStrokeControls
-description: Helpers del panel de trazos para alineación, selección de lado y pesos de trazo por lado.
+description: Gestionar Stroke alignment, Sides y Weights en el panel Properties.
 ---
 
 # useStrokeControls
 
-`useStrokeControls()` es el composable de propiedades de trazo usado por los paneles de edición de trazos.
+`useStrokeControls()` proporciona a un panel Strokes:
 
-Proporciona:
-
-- opciones de alineación del trazo
-- presets de lado como todos, superior, inferior, izquierda, derecha, personalizado
-- datos de trazo por defecto
-- helpers para los pesos de borde por lado
+- Options de Stroke alignment;
+- selección de All, Top, Bottom, Left, Right o una combinación libre;
+- Default value de un nuevo Stroke;
+- Functions para Stroke weights independientes por lado.
 
 ## Uso
 
@@ -22,26 +20,24 @@ import { useStrokeControls } from '@open-pencil/vue'
 const strokes = useStrokeControls()
 ```
 
-## Ejemplo básico
+## Ejemplo
 
 ```ts
 const { alignOptions, sideOptions, currentAlign, currentSides, selectSide } = useStrokeControls()
 ```
 
-## Ejemplos prácticos
-
-### Establecer la alineación del trazo
+### Stroke dentro del límite
 
 ```ts
 strokes.updateAlign('INSIDE', activeNode)
 ```
 
-### Limitar un trazo a un solo lado
+### Stroke solo en Top
 
 ```ts
 strokes.selectSide('TOP', activeNode)
 ```
 
-## APIs relacionadas
+## Consulta también
 
 - [PropertyListRoot](../components/property-list-root)

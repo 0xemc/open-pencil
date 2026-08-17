@@ -1,61 +1,95 @@
 ---
-title: Edición de texto
-description: Crear y editar texto con formato enriquecido en OpenPencil.
+title: Editar texto
+description: Crear y editar texto directamente en el canvas, aplicar Formatting y gestionar Fonts.
 ---
-# Edición de texto
 
-Crea nodos de texto y edítalos directamente en el lienzo con soporte completo de texto enriquecido.
+# Editar texto
+
+OpenPencil crea objetos de texto y permite editarlos directamente en el canvas con Rich text.
 
 ## Crear texto
 
-Pulsa <kbd>T</kbd> para activar la herramienta de texto, luego haz clic en el lienzo. Aparece un nodo de texto vacío con un cursor parpadeante — empieza a escribir inmediatamente.
+Pulsa <kbd>T</kbd> y haz Click en el canvas. Aparece un objeto de texto vacío con el Caret activo para empezar a escribir.
 
-## Edición inline
+## Edit mode
 
-Doble clic en un nodo de texto para entrar en modo edición. Un contorno azul rodea el texto para indicar el modo edición. Clic fuera para confirmar y salir.
+Haz Double-click en un objeto de texto. Un Outline azul indica el Edit mode. Haz Click fuera para aplicar el cambio y salir.
 
-El texto se renderiza directamente en el lienzo — no hay una capa de entrada de texto separada.
+El texto se renderiza en el canvas; no aparece un Input overlay independiente.
 
-## Navegación del cursor
+## Mover el Caret
 
-| Acción | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Izquierda/derecha | <kbd>←</kbd> / <kbd>→</kbd> | <kbd>←</kbd> / <kbd>→</kbd> |
-| Arriba/abajo | <kbd>↑</kbd> / <kbd>↓</kbd> | <kbd>↑</kbd> / <kbd>↓</kbd> |
-| Por palabra | <kbd>⌥</kbd><kbd>←</kbd> / <kbd>⌥</kbd><kbd>→</kbd> | <kbd>Ctrl</kbd> + <kbd>←</kbd> / <kbd>Ctrl</kbd> + <kbd>→</kbd> |
-| Inicio/fin de línea | <kbd>⌘</kbd><kbd>←</kbd> / <kbd>⌘</kbd><kbd>→</kbd> | <kbd>Home</kbd> / <kbd>End</kbd> |
+| Acción | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Carácter anterior/siguiente | <kbd>←</kbd>/<kbd>→</kbd> | <kbd>←</kbd>/<kbd>→</kbd> |
+| Línea anterior/siguiente | <kbd>↑</kbd>/<kbd>↓</kbd> | <kbd>↑</kbd>/<kbd>↓</kbd> |
+| Palabra anterior/siguiente | <kbd>⌥</kbd><kbd>←</kbd>/<kbd>⌥</kbd><kbd>→</kbd> | <kbd>Ctrl</kbd><kbd>←</kbd>/<kbd>Ctrl</kbd><kbd>→</kbd> |
+| Inicio/final de línea | <kbd>⌘</kbd><kbd>←</kbd>/<kbd>⌘</kbd><kbd>→</kbd> | <kbd>Home</kbd>/<kbd>End</kbd> |
 
-Mantén <kbd>Shift</kbd> con cualquier tecla de movimiento para extender la selección.
+Mantén <kbd>Shift</kbd> para ampliar la Selection.
 
-## Formato enriquecido
+## Seleccionar texto
 
-Aplica formato al texto seleccionado, o alterna el estilo para todo el nodo cuando no hay selección.
+- Click sitúa el Caret.
+- Drag selecciona un rango.
+- Double-click selecciona una palabra.
+- Triple-click selecciona todo el texto.
 
-| Acción | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Negrita | <kbd>⌘</kbd><kbd>B</kbd> | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
-| Cursiva | <kbd>⌘</kbd><kbd>I</kbd> | <kbd>Ctrl</kbd> + <kbd>I</kbd> |
-| Subrayado | <kbd>⌘</kbd><kbd>U</kbd> | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
+## Formatting
 
-El formato se aplica por carácter. Cuando escribes entre un segmento en negrita y uno regular, el nuevo texto hereda el estilo del segmento anterior.
+El Formatting se aplica a la Selection de texto. Si no hay un rango seleccionado, cambia el Style de todo el objeto.
 
-## Selector de fuentes
+| Acción | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Bold | <kbd>⌘</kbd><kbd>B</kbd> | <kbd>Ctrl</kbd><kbd>B</kbd> |
+| Italic | <kbd>⌘</kbd><kbd>I</kbd> | <kbd>Ctrl</kbd><kbd>I</kbd> |
+| Underline | <kbd>⌘</kbd><kbd>U</kbd> | <kbd>Ctrl</kbd><kbd>U</kbd> |
 
-Abre el selector de fuentes en la sección Tipografía del panel de propiedades para cambiar la familia tipográfica. Incluye:
+Strikethrough está disponible mediante el Button **S** de Typography. No tiene atajo porque <kbd>⌘</kbd><kbd>S</kbd> corresponde a Save. Los Buttons **B / I / U / S** también modifican el Formatting.
 
-- **Filtro de búsqueda** — escribe para filtrar la lista de fuentes
-- **Vista previa** — cada nombre de fuente se muestra con su propia tipografía
-- **Scroll virtual** — maneja listas largas de fuentes eficientemente
+El Style se almacena por carácter. Al escribir entre dos rangos con Styles distintos, el nuevo texto hereda el Style del rango anterior.
 
-## Fuentes disponibles
+## Operaciones de edición
 
-- **Fuente predeterminada** — Inter se carga automáticamente
-- **App de escritorio** — fuentes del sistema y catálogos habilitados de Google Fonts, Fontsource, Bunny Fonts y Fontshare
-- **Navegador** — las fuentes del sistema están disponibles en Chrome y Edge; los catálogos online requieren la app de escritorio
-- **Fuentes descargadas** — la app de escritorio guarda en caché las variantes descargadas para reutilizarlas en el mismo equipo
+| Acción | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Eliminar la palabra anterior | <kbd>⌥</kbd><kbd>⌫</kbd> | <kbd>Ctrl</kbd> + Backspace |
+| Eliminar hasta el inicio de línea | <kbd>⌘</kbd><kbd>⌫</kbd> | — |
+| Cut | <kbd>⌘</kbd><kbd>X</kbd> | <kbd>Ctrl</kbd><kbd>X</kbd> |
+| Copy | <kbd>⌘</kbd><kbd>C</kbd> | <kbd>Ctrl</kbd><kbd>C</kbd> |
+| Paste | <kbd>⌘</kbd><kbd>V</kbd> | <kbd>Ctrl</kbd><kbd>V</kbd> |
 
-## Fuentes ausentes y sustituciones
+## Font picker
 
-Si una familia o variante solicitada no se puede cargar, OpenPencil muestra una advertencia sobre el editor en lugar de considerar silenciosamente que la tipografía de respaldo es fiel al diseño.
+El Font picker de Typography permite:
 
-Despliega la advertencia para ver cada variante afectada y su sustituto activo. Usa **Seleccionar capas** para localizar los nodos de texto afectados o **Reintentar fuentes** después de cambiar el acceso a la red, el permiso de fuentes locales o los ajustes de proveedores. Una variante puede sintetizarse a partir de otra variante cargada de la misma familia; una familia ausente usa Inter como sustituto cuando está disponible.
+- filtrar por nombre;
+- previsualizar cada Family con su propio Font;
+- recorrer listas extensas mediante Virtual scroll;
+- desplazarse al Font actual al abrir el Picker.
+
+## Font style
+
+Los Styles disponibles dependen de la Family elegida, por ejemplo Regular, Medium, Bold o Black.
+
+## Fuentes de Fonts
+
+- **Predeterminada:** Inter se carga automáticamente.
+- **Aplicación de escritorio:** System fonts y catálogos habilitados de Google Fonts, Fontsource, Bunny Fonts y Fontshare.
+- **Navegador:** Chrome y Edge permiten usar System fonts; los catálogos online requieren la aplicación de escritorio.
+- **Fonts descargados:** la aplicación guarda las Faces descargadas para reutilizarlas en el mismo equipo.
+
+## Fonts ausentes
+
+Si no se puede cargar una Family o un Style, OpenPencil muestra una advertencia sobre el editor en lugar de presentar el Fallback como si fuera fiel al diseño.
+
+Despliega la advertencia para ver las Faces afectadas y sus sustituciones. **Select layers** localiza los objetos de texto. **Retry fonts** inicia otro intento después de modificar el acceso de red, los permisos de Fonts locales o la configuración de Providers.
+
+Si falta un Style, puede sintetizarse a partir de otra Face cargada de la misma Family. Si falta toda la Family, OpenPencil usa Inter cuando está disponible.
+
+## Consejos
+
+- La lista de Fonts se carga al iniciar para que el Picker se abra sin demora.
+- IME para chino, japonés y coreano está soportado.
+- El Rich-text formatting se conserva al abrir y guardar archivos `.fig`.
+- Consulta [Components](./components) para conocer los Text overrides en Instances.

@@ -1,36 +1,51 @@
 ---
 title: PropertyListRoot
-description: Primitivo estructural headless para interfaces de lista de rellenos, trazos y efectos.
+description: Controlled list para Fills, Strokes, Effects y otras Array properties.
 ---
+
+<script setup lang="ts">
+import { data } from '#docs-api/components/property-list.data'
+</script>
 
 # PropertyListRoot
 
-`PropertyListRoot` es un primitivo estructural headless para editores de propiedades basados en arrays.
+`PropertyListRoot` coordina una interfaz para Properties almacenadas como Array, por ejemplo Fills, Strokes y Effects.
 
-Está pensado para interfaces de propiedades como:
+Recibe Values y Mixed state mediante Props, emite los cambios y proporciona en el Slot:
 
-- rellenos
-- trazos
-- efectos
+- Items actuales;
+- Mixed state;
+- Actions para añadir, eliminar, sustituir y actualizar parcialmente;
+- Action para cambiar Visibility de un Item.
 
-Proporciona props de slot para:
-
-- elementos actuales
-- detección de estado mixto
-- operaciones de añadir/eliminar/actualizar/parchear
-- alternar la visibilidad por elemento
-
-## Uso
+## Ejemplo
 
 ```vue
-<PropertyListRoot prop-key="fills" v-slot="{ items, add, remove }">
-  <div v-for="(fill, index) in items" :key="index">
-    <button @click="remove(index)">Eliminar</button>
-  </div>
-  <button @click="add(defaultFill)">Añadir relleno</button>
-</PropertyListRoot>
+<script setup lang="ts">
+import { PropertyListRoot, useEditorPropertyList } from '@open-pencil/vue'
+
+const fills = useEditorPropertyList('fills')
+</script>
+
+<template>
+  <PropertyListRoot
+    prop-key="fills"
+    :items="fills.items.value"
+    :mixed="fills.isMixed.value"
+    @add="fills.actions.add"
+    @remove="fills.actions.remove"
+    v-slot="{ items, actions }"
+  >
+    <div v-for="(fill, index) in items" :key="index">
+      <button @click="actions.remove(index)">Eliminar</button>
+    </div>
+    <button @click="actions.add(defaultFill)">Añadir Fill</button>
+  </PropertyListRoot>
+</template>
 ```
 
-## APIs relacionadas
+<SdkComponentAPI :components="data.components" />
 
-- [Resumen de la API del SDK](../)
+## Consulta también
+
+- [Referencia del API](../)

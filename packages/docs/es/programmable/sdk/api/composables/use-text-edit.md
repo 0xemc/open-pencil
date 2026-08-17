@@ -1,20 +1,20 @@
 ---
 title: useTextEdit
-description: Gestiona la edición de texto en el DOM, la composición IME, el formateo y la sincronización para nodos de texto en el canvas.
+description: Gestionar DOM text input, IME, Formatting y sincronización de objetos de texto.
 ---
 
 # useTextEdit
 
-`useTextEdit()` conecta la entrada de texto del DOM con el modelo de edición de texto del canvas del editor.
+`useTextEdit()` conecta el DOM input con la edición de texto en el Editor canvas.
 
-Coordina:
+El composable coordina:
 
-- entrada de texto respaldada por textarea
-- composición IME
-- parpadeo del cursor
-- comportamiento de borrado/retroceso
-- comandos de formato como negrita/cursiva/subrayado
-- sincronización de los cambios de texto de vuelta al grafo
+- entrada mediante `textarea`;
+- IME;
+- parpadeo del Caret;
+- Delete y Backspace;
+- Commands Bold, Italic y Underline;
+- escritura de los cambios en SceneGraph.
 
 ## Uso
 
@@ -22,25 +22,21 @@ Coordina:
 useTextEdit(canvasRef, editor)
 ```
 
-## Ejemplo básico
+Úsalo en el Component que contiene el canvas, normalmente junto con `useCanvas()` y `useCanvasInput()`.
 
-Usa este composable en el componente propietario del canvas junto con `useCanvas()` y `useCanvasInput()`.
+## Atajos de Formatting
 
-## Ejemplos prácticos
+Mientras se edita texto, `useTextEdit()` procesa los Atajos de Bold, Italic y Underline.
 
-### Soportar atajos de formato
+## Sincronización
 
-`useTextEdit()` ya gestiona las acciones de formato de teclado como negrita, cursiva y subrayado mientras la edición de texto está activa.
-
-### Mantener el canvas y el editor de texto sincronizados
-
-Actualiza el texto del grafo y los rangos de estilo a medida que el usuario escribe o edita rangos con formato.
+Durante la entrada, la Function actualiza el texto y los Style runs de SceneGraph.
 
 ## Notas
 
-Este es un composable de integración canvas/editor, no un composable genérico de campo de texto.
+Este composable integra la edición de texto con el canvas. No está pensado para Fields de texto normales.
 
-## APIs relacionadas
+## Consulta también
 
 - [useCanvas](./use-canvas)
 - [useCanvasInput](./use-canvas-input)

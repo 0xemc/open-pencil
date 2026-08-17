@@ -1,51 +1,49 @@
 ---
 layout: doc
-title: IA y Automatización
-description: Cada operación en OpenPencil es scriptable — chat con IA, CLI, renderizador JSX, servidor MCP, colaboración en tiempo real.
+title: IA y automatización
+description: Automatiza OpenPencil mediante AI Chat, CLI, JSX, MCP y APIs.
 ---
 
-# IA y Automatización
+# IA y automatización
 
-OpenPencil trata los archivos de diseño como datos. Cada operación disponible en el editor — crear formas, establecer rellenos, gestionar auto-layout, exportar recursos — también está disponible desde la terminal, desde agentes de IA y desde código. Sin plugins que instalar, sin claves de API, sin lista de espera.
+OpenPencil trata los archivos de diseño como datos estructurados. Las operaciones del editor — crear Shapes, modificar Fills, configurar Auto layout o exportar Assets — también están disponibles desde CLI, AI agents y APIs.
 
-La interfaz del editor y las interfaces de automatización usan el mismo motor. Si puedes hacerlo con un clic, puedes hacerlo con un script.
+La interfaz y la automatización usan el mismo Core. Una operación se comporta igual si se inicia desde la UI, un Script o un Agent.
 
-## Chat con IA
+## AI Chat
 
-El asistente integrado tiene acceso a más de 90 herramientas que cubren toda la superficie del editor. Describe lo que quieres en lenguaje natural — "añade una sombra de 16px a todos los botones", "crea un componente de tarjeta con variante para modo oscuro", "exporta cada frame de esta página a 2×".
+El Assistant integrado puede ejecutar más de 90 Tools. Una instrucción puede cambiar las Shadows de varios Buttons, crear un Component con Dark variant o exportar todos los Frames de una Page con Scale 2×.
 
-[Chat con IA →](./ai-chat)
+[AI Chat →](./ai-chat)
 
-## Colaboración
+## Collaboration
 
-Edición multijugador en tiempo real mediante WebRTC peer-to-peer. Sin servidor, sin cuenta. Comparte un enlace de sala y edita junto con cursores en vivo y modo de seguimiento. El estado del documento se sincroniza mediante CRDT, así que las ediciones se fusionan automáticamente incluso con conexiones inestables.
+OpenPencil sincroniza documentos P2P mediante WebRTC. Basta con compartir el Room link; no se necesita cuenta ni servidor central. Live cursors y Follow mode muestran a los demás participantes. Yjs CRDT combina los cambios simultáneos.
 
-[Colaboración →](./collaboration)
+[Collaboration →](./collaboration)
 
-## Renderizador JSX
+## JSX renderer
 
-Describe la interfaz como JSX — la misma sintaxis que los LLMs ya conocen de React. Una sola llamada puede crear un árbol completo de componentes con frames, texto, auto-layout, rellenos y bordes. Compacto, declarativo y diferenciable.
+Una UI se puede describir de forma declarativa con JSX. Una sola llamada crea un Tree completo con Frames, Text, Auto layout, Fills y Strokes.
 
-En la dirección opuesta, exporta cualquier selección de vuelta a JSX con clases Tailwind — útil para entregar a desarrollo o alimentar diseños de vuelta a un LLM.
+En la otra dirección, OpenPencil exporta una Selection como JSX o HTML con Tailwind classes. El resultado sirve como base para Implementation, Code review o un paso posterior con AI.
 
-[Renderizador JSX →](./jsx-renderer)
+[JSX renderer →](./jsx-renderer)
 
 ## CLI
 
-Inspecciona, exporta y analiza archivos `.fig` sin abrir el editor. Lista páginas, busca nodos, extrae tokens de diseño, renderiza a PNG — todo desde la terminal con salida JSON legible por máquinas.
+La CLI examina, exporta y analiza archivos `.fig` sin abrir el editor. Puede listar Pages y Nodes, buscar objetos, extraer Design tokens y renderizar PNG. Para automatización ofrece JSON output.
 
-El CLI también se conecta a la aplicación de escritorio en ejecución vía RPC, para que puedas crear scripts del editor mientras lo usas.
+Mediante RPC, también puede controlar el documento abierto en la aplicación de escritorio.
 
-[Inspeccionar Archivos](./cli/inspecting) · [Exportar](./cli/exporting) · [Analizar Diseños](./cli/analyzing) · [Scripting](./cli/scripting)
+[Examinar archivos](./cli/inspecting) · [Export](./cli/exporting) · [Analizar diseños](./cli/analyzing) · [Scripts](./cli/scripting)
 
 ## Servidor MCP
 
-Conecta Claude Code, Cursor, Windsurf o cualquier cliente compatible con MCP a OpenPencil. El servidor expone 90 herramientas para leer, crear y modificar diseños — las mismas herramientas que usa el chat con IA integrado. Funciona sobre stdio o HTTP con soporte de sesiones.
+Claude Code, Cursor, Windsurf y otros MCP clients pueden usar los mismos 90 Tools que AI Chat. El servidor admite stdio y HTTP con Sessions.
 
 [Servidor MCP →](/programmable/mcp-server)
 
-## ¿Por Qué Abierto?
+## Plataforma abierta
 
-Figma es una plataforma cerrada. Su servidor MCP es de solo lectura. El acceso CDP por navegador fue eliminado en la versión 126. Los archivos de diseño viven en un formato propietario en los servidores de otra empresa. El desarrollo de plugins requiere un runtime personalizado con APIs limitadas.
-
-OpenPencil es la alternativa: código abierto, licencia MIT, cada operación scriptable, datos almacenados localmente. Tus archivos de diseño son tuyos — inspecciónalos, transfórmalos, envíalos a CI, aliméntalos a un LLM. Sin necesidad de permiso.
+OpenPencil se publica con licencia MIT, guarda los documentos localmente y ofrece acceso programático a sus operaciones. Los archivos `.fig` se pueden examinar, transformar, procesar en CI o proporcionar como Context a un LLM sin depender de un Hosting provider concreto.

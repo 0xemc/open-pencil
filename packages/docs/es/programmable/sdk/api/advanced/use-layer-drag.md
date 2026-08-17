@@ -1,15 +1,15 @@
 ---
 title: useLayerDrag
-description: Helper de cableado de arrastrar y soltar para la reordenación del árbol de capas.
+description: Drag and drop para cambiar el orden y el Parent de las Layers.
 ---
 
 # useLayerDrag
 
-`useLayerDrag(editor, indentPerLevel?)` conecta el comportamiento de arrastre pragmático para las filas del árbol de capas y mapea las instrucciones de soltar a operaciones de reordenación del editor.
+`useLayerDrag(editor, indentPerLevel?)` conecta `pragmatic-drag-and-drop` con las Rows del Layer tree y convierte las Drop instructions en cambios de orden o Parent dentro de SceneGraph.
 
-Úsalo cuando extiendas o reemplaces la interfaz de arrastre por defecto del árbol de capas.
+Usa el composable para crear un Layer tree propio con Drag and drop.
 
-## APIs relacionadas
+## Consulta también
 
 - [LayerTreeRoot](../components/layer-tree-root)
 - [LayerTreeItem](../components/layer-tree-item)

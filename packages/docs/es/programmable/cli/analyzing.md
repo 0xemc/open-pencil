@@ -1,42 +1,42 @@
 ---
-title: Analizar Diseños
-description: Audita colores, tipografía, espaciado y patrones repetidos en archivos .fig.
+title: Analizar diseños
+description: Examinar Colors, Typography, Spacing y Structures repetidas en archivos `.fig`.
 ---
 
-# Analizar Diseños
+# Analizar diseños
 
-Los comandos `analyze` auditan un sistema de diseño completo desde la terminal — encuentra inconsistencias, extrae la paleta real, detecta componentes que esperan ser extraídos.
+Los Commands de `analyze` examinan un documento completo desde el terminal. Muestran Colors y Text styles, desviaciones de Spacing y Structures repetidas que podrían convertirse en Components.
 
-## Colores
+## Colors
 
 ```sh
 openpencil analyze colors design.fig
 ```
 
-Encuentra cada color en el archivo, cuenta el uso y muestra un histograma visual:
+Cuenta cada Color del documento y muestra un Histograma:
 
-```
+```text
 #1d1b20  ██████████████████████████████ 17155×
 #49454f  ██████████████████████████████ 9814×
 #ffffff  ██████████████████████████████ 8620×
 #6750a4  ██████████████████████████████ 3967×
 ```
 
-## Tipografía
+## Typography
 
 ```sh
 openpencil analyze typography design.fig
 ```
 
-Lista cada combinación de familia tipográfica, tamaño y peso con conteos de uso. Útil para detectar estilos de texto aislados que deberían consolidarse.
+Lista las combinaciones de Font family, Size y Style con su frecuencia. Así se detectan Text styles aislados.
 
-## Espaciado
+## Spacing
 
 ```sh
 openpencil analyze spacing design.fig
 ```
 
-Audita los valores de gap y padding en los frames con auto-layout. Ayuda a identificar inconsistencias en la escala de espaciado — por ejemplo, un gap de `13px` suelto entre valores de `8/16/24`.
+Examina Gap y Padding en Auto-layout Frames. Por ejemplo, permite descubrir un valor `13px` entre valores habituales de `8/16/24`.
 
 ## Clusters
 
@@ -44,9 +44,9 @@ Audita los valores de gap y padding en los frames con auto-layout. Ayuda a ident
 openpencil analyze clusters design.fig
 ```
 
-Encuentra patrones de nodos repetidos que podrían extraerse como componentes:
+Busca Node structures repetidas que podrían agruparse como Components:
 
-```
+```text
 3771× frame "container" (100% match)
      size: 40×40, structure: Frame > [Frame]
 
@@ -54,12 +54,10 @@ Encuentra patrones de nodos repetidos que podrían extraerse como componentes:
      size: 48×48, structure: Instance > [Frame]
 ```
 
-## Salida JSON
-
-Todos los comandos de análisis soportan `--json` para salida legible por máquinas:
+## JSON output
 
 ```sh
 openpencil analyze colors design.fig --json
 ```
 
-Envía a `jq`, alimenta verificaciones de CI, o úsalo en scripts que controlen presupuestos de tokens de diseño.
+Todos los Analyze commands admiten `--json`. La salida se puede procesar con `jq`, validar en CI o usar en Scripts que apliquen reglas de Design tokens.

@@ -1,18 +1,16 @@
 ---
 title: useSelectionState
-description: Estado reactivo del editor derivado de la selección para el nodo actual, el recuento y el tipo de selección.
+description: State reactivo de la Selection actual, el objeto principal y su Type.
 ---
 
 # useSelectionState
 
-`useSelectionState()` expone el estado reactivo derivado de la selección del editor actual.
+`useSelectionState()` proporciona información reactiva sobre la Selection:
 
-Úsalo cuando necesites renderizar UI basándote en:
-
-- si hay algo seleccionado
-- cuántos nodos están seleccionados
-- el nodo seleccionado principal
-- si la selección actual es una instancia, componente o grupo
+- si hay algún objeto seleccionado;
+- cantidad de objetos seleccionados;
+- objeto seleccionado principal;
+- si el objeto principal es una Instance, un Component o un Group.
 
 ## Uso
 
@@ -22,7 +20,7 @@ import { useSelectionState } from '@open-pencil/vue'
 const selection = useSelectionState()
 ```
 
-## Ejemplo básico
+## Ejemplo
 
 ```vue
 <script setup lang="ts">
@@ -33,18 +31,16 @@ const { hasSelection, selectedCount, isInstance } = useSelectionState()
 
 <template>
   <div class="text-xs text-muted">
-    <span v-if="!hasSelection">Sin selección</span>
+    <span v-if="!hasSelection">No hay Selection</span>
     <span v-else>
       {{ selectedCount }} seleccionados
-      <span v-if="isInstance">· instancia</span>
+      <span v-if="isInstance">· Instance</span>
     </span>
   </div>
 </template>
 ```
 
-## Qué devuelve
-
-Los valores más útiles incluyen:
+## Values
 
 - `selectedIds`
 - `hasSelection`
@@ -56,21 +52,19 @@ Los valores más útiles incluyen:
 - `isGroup`
 - `canCreateComponentSet`
 
-## Ejemplos prácticos
-
-### Mostrar acciones solo para instancias
+### Actions solo para Instances
 
 ```ts
 const { isInstance } = useSelectionState()
 ```
 
-### Habilitar la UI de creación de conjuntos de componentes
+### Crear un Component set
 
 ```ts
 const { canCreateComponentSet } = useSelectionState()
 ```
 
-## APIs relacionadas
+## Consulta también
 
 - [useSelectionCapabilities](./use-selection-capabilities)
 - [useEditorCommands](./use-editor-commands)

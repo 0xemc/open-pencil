@@ -1,36 +1,37 @@
 ---
 layout: doc
-title: Guía del usuario
-description: Aprende a usar OpenPencil — navegación del lienzo, dibujo, texto, componentes, auto-layout y más.
+title: Guía de usuario
+description: Aprende a navegar, dibujar, editar texto, usar Components y configurar Auto layout en OpenPencil.
 ---
 
-# Guía del usuario
+# Guía de usuario
 
-OpenPencil es un editor de diseño open-source, compatible con Figma — completamente local, IA-nativo y programable.
+OpenPencil es un editor de diseño de código abierto compatible con Figma, con procesamiento local de archivos, IA integrada y APIs de automatización. Esta guía explica los flujos de trabajo principales del editor.
 
-::: tip Atajos multiplataforma
-<kbd>⌘</kbd> = <kbd>Command</kbd> (<kbd>Ctrl</kbd> en Windows/Linux), <kbd>⌥</kbd> = <kbd>Option</kbd> (<kbd>Alt</kbd>), <kbd>⇧</kbd> = <kbd>Shift</kbd>.
+::: tip Atajos en distintos sistemas
+La documentación usa la notación de macOS: <kbd>⌘</kbd> equivale a <kbd>Command</kbd> o <kbd>Ctrl</kbd> en Windows y Linux; <kbd>⌥</kbd> equivale a <kbd>Option</kbd> o <kbd>Alt</kbd>; <kbd>⇧</kbd> equivale a <kbd>Shift</kbd>.
 :::
 
-## Orientación
+## Primeros pasos
 
-- [Navegación del lienzo](./canvas-navigation) — panorámica, zoom y herramienta mano
-- [Selección y manipulación](./selection-and-manipulation) — seleccionar, mover, redimensionar, rotar
+- [Navegación por el canvas](./canvas-navigation) — mover el Viewport, aplicar Zoom y usar Hand tool
+- [Seleccionar y transformar](./selection-and-manipulation) — seleccionar, mover, redimensionar, rotar y ordenar objetos
 
 ## Crear contenido
 
-- [Dibujar formas](./drawing-shapes) — rectángulos, elipses, líneas, marcos, secciones
-- [Edición de texto](./text-editing) — crear y editar texto con formato enriquecido
-- [Herramienta pluma](./pen-tool) — trazados vectoriales con curvas de Bézier
+- [Dibujar Shapes](./drawing-shapes) — Rectangles, Ellipses, Lines, Frames, Sections, Polygons y Stars
+- [Editar texto](./text-editing) — crear, seleccionar y aplicar Formatting al texto
+- [Pen tool](./pen-tool) — dibujar Vector paths y Bezier curves
+- [Editar Vectors](./vector-edit) — modificar Anchors, Handles y Segments
 
-## Organizar
+## Organizar el documento
 
-- [Capas y páginas](./layers-and-pages) — panel de capas, páginas y propiedades
-- [Menú contextual](./context-menu) — acciones del clic derecho
-- [Exportar](./exporting) — exportación de imágenes y operaciones .fig
+- [Layers y Pages](./layers-and-pages) — panel Layers, Pages y panel Properties
+- [Menú contextual](./context-menu) — Actions para Clipboard, Groups, Components y otras operaciones
+- [Export](./exporting) — exportar Images, SVG y archivos `.fig`
 
 ## Funciones avanzadas
 
-- [Auto-layout](./auto-layout) — posicionamiento automático de hijos usando reglas de flexbox
-- [Componentes](./components) — componentes reutilizables, instancias y overrides
-- [Variables](./variables) — variables de diseño, colecciones, modos
+- [Auto layout](./auto-layout) — distribución automática mediante Flexbox y CSS Grid
+- [Components](./components) — Components reutilizables, Instances y Overrides
+- [Variables](./variables) — Design variables, Collections, Modes y Bindings

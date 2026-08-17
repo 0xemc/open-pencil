@@ -1,18 +1,16 @@
 ---
 title: useExport
-description: Gestiona la configuración de exportación como escala y formato para la selección actual.
+description: Gestionar Scale y Format del Export de la Selection actual.
 ---
 
 # useExport
 
-`useExport()` es el composable del panel de exportación para los nodos seleccionados.
+`useExport()` proporciona State y Actions para un panel Export:
 
-Gestiona:
-
-- filas de configuración de exportación
-- ids de nodos seleccionados
-- etiquetado del nombre de exportación
-- escalas y formatos soportados
+- Export settings;
+- IDs de los objetos seleccionados;
+- Name del Output file;
+- Scales y Formats disponibles.
 
 ## Uso
 
@@ -22,7 +20,7 @@ import { useExport } from '@open-pencil/vue'
 const exportState = useExport()
 ```
 
-## Ejemplo básico
+## Ejemplo
 
 ```ts
 const {
@@ -36,22 +34,20 @@ const {
 } = useExport()
 ```
 
-## Ejemplos prácticos
-
-### Añadir otro preset de exportación
+### Añadir otro Export setting
 
 ```ts
 exportState.addSetting()
 ```
 
-### Cambiar la primera exportación a 2x WEBP
+### WEBP con Scale 2×
 
 ```ts
 exportState.updateScale(0, 2)
 exportState.updateFormat(0, 'WEBP')
 ```
 
-## APIs relacionadas
+## Consulta también
 
 - [useSelectionState](./use-selection-state)
 - [useEditor](./use-editor)

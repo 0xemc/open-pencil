@@ -1,19 +1,19 @@
 ---
 title: useSelectionCapabilities
-description: Deriva booleanos amigables para comandos en UI y acciones impulsadas por la selección.
+description: Boolean values reactivos para las Actions disponibles con la Selection actual.
 ---
 
 # useSelectionCapabilities
 
-`useSelectionCapabilities()` expone booleanos reactivos sobre si las acciones habituales del editor están permitidas en el momento actual.
+`useSelectionCapabilities()` devuelve Boolean values reactivos que indican si las Actions habituales del Editor están disponibles para la Selection actual.
 
-Úsalo cuando construyas:
+El composable sirve para:
 
-- menús
-- barras de herramientas
-- atajos de teclado
-- botones de acción
-- paneles contextuales
+- Menús;
+- Toolbars;
+- Atajos;
+- Action buttons;
+- Paneles dependientes del Context.
 
 ## Uso
 
@@ -23,7 +23,7 @@ import { useSelectionCapabilities } from '@open-pencil/vue'
 const caps = useSelectionCapabilities()
 ```
 
-## Ejemplo básico
+## Ejemplo
 
 ```vue
 <script setup lang="ts">
@@ -34,28 +34,26 @@ const { canDelete, canDuplicate, canCreateComponent } = useSelectionCapabilities
 
 <template>
   <div class="flex gap-2">
-    <button :disabled="!canDuplicate">Duplicar</button>
-    <button :disabled="!canDelete">Eliminar</button>
-    <button :disabled="!canCreateComponent">Hacer componente</button>
+    <button :disabled="!canDuplicate">Duplicate</button>
+    <button :disabled="!canDelete">Delete</button>
+    <button :disabled="!canCreateComponent">Create component</button>
   </div>
 </template>
 ```
 
-## Ejemplos prácticos
-
-### Controlar las entradas del menú
+### Disponibilidad de opciones del menú
 
 ```ts
 const { canMoveToPage, canGoToMainComponent } = useSelectionCapabilities()
 ```
 
-### Habilitar los comandos de zoom solo cuando sean útiles
+### Zoom to selection
 
 ```ts
 const { canZoomToSelection } = useSelectionCapabilities()
 ```
 
-## APIs relacionadas
+## Consulta también
 
 - [useSelectionState](./use-selection-state)
 - [useEditorCommands](./use-editor-commands)

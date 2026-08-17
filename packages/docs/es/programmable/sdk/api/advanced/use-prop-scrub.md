@@ -1,15 +1,15 @@
 ---
 title: usePropScrub
-description: Helper de bajo nivel para actualizaciones de propiedades con arrastre y soporte de confirmación.
+description: Preview y Commit de una Property numérica durante Scrubbing.
 ---
 
 # usePropScrub
 
-`usePropScrub(editor)` coordina las actualizaciones de propiedades en vivo durante el arrastre y confirma los cambios conscientes de deshacer cuando la interacción termina.
+`usePropScrub(editor)` actualiza una Property durante el Drag y, al terminar la Interaction, escribe el cambio definitivo en Undo history.
 
-Úsalo cuando construyas controles numéricos que ajusten directamente las propiedades de los nodos seleccionados mediante arrastre.
+Resulta adecuado para Numeric controls que modifican Properties de los objetos seleccionados mediante Scrubbing.
 
-## APIs relacionadas
+## Consulta también
 
 - [NumberField](/programmable/sdk/api/components/number-field)
 - [useNodeProps](./use-node-props)

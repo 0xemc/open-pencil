@@ -1,28 +1,28 @@
 ---
 title: ColorInputRoot
-description: Helper headless de input de color con análisis hexadecimal y helpers de actualización.
+description: Hex value y Color updates para un Color input propio.
 ---
 
 # ColorInputRoot
 
-`ColorInputRoot` es un helper headless para interfaces de input de color.
+`ColorInputRoot` convierte el Color value actual a Hex y proporciona Functions para actualizarlo mediante un Hex string o un objeto `Color` completo.
 
-Deriva un valor hexadecimal a partir de un color y expone helpers de actualización para cambios hexadecimales y de color completo.
+La aplicación renderiza el Input mediante el Default slot.
 
 ## Props
 
 <SdkPropsTable
   :rows="[
-    { name: 'color', type: 'Color', description: 'Valor de color actual.', required: true },
-    { name: 'editable', type: 'boolean | undefined', description: 'Si el consumidor debe presentar el valor como editable.' }
+    { name: 'color', type: 'Color', description: 'Color value actual.', required: true },
+    { name: 'editable', type: 'boolean | undefined', description: 'Indica si la aplicación debe mostrar el Value como editable.' }
   ]"
 />
 
-## Eventos
+## Events
 
 <SdkEventsTable
   :rows="[
-    { name: 'update', payload: 'color: Color', description: 'Emitido cuando el color cambia.' }
+    { name: 'update', payload: 'color: Color', description: 'Se emite cuando cambia el Color value.' }
   ]"
 />
 
@@ -30,7 +30,7 @@ Deriva un valor hexadecimal a partir de un color y expone helpers de actualizaci
 
 <SdkSlotsTable
   :rows="[
-    { name: 'default', props: '{ color: Color, editable: boolean, hex: string, updateFromHex: (value: string) => void, updateColor: (color: Color) => void }', description: 'Contrato principal de renderizado del input de color.' }
+    { name: 'default', props: '{ color: Color, editable: boolean, hex: string, updateFromHex: (value: string) => void, updateColor: (color: Color) => void }', description: 'State y Actions para renderizar el Color input.' }
   ]"
 />
 
@@ -42,6 +42,6 @@ Deriva un valor hexadecimal a partir de un color y expone helpers de actualizaci
 </ColorInputRoot>
 ```
 
-## APIs relacionadas
+## Consulta también
 
 - [ColorPickerRoot](./color-picker-root)

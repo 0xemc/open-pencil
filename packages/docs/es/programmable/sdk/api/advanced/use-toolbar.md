@@ -1,15 +1,15 @@
 ---
 title: useToolbar
-description: Helper de contexto de primitivo para los descendientes de ToolbarRoot.
+description: Acceder al Context proporcionado por ToolbarRoot.
 ---
 
 # useToolbar
 
-`useToolbar()` lee el contexto local de la barra de herramientas proporcionado por `ToolbarRoot`.
+`useToolbar()` devuelve el Context del `ToolbarRoot` más cercano.
 
-Úsalo dentro de los descendientes de la barra de herramientas que necesiten acceso a las herramientas, el estado activo o los helpers de selección de herramienta.
+Usa el composable en Child components propios que necesiten Tools, Active state o la Action para seleccionar un Tool.
 
-## APIs relacionadas
+## Consulta también
 
 - [ToolbarRoot](../components/toolbar-root)
 - [ToolbarItem](../components/toolbar-item)

@@ -1,18 +1,16 @@
 ---
 title: useVariablesEditor
-description: Combina el estado del diálogo de variables, las columnas de la tabla y el cableado de TanStack Table.
+description: Preparar el State de un Variables dialog y TanStack Table.
 ---
 
 # useVariablesEditor
 
-`useVariablesEditor()` es un composable de alto nivel del dominio de variables para construir un diálogo o pantalla de variables.
+`useVariablesEditor()` conecta las partes necesarias para crear un Variables dialog o una pantalla de edición propia:
 
-Combina:
-
-- estado del diálogo de variables
-- columnas de la tabla de variables
-- cableado de TanStack Vue Table
-- helpers de colección/modo
+- Dialog state;
+- Table columns;
+- integración con TanStack Vue Table;
+- Functions para Collections y Modes.
 
 ## Uso
 
@@ -25,20 +23,16 @@ const variables = useVariablesEditor({
 })
 ```
 
-## Qué devuelve
+## Values
 
-Incluye el estado de diálogo/tabla de nivel inferior más:
+El resultado contiene el Low-level state del Dialog y la Tabla, además de:
 
 - `columns`
 - `table`
 - `hasCollections`
 
-## Ejemplos prácticos
+`useVariablesEditor()` resulta adecuado cuando un solo composable debe proporcionar la Table integration y los Action handlers.
 
-### Construir un diálogo de variables
+## Consulta también
 
-Usa `useVariablesEditor()` cuando quieras un solo composable que ya conecte la tabla y los manejadores de acciones.
-
-## APIs relacionadas
-
-- [Resumen de la API del SDK](../)
+- [Referencia del API](../)

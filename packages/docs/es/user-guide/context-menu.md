@@ -1,36 +1,73 @@
 ---
 title: Menú contextual
-description: Acciones del menú contextual (clic derecho) en OpenPencil.
+description: Actions para Clipboard, orden, Groups, Components, Visibility y Pages.
 ---
+
 # Menú contextual
 
-Clic derecho en el lienzo para abrir el menú contextual. Clic derecho en un nodo lo selecciona primero.
+Right-click en el canvas abre el menú contextual. Si se hace sobre un objeto, OpenPencil lo selecciona primero. Right-click en una zona libre cancela la Selection.
 
-## Copiar como
+## Copy as
 
-El submenú **Copiar como** ofrece estos formatos:
+El Submenu **Copy as** escribe la Selection en el Clipboard:
 
-| Acción | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Copiar como texto | — | — |
-| Copiar como SVG | — | — |
-| Copiar como PNG | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>C</kbd> |
-| Copiar como JSX | — | — |
+| Acción | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Copy as text | — | — |
+| Copy as SVG | — | — |
+| Copy as PNG | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>C</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>C</kbd> |
+| Copy as JSX | — | — |
 
-## Portapapeles
-Copiar (<kbd>⌘</kbd><kbd>C</kbd>), Cortar (<kbd>⌘</kbd><kbd>X</kbd>), Pegar (<kbd>⌘</kbd><kbd>V</kbd>), Duplicar (<kbd>⌘</kbd><kbd>D</kbd>), Eliminar (⌫)
+## Clipboard
 
-## Orden Z
-**]** al frente · **[** al fondo
+| Acción | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Copy | <kbd>⌘</kbd><kbd>C</kbd> | <kbd>Ctrl</kbd><kbd>C</kbd> |
+| Cut | <kbd>⌘</kbd><kbd>X</kbd> | <kbd>Ctrl</kbd><kbd>X</kbd> |
+| Paste here | <kbd>⌘</kbd><kbd>V</kbd> | <kbd>Ctrl</kbd><kbd>V</kbd> |
+| Duplicate | <kbd>⌘</kbd><kbd>D</kbd> | <kbd>Ctrl</kbd><kbd>D</kbd> |
+| Delete | <kbd>⌫</kbd> | Backspace/<kbd>Supr</kbd> |
 
-## Agrupación
-Agrupar (<kbd>⌘</kbd><kbd>G</kbd>), Desagrupar (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd>), Añadir auto-layout (<kbd>⇧</kbd><kbd>A</kbd>)
+## Orden
 
-## Componentes
-Crear componente (<kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd>), Crear conjunto (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd>), Crear instancia, Ir al componente principal, Desenlazar instancia (<kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd>). Acciones en morado.
+| Acción | Atajo |
+|--------|-------|
+| Bring to front | ] |
+| Send to back | [ |
 
-## Visibilidad y bloqueo
-Ocultar/Mostrar (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd>), Bloquear/Desbloquear (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd>)
+## Groups y Auto layout
 
-## Mover a página
-Submenú con todas las páginas excepto la actual.
+| Acción | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Group | <kbd>⌘</kbd><kbd>G</kbd> | <kbd>Ctrl</kbd><kbd>G</kbd> |
+| Ungroup | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>G</kbd> |
+| Add Auto layout | <kbd>⇧</kbd><kbd>A</kbd> | <kbd>Shift</kbd><kbd>A</kbd> |
+
+## Components
+
+Las Component actions se muestran en morado.
+
+| Acción | macOS | Windows / Linux | Disponible para |
+|--------|-------|-----------------|-----------------|
+| Create component | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>K</kbd> | Frames y Groups |
+| Create component set | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>K</kbd> | Dos o más Components |
+| Create instance | — | — | Components |
+| Go to main component | — | — | Instances |
+| Detach instance | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>B</kbd> | Instances |
+
+## Visibility y Lock
+
+| Acción | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Hide / Show | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>H</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>H</kbd> |
+| Lock / Unlock | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>L</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>L</kbd> |
+
+## Move to page
+
+El Submenu **Move to page** muestra todas las Pages excepto la actual.
+
+## Consejos
+
+- Right-click en una zona libre ofrece Paste.
+- Las Component actions solo aparecen cuando son compatibles con la Selection.
+- El menú muestra los Atajos de cada Action y sirve para descubrir Commands disponibles.

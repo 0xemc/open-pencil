@@ -1,15 +1,15 @@
 ---
 title: PropertyListItem
-description: Primitivo headless de elemento para una sola fila de rellenos, trazos o efectos.
+description: Un Item de una List de Fills, Strokes o Effects.
 ---
 
 # PropertyListItem
 
-`PropertyListItem` expone manejadores de actualización, parcheo, eliminación y visibilidad para un elemento del array dentro de `PropertyListRoot`.
+`PropertyListItem` proporciona Actions para sustituir, actualizar parcialmente, eliminar y cambiar Visibility de un Item dentro de `PropertyListRoot`.
 
-Úsalo cuando construyas interfaces de fila de lista personalizadas para rellenos, trazos o efectos.
+Permite construir una Row propia para un Fill, Stroke o Effect.
 
-## APIs relacionadas
+## Consulta también
 
 - [PropertyListRoot](./property-list-root)
 - [usePropertyList](../advanced/use-property-list)

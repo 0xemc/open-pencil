@@ -1,78 +1,96 @@
 ---
-title: Componentes
-description: Componentes reutilizables, instancias, overrides y sincronización en OpenPencil.
+title: Components
+description: Components reutilizables, Instances, Component sets, Overrides y Libraries en OpenPencil.
 ---
-# Componentes
 
-Los componentes son elementos de diseño reutilizables. Edita el componente principal y todas sus instancias se actualizan automáticamente.
+# Components
 
-## Explorar componentes
+Los Components son objetos de diseño reutilizables. Los cambios en el Main component se propagan automáticamente a sus Instances.
 
-Abre la pestaña **Assets** del panel izquierdo para explorar componentes locales y bibliotecas habilitadas. Busca por nombre, cambia entre cuadrícula y lista, e inserta un componente con un clic, <kbd>Enter</kbd> o arrastrándolo al lienzo. Las revisiones descargadas siguen disponibles sin conexión.
+## Explorar Components
 
-## Crear un componente
+La pestaña **Assets** del panel izquierdo muestra Components locales y Libraries habilitadas. Permite Search y vistas Grid/List. Puedes insertar un Component mediante Click, <kbd>Enter</kbd> o Drag and drop. Las Library revisions descargadas siguen disponibles Offline.
 
-Selecciona un marco o grupo y pulsa <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd> (<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>K</kbd>). La selección se convierte en un componente reutilizable.
+## Crear un Component
 
-Los componentes muestran una etiqueta morada con icono de diamante.
+Selecciona un Frame o Group y pulsa <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd>; en Windows y Linux, <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>K</kbd>. OpenPencil convierte el objeto en un Component.
 
-## Conjuntos de componentes y variantes
+Los Components muestran un Label morado con Diamond icon.
 
-Selecciona dos o más componentes y pulsa <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd> (<kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>K</kbd>) para combinarlos en un conjunto de componentes — un contenedor con borde morado punteado.
+## Component sets y Variants
 
-Las variantes admiten varias dimensiones, como `Tamaño=Pequeño`, `Estado=Hover` y `Tema=Oscuro`, sin exigir todas las combinaciones. La variante superior izquierda es la predeterminada y sirve como alternativa cuando una actualización ya no incluye una coincidencia exacta. El panel de propiedades permite añadir, renombrar, ordenar y eliminar dimensiones y valores; las combinaciones duplicadas se rechazan.
+Selecciona al menos dos Components y pulsa <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd> para crear un Component set con borde morado discontinuo.
 
-## Propiedades de componente
+Los Variants pueden contener varias Dimensions, por ejemplo `Size=Small`, `State=Hover` y `Theme=Dark`. No es obligatorio definir todas las combinaciones. El Variant situado arriba a la izquierda actúa como Default y como Fallback cuando una actualización deja de incluir una coincidencia exacta.
 
-Los componentes admiten propiedades de texto, visibilidad booleana e intercambio de instancia. Vincula una propiedad a un campo descendiente y edita su valor en una instancia sin desenlazarla. Las definiciones y asignaciones se conservan en archivos `.fig`.
+El panel Properties permite añadir, renombrar, ordenar y eliminar Dimensions y Values. Las combinaciones duplicadas no están permitidas.
 
-## Bibliotecas de componentes
+## Component properties
 
-Una biblioteca publica componentes como una revisión inmutable. Abre **Assets → Administrar bibliotecas → Publicar biblioteca**, define un ID estable y un nombre en la primera publicación, selecciona los cambios y publica. Los cambios no seleccionados quedan pendientes para una publicación posterior.
+OpenPencil admite Properties de Text, Boolean visibility e Instance swap. Una Property se puede asociar con el Field de un Child. Después, la Instance puede cambiar ese Value sin separarse del Main component. Definitions y Assignments se conservan en `.fig`.
 
-Habilita bibliotecas desde **Administrar bibliotecas**. Sus recursos aparecen junto a los componentes locales. Las definiciones publicadas son de solo lectura en el documento consumidor, mientras que las instancias vinculadas y sus overrides siguen siendo editables.
+## Libraries
 
-En **Actualizaciones**, compara la instancia actual y la nueva lado a lado. Puedes actualizar una instancia, todas las instancias de un recurso, la página actual o todas las páginas. Las propiedades compatibles se conservan y las variantes ausentes muestran la alternativa antes de aceptar. Las actualizaciones se pueden deshacer y rehacer.
+Una Library publica Components como Revisions inmutables. En **Assets → Manage libraries → Publish library**, la primera publicación establece una Library ID permanente y un Name. Se pueden seleccionar cambios concretos para cada Revision; los no incluidos permanecen pendientes.
 
-Las bibliotecas pueden usar el catálogo local o un proveedor de almacenamiento configurado. Las revisiones descargadas se guardan en caché. Los enlaces habilitados y las definiciones materializadas se guardan en `.fig`, por lo que el documento puede abrirse aunque la biblioteca remota no esté disponible.
+Las Libraries habilitadas aparecen en Assets junto a los Components locales. Sus Definitions son Read-only en el documento consumidor, mientras que las Instances y sus Overrides continúan siendo editables.
 
-## Crear instancias
+En **Updates** se comparan la Instance actual y la nueva. El Update puede aplicarse a una Instance, a todas las Instances de un Asset, a la Page actual o a todas las Pages. Las Properties compatibles se conservan. Si falta un Variant, se muestra el Fallback antes de confirmar. Los Updates admiten Undo y Redo.
 
-Clic derecho → **Crear instancia**. La instancia aparece a la derecha del componente original.
+Las Libraries pueden guardarse localmente o mediante un Storage provider. OpenPencil almacena en caché las Revisions descargadas. Los Bindings habilitados y las Definitions necesarias se materializan en `.fig`, de modo que el documento se abre aunque la Remote library no esté disponible.
 
-## Desenlazar una instancia
+## Crear una Instance
 
-Selecciona una instancia y pulsa <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> (<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>B</kbd>). La instancia se convierte en un marco regular sin enlace al componente original.
+Haz Right-click sobre un Component y elige **Create instance**. La nueva Instance aparece 40 px a la derecha del Source component.
 
-## Sincronización en vivo
+## Detach instance
 
-Editar un componente actualiza todas sus instancias automáticamente. Propiedades sincronizadas:
+Selecciona una Instance y pulsa <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd>; en Windows y Linux, <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>B</kbd>. Se convierte en un Frame sin vínculo con el Component.
 
-- Ancho y alto
-- Rellenos, trazos y efectos
-- Opacidad y radios de esquinas
-- Propiedades de layout
+## Go to main component
+
+Haz Right-click sobre una Instance y elige **Go to main component**. El editor cambia de Page cuando es necesario y selecciona el Source component.
+
+## Sincronización
+
+Las modificaciones del Main component actualizan:
+
+- Width y Height;
+- Fills, Strokes y Effects;
+- Opacity y Corner radii;
+- Layout properties;
+- Clip content.
 
 ## Overrides
 
-Las instancias pueden sobreescribir propiedades específicas sin romper el enlace de sincronización. Cuando se sobreescribe una propiedad en una instancia, esa propiedad se omite durante la sincronización — las demás propiedades continúan actualizándose desde el componente principal.
+Una Instance puede sustituir Properties concretas sin perder su conexión. Esos Values se conservan durante la sincronización.
 
-## Selección
+Entre los Overrides disponibles se encuentran Name, Text, Font size, Font style, Font family y las Properties visuales y de Layout.
 
-Clic selecciona el componente. **Doble clic** para entrar y seleccionar hijos.
+Cuando se añade un Child al Main component, OpenPencil incorpora el Child correspondiente a las Instances.
 
-## Tratamiento visual
+## Selection
+
+Components e Instances se comportan como contenedores cerrados. Un Click selecciona el contenedor. Double-click permite entrar y seleccionar un Child.
+
+## Apariencia
 
 | Elemento | Apariencia |
 |----------|------------|
-| Etiqueta de componente | Morada con icono de diamante, siempre visible |
-| Etiqueta de instancia | Morada con icono de diamante, siempre visible |
-| Borde de conjunto | Contorno morado punteado |
+| Component label | Morado con Diamond icon |
+| Instance label | Morado con Diamond icon |
+| Borde de Component set | Morado y discontinuo |
 
-## Atajos de teclado
+## Atajos
 
-| Acción | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Crear componente | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>K</kbd> |
-| Crear conjunto | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>K</kbd> |
-| Desenlazar instancia | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>B</kbd> |
+| Acción | macOS | Windows / Linux |
+|--------|-------|-----------------|
+| Create component | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>K</kbd> |
+| Create component set | <kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd> | <kbd>Shift</kbd><kbd>Ctrl</kbd><kbd>K</kbd> |
+| Detach instance | <kbd>⌥</kbd><kbd>⌘</kbd><kbd>B</kbd> | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>B</kbd> |
+
+## Consejos
+
+- Editar Text dentro de una Instance crea un Override.
+- Los Component sets sirven para Variants, como distintos States de un Button.
+- Haz Double-click antes de editar un Child de un Component.

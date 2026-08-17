@@ -1,48 +1,50 @@
 ---
-title: Navegación por el lienzo
-description: Desplaza el lienzo, cambia el zoom y utiliza la herramienta Mano en OpenPencil.
+title: Navegación por el canvas
+description: Mover el Viewport, aplicar Zoom y usar Hand tool en OpenPencil.
 ---
 
-# Navegación por el lienzo
+# Navegación por el canvas
 
-El lienzo es un espacio de trabajo sin límites. Desplaza la vista y cambia el zoom para trabajar en distintas zonas del diseño.
+El canvas no tiene límites. Pan y Zoom permiten acceder a cualquier zona del documento.
 
-## Desplazar la vista
+## Pan
 
-Para mover el área visible sin modificar ningún objeto:
+Puedes mover el área visible sin modificar los objetos:
 
-- mantén pulsada la <kbd>barra espaciadora</kbd> y arrastra el lienzo;
-- arrastra con el botón central del ratón;
-- desliza dos dedos sobre el trackpad.
+- mantén <kbd>Space</kbd> y arrastra sobre el canvas;
+- arrastra con el Button central del Mouse;
+- desplaza dos dedos sobre el Trackpad.
 
-## Herramienta Mano
+## Hand tool
 
-Pulsa <kbd>H</kbd> para activar la herramienta Mano. Mientras esté seleccionada, cualquier gesto de arrastre sobre el lienzo desplazará la vista sin necesidad de mantener pulsada la barra espaciadora.
+Pulsa <kbd>H</kbd>. Mientras Hand tool está activo, cualquier Drag sobre el canvas desplaza el Viewport sin mantener <kbd>Space</kbd>.
 
-Selecciona otra herramienta, por ejemplo <kbd>V</kbd> para la herramienta Selección, cuando quieras salir de este modo.
+Selecciona otro Tool, por ejemplo Select con <kbd>V</kbd>, para salir.
 
 ## Zoom
 
-El zoom se aplica respecto a la posición del puntero:
+El Zoom se centra en la posición del Pointer:
 
-- <kbd>Ctrl</kbd> + rueda del ratón, o <kbd>⌘</kbd> + rueda del ratón en macOS;
-- gesto de pellizco en el trackpad;
-- atajos de teclado de la tabla siguiente.
+- <kbd>Ctrl</kbd> + Scroll o <kbd>⌘</kbd> + Scroll en macOS;
+- Pinch gesture en el Trackpad;
+- Atajos de la tabla.
 
-El gesto de pellizco está desactivado en los paneles de capas y propiedades para evitar que cambie por accidente el zoom de toda la página del navegador.
+Los Gestures sobre los paneles Layers y Properties no se envían al canvas. Así se evita modificar el Zoom del editor o de la página del navegador por accidente.
 
-## Atajos de teclado
+## Atajos
 
 | Acción | macOS | Windows / Linux |
 |--------|-------|-----------------|
-| Desplazar la vista | <kbd>barra espaciadora</kbd> + arrastrar | <kbd>barra espaciadora</kbd> + arrastrar |
-| Herramienta Mano | <kbd>H</kbd> | <kbd>H</kbd> |
-| Ampliar | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Ctrl</kbd> + <kbd>+</kbd> |
-| Reducir | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Ctrl</kbd> + <kbd>−</kbd> |
-| Zoom al 100 % | <kbd>⌘</kbd><kbd>0</kbd> | <kbd>Ctrl</kbd> + <kbd>0</kbd> |
+| Pan | <kbd>Space</kbd> + Drag | <kbd>Space</kbd> + Drag |
+| Hand tool | <kbd>H</kbd> | <kbd>H</kbd> |
+| Zoom in | <kbd>⌘</kbd><kbd>+</kbd> | <kbd>Ctrl</kbd><kbd>+</kbd> |
+| Zoom out | <kbd>⌘</kbd><kbd>−</kbd> | <kbd>Ctrl</kbd><kbd>−</kbd> |
+| 100 % | <kbd>⌘</kbd><kbd>0</kbd> | <kbd>Ctrl</kbd><kbd>0</kbd> |
+| Fit | <kbd>⌘</kbd><kbd>1</kbd> | <kbd>Ctrl</kbd><kbd>1</kbd> |
+| Zoom to selection | <kbd>⌘</kbd><kbd>2</kbd> | <kbd>Ctrl</kbd><kbd>2</kbd> |
 
 ## Consejos
 
-- Antes de cambiar el zoom, coloca el puntero sobre la zona que quieras examinar.
-- La herramienta Mano permanece activa hasta que selecciones otra herramienta, por lo que resulta útil si necesitas desplazarte con frecuencia.
-- Consulta [Selección y manipulación](./selection-and-manipulation) para aprender a trabajar con objetos en el lienzo.
+- Sitúa el Pointer sobre la zona que quieres mantener como centro antes de aplicar Zoom.
+- Hand tool permanece activo hasta elegir otro Tool.
+- Consulta [Seleccionar y transformar](./selection-and-manipulation) para editar objetos.

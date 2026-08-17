@@ -1,15 +1,21 @@
 ---
 title: LayoutControlsRoot
-description: Primitivo raíz headless para controles de auto-layout y tamaño.
+description: Headless component para Auto layout y Sizing.
 ---
+
+<script setup lang="ts">
+import { data } from '#docs-api/components/layout-controls-root.data'
+</script>
 
 # LayoutControlsRoot
 
-`LayoutControlsRoot` expone el contrato de slot devuelto por `useLayout()` como un primitivo estructural.
+`LayoutControlsRoot` proporciona mediante su Slot el API devuelto por `useLayout()`.
 
-Úsalo cuando quieras un shell de controles de layout reutilizable con markup propio de la app.
+La aplicación puede renderizar un panel propio de Auto layout y Sizing mientras el SDK aporta State y Actions.
 
-## APIs relacionadas
+<SdkComponentAPI :components="data.components" />
+
+## Consulta también
 
 - [useLayout](../composables/use-layout)
-- [Guía de Paneles de Propiedades](../../guides/property-panels)
+- [Paneles Properties](../../guides/property-panels)

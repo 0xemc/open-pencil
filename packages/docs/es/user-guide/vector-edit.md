@@ -1,92 +1,75 @@
 ---
-title: Edición de objetos vectoriales
-description: "Cómo editar la geometría de trazados vectoriales: anclas, manejadores de Bézier, modificadores y acciones de la herramienta pluma en el modo de edición."
+title: Editar Vectors
+description: Modificar Anchors, Bezier handles y Segments y usar Pen tool en Edit mode.
 ---
 
-# Edición de objetos vectoriales
+# Editar Vectors
 
-El modo de edición de objetos vectoriales permite modificar la **geometría** de una curva: posición de las anclas, forma de los segmentos y manejadores de Bézier.  
-En este modo se edita el trazado en sí, no las transformaciones estándar del objeto.
+Vector edit mode permite cambiar la geometría de un Path: posición de los Anchors, forma de los Segments y Bezier handles. No transforma el objeto completo, sino el propio Path.
 
-## Entrar al modo
+## Abrir Edit mode
 
-- Selecciona un objeto vectorial con la herramienta Selección.
-- **Haz doble clic en la curva**.
+1. Selecciona un Vector object con Select tool.
+2. Haz Double-click en la Curve.
 
-Esto activa la edición de geometría para el vector seleccionado.
+Pulsa <kbd>Escape</kbd> o cambia a otro contexto para salir.
 
-## Salir del modo
+## Comportamiento
 
-- Pulsa <kbd>Escape</kbd>.
-- O cambia a otro contexto de edición.
+- Se oculta el Transform bounding box normal.
+- Anchors, Segments y Handles se pueden seleccionar y modificar.
+- Las esquinas del Bounding box no activan Resize ni Rotation.
 
-## Qué cambia en este modo
+## Operaciones básicas
 
-- El cuadro de transformación habitual queda desactivado para el objeto.
-- Se habilita la edición de anclas, segmentos y manejadores.
-- El cursor no cambia a redimensionar/rotar en las esquinas del cuadro delimitador.
+### Mover un Anchor
 
-## Acciones básicas
+Arrastra el Anchor. Los Segments conectados y la forma del Path se actualizan durante el Drag.
 
-### Mover una ancla
+### Modificar un Bezier handle
 
-- Arrastra un punto de ancla.
-- Los segmentos conectados y la forma del trazado se actualizan en tiempo real.
+Arrastra el Handle de un Anchor. El comportamiento depende de su Handle composition actual.
 
-### Editar un manejador de Bézier
+## Modificadores
 
-- Arrastra un manejador sobre el ancla.
-- Por defecto, el comportamiento sigue la composición de manejadores actual del ancla.
+| Comportamiento | macOS | Windows / Linux |
+|----------------|-------|-----------------|
+| Continuous | <kbd>Cmd</kbd> + Drag | <kbd>Ctrl</kbd> + Drag |
+| Corner, Handles independientes | <kbd>Option</kbd> + Drag | <kbd>Alt</kbd> + Drag |
+| Mantener Direction, cambiar solo Length | <kbd>Shift</kbd> + Drag | <kbd>Shift</kbd> + Drag |
 
-## Modificadores al arrastrar manejadores
+### Continuous
 
-| Acción | Mac | Windows / Linux |
-|--------|-----|-----------------|
-| Continuo (Suave / Continuo) | <kbd>Cmd</kbd> + arrastrar | <kbd>Ctrl</kbd> + arrastrar |
-| Esquina (manejadores independientes) | <kbd>Option</kbd> + arrastrar | <kbd>Alt</kbd> + arrastrar |
-| Bloqueo de dirección (solo longitud) | <kbd>Shift</kbd> + arrastrar | <kbd>Shift</kbd> + arrastrar |
+Con <kbd>Cmd</kbd> o <kbd>Ctrl</kbd>, el Active handle permanece en la misma línea que el opuesto. Solo cambia su Length y la Curve mantiene una transición suave.
 
-### Continuo: <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> + arrastrar
+### Corner
 
-- El manejador activo queda restringido a la misma línea que el manejador opuesto.
-- Solo cambia la longitud del manejador activo.
-- Úsalo para transiciones suaves sin quiebre de esquina.
+Con <kbd>Option</kbd> o <kbd>Alt</kbd>, el Active handle se modifica de forma independiente. El opuesto permanece en su posición y se puede crear un Corner pronunciado.
 
-### Esquina: <kbd>Option</kbd>/<kbd>Alt</kbd> + arrastrar
+### Mantener Direction
 
-- El manejador activo se edita de forma independiente.
-- El manejador opuesto permanece en su lugar.
-- Úsalo para crear una transición de esquina pronunciada.
+En Anchors con Composition **Continuous** o **Symmetric**, <kbd>Shift</kbd> conserva la Direction existente antes del Drag. Solo cambia la Length de uno o ambos Handles, según la Composition.
 
-### Bloqueo de dirección: <kbd>Shift</kbd> + arrastrar
+## Bend mediante Drag del Anchor
 
-Para anclas con composición **Continua** o **Simétrica**:
+Al arrastrar un Anchor con <kbd>Cmd</kbd> o <kbd>Ctrl</kbd>, OpenPencil determina el Target handle por la Direction del Segment conectado, no por la distancia al punto vecino.
 
-- la dirección del manejador queda bloqueada al valor que tenía **antes de iniciar el arrastre actual**;
-- al arrastrar solo cambia la longitud del manejador (o de ambos, según la composición).
+También funciona en Anchors ramificados de un Vector network. Una vez elegido, el mismo Target handle permanece activo hasta que termina el Drag.
 
-## Cambio de curvatura arrastrando un ancla
+## Pen tool en Edit mode
 
-Al arrastrar un ancla mientras se mantiene <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>, el editor selecciona el manejador de destino según la **dirección de unión al segmento** en esa ancla (no por proximidad al punto vecino más cercano).  
-Esto también funciona en anclas de malla vectorial con múltiples ramas: una vez resuelto, el manejador de destino queda bloqueado durante el arrastre actual.
+Con Pen tool activo:
 
-## Usar la herramienta pluma en el modo de edición
+- Click en un Segment inserta un Anchor y divide el Segment;
+- Click en el Endpoint de un Path abierto continúa el dibujo;
+- <kbd>Option</kbd>/<kbd>Alt</kbd> + Click elimina un Anchor si la Topology lo permite.
 
-Con la herramienta pluma activa:
+Consulta [Pen tool](./pen-tool.md) para crear y cerrar Paths.
 
-- **Clic en un segmento** para insertar una nueva ancla (dividir el segmento).
-- **Clic en el extremo de un trazado abierto** para retomar el dibujo desde ese punto.
-- **Option/Alt + clic en un ancla** para eliminarla (cuando la topología lo permite).
+## Ejemplo
 
-Para el comportamiento de creación y cierre de trazados, consulta [Herramienta pluma](./pen-tool.md).
-
-## Flujo de trabajo práctico
-
-1. Dibuja una forma con la herramienta pluma.
-2. Haz doble clic en la curva para entrar al modo de edición de objetos vectoriales.
-3. Mueve las anclas para refinar la silueta.
-4. Arrastra los manejadores:
-   - con <kbd>Cmd</kbd>/<kbd>Ctrl</kbd> para transiciones continuas y suaves,
-   - con <kbd>Option</kbd>/<kbd>Alt</kbd> para ediciones independientes,
-   - con <kbd>Shift</kbd> para editar solo la longitud.
-5. Pulsa <kbd>Escape</kbd> para salir.
+1. Dibuja un Shape con Pen tool.
+2. Abre la Curve con Double-click.
+3. Mueve los Anchors para ajustar el contorno.
+4. Modifica los Handles con <kbd>Cmd</kbd>/<kbd>Ctrl</kbd>, <kbd>Option</kbd>/<kbd>Alt</kbd> o <kbd>Shift</kbd>.
+5. Pulsa <kbd>Escape</kbd>.

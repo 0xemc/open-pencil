@@ -1,17 +1,17 @@
 ---
 title: useEditor
-description: Accede a la instancia del editor de OpenPencil actualmente inyectada.
+description: Acceder a la instancia de OpenPencil proporcionada por provideEditor.
 ---
 
 # useEditor
 
-`useEditor()` devuelve el editor de OpenPencil actualmente inyectado.
+`useEditor()` devuelve la instancia del Editor del Context `provideEditor()` más cercano.
 
-Es el punto de entrada principal para los composables del SDK y los primitivos headless que necesitan acceso al editor.
+Los composables y Headless components lo usan como acceso principal al Editor.
 
 ## Uso
 
-`useEditor()` debe llamarse dentro de un subárbol donde `provideEditor(editor)` ya haya sido llamado.
+Llama a `useEditor()` dentro de un Component tree donde se haya ejecutado `provideEditor(editor)`:
 
 ```ts
 import { useEditor } from '@open-pencil/vue'
@@ -19,7 +19,7 @@ import { useEditor } from '@open-pencil/vue'
 const editor = useEditor()
 ```
 
-## Ejemplo básico
+## Ejemplo
 
 ```vue
 <script setup lang="ts">
@@ -32,20 +32,18 @@ const pageId = computed(() => editor.state.currentPageId)
 </script>
 
 <template>
-  <div>Página actual: {{ pageId }}</div>
+  <div>Page actual: {{ pageId }}</div>
 </template>
 ```
 
-## Ejemplos prácticos
-
-### Leer los nodos seleccionados
+### Leer la Selection
 
 ```ts
 const editor = useEditor()
 const selected = editor.getSelectedNodes()
 ```
 
-### Ejecutar comandos
+### Ejecutar Actions
 
 ```ts
 const editor = useEditor()
@@ -53,13 +51,11 @@ editor.zoomToFit()
 editor.undoAction()
 ```
 
-## Comportamiento de error
+## Context ausente
 
-Si se llama fuera de un árbol con proveedor de editor, `useEditor()` lanza un error con un mensaje descriptivo.
+Si se llama fuera de un Provider tree válido, la Function lanza un error claro. Esto permite detectar una integración incompleta del Editor.
 
-Esto es intencional — esta API debe fallar de forma ruidosa cuando falta el contexto del editor.
-
-## APIs relacionadas
+## Consulta también
 
 - [provideEditor](./provide-editor)
 - [useCanvas](./use-canvas)

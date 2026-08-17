@@ -1,13 +1,11 @@
 ---
 title: usePosition
-description: Lee y actualiza la posición, el tamaño, la rotación, la alineación y el volteo de los nodos seleccionados.
+description: Leer y modificar Position, Size, Rotation, Alignment y Flip de los objetos seleccionados.
 ---
 
 # usePosition
 
-`usePosition()` es un composable de control para la UI relacionada con la posición.
-
-Expone valores de los nodos seleccionados como:
+`usePosition()` proporciona a los paneles de Position y Size estos Values:
 
 - `x`
 - `y`
@@ -15,12 +13,7 @@ Expone valores de los nodos seleccionados como:
 - `height`
 - `rotation`
 
-y acciones como:
-
-- alinear
-- voltear
-- rotar
-- arrastrar/actualizar propiedades numéricas
+También incluye Actions para Alignment, Flip, Rotation y para Preview y Commit de Properties numéricas.
 
 ## Uso
 
@@ -30,35 +23,33 @@ import { usePosition } from '@open-pencil/vue'
 const position = usePosition()
 ```
 
-## Ejemplo básico
+## Ejemplo
 
 ```ts
 const { x, y, width, height, rotation, updateProp, commitProp } = usePosition()
 ```
 
-## Ejemplos prácticos
-
-### Alinear nodos seleccionados
+### Alignment
 
 ```ts
 position.align('horizontal', 'center')
 position.align('vertical', 'min')
 ```
 
-### Voltear la selección
+### Flip
 
 ```ts
 position.flip('horizontal')
 position.flip('vertical')
 ```
 
-### Rotar la selección
+### Rotation
 
 ```ts
 position.rotate(90)
 ```
 
-## APIs relacionadas
+## Consulta también
 
 - [useLayout](./use-layout)
 - [useAppearance](./use-appearance)
