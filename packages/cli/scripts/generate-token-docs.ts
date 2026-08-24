@@ -295,6 +295,33 @@ function buildBarScale(parent: FigmaFrameNode, items: NumberEntry[], color: stri
   for (const item of items) buildBarRow(list, item, color, barHeight)
 }
 
+// ---------- font size ----------
+
+// Unlike spacing, a bar's length carries no meaning for a font size - the
+// point of a type scale is to see it rendered at true size. Split into
+// columns (rather than one tall list) so the largest sizes don't push the
+// section height out of proportion with the rest of the page.
+function buildFontSizeSample(parent: FigmaNodeProxy, item: NumberEntry) {
+  const card = makeFrame(parent, item.name)
+  autoLayout(card, 'VERTICAL', 4)
+  const sample = text(card, 'Ag', { size: item.value, style: 'Regular', color: INK })
+  figma.bindVariable(sample.id, 'fontSize', item.id)
+  text(card, `${item.leaf} · ${item.value}px`, { size: 11, style: 'Regular', color: SUBTLE })
+}
+
+function buildFontSizeColumns(parent: FigmaFrameNode, items: NumberEntry[], columns: number) {
+  const row = makeFrame(parent, 'Columns')
+  autoLayout(row, 'HORIZONTAL', 32, { counterAlign: 'MIN' })
+  const perColumn = Math.ceil(items.length / columns)
+  for (let i = 0; i < columns; i++) {
+    const chunk = items.slice(i * perColumn, (i + 1) * perColumn)
+    if (!chunk.length) continue
+    const column = makeFrame(row, `Column ${i + 1}`)
+    autoLayout(column, 'VERTICAL', 20)
+    for (const item of chunk) buildFontSizeSample(column, item)
+  }
+}
+
 // ---------- radius ----------
 
 function buildRadiusSwatch(parent: FigmaNodeProxy, item: NumberEntry) {
@@ -415,6 +442,7 @@ function buildFontGroupSample(parent: FigmaNodeProxy, g: FontGroup) {
 // ---------- data prep ----------
 
 const PALETTE_ORDER = ['base', 'ocean', 'sky', 'mid', 'land', 'earth', 'error', 'berry', 'sun', 'grain']
+const FONT_SIZE_COLUMNS = 3
 const SEM_COLOR_GROUP_ORDER = ['background', 'text', 'border', 'foreground']
 const FONT_GROUP_ORDER = [
   'heading-2xl',
@@ -480,7 +508,7 @@ function buildPrimitivesPage(): string {
   const colorCount = colorPalettes.reduce((n, g) => n + g.items.length, 0)
   buildColorGrid(sectionCard(root, 'Color', `${colorCount} swatches across ${colorPalettes.length} palettes`), colorPalettes)
   buildBarScale(sectionCard(root, 'Spacing', `${spacing.length} steps`), spacing, ACCENT, 16)
-  buildBarScale(sectionCard(root, 'Font Size', `${fontSize.length} steps`), fontSize, '#00B35F', 10)
+  buildFontSizeColumns(sectionCard(root, 'Font Size', `${fontSize.length} steps`), fontSize, FONT_SIZE_COLUMNS)
   buildRadiusGrid(sectionCard(root, 'Radius', `${radius.length} steps`), radius)
 
   const lineHeightCard = sectionCard(root, 'Line Height', `${lineHeight.length} steps`)

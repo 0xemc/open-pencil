@@ -49,7 +49,7 @@ function seedTokens(graph: SceneGraph) {
   })
   api.createVariable('font/heading-lg/weight', 'FLOAT', semantic.id, { aliasId: fontWeight.id })
 
-  return { oceanColor, noisyLineHeight, noisyOpacity, backgroundPrimary }
+  return { oceanColor, fontSize, noisyLineHeight, noisyOpacity, backgroundPrimary }
 }
 
 function textCharacters(graph: SceneGraph, pageId: string): string[] {
@@ -71,7 +71,7 @@ function boundTo(graph: SceneGraph, pageId: string, variableId: string): boolean
 describe('generateTokenDocs', () => {
   test('creates Primitives and Semantics pages with live variable bindings', () => {
     const graph = new SceneGraph()
-    const { oceanColor, backgroundPrimary } = seedTokens(graph)
+    const { oceanColor, fontSize, backgroundPrimary } = seedTokens(graph)
 
     const { primitivesPageId, semanticsPageId } = generateTokenDocs(graph)
 
@@ -80,6 +80,7 @@ describe('generateTokenDocs', () => {
     expect(api.getNodeById(semanticsPageId)?.name).toBe('Semantics')
 
     expect(boundTo(graph, primitivesPageId, oceanColor.id)).toBe(true)
+    expect(boundTo(graph, primitivesPageId, fontSize.id)).toBe(true)
     expect(boundTo(graph, semanticsPageId, backgroundPrimary.id)).toBe(true)
   })
 
