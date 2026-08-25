@@ -58,6 +58,12 @@ export async function writeDiscoveryFile(info: DiscoveryInfo): Promise<void> {
  * - The file cannot be parsed
  * - The recorded PID is no longer running (stale file)
  *
+ * A stale file (dead PID) is removed before returning null, so it cannot
+ * mislead a later reader into thinking a dead server is still reachable — a
+ * server that crashes mid-startup, before it reaches writeDiscoveryFile(),
+ * never overwrites its predecessor's file otherwise, leaving that stale
+ * pointer in place indefinitely.
+ *
  * On success, returns the parsed DiscoveryInfo.
  */
 export async function readDiscoveryFile(): Promise<DiscoveryInfo | null> {
@@ -84,7 +90,10 @@ export async function readDiscoveryFile(): Promise<DiscoveryInfo | null> {
   const obj = parsed as { [key: string]: unknown }
   const info = validateDiscoveryFields(obj)
   if (!info) return null
-  if (!isProcessAlive(info.pid)) return null
+  if (!isProcessAlive(info.pid)) {
+    await removeDiscoveryFile().catch(() => undefined)
+    return null
+  }
 
   return info
 }
