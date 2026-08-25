@@ -431,6 +431,11 @@ describe('Discovery PID liveness', () => {
     try {
       const result = await readDiscoveryFile()
       expect(result).toBeNull()
+
+      // A dead-PID file is self-healing: a server that crashes before it
+      // reaches writeDiscoveryFile() on its own next startup would otherwise
+      // leave this stale pointer in place indefinitely for every future reader.
+      expect(await Bun.file(discoveryPath).exists()).toBe(false)
     } finally {
       // Restore the original discovery file (or remove our seeded one)
       if (originalContents !== null) {
