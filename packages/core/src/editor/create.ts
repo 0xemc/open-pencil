@@ -229,6 +229,7 @@ export function createEditor(options?: EditorOptions) {
     },
     undo,
     state,
+    runLayoutForNode,
 
     // Graph reads
     ...graphReads,

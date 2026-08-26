@@ -55,6 +55,7 @@
 - Defer JSX generation and syntax highlighting until the Code panel is active, keeping large canvas selections responsive. (#500)
 - Index Figma clipboard children once during import instead of rescanning every pasted node, keeping large flat pastes linear. (#500)
 - Reduce peak memory during `.fig` export by sharing immutable binary resources with the isolated export graph.
+- Scope the MCP/automation bridge's post-mutation layout recompute to the affected node(s) and their ancestors instead of the entire current page, preventing large documents from stalling automation calls past the RPC timeout.
 
 ### Fixed
 
