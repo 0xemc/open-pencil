@@ -4,6 +4,7 @@ import { computeAllLayouts } from '@open-pencil/core/layout'
 import { ALL_TOOLS, registerComponentCatalog } from '@open-pencil/core/tools'
 import type { JSONObject } from '@open-pencil/scene-graph/primitives'
 
+import { captureParentIds, collectLayoutScopeIds } from '@/app/automation/bridge/tool-handlers.utils'
 import type { AutomationTarget } from '@/app/automation/bridge/target'
 import { ensureGraphFonts } from '@/app/editor/fonts'
 import { useLibraryService } from '@/app/libraries'
@@ -23,7 +24,7 @@ export function createAutomationToolHandler(makeFigma: FigmaFactory) {
       y: toolArgs.y as number | undefined
     })
     await ensureGraphFonts(store.graph, [result.id], store.renderer)
-    computeAllLayouts(store.graph, target.pageId)
+    store.runLayoutForNode(result.id)
     store.requestRender()
     store.flashNodes([result.id])
     return {
@@ -48,14 +49,25 @@ export function createAutomationToolHandler(makeFigma: FigmaFactory) {
     libraryService.bindEditor(store)
     registerComponentCatalog(store.graph, libraryService)
     const figma = makeFigma(store, target.pageId)
+    const priorParentIds = def.mutates ? captureParentIds(store.graph, toolArgs) : []
     const result = await def.execute(figma, toolArgs)
 
     if (def.mutates) {
       const pageNode = store.graph.getNode(figma.currentPageId)
       if (pageNode) await ensureGraphFonts(store.graph, pageNode.childIds, store.renderer)
-      computeAllLayouts(store.graph, figma.currentPageId)
+      const resultIds = extractNodeIds(result)
+      const scopeIds = collectLayoutScopeIds(toolArgs, priorParentIds, resultIds)
+      if (scopeIds.length > 0) {
+        for (const id of scopeIds) store.runLayoutForNode(id)
+      } else {
+        // No recognizable node-id argument (e.g. batch_update's JSON-encoded
+        // operations, or arrange with no ids meaning "all top-level
+        // children") — fall back to the unscoped recompute rather than risk
+        // leaving an affected frame stale.
+        computeAllLayouts(store.graph, figma.currentPageId)
+      }
       store.requestRender()
-      store.flashNodes(extractNodeIds(result))
+      store.flashNodes(resultIds)
     }
     return { ok: true, result }
   }
