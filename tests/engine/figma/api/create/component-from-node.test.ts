@@ -39,4 +39,18 @@ describe('createComponentFromNode', () => {
     const raw = api.graph.getNode(comp.id)
     expect(raw?.boundVariables.cornerRadius).toBe(variable.id)
   })
+
+  test('preserves auto-layout HUG sizing mode', () => {
+    const api = createAPI()
+    const frame = api.createFrame()
+    frame.layoutMode = 'HORIZONTAL'
+    frame.primaryAxisSizingMode = 'AUTO'
+    frame.counterAxisSizingMode = 'AUTO'
+
+    const comp = api.createComponentFromNode(frame)
+    const raw = api.graph.getNode(comp.id)
+
+    expect(raw?.primaryAxisSizing).toBe('HUG')
+    expect(raw?.counterAxisSizing).toBe('HUG')
+  })
 })
